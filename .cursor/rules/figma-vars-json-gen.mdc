@@ -1,6 +1,6 @@
 ---
-name: figma-cars-json-gen
-description: Fluxo de criação de JSON para Figma Variables
+name: figma-vars-json-gen
+description: Regra para criar arquivos JSON através de agente de IA
 ---
 
 # Agente de IA para Criação de Design Tokens Figma
@@ -25,21 +25,16 @@ Este agente é ativado quando o usuário mencionar que deseja criar um arquivo J
 
 **Exemplo correto:**
 ```
-🤖 Qual o nome da coleção que deseja criar?
-
-[aguarda resposta]
-
-👤 design-system
-
-🤖 Qual o nome do mode para esta coleção?
-
-[aguarda resposta]
-
-👤 light
-
 🤖 Cole a URL da tabela com os design tokens:
 
 [aguarda resposta]
+
+👤 https://coda.io/d/...
+
+🤖 Processando tabela...
+✅ Nome da coleção detectado: design-system
+✅ Modes detectados: Light, Dark, Value
+✅ Serão criados 3 arquivos JSON: Light.json, Dark.json, Value.json
 ```
 
 **Exemplo INCORRETO:**
@@ -62,25 +57,26 @@ Se a pasta `figma` não existir, ela deve ser criada automaticamente.
 
 ## Fluxo de Interação
 
-### 1. Perguntar o Nome da Coleção
-- Solicitar ao usuário o nome da coleção
-- Este nome será usado como nome da pasta dentro de `src/figma/`
+### 1. Solicitar URL da Tabela
+- Pedir a URL onde está a tabela de design tokens
+- **Estrutura da tabela**:
+  - A primeira coluna sempre será `Token Name` (ou `Token name`)
+  - As colunas seguintes são os nomes dos modes (ex: `Value`, `Light`, `Dark`, etc.)
+  - Cada mode terá seus próprios valores na respectiva coluna
+- **Extrair nome da coleção**: O nome da tabela é o nome da coleção
+- **Extrair nomes dos modes**: As colunas após `Token Name` são os nomes dos modes
+- **Processamento de múltiplos modes**:
+  - Se houver apenas uma coluna de mode (ex: apenas `Value`), criar um único arquivo JSON
+  - Se houver múltiplas colunas de modes (ex: `Light`, `Dark`, `Value`), criar um arquivo JSON separado para cada mode
+  - Cada arquivo será nomeado como `{nome-do-mode}.json` dentro da pasta da coleção
 - Verificar se a pasta já existe; se não, criar
-
-### 2. Perguntar o Nome do Mode
-- Solicitar ao usuário o nome do mode
-- Este nome será o nome do arquivo JSON (`{nome-do-mode}.json`)
-- **VALIDAÇÃO IMPORTANTE**: Verificar se já existe um arquivo com esse nome na pasta da coleção
+- **VALIDAÇÃO IMPORTANTE**: Para cada mode detectado, verificar se já existe um arquivo com esse nome na pasta da coleção
   - Se existir, apresentar opções:
     - ✅ **Mesclar com arquivo existente** (adicionar/atualizar tokens)
     - ✅ **Sobrescrever** o arquivo existente (apagar tudo e criar novo)
     - ✅ **Criar com outro nome** (sugerir ou solicitar novo nome)
     - ✅ **Cancelar** a operação
   - Aguardar escolha do usuário antes de prosseguir
-
-### 3. Solicitar URL da Tabela
-- Pedir a URL onde está a tabela de design tokens
-- A tabela contém colunas: `Token name` e `Value`
 
 #### IMPORTANTE: Leitura de Tabelas do Coda
 
@@ -106,7 +102,9 @@ Se a pasta `figma` não existir, ela deve ser criada automaticamente.
    - Utilizar as ferramentas do MCP do Coda para listar e ler as linhas da tabela
    - O MCP retorna todos os registros (sem limitação de virtual scrolling)
    - Iterar por todas as páginas se houver paginação
-   - Extrair colunas `Token name` e `Value`
+   - **Extrair nome da coleção**: O nome da tabela é o nome da coleção
+   - **Extrair nomes dos modes**: Identificar todas as colunas após `Token Name` (ou `Token name`) - estas são os nomes dos modes
+   - Extrair coluna `Token Name` e todas as colunas de modes
 
 **Tratamento de paginação**:
 Se houver muitos dados, processar em lotes e informar o progresso:
@@ -121,29 +119,99 @@ Se houver muitos dados, processar em lotes e informar o progresso:
 **Tratamento de erros**:
 - Se o MCP não conseguir acessar o documento, informar o usuário
 - Se a tabela não for encontrada, listar as tabelas disponíveis no documento
-- Se as colunas esperadas (`Token name` e `Value`) não existirem, solicitar os nomes corretos das colunas
+- Se a coluna `Token Name` (ou `Token name`) não existir, solicitar o nome correto da coluna
+- Se não houver colunas de modes (apenas `Token Name`), informar que é necessário pelo menos uma coluna de mode
+- Se não for possível extrair o nome da coleção do nome da tabela, solicitar ao usuário
+- Se não for possível identificar as colunas de modes, listar as colunas encontradas e solicitar confirmação
 
 #### Outras Fontes de Dados
 
 Para tabelas em outras plataformas (Google Sheets, Notion, Excel Online, etc.), verificar se existem MCPs ou APIs disponíveis e instruir o usuário adequadamente. Caso não haja integração disponível, solicitar que o usuário exporte os dados ou forneça acesso adequado.
 
-### 4. Perguntar ColorSpace (para cores)
+### 2. Perguntar ColorSpace (para cores)
 - Solicitar qual colorSpace será usado para conversão de cores
 - Opções disponíveis em: https://www.designtokens.org/tr/2025.10/color
 - Exemplos: `srgb`, `oklch`, `hsl`, etc.
 
-### 5. Perguntar Base de Conversão (para números)
+### 3. Perguntar Base de Conversão (para números)
 - Solicitar a base de conversão para rem/em → px
 - Sugestão padrão: **16px**
 
-### 6. Processar Tabela e Gerar JSON
+### 4. Processar Tabela e Gerar JSON
 - Ler a tabela da URL fornecida
-- **Normalizar tokens alpha** (ex: `jf.color.alpha.white.100` → `jf.color.white.100`)
-- **Detectar tokens com variantes** (verificar se existem tokens que começam com o nome base + ".")
-- **Processar tokens base primeiro** (criar estrutura com `$root` se necessário)
-- **Processar variantes depois** (adicionar ao objeto base existente)
-- Analisar cada token e aplicar as regras de conversão
-- Gerar o arquivo JSON no formato DTCG compatível com Figma
+- **Extrair nome da coleção** do nome da tabela
+- **Identificar colunas de modes**: Todas as colunas após `Token Name` são modes
+- **Para cada mode detectado**:
+  - Criar um arquivo JSON separado: `{nome-do-mode}.json`
+  - Processar todos os tokens da coluna desse mode
+  - **Normalizar tokens alpha** (ex: `jf.color.alpha.white.100` → `jf.color.white.100`)
+  - **Ignorar tokens com valor "composition" ou "composição"** (não processar estes tokens)
+  - **Detectar tokens com variantes** (verificar se existem tokens que começam com o nome base + ".")
+  - **Processar tokens base primeiro** (criar estrutura com `$root` se necessário)
+  - **Processar variantes depois** (adicionar ao objeto base existente)
+  - Analisar cada token e aplicar as regras de conversão
+  - Gerar o arquivo JSON no formato DTCG compatível com Figma
+  - Incluir o metadado `com.figma.modeName` com o nome do mode
+- **Se houver apenas um mode**: Criar um único arquivo JSON
+- **Se houver múltiplos modes**: Criar múltiplos arquivos JSON, um para cada mode
+
+### 4.1. Processamento de Múltiplos Modes
+
+Quando a tabela contém múltiplas colunas de modes, a IA deve:
+
+1. **Identificar todas as colunas de modes**:
+   - Primeira coluna: `Token Name` (ou `Token name`)
+   - Colunas seguintes: Nomes dos modes (ex: `Value`, `Light`, `Dark`, `Mobile`, `Desktop`, etc.)
+
+2. **Processar cada mode independentemente**:
+   - Para cada coluna de mode, criar um arquivo JSON separado
+   - Cada arquivo conterá apenas os tokens daquele mode específico
+   - O nome do arquivo será `{nome-do-mode}.json` (case-sensitive)
+
+3. **Estrutura de arquivos gerados**:
+   ```
+   packages/tokens/src/figma/
+     └── {nome-da-colecao}/
+         ├── {mode-1}.json
+         ├── {mode-2}.json
+         └── {mode-3}.json
+   ```
+
+4. **Exemplo de tabela com múltiplos modes**:
+   | Token name | Light | Dark | Value |
+   |------------|-------|------|-------|
+   | jf.color.white | #ffffff | #000000 | #ffffff |
+   | jf.color.black | #000000 | #ffffff | #000000 |
+
+   **Resultado**: Serão criados 3 arquivos:
+   - `Light.json` com tokens da coluna Light
+   - `Dark.json` com tokens da coluna Dark
+   - `Value.json` com tokens da coluna Value
+
+5. **Validação de arquivos existentes**:
+   - Para cada mode, verificar se o arquivo já existe
+   - Se existir, seguir o fluxo de validação (mesclar/sobrescrever/cancelar)
+   - Aplicar a mesma ação escolhida para todos os modes ou permitir escolha individual
+
+6. **Tratamento de valores vazios**:
+   - Se um token tiver valor vazio em um mode específico, esse token não será incluído no JSON daquele mode
+   - Tokens com valores vazios em todos os modes serão ignorados completamente
+   - Informar ao usuário quais tokens foram pulados por mode (opcional, apenas se houver muitos)
+
+7. **Mensagem ao usuário**:
+   ```
+   📊 Processando tabela "Primitives"...
+   
+   ✅ Coleção detectada: Primitives
+   ✅ Modes detectados: Light, Dark, Value
+   
+   📁 Arquivos a serem criados:
+   - packages/tokens/src/figma/Primitives/Light.json
+   - packages/tokens/src/figma/Primitives/Dark.json
+   - packages/tokens/src/figma/Primitives/Value.json
+   
+   ⚠️ Verificando arquivos existentes...
+   ```
 
 ---
 
@@ -156,6 +224,22 @@ Os tokens podem usar duas convenções de nomenclatura:
 2. **Slash notation**: `jf/color/white`
 
 Ambas resultam na mesma estrutura JSON aninhada.
+
+### Ignorar Tokens de Composição
+
+**IMPORTANTE**: Tokens com valor `"composition"` ou `"composição"` devem ser **ignorados** e não processados:
+
+- Se o valor do token for exatamente `"composition"` ou `"composição"` (case-insensitive), o token não deve ser incluído no JSON final
+- Estes tokens são marcadores de composição e não representam valores de design tokens
+- Não gerar erro ou aviso, apenas ignorar silenciosamente
+
+**Exemplo**:
+```
+Token name: jf.color.composition
+Value: composition
+
+Ação: Token ignorado, não incluído no JSON
+```
 
 ### Normalização de Tokens Alpha
 
@@ -457,11 +541,11 @@ O arquivo JSON deve seguir o padrão DTCG (Design Tokens Community Group) compat
 
 **IMPORTANTE**: Todo arquivo JSON deve incluir a extensão `com.figma.modeName` antes de fechar a raiz do objeto.
 
-O valor de `"com.figma.modeName"` deve ser **exatamente o nome do mode** fornecido pelo usuário no início do fluxo.
+O valor de `"com.figma.modeName"` deve ser **exatamente o nome do mode** extraído do nome da coluna correspondente na tabela.
 
 **Exemplo completo:**
 
-Se o usuário informou que o mode se chama "light", o JSON final deve ser:
+Se a tabela contém uma coluna de mode chamada "Light", o JSON final para `Light.json` deve ser:
 
 ```json
 {
@@ -501,23 +585,29 @@ Se o usuário informou que o mode se chama "light", o JSON final deve ser:
 
 **Regras para `$extensions`:**
 1. Deve ser sempre o **último elemento** do JSON (antes de fechar `}`)
-2. O valor de `"com.figma.modeName"` é uma **string** com o nome do mode
-3. Use exatamente o nome que o usuário forneceu (case-sensitive)
+2. O valor de `"com.figma.modeName"` é uma **string** com o nome do mode extraído do nome da coluna correspondente
+3. Use exatamente o nome da coluna (case-sensitive)
 4. **Obrigatório em todos os arquivos** de design tokens
+5. **Cada arquivo JSON terá seu próprio `modeName`** correspondente ao nome da coluna de mode que originou os tokens
 
 ---
 
 ## Validações Importantes
 
 1. **Verificar se a pasta `figma` existe**, se não, criar
-2. **Verificar se a pasta da coleção existe**, se não, criar
-3. **Verificar se o arquivo do mode já existe**, se sim, perguntar ação ao usuário
-4. **Validar URL da tabela** antes de processar
-5. **Normalizar tokens alpha** antes do processamento
-6. **Detectar tokens com variantes** corretamente
-7. **Processar tokens base antes das variantes** para garantir estrutura correta
-8. **Detectar automaticamente o tipo de token** baseado no nome
-9. **Aplicar conversões corretas** baseadas no tipo identificado
+2. **Extrair nome da coleção** do nome da tabela
+3. **Identificar todas as colunas de modes** (colunas após `Token Name`)
+4. **Verificar se a pasta da coleção existe**, se não, criar
+5. **Para cada mode detectado**: Verificar se o arquivo do mode já existe, se sim, perguntar ação ao usuário
+6. **Validar URL da tabela** antes de processar
+7. **Validar estrutura da tabela**: Deve ter coluna `Token Name` e pelo menos uma coluna de mode
+8. **Ignorar tokens com valor "composition" ou "composição"** (não processar)
+9. **Normalizar tokens alpha** antes do processamento
+10. **Detectar tokens com variantes** corretamente
+11. **Processar tokens base antes das variantes** para garantir estrutura correta
+12. **Detectar automaticamente o tipo de token** baseado no nome
+13. **Aplicar conversões corretas** baseadas no tipo identificado
+14. **Criar arquivo JSON separado para cada mode** quando houver múltiplos modes
 
 ---
 
@@ -827,13 +917,18 @@ Confirmar remoção? (s/n)
 ## Tratamento de Erros
 
 1. Se a URL da tabela não for acessível, informar ao usuário
-2. Se houver valores que não podem ser convertidos, registrar e informar quais tokens falharam
-3. Se a estrutura da tabela for inválida, solicitar formato correto
+2. Se a estrutura da tabela for inválida:
+   - Verificar se existe coluna `Token Name` (ou `Token name`)
+   - Verificar se existe pelo menos uma coluna de mode após `Token Name`
+   - Se não houver colunas de modes, informar e solicitar estrutura correta
+3. Se houver valores que não podem ser convertidos, registrar e informar quais tokens falharam (por mode)
 4. Se valores dinâmicos forem detectados, seguir o fluxo de coleção multi-plataforma
-5. **Se arquivo existir, NUNCA sobrescrever sem permissão explícita**
-6. **Se token existente for modificado, SEMPRE pedir confirmação**
-7. **Se houver conflito de estrutura, SEMPRE alertar e pedir decisão**
+5. **Se arquivo existir, NUNCA sobrescrever sem permissão explícita** (aplicar para cada arquivo de mode)
+6. **Se token existente for modificado, SEMPRE pedir confirmação** (aplicar para cada arquivo de mode)
+7. **Se houver conflito de estrutura, SEMPRE alertar e pedir decisão** (aplicar para cada arquivo de mode)
 8. Sempre criar o JSON mesmo com erros parciais, mas avisar sobre os tokens problemáticos
+9. Se houver múltiplos modes e algum mode falhar, processar os outros modes e informar quais falharam
+10. Se um token tiver valor vazio em um mode específico, pular esse token apenas para aquele mode (não criar entrada no JSON)
 
 ---
 
@@ -842,5 +937,22 @@ Confirmar remoção? (s/n)
 Mantenha uma comunicação clara e profissional:
 - Confirme cada etapa antes de prosseguir
 - Informe sobre validações e conversões realizadas
-- Mostre preview do JSON antes de salvar (opcional)
-- Confirme sucesso na criação do arquivo com o caminho completo
+- **Quando houver múltiplos modes**: Mostrar resumo de todos os modes detectados e arquivos que serão criados
+- Mostre preview do JSON antes de salvar (opcional, pode ser por mode)
+- Confirme sucesso na criação dos arquivos com os caminhos completos
+- **Exemplo de mensagem para múltiplos modes**:
+  ```
+  ✅ Processamento concluído!
+  
+  📁 Arquivos criados:
+  - packages/tokens/src/figma/Primitives/Light.json (45 tokens)
+  - packages/tokens/src/figma/Primitives/Dark.json (45 tokens)
+  - packages/tokens/src/figma/Primitives/Value.json (45 tokens)
+  
+  📊 Estatísticas:
+  - Total de tokens processados: 45
+  - Tokens de cor: 20
+  - Tokens numéricos: 15
+  - Tokens de string: 10
+  ```
+
