@@ -1,0 +1,28 @@
+{
+  "jf": {
+    "control": {
+      "height": {
+        "sm": {
+          "$type": "number",
+          "$value": 36,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:263:1527",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:e0d7cab35e9eb7aef38f365bcdbaeb6cfe70240a/-1:-1",
+              "targetVariableName": "jf/size/18",
+              "targetVariableSetId": "VariableCollectionId:6ca23f91f8accd784784bf7b9617d4e588aa4079/-1:-1",
+              "targetVariableSetName": "01- Primitives"
+            },
+            "com.figma.isOverride": true
+          }
+        }
+      }
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "screen-md"
+  }
+}
