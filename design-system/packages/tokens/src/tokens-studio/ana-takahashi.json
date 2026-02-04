@@ -1,5 +1,6 @@
 {
-  "02- Foundations/Value": {
+  "global": {},
+  "02- Foundations": {
     "jf": {
       "color": {
         "accent": {
@@ -257,7 +258,7 @@
   "$metadata": {
     "tokenSetOrder": [
       "global",
-      "02- Foundations/Value",
+      "02- Foundations",
       "Color Modes/Light",
       "Color Modes/Dark"
     ]
