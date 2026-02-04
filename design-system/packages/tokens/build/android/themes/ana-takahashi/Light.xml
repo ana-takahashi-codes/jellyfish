@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Do not edit directly, this file was auto-generated.
+-->
+<resources>
+  <color name="jf_color_bg_accent_soft">#ffb6b7d8</color>
+  <color name="jf_color_bg_brand_primary_soft">#ffffebef</color>
+  <color name="jf_color_bg_accent">#ff31396d</color>
+  <color name="jf_color_bg_brand_primary">#fffb65b7</color>
+  <color name="jf_color_fg_accent">#ff242551</color>
+  <color name="jf_color_fg_brand_primary">#ffe345a9</color>
+  <color name="jf_color_border_brand_primary">#fffb65b7</color>
+  <color name="jf_color_border_accent">#ff31396d</color>
+  <color name="jf_color_shadow_accent">#ff3e478926</color>
+  <color name="jf_color_shadow_brand_primary">#fffb65b780</color>
+  <color name="jf_color_gradient_brand_primary_start">#ffffffff</color>
+  <color name="jf_color_gradient_brand_primary_end">#ffffffff</color>
+  <color name="jf_color_gradient_accent_start">#ffffffff</color>
+  <color name="jf_color_gradient_accent_end">#ffffffff</color>
+  <color name="jf_input_color_border_focus">#fffb65b7</color>
+</resources>

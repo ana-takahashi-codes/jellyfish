@@ -59,7 +59,8 @@ export function setKeyToFilename(setKey) {
 
 /**
  * Build groups and output names for set keys that exist in a theme but not in the structure (core).
- * Used when a theme has extra collections (e.g. "04- Brand"); each extra set gets its own output file.
+ * Uses this theme's base keys and first color mode so references (e.g. Color Modes/Light → jf.color.accent)
+ * resolve correctly when the theme has different set names than the structure theme.
  * @param {BuildManifest} manifest
  * @param {string[]} themeSetKeys - Top-level keys from this theme's JSON
  * @returns {{ buildGroups: { id: string, sourceKeys: string[], outputFiles: string[] }[], extraSetKeys: string[] }}
@@ -70,8 +71,8 @@ export function getExtraBuildGroups(manifest, themeSetKeys) {
   if (extraSetKeys.length === 0) {
     return { buildGroups: [], extraSetKeys: [] }
   }
-  const base = manifest.baseKeys
-  const defaultColor = manifest.defaultColorModeKey
+  const { baseKeys: themeBaseKeys, colorModeKeys: themeColorModeKeys } = classifySetKeys(themeSetKeys)
+  const themeDefaultColor = themeColorModeKeys[0] ?? null
   const buildGroups = extraSetKeys.map((key) => {
     let outputName
     if (key.startsWith(COLOR_MODE_PREFIX)) {
@@ -81,9 +82,10 @@ export function getExtraBuildGroups(manifest, themeSetKeys) {
     } else {
       outputName = setKeyToFilename(key)
     }
+    const sourceKeys = [...themeBaseKeys, themeDefaultColor, key].filter(Boolean)
     return {
       id: key,
-      sourceKeys: [...base, defaultColor, key].filter(Boolean),
+      sourceKeys: [...new Set(sourceKeys)],
       outputFiles: [outputName]
     }
   })
