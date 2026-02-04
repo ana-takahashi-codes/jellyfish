@@ -1,0 +1,266 @@
+{
+  "global": {},
+  "02- Foundations/Value": {
+    "jf": {
+      "color": {
+        "accent": {
+          "100": {
+            "value": "#e7e8f3",
+            "type": "color"
+          },
+          "200": {
+            "value": "#b6b7d8",
+            "type": "color"
+          },
+          "300": {
+            "value": "#8791c0",
+            "type": "color"
+          },
+          "400": {
+            "value": "#5865a7",
+            "type": "color"
+          },
+          "500": {
+            "value": "#3e4789",
+            "type": "color"
+          },
+          "600": {
+            "value": "#31396d",
+            "type": "color"
+          },
+          "700": {
+            "value": "#242551",
+            "type": "color"
+          },
+          "800": {
+            "value": "#191938",
+            "type": "color"
+          },
+          "900": {
+            "value": "#0f0e20",
+            "type": "color"
+          }
+        },
+        "brand-primary": {
+          "100": {
+            "value": "#ffebef",
+            "type": "color"
+          },
+          "200": {
+            "value": "#ffcce1",
+            "type": "color"
+          },
+          "300": {
+            "value": "#ffade2",
+            "type": "color"
+          },
+          "400": {
+            "value": "#ff8aca",
+            "type": "color"
+          },
+          "500": {
+            "value": "#fb65b7",
+            "type": "color"
+          },
+          "600": {
+            "value": "#e345a9",
+            "type": "color"
+          },
+          "700": {
+            "value": "#bb2a5d",
+            "type": "color"
+          },
+          "800": {
+            "value": "#8d1657",
+            "type": "color"
+          },
+          "900": {
+            "value": "#5a072e",
+            "type": "color"
+          }
+        }
+      }
+    }
+  },
+  "Color Modes/Light": {
+    "jf": {
+      "color": {
+        "bg": {
+          "accent-soft": {
+            "value": "{jf.color.accent.200}",
+            "type": "color"
+          },
+          "brand-primary-soft": {
+            "value": "{jf.color.brand-primary.100}",
+            "type": "color"
+          },
+          "accent": {
+            "value": "{jf.color.accent.600}",
+            "type": "color"
+          },
+          "brand-primary": {
+            "value": "{jf.color.brand-primary.500}",
+            "type": "color"
+          }
+        },
+        "fg": {
+          "accent": {
+            "value": "{jf.color.accent.700}",
+            "type": "color"
+          },
+          "brand-primary": {
+            "value": "{jf.color.brand-primary.600}",
+            "type": "color"
+          }
+        },
+        "border": {
+          "brand-primary": {
+            "value": "{jf.color.brand-primary.500}",
+            "type": "color"
+          },
+          "accent": {
+            "value": "{jf.color.accent.600}",
+            "type": "color"
+          }
+        },
+        "shadow": {
+          "accent": {
+            "value": "{jf.color.accent.500}26",
+            "type": "color"
+          },
+          "brand-primary": {
+            "value": "{jf.color.brand-primary.500}80",
+            "type": "color"
+          }
+        },
+        "gradient": {
+          "brand-primary": {
+            "start": {
+              "value": "#ffffff",
+              "type": "color"
+            },
+            "end": {
+              "value": "#ffffff",
+              "type": "color"
+            }
+          },
+          "accent": {
+            "start": {
+              "value": "#ffffff",
+              "type": "color"
+            },
+            "end": {
+              "value": "#ffffff",
+              "type": "color"
+            }
+          }
+        }
+      },
+      "input": {
+        "color": {
+          "border": {
+            "focus": {
+              "value": "{jf.color.brand-primary.500}",
+              "type": "color"
+            }
+          }
+        }
+      }
+    }
+  },
+  "Color Modes/Dark": {
+    "jf": {
+      "color": {
+        "bg": {
+          "accent-soft": {
+            "value": "{jf.color.accent.900}",
+            "type": "color"
+          },
+          "brand-primary-soft": {
+            "value": "{jf.color.brand-primary.800}",
+            "type": "color"
+          },
+          "accent": {
+            "value": "{jf.color.accent.500}",
+            "type": "color"
+          },
+          "brand-primary": {
+            "value": "{jf.color.brand-primary.500}",
+            "type": "color"
+          }
+        },
+        "fg": {
+          "accent": {
+            "value": "{jf.color.accent.400}",
+            "type": "color"
+          },
+          "brand-primary": {
+            "value": "{jf.color.brand-primary.300}",
+            "type": "color"
+          }
+        },
+        "border": {
+          "brand-primary": {
+            "value": "{jf.color.brand-primary.500}",
+            "type": "color"
+          },
+          "accent": {
+            "value": "{jf.color.accent.500}",
+            "type": "color"
+          }
+        },
+        "shadow": {
+          "accent": {
+            "value": "{jf.color.accent.500}40",
+            "type": "color"
+          },
+          "brand-primary": {
+            "value": "{jf.color.brand-primary.500}40",
+            "type": "color"
+          }
+        },
+        "gradient": {
+          "brand-primary": {
+            "start": {
+              "value": "{jf.color.brand-primary.900}",
+              "type": "color"
+            },
+            "end": {
+              "value": "{jf.color.brand-primary.500}",
+              "type": "color"
+            }
+          },
+          "accent": {
+            "start": {
+              "value": "{jf.color.accent.900}",
+              "type": "color"
+            },
+            "end": {
+              "value": "{jf.color.accent.600}",
+              "type": "color"
+            }
+          }
+        }
+      },
+      "input": {
+        "color": {
+          "border": {
+            "focus": {
+              "value": "{jf.color.brand-primary.500}",
+              "type": "color"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": [
+      "global",
+      "02- Foundations/Value",
+      "Color Modes/Light",
+      "Color Modes/Dark"
+    ]
+  }
+}
