@@ -1,0 +1,42 @@
+{
+  "jf": {
+    "control": {
+      "height": {
+        "sm": {
+          "$type": "sizing",
+          "$value": "{jf.size.16}"
+        },
+        "md": {
+          "$type": "sizing",
+          "$value": "{jf.size.20}"
+        },
+        "lg": {
+          "$type": "sizing",
+          "$value": "{jf.size.24}"
+        }
+      },
+      "min-width": {
+        "sm": {
+          "$type": "sizing",
+          "$value": "{jf.size.16}"
+        },
+        "md": {
+          "$type": "sizing",
+          "$value": "{jf.size.20}"
+        },
+        "lg": {
+          "$type": "sizing",
+          "$value": "{jf.size.24}"
+        }
+      }
+    },
+    "section": {
+      "padding": {
+        "horizontal": {
+          "$type": "sizing",
+          "$value": "{jf.size.16}"
+        }
+      }
+    }
+  }
+}
