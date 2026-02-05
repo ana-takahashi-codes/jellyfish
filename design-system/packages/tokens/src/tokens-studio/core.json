@@ -509,83 +509,83 @@
       },
       "motion": {
         "accelerate": {
-          "$type": "other",
+          "$type": "cubicBezier",
           "$value": "[0.3, 0, 1, 1]",
           "$description": "ease-in"
         },
         "decelerate": {
-          "$type": "other",
+          "$type": "cubicBezier",
           "$value": "[0, 0, 0, 1]",
           "$description": "ease-out"
         },
         "balanced": {
-          "$type": "other",
+          "$type": "cubicBezier",
           "$value": "[0.4, 0, 0.2, 1]",
           "$description": "ease-in-out"
         },
         "linear": {
-          "$type": "other",
+          "$type": "cubicBezier",
           "$value": "linear"
         }
       },
       "blur": {
         "1": {
-          "$type": "other",
+          "$type": "blur",
           "$value": "{jf.size.1}"
         },
         "2": {
-          "$type": "other",
+          "$type": "blur",
           "$value": "{jf.size.1}*2"
         },
         "4": {
-          "$type": "other",
+          "$type": "blur",
           "$value": "{jf.size.1}*4"
         },
         "8": {
-          "$type": "other",
+          "$type": "blur",
           "$value": "{jf.size.1}*8"
         }
       },
       "angle": {
         "1": {
-          "$type": "other",
-          "$value": "0"
+          "$type": "angle",
+          "$value": "0deg"
         },
         "2": {
-          "$type": "other",
-          "$value": "5"
+          "$type": "angle",
+          "$value": "5deg"
         },
         "3": {
-          "$type": "other",
-          "$value": "15"
+          "$type": "angle",
+          "$value": "15deg"
         },
         "4": {
-          "$type": "other",
-          "$value": "45"
+          "$type": "angle",
+          "$value": "45deg"
         },
         "5": {
-          "$type": "other",
-          "$value": "60"
+          "$type": "angle",
+          "$value": "60deg"
         },
         "6": {
-          "$type": "other",
-          "$value": "90"
+          "$type": "angle",
+          "$value": "90deg"
         },
         "7": {
-          "$type": "other",
-          "$value": "135"
+          "$type": "angle",
+          "$value": "135deg"
         },
         "8": {
-          "$type": "other",
-          "$value": "180"
+          "$type": "angle",
+          "$value": "180deg"
         },
         "9": {
-          "$type": "other",
-          "$value": "240"
+          "$type": "angle",
+          "$value": "240deg"
         },
         "10": {
-          "$type": "other",
-          "$value": "360"
+          "$type": "angle",
+          "$value": "360deg"
         }
       },
       "fraction": {
