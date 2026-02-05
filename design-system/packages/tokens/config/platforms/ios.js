@@ -18,6 +18,7 @@ export function getIosPlatform(theme, buildPath, outputOnly, manifest, options =
   const files = buildIosFiles(theme, outputOnly, manifest, options.extraSetKeys)
   return {
     transformGroup: 'ios-swift',
+    transforms: ['value/duration'],
     buildPath,
     files: files.map(({ destination, filter }) => ({
       destination,

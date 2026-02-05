@@ -109,12 +109,12 @@ $jf-corner-radius-40: 80px;
 $jf-corner-radius-circle: 50%;
 $jf-corner-radius-pill: 999px;
 $jf-duration-instant: 0;
-$jf-duration-brief: [object Object];
-$jf-duration-short: [object Object];
-$jf-duration-medium: [object Object];
-$jf-duration-long: [object Object];
-$jf-duration-longer: [object Object];
-$jf-duration-extended: [object Object];
+$jf-duration-brief: 100ms;
+$jf-duration-short: 150ms;
+$jf-duration-medium: 250ms;
+$jf-duration-long: 350ms;
+$jf-duration-longer: 500ms;
+$jf-duration-extended: 800ms;
 $jf-motion-accelerate: [0.3, 0, 1, 1]; // ease-in
 $jf-motion-decelerate: [0, 0, 0, 1]; // ease-out
 $jf-motion-balanced: [0.4, 0, 0.2, 1]; // ease-in-out

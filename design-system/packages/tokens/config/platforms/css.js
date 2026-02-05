@@ -22,7 +22,7 @@ export function getCssPlatform(theme, buildPath, outputOnly, manifest, options =
   const files = buildCssFiles(theme, outputOnly, manifest, options.extraSetKeys)
   return {
     transformGroup: 'tokens-studio',
-    transforms: ['name/kebab'],
+    transforms: ['name/kebab', 'value/duration'],
     buildPath,
     files: files.map(({ destination, format = 'css/variables', filter }) => ({
       destination,

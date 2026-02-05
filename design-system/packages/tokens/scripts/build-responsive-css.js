@@ -4,7 +4,7 @@
  * Output: only @media (min-width: <breakpoint>) { :root { tokens } } per breakpoint (no initial :root).
  */
 
-import { readFile, writeFile, mkdir, readdir } from 'fs/promises'
+import { readFile, writeFile, mkdir, readdir, unlink } from 'fs/promises'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import { formatResponsiveCss, getBreakpointsFromTokens } from '../config/formats/css-responsive.js'
@@ -72,15 +72,27 @@ async function buildResponsiveForTheme(theme) {
     throw e
   }
 
+  let hasAnyPlatform = false
   for (const key of ['xs', 'sm', 'md', 'lg', 'xl']) {
     try {
       platformCss[key] = await readFile(
         join(basePath, `screen-${key}.css`),
         'utf-8'
       )
+      if (platformCss[key].trim().length > 0) hasAnyPlatform = true
     } catch (_) {
       platformCss[key] = ''
     }
+  }
+
+  const responsivePath = join(basePath, 'responsive.css')
+  if (!hasAnyPlatform) {
+    try {
+      await unlink(responsivePath)
+    } catch (e) {
+      if (e?.code !== 'ENOENT') throw e
+    }
+    return
   }
 
   const breakpoints = parseBreakpoints(foundationsCss)
@@ -94,7 +106,7 @@ async function buildResponsiveForTheme(theme) {
 
   const css = formatResponsiveCss(breakpoints, groups, { header: FILE_HEADER })
   await mkdir(basePath, { recursive: true })
-  await writeFile(join(basePath, 'responsive.css'), css, 'utf-8')
+  await writeFile(responsivePath, css, 'utf-8')
 }
 
 export async function buildResponsiveCss() {

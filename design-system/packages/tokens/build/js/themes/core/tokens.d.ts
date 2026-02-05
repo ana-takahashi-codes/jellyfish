@@ -243,12 +243,12 @@ export const jfCornerRadiusLg: string;
 export const jfCornerRadiusXl: string;
 export const jfCornerRadiusSm: string;
 export const jfDurationInstant: string;
-export const jfDurationBrief: { value: string; unit: string };
-export const jfDurationShort: { value: string; unit: string };
-export const jfDurationMedium: { value: string; unit: string };
-export const jfDurationLong: { value: string; unit: string };
-export const jfDurationLonger: { value: string; unit: string };
-export const jfDurationExtended: { value: string; unit: string };
+export const jfDurationBrief: string;
+export const jfDurationShort: string;
+export const jfDurationMedium: string;
+export const jfDurationLong: string;
+export const jfDurationLonger: string;
+export const jfDurationExtended: string;
 /** ease-in */
 export const jfMotionAccelerate: string;
 /** ease-out */
