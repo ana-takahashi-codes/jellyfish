@@ -459,55 +459,55 @@
           }
         }
       },
-      "duration": {
-        "instant": {
-          "$type": "duration",
-          "$value": "0"
-        },
-        "brief": {
-          "$type": "duration",
-          "$value": {
-            "value": "100",
-            "unit": "ms"
-          }
-        },
-        "short": {
-          "$type": "duration",
-          "$value": {
-            "value": "150",
-            "unit": "ms"
-          }
-        },
-        "medium": {
-          "$type": "duration",
-          "$value": {
-            "value": "250",
-            "unit": "ms"
-          }
-        },
-        "long": {
-          "$type": "duration",
-          "$value": {
-            "value": "350",
-            "unit": "ms"
-          }
-        },
-        "longer": {
-          "$type": "duration",
-          "$value": {
-            "value": "500",
-            "unit": "ms"
-          }
-        },
-        "extended": {
-          "$type": "duration",
-          "$value": {
-            "value": "800",
-            "unit": "ms"
-          }
-        }
-      },
       "motion": {
+        "duration": {
+          "instant": {
+            "$type": "duration",
+            "$value": "0"
+          },
+          "brief": {
+            "$type": "duration",
+            "$value": {
+              "value": "100",
+              "unit": "ms"
+            }
+          },
+          "short": {
+            "$type": "duration",
+            "$value": {
+              "value": "150",
+              "unit": "ms"
+            }
+          },
+          "medium": {
+            "$type": "duration",
+            "$value": {
+              "value": "250",
+              "unit": "ms"
+            }
+          },
+          "long": {
+            "$type": "duration",
+            "$value": {
+              "value": "350",
+              "unit": "ms"
+            }
+          },
+          "longer": {
+            "$type": "duration",
+            "$value": {
+              "value": "500",
+              "unit": "ms"
+            }
+          },
+          "extended": {
+            "$type": "duration",
+            "$value": {
+              "value": "800",
+              "unit": "ms"
+            }
+          }
+        },
         "easing": {
           "accelerate": {
             "$type": "cubicBezier",
@@ -668,35 +668,35 @@
         "state-change": {
           "$type": "transition",
           "$value": {
-            "duration": "{jf.duration.short}",
+            "duration": "{jf.motion.duration.short}",
             "timingFunction": "{jf.motion.easing.balanced}"
           }
         },
         "slide-in": {
           "$type": "transition",
           "$value": {
-            "duration": "{jf.duration.medium}",
+            "duration": "{jf.motion.duration.medium}",
             "timingFunction": "{jf.motion.easing.decelerate}"
           }
         },
         "slide-out": {
           "$type": "transition",
           "$value": {
-            "duration": "{jf.duration.medium}",
+            "duration": "{jf.motion.duration.medium}",
             "timingFunction": "{jf.motion.easing.accelerate}"
           }
         },
         "scale": {
           "$type": "transition",
           "$value": {
-            "duration": "{jf.duration.medium}",
+            "duration": "{jf.motion.duration.medium}",
             "timingFunction": "{jf.motion.easing.accelerate}"
           }
         },
         "fade": {
           "$type": "transition",
           "$value": {
-            "duration": "{jf.duration.medium}",
+            "duration": "{jf.motion.duration.medium}",
             "timingFunction": "{jf.motion.easing.balanced}"
           }
         }
