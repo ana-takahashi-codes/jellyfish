@@ -33,7 +33,7 @@ public class {
     public static let jfContainerPaddingNarrow = CGFloat(32.00)*4
     public static let jfContainerPaddingRegular = CGFloat(32.00)*8
     public static let jfContainerPaddingWide = CGFloat(32.00)*16
-    public static let jfControlBgActive = oklch(0 0 0 / 20%)
+    public static let jfControlBgOverlayActive = oklch(0 0 0 / 20%)
     public static let jfControlCornerRadius = CGFloat(32.00)*3
     public static let jfControlGap = CGFloat(32.00)*2
     public static let jfControlPaddingHorizontal = CGFloat(32.00)*6

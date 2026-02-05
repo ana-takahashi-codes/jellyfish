@@ -185,5 +185,10 @@ public class {
     public static let jfShadowNeutralTopLg = [object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
     public static let jfShadowNeutralTopMd = [object Object],[object Object],[object Object],[object Object],[object Object]
     public static let jfShadowNeutralTopSm = [object Object],[object Object],[object Object],[object Object]
+    public static let jfTransitionFade = [object Object]
+    public static let jfTransitionScale = [object Object]
+    public static let jfTransitionSlideIn = [object Object]
+    public static let jfTransitionSlideOut = [object Object]
+    public static let jfTransitionStateChange = [object Object]
     public static let jfWidthFull = "100%"
 }

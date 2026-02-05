@@ -12,7 +12,7 @@
 export function getJsPlatform(_theme, buildPath) {
   return {
     transformGroup: 'tokens-studio',
-    transforms: ['name/camel', 'value/duration'], // kebab is invalid in JS identifiers; camelCase for tokens.js / tokens.d.ts
+    transforms: ['name/camel', 'value/duration', 'value/cubic-bezier'], // kebab is invalid in JS identifiers; camelCase for tokens.js / tokens.d.ts
     buildPath,
     files: [
       {

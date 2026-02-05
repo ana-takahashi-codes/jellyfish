@@ -17,7 +17,7 @@ export function getAndroidPlatform(theme, buildPath, outputOnly, manifest, optio
   const files = buildAndroidFiles(theme, outputOnly, manifest, options.extraSetKeys)
   return {
     transformGroup: 'android',
-    transforms: ['value/duration'],
+    transforms: ['value/duration', 'value/cubic-bezier'],
     buildPath,
     files: files.map(({ destination, filter }) => ({
       destination,

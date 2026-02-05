@@ -110,31 +110,31 @@
   --jf-corner-radius-40: 80px;
   --jf-corner-radius-circle: 50%;
   --jf-corner-radius-pill: 999px;
-  --jf-duration-instant: 0;
-  --jf-duration-brief: 100ms;
-  --jf-duration-short: 150ms;
-  --jf-duration-medium: 250ms;
-  --jf-duration-long: 350ms;
-  --jf-duration-longer: 500ms;
-  --jf-duration-extended: 800ms;
-  --jf-motion-accelerate: [0.3, 0, 1, 1]; /** ease-in */
-  --jf-motion-decelerate: [0, 0, 0, 1]; /** ease-out */
-  --jf-motion-balanced: [0.4, 0, 0.2, 1]; /** ease-in-out */
-  --jf-motion-linear: linear;
+  --jf-motion-duration-instant: 0;
+  --jf-motion-duration-brief: 100ms;
+  --jf-motion-duration-short: 150ms;
+  --jf-motion-duration-medium: 250ms;
+  --jf-motion-duration-long: 350ms;
+  --jf-motion-duration-longer: 500ms;
+  --jf-motion-duration-extended: 800ms;
+  --jf-motion-easing-accelerate: cubic-bezier(0.3, 0, 1, 1); /** ease-in */
+  --jf-motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1); /** ease-out */
+  --jf-motion-easing-balanced: cubic-bezier(0.4, 0, 0.2, 1); /** ease-in-out */
+  --jf-motion-easing-linear: linear;
   --jf-blur-1: 2px;
   --jf-blur-2: 4px;
   --jf-blur-4: 8px;
   --jf-blur-8: 16px;
-  --jf-angle-1: 0;
-  --jf-angle-2: 5;
-  --jf-angle-3: 15;
-  --jf-angle-4: 45;
-  --jf-angle-5: 60;
-  --jf-angle-6: 90;
-  --jf-angle-7: 135;
-  --jf-angle-8: 180;
-  --jf-angle-9: 240;
-  --jf-angle-10: 360;
+  --jf-angle-1: 0deg;
+  --jf-angle-2: 5deg;
+  --jf-angle-3: 15deg;
+  --jf-angle-4: 45deg;
+  --jf-angle-5: 60deg;
+  --jf-angle-6: 90deg;
+  --jf-angle-7: 135deg;
+  --jf-angle-8: 180deg;
+  --jf-angle-9: 240deg;
+  --jf-angle-10: 360deg;
   --jf-fraction-1: 1fr;
   --jf-fraction-2: 2fr;
   --jf-fraction-3: 3fr;

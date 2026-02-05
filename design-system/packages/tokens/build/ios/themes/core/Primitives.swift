@@ -9,16 +9,16 @@
 import UIKit
 
 public class {
-    public static let jfAngle1 = 0
-    public static let jfAngle10 = 360
-    public static let jfAngle2 = 5
-    public static let jfAngle3 = 15
-    public static let jfAngle4 = 45
-    public static let jfAngle5 = 60
-    public static let jfAngle6 = 90
-    public static let jfAngle7 = 135
-    public static let jfAngle8 = 180
-    public static let jfAngle9 = 240
+    public static let jfAngle1 = 0deg
+    public static let jfAngle10 = 360deg
+    public static let jfAngle2 = 5deg
+    public static let jfAngle3 = 15deg
+    public static let jfAngle4 = 45deg
+    public static let jfAngle5 = 60deg
+    public static let jfAngle6 = 90deg
+    public static let jfAngle7 = 135deg
+    public static let jfAngle8 = 180deg
+    public static let jfAngle9 = 240deg
     public static let jfBlur1 = CGFloat(32.00)
     public static let jfBlur2 = CGFloat(32.00)*2
     public static let jfBlur4 = CGFloat(32.00)*4
@@ -58,13 +58,6 @@ public class {
     public static let jfCornerRadius6 = CGFloat(32.00)*6
     public static let jfCornerRadiusCircle = CGFloat(800.00)
     public static let jfCornerRadiusPill = CGFloat(15984.00)
-    public static let jfDurationBrief = 100ms
-    public static let jfDurationExtended = 800ms
-    public static let jfDurationInstant = 0
-    public static let jfDurationLong = 350ms
-    public static let jfDurationLonger = 500ms
-    public static let jfDurationMedium = 250ms
-    public static let jfDurationShort = 150ms
     public static let jfFontFamilyDecoration = Ezra
     public static let jfFontFamilyIcon = Font Awesome 7 Free
     public static let jfFontFamilyMono = Fira Code
@@ -100,10 +93,17 @@ public class {
     public static let jfLineHeightMd = 150%
     public static let jfLineHeightSm = 120%
     public static let jfLineHeightXs = 110%
-    public static let jfMotionAccelerate = [0.3, 0, 1, 1] /** ease-in */
-    public static let jfMotionBalanced = [0.4, 0, 0.2, 1] /** ease-in-out */
-    public static let jfMotionDecelerate = [0, 0, 0, 1] /** ease-out */
-    public static let jfMotionLinear = linear
+    public static let jfMotionDurationBrief = 100ms
+    public static let jfMotionDurationExtended = 800ms
+    public static let jfMotionDurationInstant = 0
+    public static let jfMotionDurationLong = 350ms
+    public static let jfMotionDurationLonger = 500ms
+    public static let jfMotionDurationMedium = 250ms
+    public static let jfMotionDurationShort = 150ms
+    public static let jfMotionEasingAccelerate = cubic-bezier(0.3, 0, 1, 1) /** ease-in */
+    public static let jfMotionEasingBalanced = cubic-bezier(0.4, 0, 0.2, 1) /** ease-in-out */
+    public static let jfMotionEasingDecelerate = cubic-bezier(0, 0, 0.2, 1) /** ease-out */
+    public static let jfMotionEasingLinear = linear
     public static let jfOpacity0 = 0
     public static let jfOpacity1 = 10
     public static let jfOpacity2 = 20
