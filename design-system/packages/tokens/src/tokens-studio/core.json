@@ -528,6 +528,54 @@
             "$type": "cubicBezier",
             "$value": "linear"
           }
+        },
+        "delay": {
+          "none": {
+            "$type": "duration",
+            "$value": "0"
+          },
+          "brief": {
+            "$type": "duration",
+            "$value": {
+              "value": "100",
+              "unit": "ms"
+            }
+          },
+          "short": {
+            "$type": "duration",
+            "$value": {
+              "value": "150",
+              "unit": "ms"
+            }
+          },
+          "medium": {
+            "$type": "duration",
+            "$value": {
+              "value": "250",
+              "unit": "ms"
+            }
+          },
+          "long": {
+            "$type": "duration",
+            "$value": {
+              "value": "350",
+              "unit": "ms"
+            }
+          },
+          "longer": {
+            "$type": "duration",
+            "$value": {
+              "value": "500",
+              "unit": "ms"
+            }
+          },
+          "extended": {
+            "$type": "duration",
+            "$value": {
+              "value": "800",
+              "unit": "ms"
+            }
+          }
         }
       },
       "blur": {
@@ -669,6 +717,7 @@
           "$type": "transition",
           "$value": {
             "duration": "{jf.motion.duration.short}",
+            "delay": "{jf.motion.delay.none}",
             "timingFunction": "{jf.motion.easing.balanced}"
           }
         },
@@ -676,6 +725,7 @@
           "$type": "transition",
           "$value": {
             "duration": "{jf.motion.duration.medium}",
+            "delay": "{jf.motion.delay.none}",
             "timingFunction": "{jf.motion.easing.decelerate}"
           }
         },
@@ -683,6 +733,7 @@
           "$type": "transition",
           "$value": {
             "duration": "{jf.motion.duration.medium}",
+            "delay": "{jf.motion.delay.none}",
             "timingFunction": "{jf.motion.easing.accelerate}"
           }
         },
@@ -690,6 +741,7 @@
           "$type": "transition",
           "$value": {
             "duration": "{jf.motion.duration.medium}",
+            "delay": "{jf.motion.delay.none}",
             "timingFunction": "{jf.motion.easing.accelerate}"
           }
         },
@@ -697,6 +749,7 @@
           "$type": "transition",
           "$value": {
             "duration": "{jf.motion.duration.medium}",
+            "delay": "{jf.motion.delay.none}",
             "timingFunction": "{jf.motion.easing.balanced}"
           }
         }
@@ -1065,19 +1118,19 @@
         "cols": {
           "lg": {
             "$type": "number",
-            "$value": "16"
+            "$value": 16
           },
           "md": {
             "$type": "number",
-            "$value": "12"
+            "$value": 12
           },
           "sm": {
             "$type": "number",
-            "$value": "6"
+            "$value": 6
           },
           "xs": {
             "$type": "number",
-            "$value": "4"
+            "$value": 4
           }
         },
         "gutter": {
