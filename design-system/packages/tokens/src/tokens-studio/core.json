@@ -508,24 +508,26 @@
         }
       },
       "motion": {
-        "accelerate": {
-          "$type": "cubicBezier",
-          "$value": "[0.3, 0, 1, 1]",
-          "$description": "ease-in"
-        },
-        "decelerate": {
-          "$type": "cubicBezier",
-          "$value": "[0, 0, 0, 1]",
-          "$description": "ease-out"
-        },
-        "balanced": {
-          "$type": "cubicBezier",
-          "$value": "[0.4, 0, 0.2, 1]",
-          "$description": "ease-in-out"
-        },
-        "linear": {
-          "$type": "cubicBezier",
-          "$value": "linear"
+        "easing": {
+          "accelerate": {
+            "$type": "cubicBezier",
+            "$value": "[0.3, 0, 1, 1]",
+            "$description": "ease-in"
+          },
+          "decelerate": {
+            "$type": "cubicBezier",
+            "$value": "[0, 0, 0.2, 1]",
+            "$description": "ease-out"
+          },
+          "balanced": {
+            "$type": "cubicBezier",
+            "$value": "[0.4, 0, 0.2, 1]",
+            "$description": "ease-in-out"
+          },
+          "linear": {
+            "$type": "cubicBezier",
+            "$value": "linear"
+          }
         }
       },
       "blur": {
@@ -662,6 +664,43 @@
   },
   "02- Foundations": {
     "jf": {
+      "transition": {
+        "state-change": {
+          "$type": "transition",
+          "$value": {
+            "duration": "{jf.duration.short}",
+            "timingFunction": "{jf.motion.easing.balanced}"
+          }
+        },
+        "slide-in": {
+          "$type": "transition",
+          "$value": {
+            "duration": "{jf.duration.medium}",
+            "timingFunction": "{jf.motion.easing.decelerate}"
+          }
+        },
+        "slide-out": {
+          "$type": "transition",
+          "$value": {
+            "duration": "{jf.duration.medium}",
+            "timingFunction": "{jf.motion.easing.accelerate}"
+          }
+        },
+        "scale": {
+          "$type": "transition",
+          "$value": {
+            "duration": "{jf.duration.medium}",
+            "timingFunction": "{jf.motion.easing.accelerate}"
+          }
+        },
+        "fade": {
+          "$type": "transition",
+          "$value": {
+            "duration": "{jf.duration.medium}",
+            "timingFunction": "{jf.motion.easing.balanced}"
+          }
+        }
+      },
       "color": {
         "neutral": {
           "100": {
@@ -2847,9 +2886,11 @@
           }
         },
         "bg": {
-          "active": {
-            "$type": "color",
-            "$value": "{jf.color.alpha.black.200}"
+          "overlay": {
+            "active": {
+              "$type": "color",
+              "$value": "{jf.color.alpha.black.200}"
+            }
           }
         }
       },
@@ -4363,7 +4404,7 @@
         "jf.section.max-width.boxed": "9cf33b0b9714e842924bd62d58d505aebe81e22c",
         "jf.control.gap": "32da44e46f4dd5ddf14c6df95b3477c501f1bdd4",
         "jf.control.padding.horizontal": "c5dd9bf3448cde31def64cc4ab8a4b91c1139282",
-        "jf.control.bg.active": "9649e1eac83dcd36519a49e7c423b1ae4954971a"
+        "jf.control.bg.overlay.active": "9649e1eac83dcd36519a49e7c423b1ae4954971a"
       },
       "group": "03 - Components"
     },
