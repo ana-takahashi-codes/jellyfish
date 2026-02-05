@@ -1116,51 +1116,69 @@
       },
       "grid": {
         "cols": {
-          "lg": {
+          "desktop-dense": {
             "$type": "number",
             "$value": "16"
           },
-          "md": {
+          "desktop": {
             "$type": "number",
             "$value": "12"
           },
-          "sm": {
+          "tablet": {
             "$type": "number",
-            "$value": "6"
+            "$value": "8"
           },
-          "xs": {
+          "mobile": {
             "$type": "number",
             "$value": "4"
           }
         },
         "gutter": {
           "compact": {
-            "$type": "spacing",
+            "$type": "dimension",
             "$value": "{jf.size.8}"
           },
           "comfort": {
-            "$type": "spacing",
+            "$type": "dimension",
             "$value": "{jf.size.18}"
           },
           "narrow": {
-            "$type": "spacing",
+            "$type": "dimension",
             "$value": "{jf.size.1}"
           },
+          "none": {
+            "$type": "dimension",
+            "$value": "0"
+          },
+          "regular": {
+            "$type": "dimension",
+            "$value": "{jf.size.12}"
+          },
+          "tight": {
+            "$type": "dimension",
+            "$value": "{jf.size.4}"
+          },
+          "wide": {
+            "$type": "dimension",
+            "$value": "{jf.size.28}"
+          }
+        },
+        "margin": {
           "none": {
             "$type": "spacing",
             "$value": "0"
           },
-          "regular": {
+          "desktop": {
+            "$type": "spacing",
+            "$value": "{jf.size.16}"
+          },
+          "tablet": {
             "$type": "spacing",
             "$value": "{jf.size.12}"
           },
-          "tight": {
+          "mobile": {
             "$type": "spacing",
-            "$value": "{jf.size.4}"
-          },
-          "wide": {
-            "$type": "spacing",
-            "$value": "{jf.size.28}"
+            "$value": "{jf.size.8}"
           }
         }
       },
@@ -1255,11 +1273,11 @@
         },
         "toast": {
           "$type": "other",
-          "$value": "800"
+          "$value": "700"
         },
         "tooltip": {
           "$type": "other",
-          "$value": "700"
+          "$value": "800"
         }
       },
       "font": {
@@ -3880,8 +3898,8 @@
         "jf.border.width.1": "87b95d3281050dc1a2e75d317b3a14f9bd62b180",
         "jf.border.width.2": "c49484c5b9e29aa1e172e5ff3b6b8b0f6b0165be",
         "jf.border.width.3": "a73ad952d77b0677c416e1598b26b35efa4c75c6",
-        "jf.border.width.0-5": "2b10cf96cfbaa53e3cd5036f16631ef28118fa8e",
         "jf.border.width.4": "5c05396b0e438eab9348689fa698b8147a764ed2",
+        "jf.border.width.0-5": "2b10cf96cfbaa53e3cd5036f16631ef28118fa8e",
         "jf.corner.radius.0": "a551676148361a34d9b895ddac65d99f3e091607",
         "jf.corner.radius.2": "b1c8822c848b03d660d1f15a5ed570f5a9428156",
         "jf.corner.radius.3": "53e645a6aa48871b296dde1dcdc2440c4874262c",
@@ -4182,10 +4200,10 @@
         "jf.opacity.hover": "43bbdf1a0ecd9dc12975a28255a6041e32ee2802",
         "jf.opacity.loading": "3f695f8129c9b7eedd2db6612019c548a5627328",
         "jf.opacity.placeholder": "b5b42d897ae1822be7bddca73cc0424cc0b6bbf7",
-        "jf.grid.cols.lg": "3047afdb998b26fd9fd652e13b2882f3197d1a7b",
-        "jf.grid.cols.md": "ecffd03c1c42796bba97ee2d27bc22e35b17cdaf",
-        "jf.grid.cols.sm": "d19993a31fb693d8b366f8d9e7b90b9a495f1d95",
-        "jf.grid.cols.xs": "c433061ec869385ca90055bfde72a3c02671e34d",
+        "jf.grid.cols.desktop-dense": "3047afdb998b26fd9fd652e13b2882f3197d1a7b",
+        "jf.grid.cols.desktop": "ecffd03c1c42796bba97ee2d27bc22e35b17cdaf",
+        "jf.grid.cols.tablet": "d19993a31fb693d8b366f8d9e7b90b9a495f1d95",
+        "jf.grid.cols.mobile": "c433061ec869385ca90055bfde72a3c02671e34d",
         "jf.grid.gutter.compact": "c58ff24115e9da9f9ad5007b5aa61106c791d2cf",
         "jf.grid.gutter.comfort": "d74e9d6d21970752143d850c7f5ee64e4d9deb27",
         "jf.grid.gutter.narrow": "e6da69fa645f3c57e2cf45b9158970e6983815f5",
@@ -4199,6 +4217,13 @@
         "jf.screen.lg": "c9fda9ed352e688c84e9d1fcfbc2fbb24f24c5b2",
         "jf.screen.xl": "1c5bca4809f110a52025b6b86ff13904164f08e1",
         "jf.screen.width.full": "e320dd86ecba7e02dc0a866e443a656c5a6c53dd",
+        "jf.screen.width.half": "b97972cc5eb6524bd4b481488fea70d799f66ddb",
+        "jf.screen.width.third": "58118be7a0b3c718bf24487455cf51861d3433b3",
+        "jf.screen.width.quarter": "94a3a8d82c7cb9aa1ea1be9048d8a5a862147bb4",
+        "jf.screen.height.full": "a9cc6046485598f0d0b41605a61615c69adc1040",
+        "jf.screen.height.half": "0a667eea3773990f4aca403ce5f41953b22c74e1",
+        "jf.screen.height.third": "639ba604a94296d77608c6f98fba76320ddeb038",
+        "jf.screen.height.quarter": "c9a153033a220518032dad85018c94b38ab02b39",
         "jf.corner.radius.default": "18058dfa21fa77a9313cce297865e6bc29c32463",
         "jf.corner.radius.lg": "5a71661bb61fd3929036fc6a27884c84a6cc4e85",
         "jf.corner.radius.xl": "d3fc386cf21450c732ec85fcacbaf25789bc2418",
@@ -4285,6 +4310,11 @@
         "jf.color.bg.warning": "8719c2be9048121b68bcc12103a745dc146a2146",
         "jf.color.bg.critical": "481355c40794ee910a46e65cb9dbab8d93bd1f5c",
         "jf.color.bg.positive": "0795e40607e3717ca5825717aef51da50f619e85",
+        "jf.color.bg.page": "930d1cafea24af7337e355eee804480cee785323",
+        "jf.color.bg.surface.default": "08ec9720dfb03c4074ed8adf4c9899b8bef6c186",
+        "jf.color.bg.surface.secondary": "a814273f6dd94f275b203654377542ca7f8555d4",
+        "jf.color.bg.surface.contrast": "aa25ef42a9bf23d7850188584fd808ff94c38c9c",
+        "jf.color.bg.surface.tertiary": "6d3c224447fa4926c1afe193b4681892e00525c1",
         "jf.color.fg.accent": "7a49e5c256a8d1756b7493af8c45eb1a3e046a2f",
         "jf.color.fg.brand-primary": "9eb24ddb14789f4d64690e595fd92b8ef9abb1aa",
         "jf.color.fg.muted": "87d9ea6e1f7c9453367a11deb40820596e1dcab1",
@@ -4300,10 +4330,6 @@
         "jf.color.fg.on-brand-primary": "e49b591d0cc78f47399a9ff14b603b6435f7d503",
         "jf.color.fg.on-positive": "a418a3d754ad03a0c1ac0c783e7d5c1eb3ff6cf0",
         "jf.color.fg.on-warning": "cd9610baaa6d9a47b0f240bac83d7dc4d22d56d8",
-        "jf.color.bg.page": "930d1cafea24af7337e355eee804480cee785323",
-        "jf.color.bg.surface.default": "08ec9720dfb03c4074ed8adf4c9899b8bef6c186",
-        "jf.color.bg.surface.secondary": "a814273f6dd94f275b203654377542ca7f8555d4",
-        "jf.color.bg.surface.contrast": "aa25ef42a9bf23d7850188584fd808ff94c38c9c",
         "jf.color.border.muted": "1101cc217993ccd79c0d8a77bfebd002152ae2b4",
         "jf.color.border.moderated": "b32b0136b2165cdf2b7283f6bf67c09cf25fe463",
         "jf.color.border.strong": "492a2375819ce943baeaa7c4a6ac9463ceb91c75",
@@ -4319,14 +4345,13 @@
         "jf.color.shadow.brand-primary": "3f01796f7abf486925c1fb6a2e74a35dd19049bb",
         "jf.input.color.bg.default": "1cbeba66292429d74b18952dc519d103f72e2698",
         "jf.input.color.border.focus": "350d6aa76a929702de868db018cf5131527b78f9",
-        "jf.color.bg.surface.tertiary": "6d3c224447fa4926c1afe193b4681892e00525c1",
         "jf.control.border.focus": "341f0f6cc10a9fb74c45a457143c689db574dc31",
-        "jf.gradient.brand-primary.start": "399669e19e94d4e7e9498bb2f4dd4a173e9af4e7",
-        "jf.gradient.brand-primary.end": "33468048cda4cde5a124346cd999e0b3cd29e52e",
-        "jf.gradient.accent.start": "8e27c44ceecc9cae4a05be25c62c167fee3b7046",
-        "jf.gradient.accent.end": "088786580f0948bf62689ec408ea2cbeddf64e45",
-        "jf.gradient.neutral.start": "ec21705c9d848adac8414d41d057aaa90ad5b268",
-        "jf.gradient.neutral.end": "3f5e25cb08f8651fa86281f9f7dec1c6addbe7d6"
+        "jf.gradient.brand-primary.start": "069e349d792f412df97fdae38d89cb08ad62d3bc",
+        "jf.gradient.brand-primary.end": "bd732e750edb7bc12dfd60060b433ba06229c444",
+        "jf.gradient.accent.start": "85544f792babb45e06abf5f39b571b415255250c",
+        "jf.gradient.accent.end": "adc000875dffac59f1c15c1312ec11a2b0a652ce",
+        "jf.gradient.neutral.start": "ef66964d1098d43eaf8f08d172b0f9bba3c13881",
+        "jf.gradient.neutral.end": "9a08dbec4e841f08dab2e197d7270a6658967710"
       },
       "group": "Color Modes"
     },
@@ -4408,6 +4433,11 @@
         "jf.color.bg.warning": "8719c2be9048121b68bcc12103a745dc146a2146",
         "jf.color.bg.critical": "481355c40794ee910a46e65cb9dbab8d93bd1f5c",
         "jf.color.bg.positive": "0795e40607e3717ca5825717aef51da50f619e85",
+        "jf.color.bg.page": "930d1cafea24af7337e355eee804480cee785323",
+        "jf.color.bg.surface.default": "08ec9720dfb03c4074ed8adf4c9899b8bef6c186",
+        "jf.color.bg.surface.secondary": "a814273f6dd94f275b203654377542ca7f8555d4",
+        "jf.color.bg.surface.tertiary": "6d3c224447fa4926c1afe193b4681892e00525c1",
+        "jf.color.bg.surface.contrast": "aa25ef42a9bf23d7850188584fd808ff94c38c9c",
         "jf.color.fg.accent": "7a49e5c256a8d1756b7493af8c45eb1a3e046a2f",
         "jf.color.fg.brand-primary": "9eb24ddb14789f4d64690e595fd92b8ef9abb1aa",
         "jf.color.fg.muted": "87d9ea6e1f7c9453367a11deb40820596e1dcab1",
@@ -4423,11 +4453,6 @@
         "jf.color.fg.on-brand-primary": "e49b591d0cc78f47399a9ff14b603b6435f7d503",
         "jf.color.fg.on-positive": "a418a3d754ad03a0c1ac0c783e7d5c1eb3ff6cf0",
         "jf.color.fg.on-warning": "cd9610baaa6d9a47b0f240bac83d7dc4d22d56d8",
-        "jf.color.bg.page": "930d1cafea24af7337e355eee804480cee785323",
-        "jf.color.bg.surface.default": "08ec9720dfb03c4074ed8adf4c9899b8bef6c186",
-        "jf.color.bg.surface.secondary": "a814273f6dd94f275b203654377542ca7f8555d4",
-        "jf.color.bg.surface.tertiary": "6d3c224447fa4926c1afe193b4681892e00525c1",
-        "jf.color.bg.surface.contrast": "aa25ef42a9bf23d7850188584fd808ff94c38c9c",
         "jf.color.border.muted": "1101cc217993ccd79c0d8a77bfebd002152ae2b4",
         "jf.color.border.moderated": "b32b0136b2165cdf2b7283f6bf67c09cf25fe463",
         "jf.color.border.strong": "492a2375819ce943baeaa7c4a6ac9463ceb91c75",
@@ -4444,12 +4469,12 @@
         "jf.input.color.bg.default": "1cbeba66292429d74b18952dc519d103f72e2698",
         "jf.input.color.border.focus": "350d6aa76a929702de868db018cf5131527b78f9",
         "jf.control.border.focus": "341f0f6cc10a9fb74c45a457143c689db574dc31",
-        "jf.color.gradient.brand-primary.start": "b6a19ca9ce97de6adc2630d3d1f11e0fb62b45fd",
-        "jf.color.gradient.brand-primary.end": "5829f69a72ba3dfaca6358eb042e842cb748092d",
-        "jf.color.gradient.accent.start": "6db531c7c5bdc6a3c8834f28b98f2031540e551d",
-        "jf.color.gradient.accent.end": "7cafbbc4739b46d008f63f2d135bda7d03d93f8b",
-        "jf.color.gradient.neutral.start": "671539af6735ed2478a2a47cd6552a107a421553",
-        "jf.color.gradient.neutral.end": "2350fd8691f5c2c5a2560e7cc7d864e0f929aeae"
+        "jf.color.gradient.brand-primary.start": "7b404a56c25042dd1c4b388775de3743b4f5f67d",
+        "jf.color.gradient.brand-primary.end": "16c8a3b1d34c0bde19c1734471484a19b1aaaabe",
+        "jf.color.gradient.accent.start": "6ca2af0491a426158e16d63b7011240a41a3d4d8",
+        "jf.color.gradient.accent.end": "d602f0ee80d6db0a91caba956972d3733943dfe4",
+        "jf.color.gradient.neutral.start": "65aa7b97628884801107bc0be4198da36aea4793",
+        "jf.color.gradient.neutral.end": "79966709f9c5377e7c728ae23a0462aba64809b3"
       },
       "group": "Color Modes"
     },
@@ -4492,6 +4517,8 @@
         "jf.card.padding.regular": "76d6a32ee30556a2523b7791ab7655eb210d215f",
         "jf.card.padding.comfort": "3448f0b1d6c4c3af2aa6cb19a20fc4f001725a7d",
         "jf.card.padding.wide": "79ecfdf30f4324686a253e951c800423c1bb1c63",
+        "jf.card.corner.radius": "7c016df8cd4b142aa8df85b9eb0bdd9c3312bc1c",
+        "jf.card.color.border.neutral": "5c139c6b80e2f46c42bba4df144deee26c1392da",
         "jf.container.gap.compact": "75e30814befca274e25fa5c86dcf08e1bc148f4a",
         "jf.container.gap.regular": "1aa7f07e054fa89880adb437dcf58bdcfdf0d211",
         "jf.container.gap.comfort": "a51d73c8af378e1e69af38e4628b03a83ec560a6",
@@ -4503,15 +4530,13 @@
         "jf.container.padding.wide": "ccdbf388b51d8ecd0ee6b462ccb8fd4dd138bbd3",
         "jf.container.padding.extended": "bbc5d0c9aeff2a9e6ab492149b8825980af78dbd",
         "jf.control.corner.radius": "ea74651f2067a94c410e144dabaa5a9ab9618b74",
-        "jf.card.corner.radius": "7c016df8cd4b142aa8df85b9eb0bdd9c3312bc1c",
-        "jf.card.color.border.neutral": "5c139c6b80e2f46c42bba4df144deee26c1392da",
+        "jf.control.gap": "32da44e46f4dd5ddf14c6df95b3477c501f1bdd4",
+        "jf.control.padding.horizontal": "c5dd9bf3448cde31def64cc4ab8a4b91c1139282",
+        "jf.control.bg.overlay.active": "9649e1eac83dcd36519a49e7c423b1ae4954971a",
         "jf.form.gap.compact": "64eb5c98b932f75b0644df190ae7b09535262de4",
         "jf.form.gap.regular": "dcf8543d69919ba0e781231ceb3adba0579ba0a2",
         "jf.form.gap.comfort": "70a07ccfe6f93d8c0b53cad4370f2ea17ab50657",
-        "jf.section.max-width.boxed": "9cf33b0b9714e842924bd62d58d505aebe81e22c",
-        "jf.control.gap": "32da44e46f4dd5ddf14c6df95b3477c501f1bdd4",
-        "jf.control.padding.horizontal": "c5dd9bf3448cde31def64cc4ab8a4b91c1139282",
-        "jf.control.bg.overlay.active": "9649e1eac83dcd36519a49e7c423b1ae4954971a"
+        "jf.section.max-width.boxed": "9cf33b0b9714e842924bd62d58d505aebe81e22c"
       },
       "group": "03 - Components"
     },
