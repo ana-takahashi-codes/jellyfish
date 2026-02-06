@@ -194,39 +194,39 @@
         },
         "1": {
           "$type": "opacity",
-          "$value": "10"
+          "$value": "0.1"
         },
         "2": {
           "$type": "opacity",
-          "$value": "20"
+          "$value": "0.2"
         },
         "3": {
           "$type": "opacity",
-          "$value": "30"
+          "$value": "0.3"
         },
         "4": {
           "$type": "opacity",
-          "$value": "40"
+          "$value": "0.4"
         },
         "5": {
           "$type": "opacity",
-          "$value": "50"
+          "$value": "0.5"
         },
         "6": {
           "$type": "opacity",
-          "$value": "60"
+          "$value": "0.6"
         },
         "7": {
           "$type": "opacity",
-          "$value": "70"
+          "$value": "0.7"
         },
         "8": {
           "$type": "opacity",
-          "$value": "80"
+          "$value": "0.8"
         },
         "9": {
           "$type": "opacity",
-          "$value": "90"
+          "$value": "0.9"
         }
       },
       "size": {
@@ -4228,7 +4228,11 @@
         "jf.corner.radius.lg": "5a71661bb61fd3929036fc6a27884c84a6cc4e85",
         "jf.corner.radius.xl": "d3fc386cf21450c732ec85fcacbaf25789bc2418",
         "jf.corner.radius.sm": "04d30ea9c410b0c85cea74502707127954b13d8d",
-        "jf.bg.overlay": "a0d0e938f9a07a9cef15fc29cf79365dea6e578a"
+        "jf.bg.overlay": "a0d0e938f9a07a9cef15fc29cf79365dea6e578a",
+        "jf.grid.margin.none": "2b27ada9343ad548beb374141ce640ebd140252e",
+        "jf.grid.margin.desktop": "4d479ba85466e5f677e933230ce48b81ab4436d2",
+        "jf.grid.margin.tablet": "08823b526db38a273b735430abeeb6b45fc0e701",
+        "jf.grid.margin.mobile": "ab21c73459a808212f9a060ab5f1978aa336691a"
       },
       "group": "02- Foundations"
     },
@@ -4346,12 +4350,12 @@
         "jf.input.color.bg.default": "1cbeba66292429d74b18952dc519d103f72e2698",
         "jf.input.color.border.focus": "350d6aa76a929702de868db018cf5131527b78f9",
         "jf.control.border.focus": "341f0f6cc10a9fb74c45a457143c689db574dc31",
-        "jf.gradient.brand-primary.start": "069e349d792f412df97fdae38d89cb08ad62d3bc",
-        "jf.gradient.brand-primary.end": "bd732e750edb7bc12dfd60060b433ba06229c444",
-        "jf.gradient.accent.start": "85544f792babb45e06abf5f39b571b415255250c",
-        "jf.gradient.accent.end": "adc000875dffac59f1c15c1312ec11a2b0a652ce",
-        "jf.gradient.neutral.start": "ef66964d1098d43eaf8f08d172b0f9bba3c13881",
-        "jf.gradient.neutral.end": "9a08dbec4e841f08dab2e197d7270a6658967710"
+        "jf.gradient.brand-primary.start": "f0a4368633657ae11aa683212670345420b5e9c2",
+        "jf.gradient.brand-primary.end": "129d2cbd0562f185d156923878d9b9420f4303f8",
+        "jf.gradient.accent.start": "325f3a81f0b58fadac2addeee7169e5d799e2bc0",
+        "jf.gradient.accent.end": "321858437925bf5860ad9e764df4e9f9bfc53da0",
+        "jf.gradient.neutral.start": "05779a14e4fbf660821fbcfede9c981fb47dd511",
+        "jf.gradient.neutral.end": "c6924f898422c2b69cd6aebd0a6b02a2494f7e7a"
       },
       "group": "Color Modes"
     },
@@ -4469,12 +4473,12 @@
         "jf.input.color.bg.default": "1cbeba66292429d74b18952dc519d103f72e2698",
         "jf.input.color.border.focus": "350d6aa76a929702de868db018cf5131527b78f9",
         "jf.control.border.focus": "341f0f6cc10a9fb74c45a457143c689db574dc31",
-        "jf.color.gradient.brand-primary.start": "7b404a56c25042dd1c4b388775de3743b4f5f67d",
-        "jf.color.gradient.brand-primary.end": "16c8a3b1d34c0bde19c1734471484a19b1aaaabe",
-        "jf.color.gradient.accent.start": "6ca2af0491a426158e16d63b7011240a41a3d4d8",
-        "jf.color.gradient.accent.end": "d602f0ee80d6db0a91caba956972d3733943dfe4",
-        "jf.color.gradient.neutral.start": "65aa7b97628884801107bc0be4198da36aea4793",
-        "jf.color.gradient.neutral.end": "79966709f9c5377e7c728ae23a0462aba64809b3"
+        "jf.color.gradient.brand-primary.start": "ee8c2463189b1b903505abedf4ea19eab9e78bdd",
+        "jf.color.gradient.brand-primary.end": "df1824320305c5dc3e320f54d3a44ad629bfa8d0",
+        "jf.color.gradient.accent.start": "d207481bbbfaf29abdb47023eab5ff09170c5fb9",
+        "jf.color.gradient.accent.end": "1be9615b795c1a4c117ad1797f852982b62cc78f",
+        "jf.color.gradient.neutral.start": "1e59f6f8d2921001613a49fa561989c5b760d427",
+        "jf.color.gradient.neutral.end": "a720f7a881a52b1f33de7d05eca73978f4cce66b"
       },
       "group": "Color Modes"
     },
