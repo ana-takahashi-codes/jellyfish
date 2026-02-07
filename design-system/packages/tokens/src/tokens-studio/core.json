@@ -870,7 +870,7 @@
           },
           "900": {
             "$type": "color",
-            "$value": "oklch(0.242 0.131 282.7)"
+            "$value": "oklch(0.184 0.0648 282.7)"
           }
         },
         "warning": {
@@ -3029,6 +3029,12 @@
             "$type": "spacing",
             "$value": "{jf.size.12}"
           }
+        },
+        "label": {
+          "font": {
+            "$type": "typography",
+            "$value": "{jf.font.label.sm}"
+          }
         }
       },
       "hero": {
@@ -3088,6 +3094,28 @@
               "lineHeight": "{jf.line-height.sm}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
+          }
+        }
+      },
+      "input": {
+        "color": {
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{jf.color.border.muted}"
+            }
+          }
+        },
+        "hint": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{jf.color.fg.muted}"
+            }
+          },
+          "font": {
+            "$type": "typography",
+            "$value": "{jf.font.label.xs}"
           }
         }
       }
@@ -3839,6 +3867,7 @@
         "jf.font-family.mono": "3579a2fbec8c02b362f088871eea182fec774837",
         "jf.font-family.icon": "1b25125ae1c029e34023e986edbdd8a5c2d909ee",
         "jf.font-family.decoration": "afca2904386b44a962d1d1e660bc6e40713d0122",
+        "jf.font-weight.300": "c8bc981f04a40602c6d54d4bc64a8187f6ba2af2",
         "jf.font-weight.400": "c6bab1f2ea54ce772fbb65865bcad1fb00372381",
         "jf.font-weight.500": "27fe6965bb4d575d6a995aeff020f32b8d4fe744",
         "jf.font-weight.600": "baeaa6a76c8379bb96645b84521ee4152e693e5a",
@@ -3894,6 +3923,10 @@
         "jf.letter-spacing.comfort": "95944121f2d78dddae0bbcf95682a98b4b7d679a",
         "jf.letter-spacing.wide": "5a19b274b792c2e540ef5ae47a12fdcf433d3e7b",
         "jf.letter-spacing.regular": "9b33374e7e2fd62ba4f88f18a34d858f2f96774b",
+        "jf.line-height.xs": "d6b0130214268f187d9a8716204af5c5ccc3b108",
+        "jf.line-height.sm": "149a2bdca1464678377deb7bf527a71e22386fda",
+        "jf.line-height.md": "316cd5c0b473db4833e56c638069b1b747de87e4",
+        "jf.line-height.lg": "0c95cc7d509d40312c06c56bf64130a8d982e96b",
         "jf.border.width.1": "87b95d3281050dc1a2e75d317b3a14f9bd62b180",
         "jf.border.width.2": "c49484c5b9e29aa1e172e5ff3b6b8b0f6b0165be",
         "jf.border.width.3": "a73ad952d77b0677c416e1598b26b35efa4c75c6",
@@ -3924,8 +3957,7 @@
         "jf.scale.100": "a1d7aaeecf63938ccffc848cd054a7027dca36e8",
         "jf.scale.105": "cdceacfd25ccabfb86d758272fa6ece07af3f269",
         "jf.scale.120": "53c2933bec691fe2b21f8edfcd66f4c90e4e73a1",
-        "jf.scale.150": "b06c61eaffd8876ec3820de285cf677c08eea573",
-        "jf.font-weight.300": "c8bc981f04a40602c6d54d4bc64a8187f6ba2af2"
+        "jf.scale.150": "b06c61eaffd8876ec3820de285cf677c08eea573"
       }
     },
     {
@@ -4394,7 +4426,7 @@
         "jf.input.color.bg.default": "0a215646a2e7d5266131f66cb298b3072f345f04",
         "jf.input.color.border.focus": "b8c045ade0da40316b60acd50d7e4ea4472d0cec",
         "jf.control.border.focus": "3d630dd88122973ee06402fab10b5c4ff3a89011",
-        "jf.control.border.default": "3db2b62cebc491b979682ab791cbb08e18144493"
+        "jf.control.border.default": "567bd5b4b63d3ded8cbe91c69a6c12416412d3bd"
       },
       "group": "Color Modes"
     },
@@ -4530,7 +4562,7 @@
         "jf.article.title.font.primary": "S:17e42bab5a645c632724255312297dc90f7f0ea8,",
         "jf.article.title.font.secondary": "S:320787c2fc91a82938322c88a83e07a39f124a6c,",
         "jf.article.title.font.tertiary": "S:606edfd9eca80bf0ab873f711dbe06545c373dc2,",
-        "jf.form.label.font": "S:66de028882be932ea28f21b39c6e8c7a1cdbf39c,",
+        "jf.form.label.font": "S:cc87353f795f4a6173f115742938551863650fb5,",
         "jf.doc.title.font.primary": "S:d6bc4496ca09b1865bdf887ab7af4aa64600a575,",
         "jf.doc.title.font.secondary": "S:ae35f495fc902dacd1db8e57282816ec3c426ece,",
         "jf.section.title.font": "S:740d408168d6911aa15a28e6ebbce025688ac53a,",
@@ -4544,7 +4576,8 @@
         "jf.article.font.title.tertiary": "S:e20b439c29ff7f60069396bc7d8fe9ae5531e336,",
         "jf.section.font.title": "S:03e4c9c0329963318b3618531786c3b1273add21,",
         "jf.section.font.subtitle": "S:988a9d01b644f09962345b651d44e0756006fbf3,",
-        "jf.card.color.border.neutral": "S:1d83ed712051e113cda5d72c1837e5830635038c,"
+        "jf.card.color.border.neutral": "S:1d83ed712051e113cda5d72c1837e5830635038c,",
+        "jf.input.hint.font": "S:96185e1bac98fae71be50e32f786317b51351853,"
       },
       "selectedTokenSets": {
         "01- Primitives": "source",
@@ -4579,7 +4612,9 @@
         "jf.form.gap.compact": "64eb5c98b932f75b0644df190ae7b09535262de4",
         "jf.form.gap.regular": "dcf8543d69919ba0e781231ceb3adba0579ba0a2",
         "jf.form.gap.comfort": "70a07ccfe6f93d8c0b53cad4370f2ea17ab50657",
-        "jf.section.max-width.boxed": "9cf33b0b9714e842924bd62d58d505aebe81e22c"
+        "jf.section.max-width.boxed": "9cf33b0b9714e842924bd62d58d505aebe81e22c",
+        "jf.input.color.border.default": "28bfdea08bb765c14c00d092cbaa2ed2905e7dad",
+        "jf.input.hint.color.default": "e171ad0bde79fa2030156e42032b79cbaa1bbeb9"
       },
       "group": "03 - Components"
     },
