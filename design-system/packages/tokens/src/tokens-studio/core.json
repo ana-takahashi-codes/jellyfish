@@ -144,7 +144,7 @@
         },
         "3xl": {
           "$type": "fluidFonts",
-          "$value": "clamp(1.5rem, 1.301rem + 0.2179vw, 1.875rem)"
+          "$value": "clamp(1.5rem, 1.2192rem + 0.514vw, 1.875rem)"
         },
         "g": {
           "$type": "fluidFonts",
