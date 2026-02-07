@@ -92,7 +92,7 @@
       "font-family": {
         "sans": {
           "$type": "fontFamilies",
-          "$value": "Google Sans Flex"
+          "$value": "Google Sans Flex 24pt"
         },
         "serif": {
           "$type": "fontFamilies",
@@ -144,7 +144,7 @@
         },
         "3xl": {
           "$type": "fluidFonts",
-          "$value": "clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)"
+          "$value": "clamp(1.5rem, 1.301rem + 0.2179vw, 1.875rem)"
         },
         "g": {
           "$type": "fluidFonts",
@@ -366,7 +366,7 @@
         },
         "wide": {
           "$type": "letterSpacing",
-          "$value": ".05em"
+          "$value": ".08em"
         },
         "regular": {
           "$type": "letterSpacing",
@@ -376,19 +376,19 @@
       "line-height": {
         "xs": {
           "$type": "lineHeights",
-          "$value": "110%"
+          "$value": "1.1em"
         },
         "sm": {
           "$type": "lineHeights",
-          "$value": "120%"
+          "$value": "1.2em"
         },
         "md": {
           "$type": "lineHeights",
-          "$value": "150%"
+          "$value": "1.5em"
         },
         "lg": {
           "$type": "lineHeights",
-          "$value": "170%"
+          "$value": "1.7em"
         }
       },
       "border": {
@@ -4394,7 +4394,7 @@
         "jf.input.color.bg.default": "0a215646a2e7d5266131f66cb298b3072f345f04",
         "jf.input.color.border.focus": "b8c045ade0da40316b60acd50d7e4ea4472d0cec",
         "jf.control.border.focus": "3d630dd88122973ee06402fab10b5c4ff3a89011",
-        "jf.control.border.default": "7e4a017be07018d9041c44845a3bfb675d69139d"
+        "jf.control.border.default": "3db2b62cebc491b979682ab791cbb08e18144493"
       },
       "group": "Color Modes"
     },
