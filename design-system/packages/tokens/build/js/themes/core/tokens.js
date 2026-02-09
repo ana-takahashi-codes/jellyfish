@@ -49,7 +49,7 @@ export const jfColorBrandPrimary500 = "oklch(0.603 0.215 282.35)";
 export const jfColorBrandPrimary600 = "oklch(0.519 0.226 282.68)";
 export const jfColorBrandPrimary700 = "oklch(0.429 0.209 283.3)";
 export const jfColorBrandPrimary800 = "oklch(0.339 0.176 283.23)";
-export const jfColorBrandPrimary900 = "oklch(0.242 0.131 282.7)";
+export const jfColorBrandPrimary900 = "oklch(0.184 0.0648 282.7)";
 export const jfColorWarning100 = "oklch(0.955 0.023 71.79)";
 export const jfColorWarning200 = "oklch(0.864 0.067 68.94)";
 export const jfColorWarning300 = "oklch(0.778 0.112 66.58)";
@@ -146,7 +146,7 @@ export const jfColorBorderNeutral = "oklch(21.03% 0.0059 285.89)";
 export const jfColorShadowNeutral = "lch(0 0 none / 0.07)";
 export const jfColorShadowAccent = "lch(52.119 26.703 182.16 / 0.15)";
 export const jfColorShadowBrandPrimary = "lch(84.086 24.639 284.61 / 0.5)";
-export const jfFontFamilySans = "'Google Sans'";
+export const jfFontFamilySans = "'Google Sans Flex 24pt'";
 export const jfFontFamilySerif = "Newsreader";
 export const jfFontFamilyMono = "'Fira Code'";
 export const jfFontFamilyIcon = "'Font Awesome 7 Free'";
@@ -158,7 +158,7 @@ export const jfFontWeight600 = 600;
 export const jfFontWeight700 = 700;
 export const jfFontWeight900 = 900;
 export const jfFontSize2xl = "clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)";
-export const jfFontSize3xl = "clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)";
+export const jfFontSize3xl = "clamp(1.5rem, 1.2192rem + 0.514vw, 1.875rem)";
 export const jfFontSizeG = "clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)";
 export const jfFontSizeXg = "clamp(2.rem, 1.4692rem + 0.9789vw, 2.75rem)";
 export const jfFontSize2xg = "clamp(2.25rem, 1.753rem + 1.7118vw, 4rem)";
@@ -170,20 +170,20 @@ export const jfFontSizeMd = "1rem";
 export const jfFontSizeLg = "1.125rem";
 export const jfFontSizeXl = "1.25rem";
 export const jfOpacity0 = "0";
-export const jfOpacity1 = "10";
-export const jfOpacity2 = "20";
-export const jfOpacity3 = "30";
-export const jfOpacity4 = "40";
-export const jfOpacity5 = "50";
-export const jfOpacity6 = "60";
-export const jfOpacity7 = "70";
-export const jfOpacity8 = "80";
-export const jfOpacity9 = "90";
-export const jfOpacityDisabled = "40";
-export const jfOpacityDragged = "60";
-export const jfOpacityHover = "90";
-export const jfOpacityLoading = "60";
-export const jfOpacityPlaceholder = "70";
+export const jfOpacity1 = "0.1";
+export const jfOpacity2 = "0.2";
+export const jfOpacity3 = "0.3";
+export const jfOpacity4 = "0.4";
+export const jfOpacity5 = "0.5";
+export const jfOpacity6 = "0.6";
+export const jfOpacity7 = "0.7";
+export const jfOpacity8 = "0.8";
+export const jfOpacity9 = "0.9";
+export const jfOpacityDisabled = "0.4";
+export const jfOpacityDragged = "0.6";
+export const jfOpacityHover = "0.9";
+export const jfOpacityLoading = "0.6";
+export const jfOpacityPlaceholder = "0.7";
 export const jfSize1 = "2px";
 export const jfSize2 = "4px";
 export const jfSize3 = "6px";
@@ -217,12 +217,12 @@ export const jfSizeThird = "33.33%";
 export const jfSizeQuarter = "25%";
 export const jfLetterSpacingCompact = "-0.05em";
 export const jfLetterSpacingComfort = "0.025em";
-export const jfLetterSpacingWide = "0.05em";
+export const jfLetterSpacingWide = "0.08em";
 export const jfLetterSpacingRegular = "0";
-export const jfLineHeightXs = 1.1;
-export const jfLineHeightSm = 1.2;
-export const jfLineHeightMd = 1.5;
-export const jfLineHeightLg = 1.7;
+export const jfLineHeightXs = "1.1em";
+export const jfLineHeightSm = "1.2em";
+export const jfLineHeightMd = "1.5em";
+export const jfLineHeightLg = "1.7em";
 export const jfBorderWidth1 = "2px";
 export const jfBorderWidth2 = "4px";
 export const jfBorderWidth3 = "3* 2px";
@@ -272,7 +272,7 @@ export const jfAngle5 = "60deg";
 export const jfAngle6 = "90deg";
 export const jfAngle7 = "135deg";
 export const jfAngle8 = "180deg";
-export const jfAngle9 = "240deg";
+export const jfAngle9 = "270deg";
 export const jfAngle10 = "360deg";
 export const jfFraction1 = "1fr";
 export const jfFraction2 = "2fr";
@@ -295,10 +295,10 @@ export const jfTransitionSlideIn = "250ms cubic-bezier(0, 0, 0.2, 1) 0";
 export const jfTransitionSlideOut = "250ms cubic-bezier(0.3, 0, 1, 1) 0";
 export const jfTransitionScale = "250ms cubic-bezier(0.3, 0, 1, 1) 0";
 export const jfTransitionFade = "250ms cubic-bezier(0.4, 0, 0.2, 1) 0";
-export const jfGridColsLg = "16";
-export const jfGridColsMd = "12";
-export const jfGridColsSm = "6";
-export const jfGridColsXs = "4";
+export const jfGridColsDesktopDense = "16";
+export const jfGridColsDesktop = "12";
+export const jfGridColsTablet = "8";
+export const jfGridColsMobile = "4";
 export const jfGridGutterCompact = "16px";
 export const jfGridGutterComfort = "36px";
 export const jfGridGutterNarrow = "2px";
@@ -306,6 +306,10 @@ export const jfGridGutterNone = "0";
 export const jfGridGutterRegular = "24px";
 export const jfGridGutterTight = "8px";
 export const jfGridGutterWide = "56px";
+export const jfGridMarginNone = "0";
+export const jfGridMarginDesktop = "32px";
+export const jfGridMarginTablet = "24px";
+export const jfGridMarginMobile = "16px";
 export const jfScreenXs = "540px";
 export const jfScreenSm = "900px";
 export const jfScreenMd = "1200px";
@@ -326,36 +330,36 @@ export const jfLayerOverlay = "400";
 export const jfLayerPopover = "600";
 export const jfLayerRaised = "10";
 export const jfLayerSticky = "100";
-export const jfLayerToast = "800";
-export const jfLayerTooltip = "700";
-export const jfFontTitleSm = "500 1.25rem/1.2 'Google Sans'";
+export const jfLayerToast = "700";
+export const jfLayerTooltip = "800";
+export const jfFontTitleSm = "500 1.25rem/1.2em 'Google Sans Flex 24pt'";
 export const jfFontTitleMd =
-  "500 clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)/1.2 'Google Sans'";
+  "500 clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)/1.2em 'Google Sans Flex 24pt'";
 export const jfFontTitleLg =
-  "700 clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)/1.2 'Google Sans'";
+  "700 clamp(1.5rem, 1.2192rem + 0.514vw, 1.875rem)/1.2em 'Google Sans Flex 24pt'";
 export const jfFontTitleXl =
-  "700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2 'Google Sans'";
+  "700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2em 'Google Sans Flex 24pt'";
 export const jfFontTitle2xl =
-  "700 clamp(2.rem, 1.4692rem + 0.9789vw, 2.75rem)/1.2 'Google Sans'";
+  "700 clamp(2.rem, 1.4692rem + 0.9789vw, 2.75rem)/1.2em 'Google Sans Flex 24pt'";
 export const jfFontTitle3xl =
-  "700 clamp(2.25rem, 1.753rem + 1.7118vw, 4rem)/1.2 'Google Sans'";
+  "700 clamp(2.25rem, 1.753rem + 1.7118vw, 4rem)/1.2em 'Google Sans Flex 24pt'";
 export const jfFontTitleG =
-  "700 clamp(2.5rem, 1.9062rem + 2.2186vw, 5rem)/1.2 'Google Sans'";
+  "700 clamp(2.5rem, 1.9062rem + 2.2186vw, 5rem)/1.2em 'Google Sans Flex 24pt'";
 export const jfFontTitleXg =
-  "700 clamp(2.75rem, 3.8306rem + 2.0853vw, 6.875rem)/1.2 'Google Sans'";
-export const jfFontTextSm = "0.875rem/1.5 'Google Sans'";
-export const jfFontTextMd = "1rem/1.5 'Google Sans'";
-export const jfFontTextLg = "1.125rem/1.5 'Google Sans'";
-export const jfFontLabelXs = "500 0.75rem/1.2 'Google Sans'";
-export const jfFontLabelSm = "500 0.875rem/1.2 'Google Sans'";
-export const jfFontLabelMd = "500 1rem/1.2 'Google Sans'";
-export const jfFontLabelLg = "500 1.125rem/1.2 'Google Sans'";
-export const jfFontQuote = "400 1.125rem/1.7 Newsreader";
-export const jfFontCaption = "500 0.75rem/1.5 Newsreader";
-export const jfFontOverline = "500 0.75rem/1.2 'Google Sans'";
-export const jfFontCodeSm = "400 0.875rem/1.7 'Fira Code'";
-export const jfFontCodeMd = "400 1rem/1.7 'Fira Code'";
-export const jfFontCodeLg = "400 1.125rem/1.7 'Fira Code'";
+  "700 clamp(2.75rem, 3.8306rem + 2.0853vw, 6.875rem)/1.2em 'Google Sans Flex 24pt'";
+export const jfFontTextSm = "0.875rem/1.5em 'Google Sans Flex 24pt'";
+export const jfFontTextMd = "1rem/1.5em 'Google Sans Flex 24pt'";
+export const jfFontTextLg = "1.125rem/1.5em 'Google Sans Flex 24pt'";
+export const jfFontLabelXs = "500 0.75rem/1.2em 'Google Sans Flex 24pt'";
+export const jfFontLabelSm = "500 0.875rem/1.2em 'Google Sans Flex 24pt'";
+export const jfFontLabelMd = "500 1rem/1.2em 'Google Sans Flex 24pt'";
+export const jfFontLabelLg = "500 1.125rem/1.2em 'Google Sans Flex 24pt'";
+export const jfFontQuote = "400 1.125rem/1.7em Newsreader";
+export const jfFontCaption = "500 0.75rem/1.5em Newsreader";
+export const jfFontOverline = "500 0.75rem/1.2em 'Google Sans Flex 24pt'";
+export const jfFontCodeSm = "400 0.875rem/1.7em 'Fira Code'";
+export const jfFontCodeMd = "400 1rem/1.7em 'Fira Code'";
+export const jfFontCodeLg = "400 1.125rem/1.7em 'Fira Code'";
 export const jfWidthFull = "100%";
 export const jfWidthHalf = "50%";
 export const jfWidthThird = "33.33%";
@@ -365,36 +369,6 @@ export const jfHeightHalf = "50%";
 export const jfHeightThird = "33.33%";
 export const jfHeightQuarter = "25%";
 export const jfBgOverlay = "oklch(0 0 0 / 70%)";
-export const jfGradientLinearBrandPrimaryToTop =
-  "linear-gradient(0deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)";
-export const jfGradientLinearBrandPrimaryToBottom =
-  "linear-gradient(180deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)";
-export const jfGradientLinearBrandPrimaryToLeft =
-  "linear-gradient(270deg, oklch(0.783 0.113 282.35) 0%,oklch(0.603 0.215 282.35) 100%)";
-export const jfGradientLinearBrandPrimaryToRight =
-  "linear-gradient(90deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)";
-export const jfGradientLinearAccentToTop =
-  "linear-gradient(0deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)";
-export const jfGradientLinearAccentToBottom =
-  "linear-gradient(180deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)";
-export const jfGradientLinearAccentToLeft =
-  "linear-gradient(270deg, oklch(0.766 0.061 183.84) 0%,oklch(0.579 0.077 181.57) 100%)";
-export const jfGradientLinearAccentToRight =
-  "linear-gradient(90deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)";
-export const jfGradientLinearNeutralToTop =
-  "linear-gradient(0deg, oklch(0.955 0.013 185.09) 0%, oklch(71.18% 0.0129 286.07) 100%)";
-export const jfGradientLinearNeutralToBottom =
-  "linear-gradient(180deg, oklch(0.955 0.013 185.09) 0%, oklch(71.18% 0.0129 286.07) 100%)";
-export const jfGradientLinearNeutralToLeft =
-  "linear-gradient(270deg, oklch(0.955 0.013 185.09) 0%,oklch(71.18% 0.0129 286.07) 100%)";
-export const jfGradientLinearNeutralToRight =
-  "linear-gradient(90deg, oklch(0.955 0.013 185.09) 0%, oklch(71.18% 0.0129 286.07) 100%)";
-export const jfGradientBrandPrimaryStart = "oklch(0.783 0.113 282.35)";
-export const jfGradientBrandPrimaryEnd = "oklch(0.603 0.215 282.35)";
-export const jfGradientAccentStart = "oklch(0.766 0.061 183.84)";
-export const jfGradientAccentEnd = "oklch(0.579 0.077 181.57)";
-export const jfGradientNeutralStart = "oklch(0.955 0.013 185.09)";
-export const jfGradientNeutralEnd = "oklch(71.18% 0.0129 286.07)";
 export const jfShadowNeutralBottomLg =
   "0 0 0 1px lch(0 0 none / 0.07), 0 1px 1px -0.5px lch(0 0 none / 0.07), 0 4px 4px -1.5px lch(0 0 none / 0.07), 0 8px 8px -3px lch(0 0 none / 0.07), 0 12px 12px -8px lch(0 0 none / 0.07), 0 20px 20px -16px lch(0 0 none / 0.07)";
 export const jfShadowNeutralBottomMd =
@@ -449,14 +423,14 @@ export const jfShadowBrandPrimaryMiddleMd =
   "0 0 0 1px lch(84.086 24.639 284.61 / 0.5), 0 0 1px -0.5px lch(84.086 24.639 284.61 / 0.5), 0 0 4px -1.5px lch(84.086 24.639 284.61 / 0.5), 0 0 8px -3px lch(84.086 24.639 284.61 / 0.5), 0 0 16px -8px lch(84.086 24.639 284.61 / 0.5)";
 export const jfShadowBrandPrimaryMiddleSm =
   "0 0 0 1px lch(84.086 24.639 284.61 / 0.5), 0 0 1px -0.5px lch(84.086 24.639 284.61 / 0.5), 0 0 4px -1.5px lch(84.086 24.639 284.61 / 0.5), 0 0 6px -3px lch(84.086 24.639 284.61 / 0.5)";
-export const jfArticleFontMeta = "500 0.875rem/1.2 'Google Sans'";
-export const jfArticleFontText = "1.125rem/1.5 'Google Sans'";
+export const jfArticleFontMeta = "500 0.875rem/1.2em 'Google Sans Flex 24pt'";
+export const jfArticleFontText = "1.125rem/1.5em 'Google Sans Flex 24pt'";
 export const jfArticleFontTitlePrimary =
-  "700 clamp(2.25rem, 1.753rem + 1.7118vw, 4rem)/1.2 'Google Sans'";
+  "700 clamp(2.25rem, 1.753rem + 1.7118vw, 4rem)/1.2em 'Google Sans Flex 24pt'";
 export const jfArticleFontTitleSecondary =
-  "700 clamp(2.rem, 1.4692rem + 0.9789vw, 2.75rem)/1.2 'Google Sans'";
+  "700 clamp(2.rem, 1.4692rem + 0.9789vw, 2.75rem)/1.2em 'Google Sans Flex 24pt'";
 export const jfArticleFontTitleTertiary =
-  "700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2 'Google Sans'";
+  "700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2em 'Google Sans Flex 24pt'";
 export const jfArticleThumbnailRatio = 1.7778;
 export const jfCardPaddingCompact = "8px";
 export const jfCardPaddingLoose = "24px";
@@ -481,19 +455,55 @@ export const jfControlGap = "4px";
 export const jfControlPaddingHorizontal = "12px";
 export const jfControlBgOverlayActive = "oklch(0 0 0 / 20%)";
 export const jfControlBorderFocus = "oklch(0 0 0)";
+export const jfControlBorderDefault = "oklch(87.11% 0.0055 286.29)";
 export const jfFormGapCompact = "12px";
 export const jfFormGapRegular = "16px";
 export const jfFormGapComfort = "24px";
+export const jfFormLabelFont = "500 0.875rem/1.2em 'Google Sans Flex 24pt'";
 export const jfHeroFontTitle =
-  "700 clamp(2.75rem, 3.8306rem + 2.0853vw, 6.875rem)/1.2 Ezra";
+  "700 clamp(2.75rem, 3.8306rem + 2.0853vw, 6.875rem)/1.2em Ezra";
 export const jfHeroFontSubtitle =
-  "500 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2 'Google Sans'";
+  "500 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2em 'Google Sans Flex 24pt'";
 export const jfSectionMaxWidthBoxed = "1140px";
 export const jfSectionWidthFull = "100%";
 export const jfSectionHeightFull = "100%";
 export const jfSectionFontTitle =
-  "700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2 'Google Sans'";
+  "700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2em 'Google Sans Flex 24pt'";
 export const jfSectionFontSubtitle =
-  "500 clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)/1.2 'Google Sans'";
-export const jfInputColorBgDefault = "oklch(96.74% 0.0013 286.38)";
+  "500 clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)/1.2em 'Google Sans Flex 24pt'";
+export const jfInputColorBorderDefault = "oklch(87.11% 0.0055 286.29)";
 export const jfInputColorBorderFocus = "oklch(0.603 0.215 282.35)";
+export const jfInputColorBgDefault = "oklch(96.74% 0.0013 286.38)";
+export const jfInputHintColorDefault = "oklch(55.17% 0.0138 285.94)";
+export const jfInputHintFont = "500 0.75rem/1.2em 'Google Sans Flex 24pt'";
+export const jfInputLabelMarginBottom = "2px";
+export const jfGradientBrandPrimaryStart = "oklch(0.783 0.113 282.35)";
+export const jfGradientBrandPrimaryEnd = "oklch(0.603 0.215 282.35)";
+export const jfGradientAccentStart = "oklch(0.766 0.061 183.84)";
+export const jfGradientAccentEnd = "oklch(0.579 0.077 181.57)";
+export const jfGradientNeutralStart = "oklch(96.74% 0.0013 286.38)";
+export const jfGradientNeutralEnd = "oklch(87.11% 0.0055 286.29)";
+export const gradientLinearBrandPrimaryToTop =
+  "linear-gradient(0deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)";
+export const gradientLinearBrandPrimaryToBottom =
+  "linear-gradient(180deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)";
+export const gradientLinearBrandPrimaryToLeft =
+  "linear-gradient(270deg, oklch(0.783 0.113 282.35) 0%,oklch(0.603 0.215 282.35) 100%)";
+export const gradientLinearBrandPrimaryToRight =
+  "linear-gradient(90deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)";
+export const gradientLinearAccentToTop =
+  "linear-gradient(0deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)";
+export const gradientLinearAccentToBottom =
+  "linear-gradient(180deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)";
+export const gradientLinearAccentToLeft =
+  "linear-gradient(270deg, oklch(0.766 0.061 183.84) 0%,oklch(0.579 0.077 181.57) 100%)";
+export const gradientLinearAccentToRight =
+  "linear-gradient(90deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)";
+export const gradientLinearNeutralToTop =
+  "linear-gradient(0deg, oklch(96.74% 0.0013 286.38) 0%, oklch(87.11% 0.0055 286.29) 100%)";
+export const gradientLinearNeutralToBottom =
+  "linear-gradient(180deg, oklch(96.74% 0.0013 286.38) 0%, oklch(87.11% 0.0055 286.29) 100%)";
+export const gradientLinearNeutralToLeft =
+  "linear-gradient(270deg, oklch(96.74% 0.0013 286.38) 0%,oklch(87.11% 0.0055 286.29) 100%)";
+export const gradientLinearNeutralToRight =
+  "linear-gradient(90deg, oklch(96.74% 0.0013 286.38) 0%, oklch(87.11% 0.0055 286.29) 100%)";

@@ -49,13 +49,14 @@
   <color name="jf_color_shadow_neutral">oklch(0 0 0)</color>
   <color name="jf_color_shadow_accent">oklch(0.579 0.077 181.57)</color>
   <color name="jf_color_shadow_brand_primary">oklch(0.868 0.066 282.11)</color>
+  <color name="jf_control_border_focus">oklch(0 0 0)</color>
+  <color name="jf_control_border_default">oklch(87.11% 0.0055 286.29)</color>
+  <color name="jf_input_color_border_focus">oklch(0.603 0.215 282.35)</color>
+  <color name="jf_input_color_bg_default">oklch(96.74% 0.0013 286.38)</color>
   <color name="jf_gradient_brand_primary_start">oklch(0.783 0.113 282.35)</color>
   <color name="jf_gradient_brand_primary_end">oklch(0.603 0.215 282.35)</color>
   <color name="jf_gradient_accent_start">oklch(0.766 0.061 183.84)</color>
   <color name="jf_gradient_accent_end">oklch(0.579 0.077 181.57)</color>
-  <color name="jf_gradient_neutral_start">oklch(0.955 0.013 185.09)</color>
-  <color name="jf_gradient_neutral_end">oklch(71.18% 0.0129 286.07)</color>
-  <color name="jf_control_border_focus">oklch(0 0 0)</color>
-  <color name="jf_input_color_bg_default">oklch(96.74% 0.0013 286.38)</color>
-  <color name="jf_input_color_border_focus">oklch(0.603 0.215 282.35)</color>
+  <color name="jf_gradient_neutral_start">oklch(96.74% 0.0013 286.38)</color>
+  <color name="jf_gradient_neutral_end">oklch(87.11% 0.0055 286.29)</color>
 </resources>

@@ -9,6 +9,18 @@
 import UIKit
 
 public class {
+    public static let gradientLinearAccentToBottom = linear-gradient(180deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)
+    public static let gradientLinearAccentToLeft = linear-gradient(270deg, oklch(0.766 0.061 183.84) 0%,oklch(0.579 0.077 181.57) 100%)
+    public static let gradientLinearAccentToRight = linear-gradient(90deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)
+    public static let gradientLinearAccentToTop = linear-gradient(0deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)
+    public static let gradientLinearBrandPrimaryToBottom = linear-gradient(180deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)
+    public static let gradientLinearBrandPrimaryToLeft = linear-gradient(270deg, oklch(0.783 0.113 282.35) 0%,oklch(0.603 0.215 282.35) 100%)
+    public static let gradientLinearBrandPrimaryToRight = linear-gradient(90deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)
+    public static let gradientLinearBrandPrimaryToTop = linear-gradient(0deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)
+    public static let gradientLinearNeutralToBottom = linear-gradient(180deg, oklch(96.74% 0.0013 286.38) 0%, oklch(87.11% 0.0055 286.29) 100%)
+    public static let gradientLinearNeutralToLeft = linear-gradient(270deg, oklch(96.74% 0.0013 286.38) 0%,oklch(87.11% 0.0055 286.29) 100%)
+    public static let gradientLinearNeutralToRight = linear-gradient(90deg, oklch(96.74% 0.0013 286.38) 0%, oklch(87.11% 0.0055 286.29) 100%)
+    public static let gradientLinearNeutralToTop = linear-gradient(0deg, oklch(96.74% 0.0013 286.38) 0%, oklch(87.11% 0.0055 286.29) 100%)
     public static let jfBgOverlay = oklch(0 0 0 / 70%)
     public static let jfColorAccent100 = oklch(0.955 0.013 185.09)
     public static let jfColorAccent200 = oklch(0.856 0.037 183.6)
@@ -27,7 +39,7 @@ public class {
     public static let jfColorBrandPrimary600 = oklch(0.519 0.226 282.68)
     public static let jfColorBrandPrimary700 = oklch(0.429 0.209 283.3)
     public static let jfColorBrandPrimary800 = oklch(0.339 0.176 283.23)
-    public static let jfColorBrandPrimary900 = oklch(0.242 0.131 282.7)
+    public static let jfColorBrandPrimary900 = oklch(0.184 0.0648 282.7)
     public static let jfColorCritical100 = oklch(0.958 0.008 17.29)
     public static let jfColorCritical200 = oklch(0.869 0.022 31.79)
     public static let jfColorCritical300 = oklch(0.773 0.037 28.73)
@@ -114,22 +126,10 @@ public class {
     public static let jfFontTitleSm = [object Object]
     public static let jfFontTitleXg = [object Object]
     public static let jfFontTitleXl = [object Object]
-    public static let jfGradientLinearAccentToBottom = linear-gradient(180deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)
-    public static let jfGradientLinearAccentToLeft = linear-gradient(270deg, oklch(0.766 0.061 183.84) 0%,oklch(0.579 0.077 181.57) 100%)
-    public static let jfGradientLinearAccentToRight = linear-gradient(90deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)
-    public static let jfGradientLinearAccentToTop = linear-gradient(0deg, oklch(0.766 0.061 183.84) 0%, oklch(0.579 0.077 181.57) 100%)
-    public static let jfGradientLinearBrandPrimaryToBottom = linear-gradient(180deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)
-    public static let jfGradientLinearBrandPrimaryToLeft = linear-gradient(270deg, oklch(0.783 0.113 282.35) 0%,oklch(0.603 0.215 282.35) 100%)
-    public static let jfGradientLinearBrandPrimaryToRight = linear-gradient(90deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)
-    public static let jfGradientLinearBrandPrimaryToTop = linear-gradient(0deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%)
-    public static let jfGradientLinearNeutralToBottom = linear-gradient(180deg, oklch(0.955 0.013 185.09) 0%, oklch(71.18% 0.0129 286.07) 100%)
-    public static let jfGradientLinearNeutralToLeft = linear-gradient(270deg, oklch(0.955 0.013 185.09) 0%,oklch(71.18% 0.0129 286.07) 100%)
-    public static let jfGradientLinearNeutralToRight = linear-gradient(90deg, oklch(0.955 0.013 185.09) 0%, oklch(71.18% 0.0129 286.07) 100%)
-    public static let jfGradientLinearNeutralToTop = linear-gradient(0deg, oklch(0.955 0.013 185.09) 0%, oklch(71.18% 0.0129 286.07) 100%)
-    public static let jfGridColsLg = 16
-    public static let jfGridColsMd = 12
-    public static let jfGridColsSm = 6
-    public static let jfGridColsXs = 4
+    public static let jfGridColsDesktop = 12
+    public static let jfGridColsDesktopDense = 16
+    public static let jfGridColsMobile = 4
+    public static let jfGridColsTablet = 8
     public static let jfGridGutterComfort = CGFloat(32.00)*18
     public static let jfGridGutterCompact = CGFloat(32.00)*8
     public static let jfGridGutterNarrow = CGFloat(32.00)
@@ -137,6 +137,10 @@ public class {
     public static let jfGridGutterRegular = CGFloat(32.00)*12
     public static let jfGridGutterTight = CGFloat(32.00)*4
     public static let jfGridGutterWide = CGFloat(32.00)*28
+    public static let jfGridMarginDesktop = CGFloat(32.00)*16
+    public static let jfGridMarginMobile = CGFloat(32.00)*8
+    public static let jfGridMarginNone = CGFloat(0.00)
+    public static let jfGridMarginTablet = CGFloat(32.00)*12
     public static let jfHeightFull = "100%"
     public static let jfHeightHalf = "50%"
     public static let jfHeightQuarter = "25%"
@@ -148,13 +152,13 @@ public class {
     public static let jfLayerPopover = 600
     public static let jfLayerRaised = 10
     public static let jfLayerSticky = 100
-    public static let jfLayerToast = 800
-    public static let jfLayerTooltip = 700
-    public static let jfOpacityDisabled = 40
-    public static let jfOpacityDragged = 60
-    public static let jfOpacityHover = 90
-    public static let jfOpacityLoading = 60
-    public static let jfOpacityPlaceholder = 70
+    public static let jfLayerToast = 700
+    public static let jfLayerTooltip = 800
+    public static let jfOpacityDisabled = 0.4
+    public static let jfOpacityDragged = 0.6
+    public static let jfOpacityHover = 0.9
+    public static let jfOpacityLoading = 0.6
+    public static let jfOpacityPlaceholder = 0.7
     public static let jfScreenHeightFull = CGFloat(1600.00)
     public static let jfScreenHeightHalf = CGFloat(800.00)
     public static let jfScreenHeightQuarter = CGFloat(400.00)
