@@ -1,11 +1,11 @@
 
 // Do not edit directly, this file was auto-generated.
 
-$jf-article-font-meta: 500 0.875rem/1.2 'Google Sans';
-$jf-article-font-text: 1.125rem/1.5 'Google Sans';
-$jf-article-font-title-primary: 700 clamp(2.25rem, 1.753rem + 1.7118vw, 4rem)/1.2 'Google Sans';
-$jf-article-font-title-secondary: 700 clamp(2.rem, 1.4692rem + 0.9789vw, 2.75rem)/1.2 'Google Sans';
-$jf-article-font-title-tertiary: 700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2 'Google Sans';
+$jf-article-font-meta: 500 0.875rem/1.2em 'Google Sans Flex 24pt';
+$jf-article-font-text: 1.125rem/1.5em 'Google Sans Flex 24pt';
+$jf-article-font-title-primary: 700 clamp(2.25rem, 1.753rem + 1.7118vw, 4rem)/1.2em 'Google Sans Flex 24pt';
+$jf-article-font-title-secondary: 700 clamp(2.rem, 1.4692rem + 0.9789vw, 2.75rem)/1.2em 'Google Sans Flex 24pt';
+$jf-article-font-title-tertiary: 700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2em 'Google Sans Flex 24pt';
 $jf-article-thumbnail-ratio: 1.7778;
 $jf-card-padding-compact: 8px;
 $jf-card-padding-loose: 24px;
@@ -32,10 +32,15 @@ $jf-control-bg-overlay-active: oklch(0 0 0 / 20%);
 $jf-form-gap-compact: 12px;
 $jf-form-gap-regular: 16px;
 $jf-form-gap-comfort: 24px;
-$jf-hero-font-title: 700 clamp(2.75rem, 3.8306rem + 2.0853vw, 6.875rem)/1.2 Ezra;
-$jf-hero-font-subtitle: 500 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2 'Google Sans';
+$jf-form-label-font: 500 0.875rem/1.2em 'Google Sans Flex 24pt';
+$jf-hero-font-title: 700 clamp(2.75rem, 3.8306rem + 2.0853vw, 6.875rem)/1.2em Ezra;
+$jf-hero-font-subtitle: 500 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2em 'Google Sans Flex 24pt';
 $jf-section-max-width-boxed: 1140px;
 $jf-section-width-full: 100%;
 $jf-section-height-full: 100%;
-$jf-section-font-title: 700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2 'Google Sans';
-$jf-section-font-subtitle: 500 clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)/1.2 'Google Sans';
+$jf-section-font-title: 700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2em 'Google Sans Flex 24pt';
+$jf-section-font-subtitle: 500 clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)/1.2em 'Google Sans Flex 24pt';
+$jf-input-color-border-default: oklch(87.11% 0.0055 286.29);
+$jf-input-hint-color-default: oklch(55.17% 0.0138 285.94);
+$jf-input-hint-font: 500 0.75rem/1.2em 'Google Sans Flex 24pt';
+$jf-input-label-margin-bottom: 2px;

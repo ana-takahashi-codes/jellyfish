@@ -35,6 +35,7 @@
   <dimen name="jf_form_gap_compact">32.00dp*6</dimen>
   <dimen name="jf_form_gap_regular">32.00dp*8</dimen>
   <dimen name="jf_form_gap_comfort">32.00dp*12</dimen>
+  <string name="jf_form_label_font">[object Object]</string>
   <string name="jf_hero_font_title">[object Object]</string>
   <string name="jf_hero_font_subtitle">[object Object]</string>
   <dimen name="jf_section_max_width_boxed">18240.00dp</dimen>
@@ -42,4 +43,8 @@
   <dimen name="jf_section_height_full">100%</dimen>
   <string name="jf_section_font_title">[object Object]</string>
   <string name="jf_section_font_subtitle">[object Object]</string>
+  <color name="jf_input_color_border_default">oklch(87.11% 0.0055 286.29)</color>
+  <color name="jf_input_hint_color_default">oklch(55.17% 0.0138 285.94)</color>
+  <string name="jf_input_hint_font">[object Object]</string>
+  <dimen name="jf_input_label_margin_bottom">32.00dp</dimen>
 </resources>
