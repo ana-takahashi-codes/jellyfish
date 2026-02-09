@@ -119,6 +119,13 @@ $jf-motion-easing-accelerate: cubic-bezier(0.3, 0, 1, 1); // ease-in
 $jf-motion-easing-decelerate: cubic-bezier(0, 0, 0.2, 1); // ease-out
 $jf-motion-easing-balanced: cubic-bezier(0.4, 0, 0.2, 1); // ease-in-out
 $jf-motion-easing-linear: linear;
+$jf-motion-delay-none: 0;
+$jf-motion-delay-brief: 100ms;
+$jf-motion-delay-short: 150ms;
+$jf-motion-delay-medium: 250ms;
+$jf-motion-delay-long: 350ms;
+$jf-motion-delay-longer: 500ms;
+$jf-motion-delay-extended: 800ms;
 $jf-blur-1: 2px;
 $jf-blur-2: 4px;
 $jf-blur-4: 8px;

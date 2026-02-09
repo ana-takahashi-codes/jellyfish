@@ -138,6 +138,9 @@ public class {
     public static let jfGridGutterTight = CGFloat(32.00)*4
     public static let jfGridGutterWide = CGFloat(32.00)*28
     public static let jfHeightFull = "100%"
+    public static let jfHeightHalf = "50%"
+    public static let jfHeightQuarter = "25%"
+    public static let jfHeightThird = "33.33%"
     public static let jfLayerBase = 0 /** Also know as z-index */
     public static let jfLayerDrawer = 450 /** Also know as z-index */
     public static let jfLayerModal = 500
@@ -152,10 +155,17 @@ public class {
     public static let jfOpacityHover = 90
     public static let jfOpacityLoading = 60
     public static let jfOpacityPlaceholder = 70
+    public static let jfScreenHeightFull = CGFloat(1600.00)
+    public static let jfScreenHeightHalf = CGFloat(800.00)
+    public static let jfScreenHeightQuarter = CGFloat(400.00)
+    public static let jfScreenHeightThird = CGFloat(533.28)
     public static let jfScreenLg = CGFloat(24576.00)
     public static let jfScreenMd = CGFloat(19200.00)
     public static let jfScreenSm = CGFloat(14400.00)
     public static let jfScreenWidthFull = CGFloat(1600.00)
+    public static let jfScreenWidthHalf = CGFloat(800.00)
+    public static let jfScreenWidthQuarter = CGFloat(400.00)
+    public static let jfScreenWidthThird = CGFloat(533.28)
     public static let jfScreenXl = CGFloat(30720.00)
     public static let jfScreenXs = CGFloat(8640.00)
     public static let jfShadowAccentBottomLg = [object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
@@ -191,4 +201,7 @@ public class {
     public static let jfTransitionSlideOut = [object Object]
     public static let jfTransitionStateChange = [object Object]
     public static let jfWidthFull = "100%"
+    public static let jfWidthHalf = "50%"
+    public static let jfWidthQuarter = "25%"
+    public static let jfWidthThird = "33.33%"
 }

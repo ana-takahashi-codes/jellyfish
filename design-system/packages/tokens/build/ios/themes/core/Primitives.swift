@@ -93,6 +93,13 @@ public class {
     public static let jfLineHeightMd = 150%
     public static let jfLineHeightSm = 120%
     public static let jfLineHeightXs = 110%
+    public static let jfMotionDelayBrief = 100ms
+    public static let jfMotionDelayExtended = 800ms
+    public static let jfMotionDelayLong = 350ms
+    public static let jfMotionDelayLonger = 500ms
+    public static let jfMotionDelayMedium = 250ms
+    public static let jfMotionDelayNone = 0
+    public static let jfMotionDelayShort = 150ms
     public static let jfMotionDurationBrief = 100ms
     public static let jfMotionDurationExtended = 800ms
     public static let jfMotionDurationInstant = 0

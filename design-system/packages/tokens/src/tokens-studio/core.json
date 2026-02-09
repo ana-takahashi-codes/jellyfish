@@ -528,6 +528,54 @@
             "$type": "cubicBezier",
             "$value": "linear"
           }
+        },
+        "delay": {
+          "none": {
+            "$type": "duration",
+            "$value": "0"
+          },
+          "brief": {
+            "$type": "duration",
+            "$value": {
+              "value": "100",
+              "unit": "ms"
+            }
+          },
+          "short": {
+            "$type": "duration",
+            "$value": {
+              "value": "150",
+              "unit": "ms"
+            }
+          },
+          "medium": {
+            "$type": "duration",
+            "$value": {
+              "value": "250",
+              "unit": "ms"
+            }
+          },
+          "long": {
+            "$type": "duration",
+            "$value": {
+              "value": "350",
+              "unit": "ms"
+            }
+          },
+          "longer": {
+            "$type": "duration",
+            "$value": {
+              "value": "500",
+              "unit": "ms"
+            }
+          },
+          "extended": {
+            "$type": "duration",
+            "$value": {
+              "value": "800",
+              "unit": "ms"
+            }
+          }
         }
       },
       "blur": {
@@ -669,6 +717,7 @@
           "$type": "transition",
           "$value": {
             "duration": "{jf.motion.duration.short}",
+            "delay": "{jf.motion.delay.none}",
             "timingFunction": "{jf.motion.easing.balanced}"
           }
         },
@@ -676,6 +725,7 @@
           "$type": "transition",
           "$value": {
             "duration": "{jf.motion.duration.medium}",
+            "delay": "{jf.motion.delay.none}",
             "timingFunction": "{jf.motion.easing.decelerate}"
           }
         },
@@ -683,6 +733,7 @@
           "$type": "transition",
           "$value": {
             "duration": "{jf.motion.duration.medium}",
+            "delay": "{jf.motion.delay.none}",
             "timingFunction": "{jf.motion.easing.accelerate}"
           }
         },
@@ -690,6 +741,7 @@
           "$type": "transition",
           "$value": {
             "duration": "{jf.motion.duration.medium}",
+            "delay": "{jf.motion.delay.none}",
             "timingFunction": "{jf.motion.easing.accelerate}"
           }
         },
@@ -697,6 +749,7 @@
           "$type": "transition",
           "$value": {
             "duration": "{jf.motion.duration.medium}",
+            "delay": "{jf.motion.delay.none}",
             "timingFunction": "{jf.motion.easing.balanced}"
           }
         }
@@ -1136,6 +1189,36 @@
           "full": {
             "$type": "sizing",
             "$value": "100vw"
+          },
+          "half": {
+            "$type": "sizing",
+            "$value": "50vw"
+          },
+          "third": {
+            "$type": "sizing",
+            "$value": "33.33vw"
+          },
+          "quarter": {
+            "$type": "sizing",
+            "$value": "25vw"
+          }
+        },
+        "height": {
+          "full": {
+            "$type": "sizing",
+            "$value": "100vh"
+          },
+          "half": {
+            "$type": "sizing",
+            "$value": "50vh"
+          },
+          "third": {
+            "$type": "sizing",
+            "$value": "33.33vh"
+          },
+          "quarter": {
+            "$type": "sizing",
+            "$value": "25vh"
           }
         }
       },
@@ -1401,12 +1484,36 @@
         "full": {
           "$type": "sizing",
           "$value": "{jf.size.full}"
+        },
+        "half": {
+          "$type": "sizing",
+          "$value": "{jf.size.half}"
+        },
+        "third": {
+          "$type": "sizing",
+          "$value": "{jf.size.third}"
+        },
+        "quarter": {
+          "$type": "sizing",
+          "$value": "{jf.size.quarter}"
         }
       },
       "height": {
         "full": {
           "$type": "sizing",
           "$value": "{jf.size.full}"
+        },
+        "half": {
+          "$type": "sizing",
+          "$value": "{jf.size.half}"
+        },
+        "third": {
+          "$type": "sizing",
+          "$value": "{jf.size.third}"
+        },
+        "quarter": {
+          "$type": "sizing",
+          "$value": "{jf.size.quarter}"
         }
       },
       "corner": {
@@ -3773,8 +3880,8 @@
         "jf.border.width.1": "87b95d3281050dc1a2e75d317b3a14f9bd62b180",
         "jf.border.width.2": "c49484c5b9e29aa1e172e5ff3b6b8b0f6b0165be",
         "jf.border.width.3": "a73ad952d77b0677c416e1598b26b35efa4c75c6",
-        "jf.border.width.4": "5c05396b0e438eab9348689fa698b8147a764ed2",
         "jf.border.width.0-5": "2b10cf96cfbaa53e3cd5036f16631ef28118fa8e",
+        "jf.border.width.4": "5c05396b0e438eab9348689fa698b8147a764ed2",
         "jf.corner.radius.0": "a551676148361a34d9b895ddac65d99f3e091607",
         "jf.corner.radius.2": "b1c8822c848b03d660d1f15a5ed570f5a9428156",
         "jf.corner.radius.3": "53e645a6aa48871b296dde1dcdc2440c4874262c",
@@ -3783,6 +3890,8 @@
         "jf.corner.radius.12": "3e80bee328a0533dd8f315ef1c3baa797bc14fb0",
         "jf.corner.radius.20": "3e25bebedb25743fdfdb3650ee2c63f1891a9cdf",
         "jf.corner.radius.40": "849718cd4a2dbb7e6b683c866b21e0bd8af4f423",
+        "jf.corner.radius.circle": "961dd4b69f196ddafa54fe554436baec019b6f25",
+        "jf.corner.radius.pill": "818da570400413ef3e155cdc7e043c394bed40c9",
         "jf.fraction.1": "9e151d96b229532917563f860209d2bee7b6a148",
         "jf.fraction.2": "125c70e5a7e0c57cd53cce0811e98cc192cf559f",
         "jf.fraction.3": "17392881e796c1f52965da4a993de17c0af4696d",
@@ -3798,9 +3907,7 @@
         "jf.scale.100": "a1d7aaeecf63938ccffc848cd054a7027dca36e8",
         "jf.scale.105": "cdceacfd25ccabfb86d758272fa6ece07af3f269",
         "jf.scale.120": "53c2933bec691fe2b21f8edfcd66f4c90e4e73a1",
-        "jf.scale.150": "b06c61eaffd8876ec3820de285cf677c08eea573",
-        "jf.corner.radius.circle": "961dd4b69f196ddafa54fe554436baec019b6f25",
-        "jf.corner.radius.pill": "818da570400413ef3e155cdc7e043c394bed40c9"
+        "jf.scale.150": "b06c61eaffd8876ec3820de285cf677c08eea573"
       }
     },
     {
@@ -4214,12 +4321,12 @@
         "jf.input.color.border.focus": "350d6aa76a929702de868db018cf5131527b78f9",
         "jf.color.bg.surface.tertiary": "6d3c224447fa4926c1afe193b4681892e00525c1",
         "jf.control.border.focus": "341f0f6cc10a9fb74c45a457143c689db574dc31",
-        "jf.gradient.brand-primary.start": "21061dd18e6f29f6505604075f6ab9b4e08354da",
-        "jf.gradient.brand-primary.end": "4dfd850fbafb687525a661df21b93c35fa086ce9",
-        "jf.gradient.accent.start": "d25081489f2108a07f2a53c356d915596ddb6dd1",
-        "jf.gradient.accent.end": "aa5de07543d87b6b945db9e12fdc8dd749e88278",
-        "jf.gradient.neutral.start": "47832f54382887baa1a8d9fa321a0fb1b5a8e753",
-        "jf.gradient.neutral.end": "072bf3ac5f1cdea32cb782db70428a4d7042385e"
+        "jf.gradient.brand-primary.start": "399669e19e94d4e7e9498bb2f4dd4a173e9af4e7",
+        "jf.gradient.brand-primary.end": "33468048cda4cde5a124346cd999e0b3cd29e52e",
+        "jf.gradient.accent.start": "8e27c44ceecc9cae4a05be25c62c167fee3b7046",
+        "jf.gradient.accent.end": "088786580f0948bf62689ec408ea2cbeddf64e45",
+        "jf.gradient.neutral.start": "ec21705c9d848adac8414d41d057aaa90ad5b268",
+        "jf.gradient.neutral.end": "3f5e25cb08f8651fa86281f9f7dec1c6addbe7d6"
       },
       "group": "Color Modes"
     },
@@ -4337,12 +4444,12 @@
         "jf.input.color.bg.default": "1cbeba66292429d74b18952dc519d103f72e2698",
         "jf.input.color.border.focus": "350d6aa76a929702de868db018cf5131527b78f9",
         "jf.control.border.focus": "341f0f6cc10a9fb74c45a457143c689db574dc31",
-        "jf.color.gradient.brand-primary.start": "5d7e342bfc40a3a70ee5e8582cba67137645220a",
-        "jf.color.gradient.brand-primary.end": "16f2ce2c64843a47842e1da14363e288a5fa4228",
-        "jf.color.gradient.accent.start": "eb29f8369bf3dca250a2c0bef817da444574fa71",
-        "jf.color.gradient.accent.end": "91ba40c91192c5fb3f825f831716804602c24562",
-        "jf.color.gradient.neutral.start": "bc1fc6ba618a023bc5db8e2be37c6def6b3fca6e",
-        "jf.color.gradient.neutral.end": "ba4046591d0a7637dbbc2eea865bebfa8b6bde93"
+        "jf.color.gradient.brand-primary.start": "b6a19ca9ce97de6adc2630d3d1f11e0fb62b45fd",
+        "jf.color.gradient.brand-primary.end": "5829f69a72ba3dfaca6358eb042e842cb748092d",
+        "jf.color.gradient.accent.start": "6db531c7c5bdc6a3c8834f28b98f2031540e551d",
+        "jf.color.gradient.accent.end": "7cafbbc4739b46d008f63f2d135bda7d03d93f8b",
+        "jf.color.gradient.neutral.start": "671539af6735ed2478a2a47cd6552a107a421553",
+        "jf.color.gradient.neutral.end": "2350fd8691f5c2c5a2560e7cc7d864e0f929aeae"
       },
       "group": "Color Modes"
     },
