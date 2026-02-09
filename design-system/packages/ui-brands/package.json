@@ -1,0 +1,17 @@
+{
+  "name": "@jellyfish/ui-brands",
+  "version": "1.0.0",
+  "description": "Pacote de componentes específicos de marcas",
+  "main": "index.js",
+  "dependencies": {
+    "@jellyfish/tokens": "workspace:*",
+    "@jellyfish/ui": "workspace:*",
+    "styled-components": "^6.3.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

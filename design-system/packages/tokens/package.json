@@ -1,10 +1,41 @@
 {
-  "name": "tokens",
+  "name": "@jellyfish/tokens",
   "version": "0.0.0",
-  "private": true,
+  "description": "Jellyfish Design System Tokens",
+  "keywords": ["design system", "design tokens", "jellyfish", "Ana Takahashi"],
+  "author": "Ana Takahashi",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "main": "./build/js/themes/core/tokens.js",
+  "types": "./build/js/themes/core/tokens.d.ts",
+  "files": [
+    "build",
+    "config",
+    "scripts",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./build/js/themes/core/tokens.d.ts",
+      "import": "./build/js/themes/core/tokens.js",
+      "default": "./build/js/themes/core/tokens.js"
+    },
+    "./config": {
+      "import": "./config/index.js",
+      "default": "./config/index.js"
+    },
+    "./build/*": "./build/*"
+  },
   "scripts": {
     "dev": "echo 'Add dev script here'",
-    "build": "echo 'Add build script here'",
+    "build": "node scripts/build.js",
+    "tokens:build": "node scripts/build.js",
+    "tokens:clean": "node scripts/clean.js",
+    "version:patch": "pnpm version patch",
+    "version:minor": "pnpm version minor",
+    "version:major": "pnpm version major",
+    "prepublishOnly": "pnpm run build",
     "test": "echo 'Add test script here'",
     "lint": "echo 'Add lint script here'"
   },
