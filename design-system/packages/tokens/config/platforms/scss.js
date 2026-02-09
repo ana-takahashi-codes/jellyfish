@@ -17,7 +17,7 @@ export function getScssPlatform(theme, buildPath, outputOnly, manifest, options 
   const files = buildScssFiles(theme, outputOnly, manifest, options.extraSetKeys)
   return {
     transformGroup: 'tokens-studio',
-    transforms: ['name/kebab'],
+    transforms: ['name/kebab', 'value/duration', 'value/cubic-bezier', 'value/transition-shorthand'],
     buildPath,
     files: files.map(({ destination, format = 'scss/variables', filter }) => ({
       destination,

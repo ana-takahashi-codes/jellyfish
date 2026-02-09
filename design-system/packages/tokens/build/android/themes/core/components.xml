@@ -31,7 +31,7 @@
   <dimen name="jf_control_corner_radius">32.00dp*3</dimen>
   <dimen name="jf_control_gap">32.00dp*2</dimen>
   <dimen name="jf_control_padding_horizontal">32.00dp*6</dimen>
-  <color name="jf_control_bg_active">oklch(0 0 0 / 20%)</color>
+  <color name="jf_control_bg_overlay_active">oklch(0 0 0 / 20%)</color>
   <dimen name="jf_form_gap_compact">32.00dp*6</dimen>
   <dimen name="jf_form_gap_regular">32.00dp*8</dimen>
   <dimen name="jf_form_gap_comfort">32.00dp*12</dimen>

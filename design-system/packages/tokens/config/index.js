@@ -18,8 +18,10 @@ import formatCssVariablesDark from './formats/css-variables-dark.js'
 import formatCssResponsive from './formats/css-responsive.js'
 import formatCssTypographyClasses from './formats/css-typography-classes.js'
 import formatScssTypographyClasses from './formats/scss-typography-classes.js'
+import { registerCustomTransforms } from './transforms/index.js'
 
 register(StyleDictionary)
+registerCustomTransforms(StyleDictionary)
 StyleDictionary.registerFormat(formatCssVariablesDark)
 StyleDictionary.registerFormat(formatCssResponsive)
 StyleDictionary.registerFormat(formatCssTypographyClasses)

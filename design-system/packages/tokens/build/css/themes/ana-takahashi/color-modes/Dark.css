@@ -1,0 +1,23 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --jf-color-bg-accent-soft: #0f0e20;
+    --jf-color-bg-brand-primary-soft: #8d1657;
+    --jf-color-bg-accent: #3e4789;
+    --jf-color-bg-brand-primary: #fb65b7;
+    --jf-color-fg-accent: #5865a7;
+    --jf-color-fg-brand-primary: #ffade2;
+    --jf-color-border-brand-primary: #fb65b7;
+    --jf-color-border-accent: #3e4789;
+    --jf-color-shadow-accent: #3e478940;
+    --jf-color-shadow-brand-primary: #fb65b740;
+    --jf-color-gradient-brand-primary-start: #5a072e;
+    --jf-color-gradient-brand-primary-end: #fb65b7;
+    --jf-color-gradient-accent-start: #0f0e20;
+    --jf-color-gradient-accent-end: #31396d;
+    --jf-input-color-border-focus: #fb65b7;
+  }
+}

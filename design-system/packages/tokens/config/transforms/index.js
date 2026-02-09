@@ -1,8 +1,14 @@
 /**
  * Custom Style Dictionary transforms.
- * Register any project-specific transforms here and reference them in platform configs.
- * Currently empty; add transforms as needed (e.g. name/prefix, value/unit).
+ * Entry-point: compose and register all project-specific transforms.
  */
 
-// Example: export a filter factory for reuse
-// export function createSetFilter(setKeys) { ... }
+import { registerDurationTransform } from './value-duration.js'
+import { registerCubicBezierTransform } from './value-cubic-bezier.js'
+import { registerTransitionTransform } from './value-transition-shorthand.js'
+
+export function registerCustomTransforms(StyleDictionary) {
+  registerDurationTransform(StyleDictionary)
+  registerCubicBezierTransform(StyleDictionary)
+  registerTransitionTransform(StyleDictionary)
+}

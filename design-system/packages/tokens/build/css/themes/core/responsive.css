@@ -1,0 +1,42 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+/* xs */
+@media (min-width: 540px) {
+  :root {
+    --jf-control-height-sm: 36px;
+    --jf-control-height-md: 44px;
+    --jf-control-height-lg: 48px;
+    --jf-control-min-width-sm: 36px;
+    --jf-control-min-width-md: 44px;
+    --jf-control-min-width-lg: 48px;
+    --jf-section-padding-horizontal: 16px;
+  }
+}
+
+/* md */
+@media (min-width: 1200px) {
+  :root {
+    --jf-control-height-sm: 36px;
+    --jf-control-height-md: 44px;
+    --jf-control-height-lg: 48px;
+    --jf-control-min-width-sm: 36px;
+    --jf-control-min-width-md: 44px;
+    --jf-control-min-width-lg: 48px;
+    --jf-section-padding-horizontal: 20px;
+  }
+}
+
+/* lg */
+@media (min-width: 1536px) {
+  :root {
+    --jf-control-height-sm: 32px;
+    --jf-control-height-md: 40px;
+    --jf-control-height-lg: 48px;
+    --jf-control-min-width-sm: 32px;
+    --jf-control-min-width-md: 40px;
+    --jf-control-min-width-lg: 48px;
+    --jf-section-padding-horizontal: 32px;
+  }
+}
+

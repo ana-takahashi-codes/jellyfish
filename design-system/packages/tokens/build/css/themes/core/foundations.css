@@ -91,6 +91,11 @@
   --jf-corner-radius-lg: 8px;
   --jf-corner-radius-xl: 12px;
   --jf-corner-radius-sm: 4px;
+  --jf-transition-state-change: var(--jf-duration-short) var(--jf-motion-easing-balanced) var(--jf-motion-delay-none);
+  --jf-transition-slide-in: var(--jf-duration-medium) var(--jf-motion-easing-decelerate) var(--jf-motion-delay-none);
+  --jf-transition-slide-out: var(--jf-duration-medium) var(--jf-motion-easing-accelerate) var(--jf-motion-delay-none);
+  --jf-transition-scale: var(--jf-duration-medium) var(--jf-motion-easing-accelerate) var(--jf-motion-delay-none);
+  --jf-transition-fade: var(--jf-duration-medium) var(--jf-motion-easing-balanced) var(--jf-motion-delay-none);
   --jf-grid-cols-lg: 16;
   --jf-grid-cols-md: 12;
   --jf-grid-cols-sm: 6;
@@ -108,6 +113,13 @@
   --jf-screen-lg: 1536px;
   --jf-screen-xl: 1920px;
   --jf-screen-width-full: 100vw;
+  --jf-screen-width-half: 50vw;
+  --jf-screen-width-third: 33.33vw;
+  --jf-screen-width-quarter: 25vw;
+  --jf-screen-height-full: 100vh;
+  --jf-screen-height-half: 50vh;
+  --jf-screen-height-third: 33.33vh;
+  --jf-screen-height-quarter: 25vh;
   --jf-layer-base: 0; /** Also know as z-index */
   --jf-layer-drawer: 450; /** Also know as z-index */
   --jf-layer-modal: 500;
@@ -139,7 +151,13 @@
   --jf-font-code-md: 400 1rem/1.7 'Fira Code';
   --jf-font-code-lg: 400 1.125rem/1.7 'Fira Code';
   --jf-width-full: 100%;
+  --jf-width-half: 50%;
+  --jf-width-third: 33.33%;
+  --jf-width-quarter: 25%;
   --jf-height-full: 100%;
+  --jf-height-half: 50%;
+  --jf-height-third: 33.33%;
+  --jf-height-quarter: 25%;
   --jf-bg-overlay: oklch(0 0 0 / 70%);
   --jf-gradient-linear-brand-primary-to-top: linear-gradient(0deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%);
   --jf-gradient-linear-brand-primary-to-bottom: linear-gradient(180deg, oklch(0.783 0.113 282.35) 0%, oklch(0.603 0.215 282.35) 100%);
