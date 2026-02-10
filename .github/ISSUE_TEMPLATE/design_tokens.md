@@ -6,7 +6,7 @@ labels: design-system, tokens, design
 assignees: ''
 ---
 
-## 🎨 Categoria do Token
+##  Categoria do Token
 
 **Tipo:** [ ] Novo | [ ] Modificação | [ ] Depreciação | [ ] Remoção
 
@@ -23,21 +23,23 @@ assignees: ''
 - [ ] Opacity (Opacidade)
 - [ ] Outro: ___________
 
-## 📋 Descrição
+## Descrição
 
 Descreva o propósito deste token e quando deve ser utilizado.
 
-## 🎯 Motivação
+## Motivação
 
 Por que este token é necessário? Qual problema de design ele resolve?
 
-## 📊 Especificação do Token
+## Especificação do Token
 
 ### Nomenclatura
 ```
 system → subtheme → group → component → element → category → context → property → variant → behavior → intensity → scale
 
 Ex: jf.color.brand-primary, jf.size.10, jf.color.bg.brand-primary
+
+Guia: https://coda.io/@ana-takahashi/jellyfish-design-system/taxonomia-56
 ```
 
 **Nome proposto:** `____________`
@@ -96,7 +98,7 @@ Ex: jf.color.brand-primary, jf.size.10, jf.color.bg.brand-primary
 - [ ] Flutter
 - [ ] Outras: ___________
 
-## 🔧 Implementação Técnica
+## Implementação Técnica
 
 ### Formato de Saída
 
@@ -132,7 +134,7 @@ theme: {
 - [ ] Conversão de unidades
 - [ ] Outras: ___________
 
-## ♿ Acessibilidade
+## Acessibilidade
 
 **Contraste (para cores):**
 - [ ] WCAG AA (4.5:1 para texto normal)
@@ -144,7 +146,7 @@ theme: {
 - Diferenciação de estados
 - Modo de alto contraste
 
-## 📐 Sistema de Design
+## Sistema de Design
 
 **Escala/Sistema:**
 - Segue a escala estabelecida? [ ] Sim | [ ] Não
@@ -154,7 +156,7 @@ theme: {
 - Link: ___________
 - Status: [ ] Sincronizado | [ ] Pendente
 
-## 🔄 Impacto e Migração
+## Impacto e Migração
 
 **Componentes afetados:**
 - Componente 1
@@ -173,7 +175,7 @@ theme: {
 - Nome: ___________
 - Prazo de remoção: ___________
 
-## ✅ Checklist de Implementação
+## Checklist de Implementação
 
 - [ ] Token definido no arquivo de tokens base
 - [ ] Variações de tema implementadas (se aplicável)
@@ -185,7 +187,7 @@ theme: {
 - [ ] Comunicação ao time (changelog)
 - [ ] Code review aprovado
 
-## 📚 Documentação
+## Documentação
 
 **Onde documentar:**
 - [ ] Storybook
@@ -199,7 +201,7 @@ theme: {
 // Exemplo prático de como usar este token
 ```
 
-## 🔗 Referências
+## Referências
 
 - Figma: [link]
 - Issues relacionadas: #
@@ -207,7 +209,7 @@ theme: {
 - Discussões: [link]
 - Especificação W3C/Material/Human Interface: [link]
 
-## 📊 Governança
+## Governança
 
 **Aprovação necessária:**
 - [ ] Design Lead
