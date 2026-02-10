@@ -35,8 +35,9 @@ Por que este token é necessário? Qual problema de design ele resolve?
 
 ### Nomenclatura
 ```
-token-category-variant-state
-Exemplo: color-primary-500, spacing-md, shadow-elevated
+system → subtheme → group → component → element → category → context → property → variant → behavior → intensity → scale
+
+Ex: jf.color.brand-primary, jf.size.10, jf.color.bg.brand-primary
 ```
 
 **Nome proposto:** `____________`
@@ -46,9 +47,9 @@ Exemplo: color-primary-500, spacing-md, shadow-elevated
 **Valor base:**
 ```json
 {
-  "value": "",
-  "type": "",
-  "description": ""
+  "$value": "",
+  "$type": "",
+  "$description": ""
 }
 ```
 
@@ -57,16 +58,16 @@ Exemplo: color-primary-500, spacing-md, shadow-elevated
 **Light Theme:**
 ```json
 {
-  "value": "",
-  "type": ""
+  "$value": "",
+  "$type": ""
 }
 ```
 
 **Dark Theme:**
 ```json
 {
-  "value": "",
-  "type": ""
+  "$value": "",
+  "$type": ""
 }
 ```
 
