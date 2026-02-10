@@ -2,9 +2,10 @@
 name: Design Token
 about: Template para criação ou modificação de design tokens
 title: '[TOKEN] '
+projects:  'JellyFish Tokens'
 labels:
-- status:triage
-- pkg:tokens
+- 'status:triage'
+- 'pkg:tokens'
 assignees: ''
 ---
 
