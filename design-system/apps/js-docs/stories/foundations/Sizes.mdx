@@ -1,0 +1,60 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+import coreTokens from "../../../packages/tokens/src/tokens-studio/core.json";
+
+function isDimensionLeaf(value) {
+  if (value == null || typeof value !== "object") {
+    return false;
+  }
+
+  return value.$type === "dimension" && typeof value.$value === "string";
+}
+
+function extractDimensionTokens(node, path = []) {
+  if (isDimensionLeaf(node)) {
+    return [
+      {
+        name: path.join("."),
+        value: node.$value,
+      },
+    ];
+  }
+
+  if (node == null || typeof node !== "object") {
+    return [];
+  }
+
+  return Object.entries(node).flatMap(([key, child]) =>
+    extractDimensionTokens(child, [...path, key])
+  );
+}
+
+const sizeTokens = extractDimensionTokens(coreTokens);
+
+<Meta title="Foundations/Sizes" />
+
+# Sizes
+
+Tokens de tamanho do pacote `@jellyfish/tokens`, filtrados por `$type: "dimension"`.
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    {sizeTokens.map((token) => (
+      <tr key={token.name}>
+        <td>
+          <code>{token.name}</code>
+        </td>
+        <td>
+          <code>{token.value}</code>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
