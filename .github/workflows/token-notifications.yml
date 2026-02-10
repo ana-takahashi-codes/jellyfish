@@ -826,7 +826,7 @@ jobs:
                             "type": "plain_text",
                             "text": "View Commit"
                           },
-                          "url": "${{ format('{0}/{1}/commit/{2}', github.server_url, github.repository, github.event.workflow_run.head_sha) }}"
+                          "url": "${{ github.event.workflow_run.head_commit.url }}"
                         }
                       ]
                     },
