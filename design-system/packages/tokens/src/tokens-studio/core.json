@@ -3119,11 +3119,9 @@
           }
         },
         "label": {
-          "margin": {
-            "bottom": {
-              "$type": "spacing",
-              "$value": "{jf.size.1}"
-            }
+          "margin-bottom": {
+            "$type": "spacing",
+            "$value": "{jf.size.1}"
           }
         }
       }
