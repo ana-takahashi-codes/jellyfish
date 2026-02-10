@@ -1,5 +1,5 @@
 ---
-name: Novo Componente
+name: Componente
 about: Template para criação ou modificação de componentes
 title: '[COMPONENTE] - Insira o assunto '
 projects: 'JellyFish UI'
