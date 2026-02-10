@@ -1,0 +1,35 @@
+import { Meta, ColorPalette, ColorItem, Subtitle, Title } from '@storybook/addon-docs/blocks'
+
+<Meta title="Foundations/Colors" />
+
+<Title>Colors</Title>
+
+<Subtitle> The JellyFish system has a color scheme that unfolds into specific application contexts.</Subtitle>
+
+## Primitive Colors
+In JellyFish, only pure black and pure white are considered primitive colors. The system does not adopt generic scales such as red, green, or cyan. Colors are defined from a clear purpose of use, directly reflecting their function in the interface from the very beginning.
+
+  
+### White Scales
+<ColorPalette>
+  <ColorItem
+    title="jf.color.white"
+    subtitle="Primitive"
+    colors={{ value: 'oklch(1 0 0)' }}
+  />
+    <ColorItem
+    title="jf.color.alpha.white"
+    subtitle="Alpha Scale"
+    colors={{ 100: 'oklch(1 0 0 / 10%)',
+    200: 'oklch(1 0 0 / 20%)',
+    300: 'oklch(1 0 0 / 30%)',
+    400: 'oklch(1 0 0 / 40%)',
+    500: 'oklch(1 0 0 / 50%)',
+     }}
+  />
+      <ColorItem
+    title="jf.color.alpha.white.200"
+    subtitle="Alpha Scale"
+    colors={{ default: 'oklch(1 0 0 / 20%)' }}
+  />
+</ColorPalette>

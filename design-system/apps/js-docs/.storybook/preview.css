@@ -1,0 +1,40 @@
+/* .storybook/preview.css */
+
+/* Aumentar fonte base da documentação */
+.sbdocs-wrapper {
+    font-size: 1.125rem;
+  }
+  
+  /* Títulos */
+  .sbdocs h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .sbdocs h2 {
+    font-size: 1.75rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sbdocs h3 {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Parágrafos e texto */
+  .sbdocs p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+  
+  /* Código */
+  .sbdocs code {
+    font-size: 0.975rem;
+  }
+  
+  .sbdocs pre code {
+    font-size: 0.975rem;
+  }
