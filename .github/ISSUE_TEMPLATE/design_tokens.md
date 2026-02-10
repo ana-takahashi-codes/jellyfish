@@ -2,7 +2,9 @@
 name: Design Token
 about: Template para criação ou modificação de design tokens
 title: '[TOKEN] '
-labels: design-system, tokens, design
+labels:
+- status:triage
+- pkg:tokens
 assignees: ''
 ---
 

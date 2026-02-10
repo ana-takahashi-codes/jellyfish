@@ -2,7 +2,10 @@
 name: Novo Componente
 about: Template para criação ou modificação de componentes
 title: '[COMPONENTE] '
-labels: component, enhancement
+labels:
+labels:
+- status:triage
+- pkg:ui
 assignees: ''
 ---
 

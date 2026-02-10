@@ -66,12 +66,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     outputs:
-      is_tokens_studio: ${{ steps.detect.outputs.is_tokens_studio }}
-      source_label: ${{ steps.detect.outputs.source_label }}
-      source_icon: ${{ steps.detect.outputs.source_icon }}
-      source_color: ${{ steps.detect.outputs.source_color }}
-      commit_type: ${{ steps.detect.outputs.commit_type }}
-      category_icon: ${{ steps.detect.outputs.category_icon }}
       files_changed: ${{ steps.detect.outputs.files_changed }}
       has_breaking_changes: ${{ steps.detect.outputs.has_breaking_changes }}
       breaking_warning: ${{ steps.detect.outputs.breaking_warning }}
@@ -96,7 +90,7 @@ jobs:
           echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
 
       # Detectar origem do commit e tipo de mudança
-      - name: Detect commit source and analyze changes
+      - name: Analyze token changes
         id: detect
         run: |
           COMMIT_MSG="${{ github.event.head_commit.message || github.event.pull_request.title }}"
@@ -117,38 +111,6 @@ jobs:
           echo "files_changed=$JSON_COUNT" >> $GITHUB_OUTPUT
           
           # ====================================================================
-          # DETECTAR CATEGORIA DE TOKENS ALTERADOS
-          # ====================================================================
-          if echo "$CHANGED_FILES" | grep -qi "color"; then
-            CATEGORY="Colors"
-            CATEGORY_ICON="🎨"
-          elif echo "$CHANGED_FILES" | grep -qi "typography\|font"; then
-            CATEGORY="Typography"
-            CATEGORY_ICON="🔤"
-          elif echo "$CHANGED_FILES" | grep -qi "spacing\|space"; then
-            CATEGORY="Spacing"
-            CATEGORY_ICON="📏"
-          elif echo "$CHANGED_FILES" | grep -qi "border"; then
-            CATEGORY="Borders"
-            CATEGORY_ICON="🔲"
-          elif echo "$CHANGED_FILES" | grep -qi "shadow"; then
-            CATEGORY="Shadows"
-            CATEGORY_ICON="🌑"
-          elif echo "$CHANGED_FILES" | grep -qi "radius"; then
-            CATEGORY="Border Radius"
-            CATEGORY_ICON="⭕"
-          elif echo "$CHANGED_FILES" | grep -qi "size\|sizing"; then
-            CATEGORY="Sizing"
-            CATEGORY_ICON="📐"
-          else
-            CATEGORY="Tokens"
-            CATEGORY_ICON="⚙️"
-          fi
-          
-          echo "commit_type=$CATEGORY" >> $GITHUB_OUTPUT
-          echo "category_icon=$CATEGORY_ICON" >> $GITHUB_OUTPUT
-          
-          # ====================================================================
           # DETECTAR BREAKING CHANGES
           # ====================================================================
           # Verificar se tokens foram removidos (indica possível breaking change)
@@ -166,77 +128,7 @@ jobs:
             echo "breaking_warning=" >> $GITHUB_OUTPUT
           fi
           
-          # ====================================================================
-          # DETECTAR SE VEIO DO TOKENS STUDIO
-          # ====================================================================
-          IS_STUDIO=false
-          
-          # 1. Verificar mensagem de commit (palavras-chave comuns de sync)
-          if echo "$COMMIT_MSG" | grep -qiE "(tokens studio|tokens-studio|update tokens|sync tokens|tokens update|studio sync|from figma|figma sync|design tokens)"; then
-            IS_STUDIO=true
-            SOURCE="Tokens Studio"
-            ICON="🎨"
-            COLOR="#9333EA"  # Roxo do Tokens Studio
-          fi
-          
-          # 2. Verificar autor/email do commit
-          if [[ "$AUTHOR" == "github-actions[bot]" ]] || \
-             [[ "$AUTHOR" == *"tokens-studio"* ]] || \
-             [[ "$AUTHOR" == *"tokens studio"* ]] || \
-             [[ "$AUTHOR" == *"figma"* ]] || \
-             [[ "$AUTHOR_EMAIL" == *"tokens-studio"* ]] || \
-             [[ "$AUTHOR_EMAIL" == *"tokens studio"* ]] || \
-             [[ "$AUTHOR_EMAIL" == *"figma"* ]]; then
-            IS_STUDIO=true
-            SOURCE="Tokens Studio (automated)"
-            ICON="🤖"
-            COLOR="#9333EA"
-          fi
-          
-          # 2a. Verificar actor (GitHub App/bot que executou o workflow)
-          if [[ "$ACTOR" == *"tokens-studio"* ]] || \
-             [[ "$ACTOR" == *"tokensstudio"* ]] || \
-             [[ "$ACTOR" == *"figma"* ]]; then
-            IS_STUDIO=true
-            SOURCE="Tokens Studio (bot)"
-            ICON="🤖"
-            COLOR="#9333EA"
-          fi
-          
-          # 3. Verificar nome da branch (convenções comuns para sync de tokens)
-          if [[ "$BRANCH" == *"tokens-studio"* ]] || \
-             [[ "$BRANCH" == tokens-studio/* ]] || \
-             [[ "$BRANCH" == sync/tokens-studio ]] || \
-             [[ "$BRANCH" == *"figma"* ]] || \
-             [[ "$BRANCH" == figma/* ]] || \
-             [[ "$BRANCH" == design/tokens* ]] || \
-             [[ "$BRANCH" == *"design-tokens"* ]]; then
-            IS_STUDIO=true
-            SOURCE="Tokens Studio Sync"
-            ICON="🔄"
-            COLOR="#9333EA"
-          fi
-          
-          # 4. Verificar padrão de bulk update (3+ arquivos JSON simultaneamente)
-          # Tokens Studio geralmente altera vários arquivos de uma vez
-          if [ "$JSON_COUNT" -ge 3 ] && [ "$IS_STUDIO" = "false" ]; then
-            IS_STUDIO=true
-            SOURCE="Tokens Studio (bulk update)"
-            ICON="📦"
-            COLOR="#9333EA"
-          fi
-          
-          # Se não for do Tokens Studio, é edição manual
-          if [ "$IS_STUDIO" = "false" ]; then
-            SOURCE="Manual Edit"
-            ICON="✏️"
-            COLOR="#2563EB"  # Azul para edição manual
-          fi
-          
-          echo "is_tokens_studio=$IS_STUDIO" >> $GITHUB_OUTPUT
-          echo "source_label=$SOURCE" >> $GITHUB_OUTPUT
-          echo "source_icon=$ICON" >> $GITHUB_OUTPUT
-          echo "source_color=$COLOR" >> $GITHUB_OUTPUT
+          # (Detecção de Tokens Studio removida – mantemos apenas tipo de mudança / breaking)
 
   # ==========================================================================
   # JOB 2: Notificar commits que alteram tokens
@@ -255,27 +147,19 @@ jobs:
             {
               "attachments": [
                 {
-                  "color": "${{ needs.detect-commit-source.outputs.source_color }}",
+                  "color": "#2563EB",
                   "blocks": [
                     {
                       "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "${{ needs.detect-commit-source.outputs.source_icon }} Design Tokens Updated",
-                        "emoji": true
+                        "text": "Design Tokens Updated",
+                        "emoji": false
                       }
                     },
                     {
                       "type": "section",
                       "fields": [
-                        {
-                          "type": "mrkdwn",
-                          "text": "*Source:*\n${{ needs.detect-commit-source.outputs.source_label }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*Category:*\n${{ needs.detect-commit-source.outputs.category_icon }} ${{ needs.detect-commit-source.outputs.commit_type }}"
-                        },
                         {
                           "type": "mrkdwn",
                           "text": "*Author:*\n${{ needs.detect-commit-source.outputs.commit_author }}"
@@ -369,14 +253,14 @@ jobs:
             {
               "attachments": [
                 {
-                  "color": "${{ needs.detect-commit-source.outputs.source_color }}",
+                  "color": "#2563EB",
                   "blocks": [
                     {
                       "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "📝 New Token PR Opened",
-                        "emoji": true
+                        "text": "New Token PR Opened",
+                        "emoji": false
                       }
                     },
                     {
@@ -389,14 +273,6 @@ jobs:
                     {
                       "type": "section",
                       "fields": [
-                        {
-                          "type": "mrkdwn",
-                          "text": "*Source:*\n${{ needs.detect-commit-source.outputs.source_label }}"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "*Category:*\n${{ needs.detect-commit-source.outputs.category_icon }} ${{ needs.detect-commit-source.outputs.commit_type }}"
-                        },
                         {
                           "type": "mrkdwn",
                           "text": "*Author:*\n${{ github.event.pull_request.user.login }}"
@@ -493,8 +369,8 @@ jobs:
                       "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "✅ Token PR Approved",
-                        "emoji": true
+                        "text": "Token PR Approved",
+                        "emoji": false
                       }
                     },
                     {
@@ -581,8 +457,8 @@ jobs:
                       "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "🎉 Token PR Merged",
-                        "emoji": true
+                        "text": "Token PR Merged",
+                        "emoji": false
                       }
                     },
                     {
@@ -684,8 +560,8 @@ jobs:
                       "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "📦 Design Tokens Published",
-                        "emoji": true
+                        "text": "Design Tokens Published",
+                        "emoji": false
                       }
                     },
                     {
@@ -743,7 +619,7 @@ jobs:
                       "elements": [
                         {
                           "type": "mrkdwn",
-                          "text": "🎊 New version available! Update your dependencies to get the latest tokens."
+                          "text": "New version available! Update your dependencies to get the latest tokens."
                         }
                       ]
                     }
@@ -799,8 +675,8 @@ jobs:
                       "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "🚀 Tokens Build Completed",
-                        "emoji": true
+                        "text": "Tokens Build Completed",
+                        "emoji": false
                       }
                     },
                     {
