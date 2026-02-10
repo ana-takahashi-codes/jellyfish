@@ -2,7 +2,8 @@
 name: Design Token
 about: Template para criação ou modificação de design tokens
 title: '[TOKEN] '
-labels: design-system, tokens, design
+projects: 'JelyFish Tokens'
+labels: 'status:triage'
 assignees: ''
 ---
 
