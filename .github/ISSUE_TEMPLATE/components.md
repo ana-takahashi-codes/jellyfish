@@ -2,7 +2,9 @@
 name: Novo Componente
 about: Template para criação ou modificação de componentes
 title: '[COMPONENTE] '
-labels: component, enhancement
+projects: 'JellyFish UI'
+labels:
+- 'status:triage'
 assignees: ''
 ---
 
