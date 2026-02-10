@@ -1,8 +1,8 @@
 ---
 name: Design Token
 about: Template para criação ou modificação de design tokens
-title: '[TOKEN] '
-projects: 'JelyFish Tokens'
+title: '[TOKEN] - Insira o assunto '
+projects: 'JellyFish Tokens'
 labels: 'status:triage'
 assignees: ''
 ---
