@@ -3117,14 +3117,6 @@
             "$type": "typography",
             "$value": "{jf.font.label.xs}"
           }
-        },
-        "label": {
-          "margin": {
-            "bottom": {
-              "$type": "spacing",
-              "$value": "{jf.size.1}"
-            }
-          }
         }
       }
     }
