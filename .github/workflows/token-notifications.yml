@@ -103,6 +103,7 @@ jobs:
           AUTHOR="${{ github.event.head_commit.author.name || github.event.pull_request.user.login }}"
           AUTHOR_EMAIL="${{ github.event.head_commit.author.email || github.event.pull_request.user.email }}"
           BRANCH="${GITHUB_REF#refs/heads/}"
+          ACTOR="${{ github.actor }}"
           
           # Obter arquivos alterados
           if [ "${{ github.event_name }}" == "pull_request" ]; then
@@ -170,10 +171,10 @@ jobs:
           # ====================================================================
           IS_STUDIO=false
           
-          # 1. Verificar mensagem de commit (palavras-chave)
-          if echo "$COMMIT_MSG" | grep -qiE "(tokens studio|update tokens|sync tokens|tokens update|studio sync|from figma|figma sync)"; then
+          # 1. Verificar mensagem de commit (palavras-chave comuns de sync)
+          if echo "$COMMIT_MSG" | grep -qiE "(tokens studio|tokens-studio|update tokens|sync tokens|tokens update|studio sync|from figma|figma sync|design tokens)"; then
             IS_STUDIO=true
-            SOURCE="Tokens Studio Plugin"
+            SOURCE="Tokens Studio"
             ICON="🎨"
             COLOR="#9333EA"  # Roxo do Tokens Studio
           fi
@@ -181,8 +182,10 @@ jobs:
           # 2. Verificar autor/email do commit
           if [[ "$AUTHOR" == "github-actions[bot]" ]] || \
              [[ "$AUTHOR" == *"tokens-studio"* ]] || \
+             [[ "$AUTHOR" == *"tokens studio"* ]] || \
              [[ "$AUTHOR" == *"figma"* ]] || \
              [[ "$AUTHOR_EMAIL" == *"tokens-studio"* ]] || \
+             [[ "$AUTHOR_EMAIL" == *"tokens studio"* ]] || \
              [[ "$AUTHOR_EMAIL" == *"figma"* ]]; then
             IS_STUDIO=true
             SOURCE="Tokens Studio (automated)"
@@ -190,11 +193,24 @@ jobs:
             COLOR="#9333EA"
           fi
           
-          # 3. Verificar nome da branch
-          if [[ "$BRANCH" == tokens-studio/* ]] || \
+          # 2a. Verificar actor (GitHub App/bot que executou o workflow)
+          if [[ "$ACTOR" == *"tokens-studio"* ]] || \
+             [[ "$ACTOR" == *"tokensstudio"* ]] || \
+             [[ "$ACTOR" == *"figma"* ]]; then
+            IS_STUDIO=true
+            SOURCE="Tokens Studio (bot)"
+            ICON="🤖"
+            COLOR="#9333EA"
+          fi
+          
+          # 3. Verificar nome da branch (convenções comuns para sync de tokens)
+          if [[ "$BRANCH" == *"tokens-studio"* ]] || \
+             [[ "$BRANCH" == tokens-studio/* ]] || \
              [[ "$BRANCH" == sync/tokens-studio ]] || \
+             [[ "$BRANCH" == *"figma"* ]] || \
              [[ "$BRANCH" == figma/* ]] || \
-             [[ "$BRANCH" == design/tokens* ]]; then
+             [[ "$BRANCH" == design/tokens* ]] || \
+             [[ "$BRANCH" == *"design-tokens"* ]]; then
             IS_STUDIO=true
             SOURCE="Tokens Studio Sync"
             ICON="🔄"
