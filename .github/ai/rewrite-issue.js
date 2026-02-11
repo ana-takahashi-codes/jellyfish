@@ -77,6 +77,18 @@ function hasLabel(issue, label) {
   return issue.labels.some(l => l.name === label);
 }
 
+/** Retorna true se a issue tiver alguma das labels de token (design token). */
+function isTokenIssue(issue) {
+  const tokenLabels = ["token", "design-token", "design_token", "tokens"];
+  return tokenLabels.some((name) => hasLabel(issue, name));
+}
+
+/** Retorna true se a issue tiver alguma das labels de componente. */
+function isComponentIssue(issue) {
+  const componentLabels = ["component", "components", "componente", "ui"];
+  return componentLabels.some((name) => hasLabel(issue, name));
+}
+
 function alreadyProcessed(issue) {
   return hasLabel(issue, "processed-by-ai");
 }
@@ -153,12 +165,13 @@ Your task: rewrite a raw issue (often created from Slack) into the exact structu
 RULES:
 1. Output ONLY the issue body in Markdown. No YAML frontmatter (---), no "Here is the rewritten issue", no commentary.
 2. Follow the template structure exactly: same sections (##), checkboxes (- [ ]), code blocks, and placeholders. Keep every section from the template.
-3. Preserve all information from the original issue: copy over any concrete details, links, names, and intent. Map them into the right template sections.
-4. Do not invent information. If something is missing in the original, leave the template placeholder or write "A definir" / "A preencher". Never make up token names, values, or requirements.
-5. Language: keep the same language as the original (Portuguese or English). Template section titles stay as in the template.
-6. For Design Tokens: use the taxonomy (e.g. jf.color.*, jf.size.*). Naming and allowed terms must follow the JellyFish terminology (${TERMINOLOGIA_URL}) and taxonomy (${TAXONOMIA_URL}). When suggesting token names, use only terms and structure from the terminology/taxonomy documentation provided in the prompt. For Components: keep the structure (Descrição, Objetivo, Requisitos, Design, Especificações).
-7. Remove any Slack-specific text (e.g. "View in Slack", links to Slack) from the output; keep only content relevant to the issue.
-8. DESIGN TOKEN TEMPLATE — You MUST always include the section "## Categoria do Token" exactly as in the template, with:
+3. SOURCE OF TRUTH — The original issue body (e.g. the Slack message) is the source of truth for concrete data. Whatever the user wrote for token name, token value, hex code, number, description, or any specific detail MUST be copied exactly into the template. Do not replace, "correct", or reinterpret names or values from the message. Only fill from terminology/taxonomy when the user did NOT provide that information.
+4. Preserve all information from the original issue: copy over any concrete details, links, names, and intent. Map them into the right template sections.
+5. Do not invent information. If something is missing in the original, leave the template placeholder or write "A definir" / "A preencher". Never make up token names, values, or requirements.
+6. Language: keep the same language as the original (Portuguese or English). Template section titles stay as in the template.
+7. For Design Tokens: If the user specified a token name or value in the message, use it exactly (e.g. in "Nome proposto" and in the JSON "$value"). Use the JellyFish terminology (${TERMINOLOGIA_URL}) and taxonomy (${TAXONOMIA_URL}) only when the user did not give a name/value, or to suggest structure (jf.category.*) while keeping any user-provided name or value unchanged. For Components: keep the structure (Descrição, Objetivo, Requisitos, Design, Especificações).
+8. Remove any Slack-specific text (e.g. "View in Slack", links to Slack) from the output; keep only content relevant to the issue.
+9. DESIGN TOKEN TEMPLATE — You MUST always include the section "## Categoria do Token" exactly as in the template, with:
    - **Tipo:** Mark exactly ONE checkbox: [x] Novo | [ ] Modificação | [ ] Depreciação | [ ] Remoção. Infer from the original issue: new token / criar / adicionar → Novo; change / alterar / modificar / atualizar → Modificação; deprecar / descontinuar → Depreciação; remover / remoção → Remoção.
    - **Categoria:** Mark the checkbox that matches the token (Color, Typography, Spacing, Size, Border, Shadow, etc.). If unclear, leave one as [x] that best fits or "Outro".
    Do not omit or merge this section. Keep the exact heading and checkbox list from the template.`
@@ -187,14 +200,14 @@ async function rewriteIssue(issue, templatePath) {
     if (terminologia) {
       terminologiaBlock = `
 
-Reference — terminology and taxonomy for token names (use only these terms when suggesting names):
+Reference — terminology and taxonomy (use only when the user did NOT provide a token name in the message; if they did, keep their name/value exactly):
 ---
 ${terminologia}
 ---`
     } else {
       terminologiaBlock = `
 
-When suggesting token names, follow the JellyFish terminology and taxonomy. If no terminology was provided in this prompt, use the structure jf.<category>.<...> and avoid inventing terms. Reference: ${TERMINOLOGIA_URL}`
+When the user did not specify a token name in the message, use JellyFish terminology and structure jf.<category>.<...>. If they did specify a name or value, copy it exactly. Reference: ${TERMINOLOGIA_URL}`
     }
   }
 
@@ -204,11 +217,18 @@ For "## Categoria do Token": infer Tipo from the issue (novo → [x] Novo; alter
 `
     : ""
 
+  const tokenSlackPriority = isDesignToken
+    ? `
+CRITICAL for Design Token: The text below ("Original issue (body)") is the user's message (e.g. from Slack). If it contains a token name, proposed name, or alias — copy it exactly into "Nome proposto" / "Referencia". If it contains a value, hex, number, or JSON — copy it exactly into the "Valor base" or theme JSON "$value" / "$type". Do NOT replace the user's name or value with a different suggestion. Only use terminology to complete when the message does not specify name or value.
+`
+    : ""
+
   const userPrompt = `Rewrite the following issue into the "${templateName}" template.
 ${terminologiaBlock}
 ${tokenTipoReminder}
+${tokenSlackPriority}
 
-Original issue (body):
+Original issue (body) — this is the source of truth for names and values; copy them exactly:
 ---
 ${issue.body || "(empty)"}
 ---
@@ -218,7 +238,7 @@ Template to follow (structure and sections):
 ${template}
 ---
 
-Remember: output only the rewritten issue body in Markdown, matching the template structure. No frontmatter, no extra text. For Design Token, always include "## Categoria do Token" with Tipo and Categoria checkboxes filled.`
+Remember: output only the rewritten issue body in Markdown, matching the template structure. No frontmatter, no extra text. For Design Token, preserve any name or value from the original message; always include "## Categoria do Token" with Tipo and Categoria checkboxes filled.`
 
   if (llm.provider === "gemini") {
     const fullPrompt = `${SYSTEM_CONTEXT}\n\n${userPrompt}`
@@ -280,21 +300,28 @@ async function main() {
       let templatePath
       let projectId
 
-      if (hasLabel(issue, "token")) {
+      // Prioridade: token primeiro; uma única issue não deve cair em dois projetos
+      if (isTokenIssue(issue)) {
         templatePath = ".github/ISSUE_TEMPLATE/design_tokens.md"
         projectId = process.env.TOKENS_PROJECT_ID
-      }
-      if (hasLabel(issue, "component")) {
+      } else if (isComponentIssue(issue)) {
         templatePath = ".github/ISSUE_TEMPLATE/components.md"
         projectId = process.env.UI_PROJECT_ID
       }
 
       if (!templatePath) {
-        console.log("[debug]   => SKIP: sem label 'token' nem 'component' (necessário para escolher template)")
+        console.log(
+          "[debug]   => SKIP: sem label de token (token, design-token, etc.) nem de componente (component, components, etc.)"
+        )
         continue
       }
 
-      console.log("[debug]   => PROCESSANDO (template:", templatePath + ")")
+      console.log(
+        "[debug]   => PROCESSANDO template:",
+        templatePath,
+        "| projeto:",
+        projectId ? (templatePath.includes("design_tokens") ? "TOKENS_PROJECT_ID" : "UI_PROJECT_ID") : "(nenhum)"
+      )
       const newBody = await rewriteIssue(issue, templatePath)
 
       await octokit.issues.update({
@@ -302,7 +329,7 @@ async function main() {
         repo,
         issue_number: issue.number,
         body: newBody,
-        labels: [...issue.labels.map((l) => l.name), "processed-by-ai"],
+        labels: [...issue.labels.map((l) => l.name), "ai-processed"],
       })
 
       if (projectId) {
