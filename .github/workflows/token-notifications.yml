@@ -93,13 +93,6 @@ jobs:
           echo "Build changed: ${{ steps.filter.outputs.build }}"
           echo "Commit SHA: ${{ github.sha }}"
           echo "Event name: ${{ github.event_name }}"
-            build:
-              - 'design-system/packages/tokens/build/**'
-
-      - name: 📋 Debug - Filter Results
-        run: |
-          echo "Tokens changed: ${{ steps.filter.outputs.tokens }}"
-          echo "Build changed: ${{ steps.filter.outputs.build }}"
 
       # Extrair informações do commit
       - name: Extract commit information
