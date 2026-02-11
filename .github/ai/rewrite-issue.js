@@ -157,7 +157,11 @@ RULES:
 4. Do not invent information. If something is missing in the original, leave the template placeholder or write "A definir" / "A preencher". Never make up token names, values, or requirements.
 5. Language: keep the same language as the original (Portuguese or English). Template section titles stay as in the template.
 6. For Design Tokens: use the taxonomy (e.g. jf.color.*, jf.size.*). Naming and allowed terms must follow the JellyFish terminology (${TERMINOLOGIA_URL}) and taxonomy (${TAXONOMIA_URL}). When suggesting token names, use only terms and structure from the terminology/taxonomy documentation provided in the prompt. For Components: keep the structure (Descrição, Objetivo, Requisitos, Design, Especificações).
-7. Remove any Slack-specific text (e.g. "View in Slack", links to Slack) from the output; keep only content relevant to the issue.`
+7. Remove any Slack-specific text (e.g. "View in Slack", links to Slack) from the output; keep only content relevant to the issue.
+8. DESIGN TOKEN TEMPLATE — You MUST always include the section "## Categoria do Token" exactly as in the template, with:
+   - **Tipo:** Mark exactly ONE checkbox: [x] Novo | [ ] Modificação | [ ] Depreciação | [ ] Remoção. Infer from the original issue: new token / criar / adicionar → Novo; change / alterar / modificar / atualizar → Modificação; deprecar / descontinuar → Depreciação; remover / remoção → Remoção.
+   - **Categoria:** Mark the checkbox that matches the token (Color, Typography, Spacing, Size, Border, Shadow, etc.). If unclear, leave one as [x] that best fits or "Outro".
+   Do not omit or merge this section. Keep the exact heading and checkbox list from the template.`
 
 function loadTerminologiaIfExists() {
   try {
@@ -194,8 +198,15 @@ When suggesting token names, follow the JellyFish terminology and taxonomy. If n
     }
   }
 
+  const tokenTipoReminder = isDesignToken
+    ? `
+For "## Categoria do Token": infer Tipo from the issue (novo → [x] Novo; alteração/modificação → [x] Modificação; depreciação → [x] Depreciação; remoção → [x] Remoção). Mark one Categoria (Color, Typography, Spacing, etc.). Keep this section intact.
+`
+    : ""
+
   const userPrompt = `Rewrite the following issue into the "${templateName}" template.
 ${terminologiaBlock}
+${tokenTipoReminder}
 
 Original issue (body):
 ---
@@ -207,7 +218,7 @@ Template to follow (structure and sections):
 ${template}
 ---
 
-Remember: output only the rewritten issue body in Markdown, matching the template structure. No frontmatter, no extra text.`
+Remember: output only the rewritten issue body in Markdown, matching the template structure. No frontmatter, no extra text. For Design Token, always include "## Categoria do Token" with Tipo and Categoria checkboxes filled.`
 
   if (llm.provider === "gemini") {
     const fullPrompt = `${SYSTEM_CONTEXT}\n\n${userPrompt}`

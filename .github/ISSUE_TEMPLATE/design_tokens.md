@@ -14,7 +14,8 @@ assignees: ''
 **Categoria:**
 - [ ] Color (Cores)
 - [ ] Typography (Tipografia)
-- [ ] Spacing (Espaçamento)
+- [ ] Spacing (paddings, margin, gaps)
+- [ ] Size (Tamanho)
 - [ ] Border (Bordas)
 - [ ] Shadow (Sombras)
 - [ ] Border Radius (Raios)
