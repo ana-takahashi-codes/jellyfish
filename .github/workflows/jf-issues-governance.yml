@@ -1,4 +1,4 @@
-name: jf-issues-governance
+name: AI Issues Governance
 
 on:
   schedule:
@@ -30,4 +30,4 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           TOKENS_PROJECT_ID: ${{ secrets.TOKENS_PROJECT_ID }}
           UI_PROJECT_ID: ${{ secrets.UI_PROJECT_ID }}
-          MAX_ISSUES_PER_RUN: ${{ vars.MAX_ISSUES_PER_RUN }}
+          MAX_ISSUES_PER_RUN: ${{ vars.MAX_ISSUES_PER_RUN }}"

@@ -16,7 +16,11 @@ function getLLMClient() {
     }
   }
   if (process.env.GEMINI_API_KEY) {
-    return { provider: "gemini", client: null, model: "gemini-1.5-flash" }
+    return {
+      provider: "gemini",
+      client: null,
+      model: process.env.GEMINI_MODEL || "gemini-2.5-flash",
+    }
   }
   if (process.env.OPENAI_API_KEY) {
     return {
