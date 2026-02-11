@@ -170,7 +170,7 @@ RULES:
 5. Do not invent information. If something is missing in the original, leave the template placeholder or write "A definir" / "A preencher". Never make up token names, values, or requirements.
 6. Language: keep the same language as the original (Portuguese or English). Template section titles stay as in the template.
 7. For Design Tokens: If the user specified a token name or value in the message, use it exactly (e.g. in "Nome proposto" and in the JSON "$value"). Use the JellyFish terminology (${TERMINOLOGIA_URL}) and taxonomy (${TAXONOMIA_URL}) only when the user did not give a name/value, or to suggest structure (jf.category.*) while keeping any user-provided name or value unchanged. For Components: keep the structure (Descrição, Objetivo, Requisitos, Design, Especificações).
-8. ORIGINAL MESSAGE IN DESCRIPTION — Always keep the full original message (including any Slack link, e.g. "View in Slack", "View conversation") inside the Description section. Add a subsection such as "Mensagem original" or "Contexto (Slack)" and paste the original body there verbatim, so the link and context are preserved. Do not remove Slack links or the original text from the issue.
+8. DESIGN TOKEN — "## Descrição": The content of this section MUST be the full original message (e.g. from Slack), pasted verbatim directly below the heading "## Descrição". Include the Slack link and all text; do not remove or summarize. "## Motivação": Fill from the message (why the token is needed); if the message does not say, write "A definir". Do not leave Descrição or Motivação empty. For Components: keep the original message in the description section (e.g. under "Contexto (Slack)" or as the main description content).
 9. DESIGN TOKEN TEMPLATE — You MUST always include the section "## Categoria do Token" exactly as in the template, with:
    - **Tipo:** Mark exactly ONE checkbox: [x] Novo | [ ] Modificação | [ ] Depreciação | [ ] Remoção. Infer from the original issue: new token / criar / adicionar → Novo; change / alterar / modificar / atualizar → Modificação; deprecar / descontinuar → Depreciação; remover / remoção → Remoção.
    - **Categoria:** Mark the checkbox that matches the token (Color, Typography, Spacing, Size, Border, Shadow, etc.). If unclear, leave one as [x] that best fits or "Outro".
@@ -219,7 +219,10 @@ For "## Categoria do Token": infer Tipo from the issue (novo → [x] Novo; alter
 
   const tokenSlackPriority = isDesignToken
     ? `
-CRITICAL for Design Token: The text below ("Original issue (body)") is the user's message (e.g. from Slack). If it contains a token name, proposed name, or alias — copy it exactly into "Nome proposto" / "Referencia". If it contains a value, hex, number, or JSON — copy it exactly into the "Valor base" or theme JSON "$value" / "$type". Do NOT replace the user's name or value with a different suggestion. Only use terminology to complete when the message does not specify name or value.
+CRITICAL for Design Token:
+- "## Descrição" — The only content under this heading must be the full original message (see "Original issue (body)" below), pasted verbatim: same text, same Slack link. Nothing else. Do not add a subsection title; the content directly under "## Descrição" is the message.
+- "## Motivação" — Fill with the reason from the message (why the token is needed). If the message does not say, write "A definir". Do not leave empty.
+- Token name/value from the message — copy exactly into "Nome proposto" and "Valor base" / "$value". Do not replace with a different suggestion.
 `
     : ""
 
@@ -238,7 +241,7 @@ Template to follow (structure and sections):
 ${template}
 ---
 
-Remember: output only the rewritten issue body in Markdown, matching the template structure. No frontmatter, no extra text. In the Description section (## Descrição / Descrição do componente), include a subsection "Mensagem original" or "Contexto (Slack)" with the full original message and the Slack link, unchanged. For Design Token, preserve any name or value from the original message; always include "## Categoria do Token" with Tipo and Categoria checkboxes filled.`
+Remember: output only the rewritten issue body in Markdown, matching the template structure. No frontmatter, no extra text. For Design Token: under "## Descrição" put only the full original message (with Slack link), verbatim; under "## Motivação" put the reason or "A definir"; never leave those sections empty. Preserve any name or value from the original message; always include "## Categoria do Token" with Tipo and Categoria checkboxes filled. For Component: keep the original message in the description area.`
 
   if (llm.provider === "gemini") {
     const fullPrompt = `${SYSTEM_CONTEXT}\n\n${userPrompt}`
