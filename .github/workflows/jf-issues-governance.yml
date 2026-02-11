@@ -21,7 +21,7 @@ jobs:
         run: npm install openai @octokit/rest
 
       - name: Process issues with AI
-        run: node .github/ai/rewrite.js
+        run: node .github/ai/rewrite-issue.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
