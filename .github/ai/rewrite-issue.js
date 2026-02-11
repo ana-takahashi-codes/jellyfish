@@ -143,27 +143,81 @@ async function callOpenAICompatible(options, maxRetries = 3) {
   }
 }
 
+const TERMINOLOGIA_URL = "https://coda.io/@ana-takahashi/jellyfish-design-system/terminologia-59"
+const TAXONOMIA_URL = "https://coda.io/@ana-takahashi/jellyfish-design-system/taxonomia-56"
+const TERMINOLOGIA_FILE = ".github/ai/terminologia-tokens.md"
+
+const SYSTEM_CONTEXT = `You are a Design System Governance AI for the JellyFish Design System.
+Your task: rewrite a raw issue (often created from Slack) into the exact structure of the given GitHub issue template.
+
+RULES:
+1. Output ONLY the issue body in Markdown. No YAML frontmatter (---), no "Here is the rewritten issue", no commentary.
+2. Follow the template structure exactly: same sections (##), checkboxes (- [ ]), code blocks, and placeholders. Keep every section from the template.
+3. Preserve all information from the original issue: copy over any concrete details, links, names, and intent. Map them into the right template sections.
+4. Do not invent information. If something is missing in the original, leave the template placeholder or write "A definir" / "A preencher". Never make up token names, values, or requirements.
+5. Language: keep the same language as the original (Portuguese or English). Template section titles stay as in the template.
+6. For Design Tokens: use the taxonomy (e.g. jf.color.*, jf.size.*). Naming and allowed terms must follow the JellyFish terminology (${TERMINOLOGIA_URL}) and taxonomy (${TAXONOMIA_URL}). When suggesting token names, use only terms and structure from the terminology/taxonomy documentation provided in the prompt. For Components: keep the structure (Descrição, Objetivo, Requisitos, Design, Especificações).
+7. Remove any Slack-specific text (e.g. "View in Slack", links to Slack) from the output; keep only content relevant to the issue.`
+
+function loadTerminologiaIfExists() {
+  try {
+    if (fs.existsSync(TERMINOLOGIA_FILE)) {
+      const raw = fs.readFileSync(TERMINOLOGIA_FILE, "utf8").trim()
+      const withoutComments = raw.replace(/<!--[\s\S]*?-->/g, "").trim()
+      return withoutComments.length >= 80 ? withoutComments : null
+    }
+  } catch {
+    // ignore
+  }
+  return null
+}
+
 async function rewriteIssue(issue, templatePath) {
   const template = fs.readFileSync(templatePath, "utf8")
-  const systemPrompt = `You are a Design System Governance AI.
-Rewrite the issue using the provided template.
-Preserve the original intent and context.
-Do not invent information.`
-  const userPrompt = `Original issue:
-${issue.body}
+  const isDesignToken = templatePath.includes("design_tokens")
+  const templateName = isDesignToken ? "Design Token" : "Componente"
 
-Template:
-${template}`
+  let terminologiaBlock = ""
+  if (isDesignToken) {
+    const terminologia = loadTerminologiaIfExists()
+    if (terminologia) {
+      terminologiaBlock = `
+
+Reference — terminology and taxonomy for token names (use only these terms when suggesting names):
+---
+${terminologia}
+---`
+    } else {
+      terminologiaBlock = `
+
+When suggesting token names, follow the JellyFish terminology and taxonomy. If no terminology was provided in this prompt, use the structure jf.<category>.<...> and avoid inventing terms. Reference: ${TERMINOLOGIA_URL}`
+    }
+  }
+
+  const userPrompt = `Rewrite the following issue into the "${templateName}" template.
+${terminologiaBlock}
+
+Original issue (body):
+---
+${issue.body || "(empty)"}
+---
+
+Template to follow (structure and sections):
+---
+${template}
+---
+
+Remember: output only the rewritten issue body in Markdown, matching the template structure. No frontmatter, no extra text.`
 
   if (llm.provider === "gemini") {
-    const fullPrompt = `${systemPrompt}\n\n${userPrompt}`
+    const fullPrompt = `${SYSTEM_CONTEXT}\n\n${userPrompt}`
     return callGemini(fullPrompt)
   }
 
   return callOpenAICompatible({
     model: llm.model,
     messages: [
-      { role: "system", content: systemPrompt },
+      { role: "system", content: SYSTEM_CONTEXT },
       { role: "user", content: userPrompt },
     ],
   })
