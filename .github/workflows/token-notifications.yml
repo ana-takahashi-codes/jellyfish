@@ -353,7 +353,9 @@ jobs:
       - name: Count changed files
         id: count-files
         run: |
-          FILE_COUNT=$(git diff --name-only origin/${{ github.base_ref }}...origin/${{ github.head_ref }} -- 'design-system/packages/tokens/src/tokens-studio/' | wc -l)
+          # Para PRs (incluindo de forks), use diretamente os SHAs de base e head
+          # em vez de refs remotas origin/base...origin/head, que podem não existir.
+          FILE_COUNT=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" -- 'design-system/packages/tokens/src/tokens-studio/' | wc -l)
           echo "count=$FILE_COUNT" >> $GITHUB_OUTPUT
 
       - name: Send Slack notification for PR opened
