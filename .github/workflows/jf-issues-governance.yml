@@ -1,0 +1,29 @@
+name: jf-issues-governance
+
+on:
+  schedule:
+    - cron: '0 22 * * *' # Ajustar para 19h Brasil conforme UTC
+  workflow_dispatch:
+
+jobs:
+  process-issues:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install openai @octokit/rest
+
+      - name: Process issues with AI
+        run: node .github/ai/rewrite.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TOKENS_PROJECT_ID: ${{ secrets.TOKENS_PROJECT_ID }}
+          UI_PROJECT_ID: ${{ secrets.UI_PROJECT_ID }}
