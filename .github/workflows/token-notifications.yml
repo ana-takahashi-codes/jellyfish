@@ -3,7 +3,8 @@
 # ============================================================================
 # 
 # Este workflow monitora alterações nos tokens do Design System JellyFish
-# e envia notificações contextualizadas para o Slack.
+# e envia notificações contextualizadas para o Slack com detecção automática
+# de origem (Tokens Studio vs Manual).
 #
 # ESTRUTURA DO PROJETO:
 # design-system/packages/tokens/src/tokens-studio/ - Tokens fonte (Tokens Studio)
@@ -12,10 +13,18 @@
 # SECRETS NECESSÁRIOS:
 # - SLACK_WEBHOOK_URL: Webhook URL do Slack para envio de notificações
 #
+# DETECÇÃO DE ORIGEM:
+# O workflow detecta automaticamente se o commit veio do Tokens Studio através de:
+# 1. Mensagem de commit (palavras-chave: "tokens studio", "sync tokens", etc)
+# 2. Autor do commit (github-actions[bot], tokens-studio-bot)
+# 3. Nome da branch (tokens-studio/*, sync/tokens-studio)
+# 4. Padrão de arquivos (3+ arquivos JSON alterados simultaneamente)
+#
 # TROUBLESHOOTING:
 # - Se as notificações não chegarem, verifique o secret SLACK_WEBHOOK_URL
 # - Para debug, cheque os logs do workflow na aba Actions do GitHub
 # - Certifique-se que o webhook tem permissões para postar no canal
+# - Verifique se os paths dos tokens estão corretos para seu projeto
 # ============================================================================
 
 name: Design Tokens Notifications
@@ -25,14 +34,14 @@ on:
   push:
     paths:
       - 'design-system/packages/tokens/src/tokens-studio/**'
-      - 'design-system/packages/tokens/build/**'
+    branches:
+      - '**'  # Todas as branches
 
   # Disparar quando PR é aberta, aprovada ou mergeada
   pull_request:
     types: [opened, closed]
     paths:
       - 'design-system/packages/tokens/src/tokens-studio/**'
-      - 'design-system/packages/tokens/build/**'
 
   # Disparar quando PR recebe review
   pull_request_review:
@@ -50,62 +59,168 @@ on:
 
 jobs:
   # ==========================================================================
-  # JOB 1: Detectar mudanças e preparar contexto
+  # JOB 1: Detectar origem do commit e tipo de mudança
   # ==========================================================================
-  detect-changes:
-    name: Detect Token Changes
+  detect-commit-source:
+    name: Detect Commit Source & Changes
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     outputs:
-      tokens_changed: ${{ steps.filter.outputs.tokens }}
-      build_changed: ${{ steps.filter.outputs.build }}
+      is_tokens_studio: ${{ steps.detect.outputs.is_tokens_studio }}
+      source_label: ${{ steps.detect.outputs.source_label }}
+      source_icon: ${{ steps.detect.outputs.source_icon }}
+      source_color: ${{ steps.detect.outputs.source_color }}
+      commit_type: ${{ steps.detect.outputs.commit_type }}
+      category_icon: ${{ steps.detect.outputs.category_icon }}
+      files_changed: ${{ steps.detect.outputs.files_changed }}
+      has_breaking_changes: ${{ steps.detect.outputs.has_breaking_changes }}
+      breaking_warning: ${{ steps.detect.outputs.breaking_warning }}
       commit_message: ${{ steps.commit-info.outputs.message }}
       commit_author: ${{ steps.commit-info.outputs.author }}
       commit_url: ${{ steps.commit-info.outputs.url }}
       branch_name: ${{ steps.commit-info.outputs.branch }}
     
     steps:
-      - name: 🔍 Debug - Event Information
-        run: |
-          echo "========================================="
-          echo "Event Type: ${{ github.event_name }}"
-          echo "Action: ${{ github.event.action }}"
-          echo "Branch: ${{ github.ref_name }}"
-          echo "Commit SHA: ${{ github.sha }}"
-          echo "========================================="
-
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      # Usar paths-filter para detecção precisa de mudanças
-      - name: Check for token changes
-        uses: dorny/paths-filter@v3
-        id: filter
         with:
-          filters: |
-            tokens:
-              - 'design-system/packages/tokens/src/tokens-studio/**'
-            build:
-              - 'design-system/packages/tokens/build/**'
+          fetch-depth: 2  # Necessário para comparar com commit anterior
 
-      - name: 📋 Debug - Filter Results
-        run: |
-          echo "Tokens changed: ${{ steps.filter.outputs.tokens }}"
-          echo "Build changed: ${{ steps.filter.outputs.build }}"
-          echo "Commit SHA: ${{ github.sha }}"
-          echo "Event name: ${{ github.event_name }}"
-
-      # Extrair informações do commit
+      # Extrair informações básicas do commit
       - name: Extract commit information
         id: commit-info
         run: |
-          {
-            echo "message<<EOF"
-            echo "${{ github.event.head_commit.message || github.event.pull_request.title }}"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+          echo "message=${{ github.event.head_commit.message || github.event.pull_request.title }}" >> $GITHUB_OUTPUT
           echo "author=${{ github.event.head_commit.author.name || github.event.pull_request.user.login }}" >> $GITHUB_OUTPUT
           echo "url=${{ github.event.head_commit.url || github.event.pull_request.html_url }}" >> $GITHUB_OUTPUT
           echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+
+      # Detectar origem do commit e tipo de mudança
+      - name: Detect commit source and analyze changes
+        id: detect
+        run: |
+          COMMIT_MSG="${{ github.event.head_commit.message || github.event.pull_request.title }}"
+          AUTHOR="${{ github.event.head_commit.author.name || github.event.pull_request.user.login }}"
+          AUTHOR_EMAIL="${{ github.event.head_commit.author.email || github.event.pull_request.user.email }}"
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          
+          # Obter arquivos alterados
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'design-system/packages/tokens/src/tokens-studio/')
+          else
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- 'design-system/packages/tokens/src/tokens-studio/')
+          fi
+          
+          # Contar arquivos JSON alterados
+          JSON_COUNT=$(echo "$CHANGED_FILES" | grep -c "\.json$" || echo "0")
+          echo "files_changed=$JSON_COUNT" >> $GITHUB_OUTPUT
+          
+          # ====================================================================
+          # DETECTAR CATEGORIA DE TOKENS ALTERADOS
+          # ====================================================================
+          if echo "$CHANGED_FILES" | grep -qi "color"; then
+            CATEGORY="Colors"
+            CATEGORY_ICON="🎨"
+          elif echo "$CHANGED_FILES" | grep -qi "typography\|font"; then
+            CATEGORY="Typography"
+            CATEGORY_ICON="🔤"
+          elif echo "$CHANGED_FILES" | grep -qi "spacing\|space"; then
+            CATEGORY="Spacing"
+            CATEGORY_ICON="📏"
+          elif echo "$CHANGED_FILES" | grep -qi "border"; then
+            CATEGORY="Borders"
+            CATEGORY_ICON="🔲"
+          elif echo "$CHANGED_FILES" | grep -qi "shadow"; then
+            CATEGORY="Shadows"
+            CATEGORY_ICON="🌑"
+          elif echo "$CHANGED_FILES" | grep -qi "radius"; then
+            CATEGORY="Border Radius"
+            CATEGORY_ICON="⭕"
+          elif echo "$CHANGED_FILES" | grep -qi "size\|sizing"; then
+            CATEGORY="Sizing"
+            CATEGORY_ICON="📐"
+          else
+            CATEGORY="Tokens"
+            CATEGORY_ICON="⚙️"
+          fi
+          
+          echo "commit_type=$CATEGORY" >> $GITHUB_OUTPUT
+          echo "category_icon=$CATEGORY_ICON" >> $GITHUB_OUTPUT
+          
+          # ====================================================================
+          # DETECTAR BREAKING CHANGES
+          # ====================================================================
+          # Verificar se tokens foram removidos (indica possível breaking change)
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            REMOVED_LINES=$(git diff origin/${{ github.base_ref }}...HEAD -- 'design-system/packages/tokens/src/tokens-studio/' | grep -c "^-" | grep -v "^---" || echo "0")
+          else
+            REMOVED_LINES=$(git diff HEAD~1 HEAD -- 'design-system/packages/tokens/src/tokens-studio/' | grep "^-" | grep -v "^---" | wc -l || echo "0")
+          fi
+          
+          if [ "$REMOVED_LINES" -gt 10 ]; then
+            echo "has_breaking_changes=true" >> $GITHUB_OUTPUT
+            echo "breaking_warning=⚠️ Warning: Significant token removals detected ($REMOVED_LINES lines removed)" >> $GITHUB_OUTPUT
+          else
+            echo "has_breaking_changes=false" >> $GITHUB_OUTPUT
+            echo "breaking_warning=" >> $GITHUB_OUTPUT
+          fi
+          
+          # ====================================================================
+          # DETECTAR SE VEIO DO TOKENS STUDIO
+          # ====================================================================
+          IS_STUDIO=false
+          
+          # 1. Verificar mensagem de commit (palavras-chave)
+          if echo "$COMMIT_MSG" | grep -qiE "(tokens studio|update tokens|sync tokens|tokens update|studio sync|from figma|figma sync)"; then
+            IS_STUDIO=true
+            SOURCE="Tokens Studio Plugin"
+            ICON="🎨"
+            COLOR="#9333EA"  # Roxo do Tokens Studio
+          fi
+          
+          # 2. Verificar autor/email do commit
+          if [[ "$AUTHOR" == "github-actions[bot]" ]] || \
+             [[ "$AUTHOR" == *"tokens-studio"* ]] || \
+             [[ "$AUTHOR" == *"figma"* ]] || \
+             [[ "$AUTHOR_EMAIL" == *"tokens-studio"* ]] || \
+             [[ "$AUTHOR_EMAIL" == *"figma"* ]]; then
+            IS_STUDIO=true
+            SOURCE="Tokens Studio (automated)"
+            ICON="🤖"
+            COLOR="#9333EA"
+          fi
+          
+          # 3. Verificar nome da branch
+          if [[ "$BRANCH" == tokens-studio/* ]] || \
+             [[ "$BRANCH" == sync/tokens-studio ]] || \
+             [[ "$BRANCH" == figma/* ]] || \
+             [[ "$BRANCH" == design/tokens* ]]; then
+            IS_STUDIO=true
+            SOURCE="Tokens Studio Sync"
+            ICON="🔄"
+            COLOR="#9333EA"
+          fi
+          
+          # 4. Verificar padrão de bulk update (3+ arquivos JSON simultaneamente)
+          # Tokens Studio geralmente altera vários arquivos de uma vez
+          if [ "$JSON_COUNT" -ge 3 ] && [ "$IS_STUDIO" = "false" ]; then
+            IS_STUDIO=true
+            SOURCE="Tokens Studio (bulk update)"
+            ICON="📦"
+            COLOR="#9333EA"
+          fi
+          
+          # Se não for do Tokens Studio, é edição manual
+          if [ "$IS_STUDIO" = "false" ]; then
+            SOURCE="Manual Edit"
+            ICON="✏️"
+            COLOR="#2563EB"  # Azul para edição manual
+          fi
+          
+          echo "is_tokens_studio=$IS_STUDIO" >> $GITHUB_OUTPUT
+          echo "source_label=$SOURCE" >> $GITHUB_OUTPUT
+          echo "source_icon=$ICON" >> $GITHUB_OUTPUT
+          echo "source_color=$COLOR" >> $GITHUB_OUTPUT
 
   # ==========================================================================
   # JOB 2: Notificar commits que alteram tokens
@@ -113,65 +228,90 @@ jobs:
   notify-commit:
     name: Notify Token Commit
     runs-on: ubuntu-latest
-    needs: detect-changes
-    # Executar apenas em push (não em PRs) e se tokens foram alterados
-    if: |
-      github.event_name == 'push'
+    needs: detect-commit-source
+    if: github.event_name == 'push'
     
     steps:
-      - name: Send Slack notification for commit
+      - name: Send enhanced Slack notification for commit
         uses: slackapi/slack-github-action@v1.26.0
         with:
           payload: |
             {
-              "blocks": [
+              "attachments": [
                 {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "🎨 Design Tokens Updated",
-                    "emoji": true
-                  }
-                },
-                {
-                  "type": "section",
-                  "fields": [
+                  "color": "${{ needs.detect-commit-source.outputs.source_color }}",
+                  "blocks": [
                     {
-                      "type": "mrkdwn",
-                      "text": "*Author:*\n${{ needs.detect-changes.outputs.commit_author }}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Branch:*\n`${{ needs.detect-changes.outputs.branch_name }}`"
-                    }
-                  ]
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Commit Message:*\n${{ needs.detect-changes.outputs.commit_message }}"
-                  }
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
+                      "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "View Commit"
-                      },
-                      "url": "${{ needs.detect-changes.outputs.commit_url }}"
-                    }
-                  ]
-                },
-                {
-                  "type": "context",
-                  "elements": [
+                        "text": "${{ needs.detect-commit-source.outputs.source_icon }} Design Tokens Updated",
+                        "emoji": true
+                      }
+                    },
                     {
-                      "type": "mrkdwn",
-                      "text": "Repository: ${{ github.repository }}"
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Source:*\n${{ needs.detect-commit-source.outputs.source_label }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Category:*\n${{ needs.detect-commit-source.outputs.category_icon }} ${{ needs.detect-commit-source.outputs.commit_type }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Author:*\n${{ needs.detect-commit-source.outputs.commit_author }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Branch:*\n`${{ needs.detect-commit-source.outputs.branch_name }}`"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Files Changed:*\n${{ needs.detect-commit-source.outputs.files_changed }} files"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*Commit Message:*\n${{ needs.detect-commit-source.outputs.commit_message }}"
+                      }
+                    },
+                    ${{ needs.detect-commit-source.outputs.has_breaking_changes == 'true' && format('{{ "type": "section", "text": {{ "type": "mrkdwn", "text": "{0}" }} }},', needs.detect-commit-source.outputs.breaking_warning) || '' }}
+                    {
+                      "type": "actions",
+                      "elements": [
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View Commit"
+                          },
+                          "url": "${{ needs.detect-commit-source.outputs.commit_url }}",
+                          "style": "primary"
+                        },
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View Changes"
+                          },
+                          "url": "${{ needs.detect-commit-source.outputs.commit_url }}/files"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "${{ github.repository }} • ${{ github.event.head_commit.id }}"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -188,7 +328,7 @@ jobs:
   notify-pr-opened:
     name: Notify PR Opened
     runs-on: ubuntu-latest
-    # Executar apenas quando PR é aberta
+    needs: detect-commit-source
     if: |
       github.event_name == 'pull_request' && 
       github.event.action == 'opened'
@@ -211,71 +351,85 @@ jobs:
         with:
           payload: |
             {
-              "blocks": [
+              "attachments": [
                 {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "📝 New Token PR Opened",
-                    "emoji": true
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*${{ github.event.pull_request.title }}*"
-                  }
-                },
-                {
-                  "type": "section",
-                  "fields": [
+                  "color": "${{ needs.detect-commit-source.outputs.source_color }}",
+                  "blocks": [
                     {
-                      "type": "mrkdwn",
-                      "text": "*Author:*\n${{ github.event.pull_request.user.login }}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Files Changed:*\n${{ steps.count-files.outputs.count }} token files"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*From:*\n`${{ github.head_ref }}`"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*To:*\n`${{ github.base_ref }}`"
-                    }
-                  ]
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
+                      "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "Review PR"
-                      },
-                      "url": "${{ github.event.pull_request.html_url }}",
-                      "style": "primary"
+                        "text": "📝 New Token PR Opened",
+                        "emoji": true
+                      }
                     },
                     {
-                      "type": "button",
+                      "type": "section",
                       "text": {
-                        "type": "plain_text",
-                        "text": "View Changes"
-                      },
-                      "url": "${{ github.event.pull_request.html_url }}/files"
-                    }
-                  ]
-                },
-                {
-                  "type": "context",
-                  "elements": [
+                        "type": "mrkdwn",
+                        "text": "*${{ github.event.pull_request.title }}*"
+                      }
+                    },
                     {
-                      "type": "mrkdwn",
-                      "text": "PR #${{ github.event.pull_request.number }} • ${{ github.repository }}"
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Source:*\n${{ needs.detect-commit-source.outputs.source_label }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Category:*\n${{ needs.detect-commit-source.outputs.category_icon }} ${{ needs.detect-commit-source.outputs.commit_type }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Author:*\n${{ github.event.pull_request.user.login }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Files Changed:*\n${{ steps.count-files.outputs.count }} token files"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*From:*\n`${{ github.head_ref }}`"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*To:*\n`${{ github.base_ref }}`"
+                        }
+                      ]
+                    },
+                    ${{ needs.detect-commit-source.outputs.has_breaking_changes == 'true' && format('{{ "type": "section", "text": {{ "type": "mrkdwn", "text": "{0}" }} }},', needs.detect-commit-source.outputs.breaking_warning) || '' }}
+                    {
+                      "type": "actions",
+                      "elements": [
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "Review PR"
+                          },
+                          "url": "${{ github.event.pull_request.html_url }}",
+                          "style": "primary"
+                        },
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View Changes"
+                          },
+                          "url": "${{ github.event.pull_request.html_url }}/files"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "PR #${{ github.event.pull_request.number }} • ${{ github.repository }}"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -292,7 +446,6 @@ jobs:
   notify-pr-approved:
     name: Notify PR Approved
     runs-on: ubuntu-latest
-    # Executar apenas quando review é submetido e aprovado
     if: |
       github.event_name == 'pull_request_review' && 
       github.event.review.state == 'approved'
@@ -309,71 +462,74 @@ jobs:
           filters: |
             tokens:
               - 'design-system/packages/tokens/src/tokens-studio/**'
-            build:
-              - 'design-system/packages/tokens/build/**'
 
       - name: Send Slack notification for PR approved
-        if: steps.filter.outputs.tokens == 'true' || steps.filter.outputs.build == 'true'
+        if: steps.filter.outputs.tokens == 'true'
         uses: slackapi/slack-github-action@v1.26.0
         with:
           payload: |
             {
-              "blocks": [
+              "attachments": [
                 {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "✅ Token PR Approved",
-                    "emoji": true
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*${{ github.event.pull_request.title }}*"
-                  }
-                },
-                {
-                  "type": "section",
-                  "fields": [
+                  "color": "#16A34A",
+                  "blocks": [
                     {
-                      "type": "mrkdwn",
-                      "text": "*Reviewer:*\n${{ github.event.review.user.login }}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*PR Author:*\n${{ github.event.pull_request.user.login }}"
-                    }
-                  ]
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Review Comment:*\n${{ github.event.review.body || '_No comment provided_' }}"
-                  }
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
+                      "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "View PR"
-                      },
-                      "url": "${{ github.event.pull_request.html_url }}",
-                      "style": "primary"
-                    }
-                  ]
-                },
-                {
-                  "type": "context",
-                  "elements": [
+                        "text": "✅ Token PR Approved",
+                        "emoji": true
+                      }
+                    },
                     {
-                      "type": "mrkdwn",
-                      "text": "PR #${{ github.event.pull_request.number }} • Ready to merge into `${{ github.event.pull_request.base.ref }}`"
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*${{ github.event.pull_request.title }}*"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Reviewer:*\n${{ github.event.review.user.login }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*PR Author:*\n${{ github.event.pull_request.user.login }}"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*Review Comment:*\n${{ github.event.review.body || '_No comment provided_' }}"
+                      }
+                    },
+                    {
+                      "type": "actions",
+                      "elements": [
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View PR"
+                          },
+                          "url": "${{ github.event.pull_request.html_url }}",
+                          "style": "primary"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "PR #${{ github.event.pull_request.number }} • Ready to merge into `${{ github.event.pull_request.base.ref }}`"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -390,7 +546,6 @@ jobs:
   notify-pr-merged:
     name: Notify PR Merged
     runs-on: ubuntu-latest
-    # Executar apenas quando PR é fechada E mergeada
     if: |
       github.event_name == 'pull_request' && 
       github.event.action == 'closed' && 
@@ -402,63 +557,68 @@ jobs:
         with:
           payload: |
             {
-              "blocks": [
+              "attachments": [
                 {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "🎉 Token PR Merged",
-                    "emoji": true
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*${{ github.event.pull_request.title }}*"
-                  }
-                },
-                {
-                  "type": "section",
-                  "fields": [
+                  "color": "#7C3AED",
+                  "blocks": [
                     {
-                      "type": "mrkdwn",
-                      "text": "*Merged by:*\n${{ github.event.pull_request.merged_by.login }}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*PR Author:*\n${{ github.event.pull_request.user.login }}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Into:*\n`${{ github.event.pull_request.base.ref }}`"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*From:*\n`${{ github.event.pull_request.head.ref }}`"
-                    }
-                  ]
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
+                      "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "View Merge Commit"
-                      },
-                      "url": "${{ github.event.pull_request.merge_commit_sha && format('https://github.com/{0}/commit/{1}', github.repository, github.event.pull_request.merge_commit_sha) || github.event.pull_request.html_url }}",
-                      "style": "primary"
-                    }
-                  ]
-                },
-                {
-                  "type": "context",
-                  "elements": [
+                        "text": "🎉 Token PR Merged",
+                        "emoji": true
+                      }
+                    },
                     {
-                      "type": "mrkdwn",
-                      "text": "PR #${{ github.event.pull_request.number }} • ${{ github.repository }} • Tokens will be built and published"
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*${{ github.event.pull_request.title }}*"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Merged by:*\n${{ github.event.pull_request.merged_by.login }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*PR Author:*\n${{ github.event.pull_request.user.login }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Into:*\n`${{ github.event.pull_request.base.ref }}`"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*From:*\n`${{ github.event.pull_request.head.ref }}`"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "actions",
+                      "elements": [
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View Merge Commit"
+                          },
+                          "url": "${{ github.event.pull_request.merge_commit_sha && format('https://github.com/{0}/commit/{1}', github.repository, github.event.pull_request.merge_commit_sha) || github.event.pull_request.html_url }}",
+                          "style": "primary"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "PR #${{ github.event.pull_request.number }} • ${{ github.repository }} • Tokens will be built and published"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -470,12 +630,11 @@ jobs:
         continue-on-error: true
 
   # ==========================================================================
-  # JOB 6: Notificar quando pacote de tokens é publicado
+  # JOB 6: Notificar quando pacote de tokens é publicado via Release
   # ==========================================================================
   notify-package-published:
     name: Notify Package Published
     runs-on: ubuntu-latest
-    # Executar quando uma release é publicada
     if: github.event_name == 'release' && github.event.action == 'published'
     
     steps:
@@ -501,63 +660,76 @@ jobs:
         with:
           payload: |
             {
-              "blocks": [
+              "attachments": [
                 {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "📦 Design Tokens Published",
-                    "emoji": true
-                  }
-                },
-                {
-                  "type": "section",
-                  "fields": [
+                  "color": "#EA580C",
+                  "blocks": [
                     {
-                      "type": "mrkdwn",
-                      "text": "*Package:*\n`${{ steps.package-version.outputs.name }}`"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Version:*\n`${{ steps.package-version.outputs.version }}`"
-                    }
-                  ]
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Release Notes:*\n${{ github.event.release.body || '_No release notes provided_' }}"
-                  }
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
+                      "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "View Release"
-                      },
-                      "url": "${{ github.event.release.html_url }}",
-                      "style": "primary"
+                        "text": "📦 Design Tokens Published",
+                        "emoji": true
+                      }
                     },
                     {
-                      "type": "button",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "View on npm"
-                      },
-                      "url": "https://www.npmjs.com/package/${{ steps.package-version.outputs.name }}"
-                    }
-                  ]
-                },
-                {
-                  "type": "context",
-                  "elements": [
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Package:*\n`${{ steps.package-version.outputs.name }}`"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Version:*\n`${{ steps.package-version.outputs.version }}`"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Published by:*\n${{ github.event.release.author.login }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Tag:*\n`${{ github.event.release.tag_name }}`"
+                        }
+                      ]
+                    },
                     {
-                      "type": "mrkdwn",
-                      "text": "Tag: `${{ github.event.release.tag_name }}` • Published by ${{ github.event.release.author.login }}"
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*Release Notes:*\n${{ github.event.release.body || '_No release notes provided_' }}"
+                      }
+                    },
+                    {
+                      "type": "actions",
+                      "elements": [
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View Release"
+                          },
+                          "url": "${{ github.event.release.html_url }}",
+                          "style": "primary"
+                        },
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View on npm"
+                          },
+                          "url": "https://www.npmjs.com/package/${{ steps.package-version.outputs.name }}"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "🎊 New version available! Update your dependencies to get the latest tokens."
+                        }
+                      ]
                     }
                   ]
                 }
@@ -574,7 +746,6 @@ jobs:
   notify-build-completed:
     name: Notify Build Completed
     runs-on: ubuntu-latest
-    # Executar quando workflow de build é concluído com sucesso
     if: |
       github.event_name == 'workflow_run' && 
       github.event.workflow_run.conclusion == 'success'
@@ -604,64 +775,69 @@ jobs:
         with:
           payload: |
             {
-              "blocks": [
+              "attachments": [
                 {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "🚀 Tokens Build Completed",
-                    "emoji": true
-                  }
-                },
-                {
-                  "type": "section",
-                  "fields": [
+                  "color": "#059669",
+                  "blocks": [
                     {
-                      "type": "mrkdwn",
-                      "text": "*Package:*\n`${{ steps.package-version.outputs.name }}`"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Version:*\n`${{ steps.package-version.outputs.version }}`"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Branch:*\n`${{ github.event.workflow_run.head_branch }}`"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Workflow:*\n${{ github.event.workflow_run.name }}"
-                    }
-                  ]
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
+                      "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "View Workflow Run"
-                      },
-                      "url": "${{ github.event.workflow_run.html_url }}",
-                      "style": "primary"
+                        "text": "🚀 Tokens Build Completed",
+                        "emoji": true
+                      }
                     },
                     {
-                      "type": "button",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "View Commit"
-                      },
-                      "url": "${{ github.server_url }}/${{ github.repository }}/commit/${{ github.event.workflow_run.head_sha }}"
-                    }
-                  ]
-                },
-                {
-                  "type": "context",
-                  "elements": [
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Package:*\n`${{ steps.package-version.outputs.name }}`"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Version:*\n`${{ steps.package-version.outputs.version }}`"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Branch:*\n`${{ github.event.workflow_run.head_branch }}`"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Workflow:*\n${{ github.event.workflow_run.name }}"
+                        }
+                      ]
+                    },
                     {
-                      "type": "mrkdwn",
-                      "text": "Triggered by ${{ github.event.workflow_run.triggering_actor.login }} • ${{ github.repository }}"
+                      "type": "actions",
+                      "elements": [
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View Workflow Run"
+                          },
+                          "url": "${{ github.event.workflow_run.html_url }}",
+                          "style": "primary"
+                        },
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View Commit"
+                          },
+                        "url": "${{ github.server_url }}/${{ github.repository }}/commit/${{ github.event.workflow_run.head_sha }}"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "Triggered by ${{ github.event.workflow_run.triggering_actor.login }} • ${{ github.repository }}"
+                        }
+                      ]
                     }
                   ]
                 }
