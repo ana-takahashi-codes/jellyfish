@@ -25,12 +25,14 @@ on:
   push:
     paths:
       - 'design-system/packages/tokens/src/tokens-studio/**'
+      - 'design-system/packages/tokens/build/**'
 
   # Disparar quando PR é aberta, aprovada ou mergeada
   pull_request:
     types: [opened, closed]
     paths:
       - 'design-system/packages/tokens/src/tokens-studio/**'
+      - 'design-system/packages/tokens/build/**'
 
   # Disparar quando PR recebe review
   pull_request_review:
@@ -55,12 +57,22 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       tokens_changed: ${{ steps.filter.outputs.tokens }}
+      build_changed: ${{ steps.filter.outputs.build }}
       commit_message: ${{ steps.commit-info.outputs.message }}
       commit_author: ${{ steps.commit-info.outputs.author }}
       commit_url: ${{ steps.commit-info.outputs.url }}
       branch_name: ${{ steps.commit-info.outputs.branch }}
     
     steps:
+      - name: 🔍 Debug - Event Information
+        run: |
+          echo "========================================="
+          echo "Event Type: ${{ github.event_name }}"
+          echo "Action: ${{ github.event.action }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "========================================="
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -72,6 +84,13 @@ jobs:
           filters: |
             tokens:
               - 'design-system/packages/tokens/src/tokens-studio/**'
+            build:
+              - 'design-system/packages/tokens/build/**'
+
+      - name: 📋 Debug - Filter Results
+        run: |
+          echo "Tokens changed: ${{ steps.filter.outputs.tokens }}"
+          echo "Build changed: ${{ steps.filter.outputs.build }}"
 
       # Extrair informações do commit
       - name: Extract commit information
@@ -92,7 +111,8 @@ jobs:
     # Executar apenas em push (não em PRs) e se tokens foram alterados
     if: |
       github.event_name == 'push' && 
-      needs.detect-changes.outputs.tokens_changed == 'true'
+      (needs.detect-changes.outputs.tokens_changed == 'true' || 
+       needs.detect-changes.outputs.build_changed == 'true')
     
     steps:
       - name: Send Slack notification for commit
@@ -285,9 +305,11 @@ jobs:
           filters: |
             tokens:
               - 'design-system/packages/tokens/src/tokens-studio/**'
+            build:
+              - 'design-system/packages/tokens/build/**'
 
       - name: Send Slack notification for PR approved
-        if: steps.filter.outputs.tokens == 'true'
+        if: steps.filter.outputs.tokens == 'true' || steps.filter.outputs.build == 'true'
         uses: slackapi/slack-github-action@v1.26.0
         with:
           payload: |
