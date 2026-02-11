@@ -1,7 +1,7 @@
 ---
 name: Design Token
 about: Template para criação ou modificação de design tokens
-title: '[TOKEN] - Insira o assunto '
+title: '[TOKEN-CATEGORY] - Insira o assunto '
 labels: 'status:triage'
 projects: ["JellyFish Tokens"]
 assignees: ''
@@ -20,7 +20,7 @@ assignees: ''
 - [ ] Border Radius (Raios)
 - [ ] Breakpoint (Responsividade)
 - [ ] Animation (Animações)
-- [ ] Z-index (Camadas)
+- [ ] Z-index (Layer)
 - [ ] Opacity (Opacidade)
 - [ ] Outro: ___________
 
@@ -99,35 +99,6 @@ Guia: https://coda.io/@ana-takahashi/jellyfish-design-system/taxonomia-56
 - [ ] Flutter
 - [ ] Outras: ___________
 
-## Implementação Técnica
-
-### Formato de Saída
-
-**CSS:**
-```css
---token-name: value;
-```
-
-**SCSS:**
-```scss
-$token-name: value;
-```
-
-**JavaScript/TypeScript:**
-```typescript
-export const tokenName = 'value';
-```
-
-**Tailwind:**
-```javascript
-theme: {
-  extend: {
-    category: {
-      'token-name': 'value'
-    }
-  }
-}
-```
 
 ### Transformações Necessárias
 - [ ] px para rem
@@ -192,9 +163,8 @@ theme: {
 
 **Onde documentar:**
 - [ ] Storybook
-- [ ] Wiki/Confluence
+- [ ] Wiki/Coda
 - [ ] README do repositório
-- [ ] Site de documentação
 - [ ] Comentários no código
 
 **Exemplos de uso:**
