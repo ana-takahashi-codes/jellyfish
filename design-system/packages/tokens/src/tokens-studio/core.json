@@ -833,10 +833,6 @@
           "900": {
             "$type": "color",
             "$value": "oklch(0.226 0.025 177.95)"
-          },
-          "950": {
-            "$type": "color",
-            "$value": "oklch(0.2122 0.025 177.95)"
           }
         },
         "brand-primary": {
