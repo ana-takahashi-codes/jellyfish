@@ -1,12 +1,39 @@
-import fs from "fs";
-import OpenAI from "openai";
-import { Octokit } from "@octokit/rest";
+import fs from "fs"
+import OpenAI from "openai"
+import { Octokit } from "@octokit/rest"
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+// Provedor de LLM: groq (gratuito) | gemini (gratuito) | openai
+// Defina GROQ_API_KEY ou GEMINI_API_KEY para usar alternativa gratuita; senão usa OPENAI_API_KEY
+function getLLMClient() {
+  if (process.env.GROQ_API_KEY) {
+    return {
+      provider: "groq",
+      client: new OpenAI({
+        apiKey: process.env.GROQ_API_KEY,
+        baseURL: "https://api.groq.com/openai/v1",
+      }),
+      model: "llama-3.1-8b-instant",
+    }
+  }
+  if (process.env.GEMINI_API_KEY) {
+    return { provider: "gemini", client: null, model: "gemini-1.5-flash" }
+  }
+  if (process.env.OPENAI_API_KEY) {
+    return {
+      provider: "openai",
+      client: new OpenAI({ apiKey: process.env.OPENAI_API_KEY }),
+      model: "gpt-4o-mini",
+    }
+  }
+  throw new Error(
+    "Defina um secret: GROQ_API_KEY (gratuito), GEMINI_API_KEY (gratuito) ou OPENAI_API_KEY. Ver .github/workflows/jf-issues-governance.yml"
+  )
+}
 
+const llm = getLLMClient()
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
-});
+})
 
 const owner = process.env.GITHUB_REPOSITORY.split("/")[0];
 const repo = process.env.GITHUB_REPOSITORY.split("/")[1];
@@ -63,35 +90,79 @@ async function moveToProject(issueNodeId, projectId) {
   `);
 }
 
-async function rewriteIssue(issue, templatePath) {
-  const template = fs.readFileSync(templatePath, "utf8");
+async function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
 
-  const response = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [
-      {
-        role: "system",
-        content: `
-You are a Design System Governance AI.
+async function callGemini(prompt, maxRetries = 3) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${llm.model}:generateContent?key=${process.env.GEMINI_API_KEY}`
+  const body = {
+    contents: [{ parts: [{ text: prompt }] }],
+    generationConfig: { temperature: 0.2 },
+  }
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    let res
+    try {
+      res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error?.message || res.statusText)
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text
+      if (!text) throw new Error("Resposta Gemini sem texto")
+      return text
+    } catch (err) {
+      const is429 = res?.status === 429
+      if (attempt === maxRetries) throw err
+      const delay = is429 ? 60000 : 5000
+      console.log("[debug] Gemini", err.message, "- retry em", delay / 1000, "s")
+      await sleep(delay)
+    }
+  }
+}
+
+async function callOpenAICompatible(options, maxRetries = 3) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const response = await llm.client.chat.completions.create(options)
+      return response.choices[0].message.content
+    } catch (err) {
+      const is429 = err.status === 429
+      const isRetryable = is429 || (err.status >= 500 && err.status < 600)
+      if (!isRetryable || attempt === maxRetries) throw err
+      const delay = is429 ? Math.min(60000, 2000 * Math.pow(2, attempt)) : 5000
+      console.log("[debug]", llm.provider, err.status, err.message, "- retry em", delay / 1000, "s")
+      await sleep(delay)
+    }
+  }
+}
+
+async function rewriteIssue(issue, templatePath) {
+  const template = fs.readFileSync(templatePath, "utf8")
+  const systemPrompt = `You are a Design System Governance AI.
 Rewrite the issue using the provided template.
 Preserve the original intent and context.
-Do not invent information.
-        `
-      },
-      {
-        role: "user",
-        content: `
-Original issue:
+Do not invent information.`
+  const userPrompt = `Original issue:
 ${issue.body}
 
 Template:
-${template}
-        `
-      }
-    ],
-  });
+${template}`
 
-  return response.choices[0].message.content;
+  if (llm.provider === "gemini") {
+    const fullPrompt = `${systemPrompt}\n\n${userPrompt}`
+    return callGemini(fullPrompt)
+  }
+
+  return callOpenAICompatible({
+    model: llm.model,
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: userPrompt },
+    ],
+  })
 }
 
 async function main() {
@@ -99,6 +170,7 @@ async function main() {
   yesterday.setDate(yesterday.getDate() - 1)
 
   console.log("[debug] Repo:", owner + "/" + repo)
+  console.log("[debug] LLM:", llm.provider, "model:", llm.model)
   console.log("[debug] Buscando issues abertas atualizadas desde:", yesterday.toISOString())
 
   const { data: issues } = await octokit.issues.listForRepo({
@@ -169,6 +241,12 @@ async function main() {
       }
       processed++
       console.log("[debug]   => OK: issue reescrita e atualizada")
+
+      const maxPerRun = process.env.MAX_ISSUES_PER_RUN ? parseInt(process.env.MAX_ISSUES_PER_RUN, 10) : 0
+      if (maxPerRun > 0 && processed >= maxPerRun) {
+        console.log("[debug] Limite MAX_ISSUES_PER_RUN atingido:", maxPerRun)
+        break
+      }
     } catch (err) {
       console.error("[debug]   => ERRO:", err.message)
     }
