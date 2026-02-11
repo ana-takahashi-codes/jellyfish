@@ -91,6 +91,15 @@ jobs:
         run: |
           echo "Tokens changed: ${{ steps.filter.outputs.tokens }}"
           echo "Build changed: ${{ steps.filter.outputs.build }}"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Event name: ${{ github.event_name }}"
+            build:
+              - 'design-system/packages/tokens/build/**'
+
+      - name: 📋 Debug - Filter Results
+        run: |
+          echo "Tokens changed: ${{ steps.filter.outputs.tokens }}"
+          echo "Build changed: ${{ steps.filter.outputs.build }}"
 
       # Extrair informações do commit
       - name: Extract commit information
@@ -114,9 +123,7 @@ jobs:
     needs: detect-changes
     # Executar apenas em push (não em PRs) e se tokens foram alterados
     if: |
-      github.event_name == 'push' && 
-      (needs.detect-changes.outputs.tokens_changed == 'true' || 
-       needs.detect-changes.outputs.build_changed == 'true')
+      github.event_name == 'push'
     
     steps:
       - name: Send Slack notification for commit
