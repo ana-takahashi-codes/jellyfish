@@ -12,6 +12,7 @@
 #
 # SECRETS NECESSÁRIOS:
 # - SLACK_WEBHOOK_URL: Webhook URL do Slack para envio de notificações
+#   (Para canal PRIVADO: crie um novo webhook no canal privado e atualize o secret.)
 #
 # DETECÇÃO DE ORIGEM:
 # O workflow detecta automaticamente se o commit veio do Tokens Studio através de:
@@ -22,6 +23,12 @@
 #
 # TROUBLESHOOTING:
 # - Se as notificações não chegarem, verifique o secret SLACK_WEBHOOK_URL
+# - CANAL PRIVADO: ao tornar o canal privado, o webhook antigo para de funcionar.
+#   1) No Slack: abra o canal privado > nome do canal > Integrações > Aplicativos
+#   2) Adicione "Incoming Webhooks" (ou crie um novo webhook para este canal)
+#   3) Copie a nova URL do webhook
+#   4) No GitHub: Settings > Secrets and variables > Actions > SLACK_WEBHOOK_URL
+#      > Update com a nova URL
 # - Para debug, cheque os logs do workflow na aba Actions do GitHub
 # - Certifique-se que o webhook tem permissões para postar no canal
 # - Verifique se os paths dos tokens estão corretos para seu projeto
@@ -105,8 +112,11 @@ jobs:
           BRANCH="${GITHUB_REF#refs/heads/}"
           
           # Obter arquivos alterados
+          # Para pull requests, usamos diretamente os SHAs de base e head,
+          # evitando depender de refs como origin/main que podem não existir
+          # em checkouts rasos (shallow clones).
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'design-system/packages/tokens/src/tokens-studio/')
+            CHANGED_FILES=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" -- 'design-system/packages/tokens/src/tokens-studio/')
           else
             CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- 'design-system/packages/tokens/src/tokens-studio/')
           fi
@@ -152,7 +162,7 @@ jobs:
           # ====================================================================
           # Verificar se tokens foram removidos (indica possível breaking change)
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            REMOVED_LINES=$(git diff origin/${{ github.base_ref }}...HEAD -- 'design-system/packages/tokens/src/tokens-studio/' | grep -c "^-" | grep -v "^---" || echo "0")
+            REMOVED_LINES=$(git diff "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" -- 'design-system/packages/tokens/src/tokens-studio/' | grep -c "^-" | grep -v "^---" || echo "0")
           else
             REMOVED_LINES=$(git diff HEAD~1 HEAD -- 'design-system/packages/tokens/src/tokens-studio/' | grep "^-" | grep -v "^---" | wc -l || echo "0")
           fi
