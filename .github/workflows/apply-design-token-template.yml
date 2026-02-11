@@ -1,0 +1,34 @@
+name: Apply Design Token Template
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  apply-template:
+    if: github.event.label.name == 'token'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read template
+        id: template
+        run: |
+          echo "TEMPLATE<<EOF" >> $GITHUB_OUTPUT
+          cat .github/ISSUE_TEMPLATE/design_tokens.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Replace issue body
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const template = process.env.TEMPLATE;
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: template
+            });
+        env:
+          TEMPLATE: ${{ steps.template.outputs.TEMPLATE }}
