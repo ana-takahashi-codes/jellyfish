@@ -6,6 +6,8 @@ on:
 
 jobs:
   apply-template:
+    permissions:
+      issues: write
     if: github.event.label.name == 'token'
     runs-on: ubuntu-latest
     steps:
