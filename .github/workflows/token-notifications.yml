@@ -84,7 +84,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2  # Necessário para comparar com commit anterior
+          # Buscar histórico suficiente para comparar "before" e "after"
+          # em pushes com vários commits.
+          fetch-depth: 0
 
       # Extrair informações básicas do commit
       - name: Extract commit information
@@ -106,9 +108,21 @@ jobs:
           
           # Obter arquivos alterados
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'design-system/packages/tokens/src/tokens-studio/')
+            # Para PRs, use diretamente os SHAs de base e head.
+            CHANGED_FILES=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" -- 'design-system/packages/tokens/src/tokens-studio/')
           else
-            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- 'design-system/packages/tokens/src/tokens-studio/')
+            # Para push, considere TODO o intervalo do push (before..after),
+            # não apenas o último commit. Quando a branch é nova, "before"
+            # vem como 40 zeros, então trate como caso especial.
+            BEFORE="${{ github.event.before }}"
+            AFTER="${{ github.sha }}"
+
+            if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              # Primeiro push da branch: diff apenas do commit AFTER em relação ao seu pai.
+              CHANGED_FILES=$(git diff --name-only "${AFTER}^" "${AFTER}" -- 'design-system/packages/tokens/src/tokens-studio/' || echo "")
+            else
+              CHANGED_FILES=$(git diff --name-only "$BEFORE" "$AFTER" -- 'design-system/packages/tokens/src/tokens-studio/' || echo "")
+            fi
           fi
           
           # Contar arquivos JSON alterados
@@ -152,9 +166,16 @@ jobs:
           # ====================================================================
           # Verificar se tokens foram removidos (indica possível breaking change)
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            REMOVED_LINES=$(git diff origin/${{ github.base_ref }}...HEAD -- 'design-system/packages/tokens/src/tokens-studio/' | grep -c "^-" | grep -v "^---" || echo "0")
+            REMOVED_LINES=$(git diff "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" -- 'design-system/packages/tokens/src/tokens-studio/' | grep -c "^-" | grep -v "^---" || echo "0")
           else
-            REMOVED_LINES=$(git diff HEAD~1 HEAD -- 'design-system/packages/tokens/src/tokens-studio/' | grep "^-" | grep -v "^---" | wc -l || echo "0")
+            BEFORE="${{ github.event.before }}"
+            AFTER="${{ github.sha }}"
+
+            if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              REMOVED_LINES=$(git diff "${AFTER}^" "${AFTER}" -- 'design-system/packages/tokens/src/tokens-studio/' | grep "^-" | grep -v "^---" | wc -l || echo "0")
+            else
+              REMOVED_LINES=$(git diff "$BEFORE" "$AFTER" -- 'design-system/packages/tokens/src/tokens-studio/' | grep "^-" | grep -v "^---" | wc -l || echo "0")
+            fi
           fi
           
           if [ "$REMOVED_LINES" -gt 10 ]; then
@@ -343,7 +364,8 @@ jobs:
       - name: Count changed files
         id: count-files
         run: |
-          FILE_COUNT=$(git diff --name-only origin/${{ github.base_ref }}...origin/${{ github.head_ref }} -- 'design-system/packages/tokens/src/tokens-studio/' | wc -l)
+          # Usar os SHAs da PR em vez de refs origin/* para suportar forks e checkouts rasos
+          FILE_COUNT=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" -- 'design-system/packages/tokens/src/tokens-studio/' | wc -l)
           echo "count=$FILE_COUNT" >> $GITHUB_OUTPUT
 
       - name: Send Slack notification for PR opened
