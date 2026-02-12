@@ -46,12 +46,13 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(tokens): build design tokens"
-          title: "chore(tokens): build design tokens"
+          title: "${{ github.ref_name }}"
           body: |
-            This PR was automatically generated after a commit to Tokens Studio sources.
+            Este PR foi gerado automaticamente após um commit vindo do Tokens Studio.
 
-            - Rebuilt design tokens for `@jellyfish/tokens`
-            - Updated generated artifacts under `design-system/packages/tokens/build`
+            - **Branch de origem**: `${{ github.ref_name }}`
+            - **Mensagem do commit do Tokens Studio**: `${{ github.event.head_commit.message }}`
+            - **Status**: o build de design tokens foi executado e os arquivos gerados/atualizados em `design-system/packages/tokens/build`
           branch: chore/tokens-build-${{ github.ref_name }}
           base: main
           add-paths: |
