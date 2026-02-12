@@ -440,7 +440,8 @@ export const jfInputColorBorderFocus: string;
 export const jfInputColorBgDefault: string;
 export const jfInputHintColorDefault: string;
 export const jfInputHintFont: string;
-export const jfInputLabelMarginBottom: string;
+/** Default size for icons on inputs */
+export const jfInputIconSize: string;
 export const jfGradientBrandPrimaryStart: string;
 export const jfGradientBrandPrimaryEnd: string;
 export const jfGradientAccentStart: string;
