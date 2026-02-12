@@ -50,6 +50,7 @@
   <color name="jf_color_critical_700">oklch(0.422 0.1 28.58)</color>
   <color name="jf_color_critical_800">oklch(0.328 0.112 29.06)</color>
   <color name="jf_color_critical_900">oklch(0.238 0.098 29.23)</color>
+  <color name="jf_color_critical_950">oklch(0.238 0.098 29.23)</color>
   <color name="jf_color_positive_100">oklch(0.953 0.017 151.1)</color>
   <color name="jf_color_positive_200">oklch(0.858 0.053 151.03)</color>
   <color name="jf_color_positive_300">oklch(0.762 0.089 149.33)</color>

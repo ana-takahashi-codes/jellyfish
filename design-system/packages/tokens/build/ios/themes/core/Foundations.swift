@@ -49,6 +49,7 @@ public class {
     public static let jfColorCritical700 = oklch(0.422 0.1 28.58)
     public static let jfColorCritical800 = oklch(0.328 0.112 29.06)
     public static let jfColorCritical900 = oklch(0.238 0.098 29.23)
+    public static let jfColorCritical950 = oklch(0.238 0.098 29.23)
     public static let jfColorDataviz1300 = oklch(0.7799 0.0849 50.62)
     public static let jfColorDataviz1400 = oklch(0.6896 0.1211 51.43)
     public static let jfColorDataviz1500 = oklch(0.606 0.1384 51.69)
