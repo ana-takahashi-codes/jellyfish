@@ -27,7 +27,7 @@
 # - Verifique se os paths dos tokens estão corretos para seu projeto
 # ============================================================================
 
-name: Design Tokens Notifications
+name: Slack Notifications - Design Tokens
 
 on:
   # Disparar em push para detectar commits que alteram tokens
@@ -192,11 +192,11 @@ jobs:
           IS_STUDIO=false
           
           # 1. Verificar mensagem de commit (palavras-chave)
-          if echo "$COMMIT_MSG" | grep -qiE "(tokens studio|update tokens|sync tokens|tokens update|studio sync|from figma|figma sync)"; then
+          if echo "$COMMIT_MSG" | grep -qiE "(tokens studio|update tokens|sync tokens|tokens update|studio sync|from figma|figma sync|figma variables|variables update)"; then
             IS_STUDIO=true
-            SOURCE="Tokens Studio Plugin"
+            SOURCE="Tokens Studio Plugin / Figma Variables"
             ICON="🎨"
-            COLOR="#9333EA"  # Roxo do Tokens Studio
+            COLOR="#9333EA"  # Roxo do Tokens Studio / Figma Variables
           fi
           
           # 2. Verificar autor/email do commit

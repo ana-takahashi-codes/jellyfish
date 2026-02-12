@@ -1,0 +1,50 @@
+name: Slack Notifications - Components
+
+on:
+  issues:
+    types: [labeled]
+  pull_request:
+    types: [labeled]
+
+jobs:
+  notify:
+    if: github.event.label.name == 'Ready to Dev'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Slack notification
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data "{
+            \"text\": \"🚀 *Ready to Dev*\",
+            \"blocks\": [
+              {
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"*${{ github.event.issue.title || github.event.pull_request.title }}*\"
+                }
+              },
+              {
+                \"type\": \"context\",
+                \"elements\": [
+                  {
+                    \"type\": \"mrkdwn\",
+                    \"text\": \"📦 Repo: *${{ github.repository }}*\"
+                  },
+                  {
+                    \"type\": \"mrkdwn\",
+                    \"text\": \"👤 Movido por: *${{ github.actor }}*\"
+                  }
+                ]
+              },
+              {
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"🔗 <${{ github.event.issue.html_url || github.event.pull_request.html_url }}|Abrir no GitHub>\"
+                }
+              }
+            ]
+          }" \
+          ${{ secrets.UI_UPDATE_SLACK }}
