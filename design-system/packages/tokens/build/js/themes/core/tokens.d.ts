@@ -41,6 +41,7 @@ export const jfColorAccent600: string;
 export const jfColorAccent700: string;
 export const jfColorAccent800: string;
 export const jfColorAccent900: string;
+export const jfColorAccent950: string;
 export const jfColorBrandPrimary100: string;
 export const jfColorBrandPrimary200: string;
 export const jfColorBrandPrimary300: string;
@@ -440,7 +441,6 @@ export const jfInputColorBorderFocus: string;
 export const jfInputColorBgDefault: string;
 export const jfInputHintColorDefault: string;
 export const jfInputHintFont: string;
-/** Default size for icons on inputs */
 export const jfInputIconSize: string;
 export const jfGradientBrandPrimaryStart: string;
 export const jfGradientBrandPrimaryEnd: string;
