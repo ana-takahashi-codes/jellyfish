@@ -46,7 +46,6 @@ public class {
     public static let jfInputColorBorderDefault = oklch(87.11% 0.0055 286.29)
     public static let jfInputHintColorDefault = oklch(55.17% 0.0138 285.94)
     public static let jfInputHintFont = [object Object]
-    public static let jfInputIconSize = CGFloat(32.00)*12 /** Default size for icons on inputs */
     public static let jfSectionFontSubtitle = [object Object]
     public static let jfSectionFontTitle = [object Object]
     public static let jfSectionHeightFull = "100%"
