@@ -31,6 +31,7 @@ public class {
     public static let jfColorAccent700 = oklch(0.4 0.052 180.4)
     public static let jfColorAccent800 = oklch(0.316 0.038 184.61)
     public static let jfColorAccent900 = oklch(0.226 0.025 177.95)
+    public static let jfColorAccent950 = oklch(0.226 0.025 177.95)
     public static let jfColorBrandPrimary100 = oklch(0.948 0.026 283.49)
     public static let jfColorBrandPrimary200 = oklch(0.868 0.066 282.11)
     public static let jfColorBrandPrimary300 = oklch(0.783 0.113 282.35)
