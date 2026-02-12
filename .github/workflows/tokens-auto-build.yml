@@ -1,0 +1,59 @@
+name: Build Tokens & Open PR
+
+on:
+  push:
+    paths:
+      - 'design-system/packages/tokens/src/tokens-studio/**'
+
+jobs:
+  build-and-open-pr:
+    name: Build design tokens and create PR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: design-system/pnpm-lock.yaml
+
+      - name: Install dependencies
+        working-directory: design-system
+        run: pnpm install --frozen-lockfile
+
+      - name: Build design tokens
+        working-directory: design-system
+        run: |
+          pnpm --filter @jellyfish/tokens run tokens:clean
+          pnpm --filter @jellyfish/tokens run tokens:build
+
+      - name: Create Pull Request with built tokens
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(tokens): build design tokens"
+          title: "chore(tokens): build design tokens"
+          body: |
+            This PR was automatically generated after a commit to Tokens Studio sources.
+
+            - Rebuilt design tokens for `@jellyfish/tokens`
+            - Updated generated artifacts under `design-system/packages/tokens/build`
+          branch: chore/tokens-build-${{ github.run_id }}
+          base: main
+          add-paths: |
+            design-system/packages/tokens/build/**
+
