@@ -833,10 +833,6 @@
           "900": {
             "$type": "color",
             "$value": "oklch(0.226 0.025 177.95)"
-          },
-          "950": {
-            "$type": "color",
-            "$value": "oklch(0.226 0.025 177.95)"
           }
         },
         "brand-primary": {
@@ -3120,6 +3116,13 @@
           "font": {
             "$type": "typography",
             "$value": "{jf.font.label.xs}"
+          }
+        },
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{jf.size.12}",
+            "$description": "Default size for icons on inputs"
           }
         }
       }
