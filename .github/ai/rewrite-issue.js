@@ -77,33 +77,18 @@ function hasLabel(issue, label) {
   return issue.labels.some(l => l.name === label);
 }
 
-/** Retorna true se a issue tiver alguma das labels de token (design token). */
+/** Label "token" → template design_tokens.md */
 function isTokenIssue(issue) {
-  const tokenLabels = ["token", "design-token", "design_token", "tokens"];
-  return tokenLabels.some((name) => hasLabel(issue, name));
+  return hasLabel(issue, "token");
 }
 
-/** Retorna true se a issue tiver alguma das labels de componente. */
+/** Label "component" → template components.md */
 function isComponentIssue(issue) {
-  const componentLabels = ["component", "components", "componente", "ui"];
-  return componentLabels.some((name) => hasLabel(issue, name));
+  return hasLabel(issue, "component");
 }
 
 function alreadyProcessed(issue) {
   return hasLabel(issue, "processed-by-ai");
-}
-
-async function moveToProject(issueNodeId, projectId) {
-  await octokit.graphql(`
-    mutation {
-      addProjectV2ItemById(input: {
-        projectId: "${projectId}",
-        contentId: "${issueNodeId}"
-      }) {
-        item { id }
-      }
-    }
-  `);
 }
 
 async function sleep(ms) {
@@ -257,23 +242,26 @@ Remember: output only the rewritten issue body in Markdown, matching the templat
   })
 }
 
+/** Data de hoje em UTC no formato YYYY-MM-DD (para filtro created) */
+function getTodayUTC() {
+  const d = new Date()
+  return d.toISOString().slice(0, 10)
+}
+
 async function main() {
-  const yesterday = new Date()
-  yesterday.setDate(yesterday.getDate() - 1)
+  const todayStr = getTodayUTC()
 
   console.log("[debug] Repo:", owner + "/" + repo)
   console.log("[debug] LLM:", llm.provider, "model:", llm.model)
-  console.log("[debug] Buscando issues abertas atualizadas desde:", yesterday.toISOString())
+  console.log("[debug] Buscando apenas issues abertas criadas no dia:", todayStr)
 
-  const { data: issues } = await octokit.issues.listForRepo({
-    owner,
-    repo,
-    state: "open",
-    since: yesterday.toISOString(),
+  const { data } = await octokit.rest.search.issuesAndPullRequests({
+    q: `repo:${owner}/${repo} is:issue is:open created:${todayStr}`,
     per_page: 100,
   })
+  const issues = data.items
 
-  console.log("[debug] Total de issues retornadas:", issues.length)
+  console.log("[debug] Total de issues retornadas (criadas hoje):", issues.length)
 
   let processed = 0
   for (const issue of issues) {
@@ -301,30 +289,21 @@ async function main() {
       }
 
       let templatePath
-      let projectId
 
-      // Prioridade: token primeiro; uma única issue não deve cair em dois projetos
       if (isTokenIssue(issue)) {
         templatePath = ".github/ISSUE_TEMPLATE/design_tokens.md"
-        projectId = process.env.TOKENS_PROJECT_ID
       } else if (isComponentIssue(issue)) {
         templatePath = ".github/ISSUE_TEMPLATE/components.md"
-        projectId = process.env.UI_PROJECT_ID
       }
 
       if (!templatePath) {
         console.log(
-          "[debug]   => SKIP: sem label de token (token, design-token, etc.) nem de componente (component, components, etc.)"
+          "[debug]   => SKIP: falta label \"token\" ou \"component\" (token → design_tokens.md, component → components.md)"
         )
         continue
       }
 
-      console.log(
-        "[debug]   => PROCESSANDO template:",
-        templatePath,
-        "| projeto:",
-        projectId ? (templatePath.includes("design_tokens") ? "TOKENS_PROJECT_ID" : "UI_PROJECT_ID") : "(nenhum)"
-      )
+      console.log("[debug]   => PROCESSANDO template:", templatePath)
       const newBody = await rewriteIssue(issue, templatePath)
 
       await octokit.issues.update({
@@ -335,9 +314,6 @@ async function main() {
         labels: [...issue.labels.map((l) => l.name), "ai-processed"],
       })
 
-      if (projectId) {
-        await moveToProject(issue.node_id, projectId)
-      }
       processed++
       console.log("[debug]   => OK: issue reescrita e atualizada")
 

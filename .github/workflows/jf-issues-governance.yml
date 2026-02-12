@@ -20,6 +20,7 @@ jobs:
       - name: Install dependencies
         run: npm install openai @octokit/rest
 
+      # Processa apenas issues abertas criadas no dia (UTC)
       - name: Process issues with AI
         run: node .github/ai/rewrite-issue.js
         env:
@@ -28,6 +29,4 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          TOKENS_PROJECT_ID: ${{ secrets.TOKENS_PROJECT_ID }}
-          UI_PROJECT_ID: ${{ secrets.UI_PROJECT_ID }}
           MAX_ISSUES_PER_RUN: ${{ vars.MAX_ISSUES_PER_RUN }}"
