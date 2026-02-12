@@ -42,6 +42,7 @@ jobs:
           pnpm --filter @jellyfish/tokens run tokens:build
 
       - name: Create or update Pull Request with built tokens
+        id: create-pr
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -57,4 +58,94 @@ jobs:
           base: main
           add-paths: |
             design-system/packages/tokens/build/**
+
+      - name: Notify Slack about PR creation
+        if: steps.create-pr.outputs.pull-request-number != ''
+        uses: slackapi/slack-github-action@v1.26.0
+        with:
+          payload: |
+            {
+              "channel": "#tokens-update",
+              "attachments": [
+                {
+                  "color": "#9333EA",
+                  "blocks": [
+                    {
+                      "type": "header",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "🚀 New Tokens PR Created",
+                        "emoji": true
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*${{ github.ref_name }}*"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Branch:*\n`${{ github.ref_name }}`"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*PR Number:*\n#${{ steps.create-pr.outputs.pull-request-number }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Commit Message:*\n${{ github.event.head_commit.message }}"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "Este PR foi gerado automaticamente após um commit vindo do Tokens Studio. O build de design tokens foi executado e os arquivos foram gerados/atualizados em `design-system/packages/tokens/build`."
+                      }
+                    },
+                    {
+                      "type": "actions",
+                      "elements": [
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View PR"
+                          },
+                          "url": "${{ steps.create-pr.outputs.pull-request-url }}",
+                          "style": "primary"
+                        },
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View Changes"
+                          },
+                          "url": "${{ steps.create-pr.outputs.pull-request-url }}/files"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "PR #${{ steps.create-pr.outputs.pull-request-number }} • ${{ github.repository }}"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        continue-on-error: true
 
