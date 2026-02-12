@@ -41,7 +41,7 @@ jobs:
           pnpm --filter @jellyfish/tokens run tokens:clean
           pnpm --filter @jellyfish/tokens run tokens:build
 
-      - name: Create Pull Request with built tokens
+      - name: Create or update Pull Request with built tokens
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -52,7 +52,7 @@ jobs:
 
             - Rebuilt design tokens for `@jellyfish/tokens`
             - Updated generated artifacts under `design-system/packages/tokens/build`
-          branch: chore/tokens-build-${{ github.run_id }}
+          branch: chore/tokens-build-${{ github.ref_name }}
           base: main
           add-paths: |
             design-system/packages/tokens/build/**
