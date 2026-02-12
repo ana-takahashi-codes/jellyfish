@@ -46,5 +46,5 @@
   <color name="jf_input_color_border_default">oklch(87.11% 0.0055 286.29)</color>
   <color name="jf_input_hint_color_default">oklch(55.17% 0.0138 285.94)</color>
   <string name="jf_input_hint_font">[object Object]</string>
-  <dimen name="jf_input_label_margin_bottom">32.00dp</dimen>
+  <dimen name="jf_input_icon_size">32.00dp*12</dimen>
 </resources>

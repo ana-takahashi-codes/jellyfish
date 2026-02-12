@@ -45,5 +45,5 @@
   --jf-input-color-border-default: oklch(87.11% 0.0055 286.29);
   --jf-input-hint-color-default: oklch(55.17% 0.0138 285.94);
   --jf-input-hint-font: 500 0.75rem/1.2em 'Google Sans Flex 24pt';
-  --jf-input-label-margin-bottom: 2px;
+  --jf-input-icon-size: 24px; /** Default size for icons on inputs */
 }
