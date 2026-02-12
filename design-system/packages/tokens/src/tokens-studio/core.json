@@ -3121,8 +3121,7 @@
         "icon": {
           "size": {
             "$type": "sizing",
-            "$value": "{jf.size.12}",
-            "$description": "Default size for icons on inputs"
+            "$value": "{jf.size.12}"
           }
         }
       }
