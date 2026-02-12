@@ -947,6 +947,10 @@
           "900": {
             "$type": "color",
             "$value": "oklch(0.238 0.098 29.23)"
+          },
+          "950": {
+            "$type": "color",
+            "$value": "oklch(0.238 0.098 29.23)"
           }
         },
         "positive": {
@@ -3121,8 +3125,7 @@
         "icon": {
           "size": {
             "$type": "sizing",
-            "$value": "{jf.size.12}",
-            "$description": "Default size for icons on inputs"
+            "$value": "{jf.size.10}"
           }
         }
       }
