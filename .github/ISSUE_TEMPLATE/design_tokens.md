@@ -2,53 +2,46 @@
 name: Design Token
 about: Template para criação ou modificação de design tokens
 title: '[TOKEN-CATEGORY] - Insira o assunto '
-labels: 'triage'
-projects: ["JellyFish Tokens"]
-assignees: ''
+labels: ['triage', 'token']
+projects: ['JellyFish Tokens']
 ---
 
-##  Categoria do Token
+##  Tipo de solicitação
 
-**Tipo:** [ ] Novo | [ ] Modificação | [ ] Depreciação | [ ] Remoção
+**Tipo:**
+- [ ] Novo Token
+- [ ] Modificação
+- [ ] Depreciação
+- [ ] Remoção
+
+> Marque apenas **uma opção**.
 
 **Categoria:**
 - [ ] Color (Cores)
 - [ ] Typography (Tipografia)
 - [ ] Spacing (paddings, margin, gaps)
-- [ ] Size (Tamanho)
+- [ ] Size (Tamanho, width, height)
 - [ ] Border (Bordas)
 - [ ] Shadow (Sombras)
 - [ ] Border Radius (Raios)
 - [ ] Breakpoint (Responsividade)
 - [ ] Animation (Animações)
 - [ ] Z-index (Layer)
-- [ ] Opacity (Opacidade)
+- [ ] Opacity (Opacidade,alpha)
 - [ ] Outro: ___________
 
-## Descrição
+## Contexto
 
 Descreva o propósito deste token e quando deve ser utilizado.
 
-## Motivação
-
-Por que este token é necessário? Qual problema de design ele resolve?
-
 ## Especificação do Token
 
-### Nomenclatura
-```
-system → subtheme → group → component → element → category → context → property → variant → behavior → intensity → scale
-
-Ex: jf.color.brand-primary, jf.size.10, jf.color.bg.brand-primary
-
-Guia: https://coda.io/@ana-takahashi/jellyfish-design-system/taxonomia-56
-```
-
-**Nome proposto:** `____________`
+**Nome(s) proposto(s):** 
+- `____________`
 
 ### Valores
 
-**Valor base:**
+**nome-do-token**
 ```json
 {
   "$value": "",
@@ -57,43 +50,50 @@ Guia: https://coda.io/@ana-takahashi/jellyfish-design-system/taxonomia-56
 }
 ```
 
-**Valores por tema (se aplicável):**
+**Valores por Modo de Cor ou plataforma (se aplicável):**
 
-**Light Theme:**
+**LIGHT**
+**nome-do-token:**
 ```json
 {
   "$value": "",
-  "$type": ""
 }
 ```
-
-**Dark Theme:**
+**DARK**
+**nome-do-token:**
 ```json
 {
   "$value": "",
-  "$type": ""
 }
 ```
 
-### Tokens Relacionados
+**SCREEN-SM**
+**nome-do-token:**
+```json
+{
+  "$value": "",
+}
+```
 
-**Referencia:** `____________` (se for um alias)
-**Compõe:** Tokens que utilizam este valor
-**Substitui:** Token antigo sendo depreciado (se aplicável)
+**SCREEN-MD**
+**nome-do-token:**
+```json
+{
+  "$value": "",
+}
+```
 
-## 🎨 Aplicação Visual
+**SCREEN-LG**
+**nome-do-token:**
+```json
+{
+  "$value": "",
+}
+```
 
-**Contextos de uso:**
-- Componente A
-- Componente B
-- Padrão X
+## 📱 Formatos
 
-**Exemplos visuais:**
-[Insira screenshots, links do Figma, ou exemplos visuais]
-
-## 📱 Plataformas
-
-- [ ] Web (CSS/SCSS/CSS-in-JS)
+- [x] Web (CSS/SCSS/CSS-in-JS)
 - [ ] iOS (Swift)
 - [ ] Android (XML/Compose)
 - [ ] React Native
@@ -114,39 +114,11 @@ Guia: https://coda.io/@ana-takahashi/jellyfish-design-system/taxonomia-56
 - [ ] WCAG AAA (7:1 para texto normal)
 - [ ] Não aplicável
 
-**Considerações:**
-- Legibilidade
-- Diferenciação de estados
-- Modo de alto contraste
-
-## Sistema de Design
-
-**Escala/Sistema:**
-- Segue a escala estabelecida? [ ] Sim | [ ] Não
-- Mantém consistência com tokens existentes? [ ] Sim | [ ] Não
 
 **Documentação Figma:**
 - Link: ___________
 - Status: [ ] Sincronizado | [ ] Pendente
 
-## Impacto e Migração
-
-**Componentes afetados:**
-- Componente 1
-- Componente 2
-
-**Breaking changes:**
-- [ ] Sim - Requer migração
-- [ ] Não - Adição não-destrutiva
-
-**Plano de migração (se aplicável):**
-1. Passo 1
-2. Passo 2
-3. Passo 3
-
-**Token depreciado:**
-- Nome: ___________
-- Prazo de remoção: ___________
 
 ## Checklist de Implementação
 
@@ -157,7 +129,7 @@ Guia: https://coda.io/@ana-takahashi/jellyfish-design-system/taxonomia-56
 - [ ] Sincronizado com Figma
 - [ ] Exemplos de uso criados
 - [ ] Testes visuais de regressão executados
-- [ ] Comunicação ao time (changelog)
+- [ ] Comunicação ao time
 - [ ] Code review aprovado
 
 ## Documentação

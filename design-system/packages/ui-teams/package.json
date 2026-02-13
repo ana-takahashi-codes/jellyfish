@@ -1,7 +1,7 @@
 {
-  "name": "@jellyfish/ui-brands",
+  "name": "ui-teams",
   "version": "1.0.0",
-  "description": "Pacote de componentes específicos de marcas",
+  "description": "Pacote de componentes e ativos específicos de times",
   "main": "index.js",
   "dependencies": {
     "@jellyfish/tokens": "workspace:*",
