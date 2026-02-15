@@ -2799,6 +2799,17 @@
               ]
             }
           }
+        },
+        "critical": {
+          "$type": "boxShadow",
+          "$value": {
+            "x": "0",
+            "y": "0",
+            "blur": "0",
+            "spread": "4",
+            "color": "{jf.color.shadow.critical}",
+            "type": "dropShadow"
+          }
         }
       }
     },
@@ -3121,8 +3132,7 @@
         "icon": {
           "size": {
             "$type": "sizing",
-            "$value": "{jf.size.12}",
-            "$description": "Default size for icons on inputs"
+            "$value": "{jf.size.10}"
           }
         }
       }
@@ -3346,6 +3356,19 @@
             },
             "$type": "color",
             "$value": "{jf.color.brand-primary.200}"
+          },
+          "critical": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "{jf.opacity.2}",
+                  "space": "srgb"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{jf.color.critical.500}"
           }
         }
       },
@@ -3629,6 +3652,19 @@
             },
             "$type": "color",
             "$value": "{jf.color.brand-primary.600}"
+          },
+          "critical": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "{jf.opacity.2}",
+                  "space": "srgb"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{jf.color.critical.500}"
           }
         }
       },
@@ -4184,7 +4220,8 @@
         "shadow.brand-primary.top.sm": "S:4a9c8627277b4495bc7e1a549f0944252fcdf185,",
         "shadow.brand-primary.middle.lg": "S:7cd750456857a4fb16564894fc72a61e634065ec,",
         "shadow.brand-primary.middle.md": "S:ed9cfead5f27d76fa2821f167e4386b8b8aa68d2,",
-        "shadow.brand-primary.middle.sm": "S:21606d5901ec29b6cb11a6547105610520538bb2,"
+        "shadow.brand-primary.middle.sm": "S:21606d5901ec29b6cb11a6547105610520538bb2,",
+        "jf.shadow.critical": "S:d9cd79acc7e5d8ce9b33f1b75f62cf7577f12500,"
       },
       "selectedTokenSets": {
         "01- Primitives": "source",
@@ -4433,7 +4470,8 @@
         "jf.input.color.bg.default": "0a215646a2e7d5266131f66cb298b3072f345f04",
         "jf.input.color.border.focus": "b8c045ade0da40316b60acd50d7e4ea4472d0cec",
         "jf.control.border.focus": "3d630dd88122973ee06402fab10b5c4ff3a89011",
-        "jf.control.border.default": "567bd5b4b63d3ded8cbe91c69a6c12416412d3bd"
+        "jf.color.shadow.critical": "8c9386b4cc8c80c8e1f1184ef3e71eee4d614927",
+        "jf.control.border.default": "28fa78452c28b1b1382bc1710734fe94a805d22b"
       },
       "group": "Color Modes"
     },
@@ -4556,7 +4594,8 @@
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
         "jf.input.color.bg.default": "0a215646a2e7d5266131f66cb298b3072f345f04",
         "jf.input.color.border.focus": "b8c045ade0da40316b60acd50d7e4ea4472d0cec",
-        "jf.control.border.focus": "3d630dd88122973ee06402fab10b5c4ff3a89011"
+        "jf.control.border.focus": "3d630dd88122973ee06402fab10b5c4ff3a89011",
+        "jf.color.shadow.critical": "8c9386b4cc8c80c8e1f1184ef3e71eee4d614927"
       },
       "group": "Color Modes"
     },
@@ -4621,7 +4660,8 @@
         "jf.form.gap.comfort": "70a07ccfe6f93d8c0b53cad4370f2ea17ab50657",
         "jf.section.max-width.boxed": "9cf33b0b9714e842924bd62d58d505aebe81e22c",
         "jf.input.color.border.default": "28bfdea08bb765c14c00d092cbaa2ed2905e7dad",
-        "jf.input.hint.color.default": "e171ad0bde79fa2030156e42032b79cbaa1bbeb9"
+        "jf.input.hint.color.default": "e171ad0bde79fa2030156e42032b79cbaa1bbeb9",
+        "jf.input.icon.size": "99ac20b2988b7deb6435e950abe05b61ceeb3673"
       },
       "group": "03 - Components"
     },
