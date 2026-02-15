@@ -3114,6 +3114,14 @@
             "default": {
               "$type": "color",
               "$value": "{jf.color.border.muted}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{jf.color.border.moderated}"
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{jf.color.border.brand-primary}"
             }
           }
         },
