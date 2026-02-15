@@ -376,19 +376,19 @@
       "line-height": {
         "xs": {
           "$type": "lineHeights",
-          "$value": "1.1em"
+          "$value": "110%"
         },
         "sm": {
           "$type": "lineHeights",
-          "$value": "1.2em"
+          "$value": "120%"
         },
         "md": {
           "$type": "lineHeights",
-          "$value": "1.5em"
+          "$value": "150%"
         },
         "lg": {
           "$type": "lineHeights",
-          "$value": "1.7em"
+          "$value": "170%"
         }
       },
       "border": {
@@ -1338,7 +1338,7 @@
               "fontFamily": "{jf.font-family.sans}",
               "fontWeight": "{jf.font-weight.700}",
               "fontSize": "{jf.font-size.2xg}",
-              "lineHeight": "{jf.line-height.sm}",
+              "lineHeight": "{jf.line-height.xs}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           },
@@ -1348,7 +1348,7 @@
               "fontFamily": "{jf.font-family.sans}",
               "fontWeight": "{jf.font-weight.700}",
               "fontSize": "{jf.font-size.3xg}",
-              "lineHeight": "{jf.line-height.sm}",
+              "lineHeight": "{jf.line-height.xs}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           },
@@ -1358,7 +1358,7 @@
               "fontFamily": "{jf.font-family.sans}",
               "fontWeight": "{jf.font-weight.700}",
               "fontSize": "{jf.font-size.4xg}",
-              "lineHeight": "{jf.line-height.sm}",
+              "lineHeight": "{jf.line-height.xs}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           }
@@ -1378,7 +1378,7 @@
             "$value": {
               "fontFamily": "{jf.font-family.sans}",
               "fontSize": "{jf.font-size.md}",
-              "lineHeight": "{jf.line-height.md}",
+              "lineHeight": "{jf.line-height.lg}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           },
@@ -1387,7 +1387,7 @@
             "$value": {
               "fontFamily": "{jf.font-family.sans}",
               "fontSize": "{jf.font-size.lg}",
-              "lineHeight": "{jf.line-height.md}",
+              "lineHeight": "{jf.line-height.lg}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           }
@@ -2885,9 +2885,10 @@
             "$value": {
               "fontFamily": "{jf.font-family.sans}",
               "fontSize": "{jf.font-size.lg}",
-              "lineHeight": "{jf.line-height.md}",
+              "lineHeight": "{jf.line-height.lg}",
               "letterSpacing": "{jf.letter-spacing.regular}",
-              "paragraphSpacing": "{jf.size.16}"
+              "paragraphSpacing": "{jf.size.16}",
+              "paragraphIndent": "{jf.size.16}"
             }
           },
           "title": {
@@ -3056,7 +3057,7 @@
               "fontFamily": "{jf.font-family.decoration}",
               "fontWeight": "{jf.font-weight.700}",
               "fontSize": "{jf.font-size.4xg}",
-              "lineHeight": "{jf.line-height.sm}",
+              "lineHeight": "{jf.line-height.xs}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           },
@@ -3974,10 +3975,6 @@
         "jf.letter-spacing.comfort": "95944121f2d78dddae0bbcf95682a98b4b7d679a",
         "jf.letter-spacing.wide": "5a19b274b792c2e540ef5ae47a12fdcf433d3e7b",
         "jf.letter-spacing.regular": "9b33374e7e2fd62ba4f88f18a34d858f2f96774b",
-        "jf.line-height.xs": "d6b0130214268f187d9a8716204af5c5ccc3b108",
-        "jf.line-height.sm": "149a2bdca1464678377deb7bf527a71e22386fda",
-        "jf.line-height.md": "316cd5c0b473db4833e56c638069b1b747de87e4",
-        "jf.line-height.lg": "0c95cc7d509d40312c06c56bf64130a8d982e96b",
         "jf.border.width.1": "87b95d3281050dc1a2e75d317b3a14f9bd62b180",
         "jf.border.width.2": "c49484c5b9e29aa1e172e5ff3b6b8b0f6b0165be",
         "jf.border.width.3": "a73ad952d77b0677c416e1598b26b35efa4c75c6",
@@ -4424,6 +4421,7 @@
       "$figmaCollectionId": "VariableCollectionId:296:35958",
       "$figmaModeId": "296:10",
       "$figmaVariableReferences": {
+        "jf.input.color.border.focus": "b8c045ade0da40316b60acd50d7e4ea4472d0cec",
         "jf.color.bg.accent-soft": "0bd552da19c9291ae2e7f210e22e74fdb6edcb66",
         "jf.color.bg.brand-primary-soft": "ba1fc8f0c78d14c19227cd17e17a0c6d4d1293cd",
         "jf.color.bg.neutral-soft": "d41e4c8322b33bc495edce7b81aedf6b8b2caceb",
@@ -4476,10 +4474,9 @@
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
         "jf.input.color.bg.default": "0a215646a2e7d5266131f66cb298b3072f345f04",
-        "jf.input.color.border.focus": "b8c045ade0da40316b60acd50d7e4ea4472d0cec",
         "jf.control.border.focus": "3d630dd88122973ee06402fab10b5c4ff3a89011",
         "jf.color.shadow.critical": "8c9386b4cc8c80c8e1f1184ef3e71eee4d614927",
-        "jf.control.border.default": "28fa78452c28b1b1382bc1710734fe94a805d22b"
+        "jf.control.border.default": "779b2ae97b72e30d62bd7765c02fb425f1c67e4f"
       },
       "group": "Color Modes"
     },
@@ -4549,6 +4546,7 @@
       "$figmaCollectionId": "VariableCollectionId:296:35958",
       "$figmaModeId": "296:11",
       "$figmaVariableReferences": {
+        "jf.input.color.border.focus": "b8c045ade0da40316b60acd50d7e4ea4472d0cec",
         "jf.color.bg.accent-soft": "0bd552da19c9291ae2e7f210e22e74fdb6edcb66",
         "jf.color.bg.brand-primary-soft": "ba1fc8f0c78d14c19227cd17e17a0c6d4d1293cd",
         "jf.color.bg.neutral-soft": "d41e4c8322b33bc495edce7b81aedf6b8b2caceb",
@@ -4601,7 +4599,6 @@
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
         "jf.input.color.bg.default": "0a215646a2e7d5266131f66cb298b3072f345f04",
-        "jf.input.color.border.focus": "b8c045ade0da40316b60acd50d7e4ea4472d0cec",
         "jf.control.border.focus": "3d630dd88122973ee06402fab10b5c4ff3a89011",
         "jf.color.shadow.critical": "8c9386b4cc8c80c8e1f1184ef3e71eee4d614927"
       },
@@ -4641,6 +4638,7 @@
       "$figmaCollectionId": "VariableCollectionId:296:35959",
       "$figmaModeId": "296:12",
       "$figmaVariableReferences": {
+        "jf.input.color.border.focus": "81dbee7679b9b83b9518debc185d618b8bf41103",
         "jf.card.padding.compact": "bb96b637d4b148f5317d15cdb0262b53c073cc85",
         "jf.card.padding.loose": "ee720fbe2be0db5ace2002ed078c958603ab368d",
         "jf.card.padding.narrow": "eea1486610db3cb06c5e1cccd85dcbd6a9a6617b",
@@ -4669,7 +4667,8 @@
         "jf.section.max-width.boxed": "9cf33b0b9714e842924bd62d58d505aebe81e22c",
         "jf.input.color.border.default": "28bfdea08bb765c14c00d092cbaa2ed2905e7dad",
         "jf.input.hint.color.default": "e171ad0bde79fa2030156e42032b79cbaa1bbeb9",
-        "jf.input.icon.size": "99ac20b2988b7deb6435e950abe05b61ceeb3673"
+        "jf.input.icon.size": "99ac20b2988b7deb6435e950abe05b61ceeb3673",
+        "jf.input.color.border.hover": "0ecfed0adecb07e42bfb872ad6a869b368c3965f"
       },
       "group": "03 - Components"
     },
