@@ -20,6 +20,9 @@ importers:
 
   apps/js-docs:
     dependencies:
+      '@fontsource/google-sans-flex':
+        specifier: ^5.2.2
+        version: 5.2.2
       '@jellyfish/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
@@ -1176,6 +1179,10 @@ packages:
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource/google-sans-flex@5.2.2:
+    resolution: {integrity: sha512-csDVeKsxOlVt/sJdgk39rL8pJeW7Pi+JFaJ87H5uuX9hkU+V5EGE+WCWkq6QZaIPZAsfjSF8fA1cuD84QbX0dA==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}

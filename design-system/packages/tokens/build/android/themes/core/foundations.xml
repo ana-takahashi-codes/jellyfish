@@ -83,9 +83,11 @@
   <color name="jf_color_dataviz4_600">oklch(0.4986 0.0857 104.04)</color>
   <color name="jf_color_dataviz4_700">oklch(0.4077 0.0685 102.35)</color>
   <color name="jf_color_dataviz4_800">oklch(0.3185 0.0527 105.98)</color>
+  <color name="jf_color_bg_overlay">oklch(0 0 0 / 70%)</color>
+  <color name="jf_color_bg_active">oklch(0 0 0 / 10%)</color>
   <string name="jf_opacity_disabled">0.4</string>
   <string name="jf_opacity_dragged">0.6</string>
-  <string name="jf_opacity_hover">0.9</string>
+  <string name="jf_opacity_hover">0.8</string>
   <string name="jf_opacity_loading">0.6</string>
   <string name="jf_opacity_placeholder">0.7</string>
   <dimen name="jf_corner_radius_default">32.00dp*3</dimen>
@@ -163,7 +165,6 @@
   <dimen name="jf_height_half">50%</dimen>
   <dimen name="jf_height_third">33.33%</dimen>
   <dimen name="jf_height_quarter">25%</dimen>
-  <color name="jf_bg_overlay">oklch(0 0 0 / 70%)</color>
   <string name="jf_shadow_neutral_bottom_lg">[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]</string>
   <string name="jf_shadow_neutral_bottom_md">[object Object],[object Object],[object Object],[object Object],[object Object]</string>
   <string name="jf_shadow_neutral_bottom_sm">[object Object],[object Object],[object Object],[object Object]</string>

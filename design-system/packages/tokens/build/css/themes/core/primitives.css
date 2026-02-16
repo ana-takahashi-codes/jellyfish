@@ -91,10 +91,10 @@
   --jf-letter-spacing-comfort: 0.025em;
   --jf-letter-spacing-wide: 0.08em;
   --jf-letter-spacing-regular: 0;
-  --jf-line-height-xs: 1.1em;
-  --jf-line-height-sm: 1.2em;
-  --jf-line-height-md: 1.5em;
-  --jf-line-height-lg: 1.7em;
+  --jf-line-height-xs: 1.1;
+  --jf-line-height-sm: 1.2;
+  --jf-line-height-md: 1.5;
+  --jf-line-height-lg: 1.7;
   --jf-border-width-1: 2px;
   --jf-border-width-2: 4px;
   --jf-border-width-3: 3* 2px;

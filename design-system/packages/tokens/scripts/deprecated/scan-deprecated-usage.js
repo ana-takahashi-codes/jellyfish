@@ -9,7 +9,7 @@ import { join, dirname, relative } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const packageRoot = join(__dirname, '..')
+const packageRoot = join(__dirname, '..', '..')
 
 /**
  * Parse tokens.d.ts for deprecated exports. Returns list of { name, since, replacement }.

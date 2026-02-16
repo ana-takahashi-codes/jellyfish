@@ -7,7 +7,7 @@ import { readdir, access, readFile, writeFile, mkdir } from 'fs/promises'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import StyleDictionary from 'style-dictionary'
-import { getConfig, BUILD_DIR } from '../config/index.js'
+import { getConfig, BUILD_DIR } from '../../config/index.js'
 import {
   SOURCE_DIR,
   STRUCTURE_THEME,
@@ -15,10 +15,10 @@ import {
   setKeyToFilename,
   getBuildManifest,
   getExtraBuildGroups
-} from '../config/constants.js'
+} from '../../config/constants.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const packageRoot = join(__dirname, '..')
+const packageRoot = join(__dirname, '..', '..')
 
 async function exists(path) {
   try {

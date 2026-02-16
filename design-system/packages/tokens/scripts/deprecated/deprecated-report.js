@@ -8,10 +8,10 @@
 import { readFile, writeFile } from 'fs/promises'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
-import { deprecationConfig } from '../config/deprecation-config.js'
+import { deprecationConfig } from '../../config/deprecation-config.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const packageRoot = join(__dirname, '..')
+const packageRoot = join(__dirname, '..', '..')
 
 /** Default: consider for removal after 2 minor versions deprecated */
 const DEFAULT_MIN_VERSIONS_BEFORE_REMOVAL = 2

@@ -19,7 +19,7 @@ Pacote de design tokens do Jellyfish Design System. Consome tokens exportados do
                                │  + @tokens-studio/sd-transforms
                                │  + config (platforms, formats, transforms)
                                ▼
-                        scripts/build.js
+                        scripts/build/build.js
 ```
 
 1. **Origem**: Os tokens são criados no Figma (Variables / Tokens Studio) e exportados em JSON no padrão DTCG (Design Tokens Community Group).
@@ -34,7 +34,7 @@ Pacote de design tokens do Jellyfish Design System. Consome tokens exportados do
 | **`src/tokens-studio/`** | **Entrada de tokens**: coloque aqui os JSON exportados do Tokens Studio (Figma). Um arquivo `<nome-do-tema>.json` por tema. O tema `core` define a estrutura (sets, ordem, grupos de build); os demais temas seguem a mesma estrutura. |
 | **`src/figma/`** | Tokens gerados por outras fontes (ex.: agente a partir de tabelas Coda), no formato Figma/DTCG. Podem ser consolidados ou referenciados conforme o fluxo do time. |
 | **`config/`** | Configuração do Style Dictionary: constantes, platforms (css, scss, js, android, ios), formats customizados, transforms. Exposta para os times reutilizarem ou estenderem. |
-| **`scripts/`** | `build.js` (build principal), `clean.js` (limpa `build/`), `build-responsive-css.js` (composição de CSS responsivo). |
+| **`scripts/`** | `build/` (build principal, clean, responsive CSS), `validate/` (validação JS/.d.ts), `deprecated/` (scan e relatórios de tokens deprecated). |
 | **`build/`** | **Saída do build**: artefatos por plataforma (css, scss, android, ios, js), organizados por tema e, quando aplicável, por “set” (primitives, foundations, components, color-modes, etc.). |
 
 ### Conceitos do build (manifest e sets)
@@ -64,7 +64,7 @@ src/tokens-studio/
 
 ## Como o Style Dictionary funciona neste pacote
 
-1. **Descoberta de temas**: O script `scripts/build.js` lista os arquivos `*.json` em `src/tokens-studio/` e considera cada um como um tema (ex.: `core`, `ana-takahashi`).
+1. **Descoberta de temas**: O script `scripts/build/build.js` lista os arquivos `*.json` em `src/tokens-studio/` e considera cada um como um tema (ex.: `core`, `ana-takahashi`).
 
 2. **Manifest**: A partir do tema `core`, o código em `config/constants.js` monta o **build manifest**: ordem dos sets, classificação (base, color modes, platforms), grupos de build e nomes dos arquivos de saída.
 

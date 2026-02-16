@@ -1,0 +1,609 @@
+{
+  "display": {
+    "prefix": "d",
+    "properties": ["display"],
+    "customMappings": {
+      "block": "block",
+      "inline-block": "inline-block",
+      "inline": "inline",
+      "flex": "flex",
+      "inline-flex": "inline-flex",
+      "grid": "grid",
+      "inline-grid": "inline-grid",
+      "table": "table",
+      "table-cell": "table-cell",
+      "table-row": "table-row",
+      "hidden": "none"
+    }
+  },
+  "flexDirection": {
+    "prefix": "flex",
+    "properties": ["flex-direction"],
+    "customMappings": {
+      "row": "row",
+      "row-reverse": "row-reverse",
+      "col": "column",
+      "col-reverse": "column-reverse"
+    }
+  },
+  "flexWrap": {
+    "prefix": "flex",
+    "properties": ["flex-wrap"],
+    "customMappings": {
+      "wrap": "wrap",
+      "wrap-reverse": "wrap-reverse",
+      "nowrap": "nowrap"
+    }
+  },
+  "justifyContent": {
+    "prefix": "justify",
+    "properties": ["justify-content"],
+    "customMappings": {
+      "start": "flex-start",
+      "end": "flex-end",
+      "center": "center",
+      "between": "space-between",
+      "around": "space-around",
+      "evenly": "space-evenly"
+    }
+  },
+  "alignItems": {
+    "prefix": "items",
+    "properties": ["align-items"],
+    "customMappings": {
+      "start": "flex-start",
+      "end": "flex-end",
+      "center": "center",
+      "baseline": "baseline",
+      "stretch": "stretch"
+    }
+  },
+  "alignSelf": {
+    "prefix": "self",
+    "properties": ["align-self"],
+    "customMappings": {
+      "auto": "auto",
+      "start": "flex-start",
+      "end": "flex-end",
+      "center": "center",
+      "stretch": "stretch",
+      "baseline": "baseline"
+    }
+  },
+  "flex": {
+    "prefix": "flex",
+    "properties": ["flex"],
+    "customMappings": {
+      "1": "1 1 0%",
+      "auto": "1 1 auto",
+      "initial": "0 1 auto",
+      "none": "none",
+      "grow": "1 1 0%",
+      "grow-0": "0 1 auto",
+      "shrink": "1 1 auto",
+      "shrink-0": "1 0 auto"
+    }
+  },
+  "position": {
+    "prefix": "pos",
+    "properties": ["position"],
+    "customMappings": {
+      "static": "static",
+      "fixed": "fixed",
+      "absolute": "absolute",
+      "relative": "relative",
+      "sticky": "sticky"
+    }
+  },
+  "top": {
+    "prefix": "top",
+    "properties": ["top"],
+    "customMappings": {
+      "0": "0",
+      "auto": "auto",
+      "full": "100%",
+      "half": "50%"
+    }
+  },
+  "right": {
+    "prefix": "right",
+    "properties": ["right"],
+    "customMappings": {
+      "0": "0",
+      "auto": "auto",
+      "full": "100%",
+      "half": "50%"
+    }
+  },
+  "bottom": {
+    "prefix": "bottom",
+    "properties": ["bottom"],
+    "customMappings": {
+      "0": "0",
+      "auto": "auto",
+      "full": "100%",
+      "half": "50%"
+    }
+  },
+  "left": {
+    "prefix": "left",
+    "properties": ["left"],
+    "customMappings": {
+      "0": "0",
+      "auto": "auto",
+      "full": "100%",
+      "half": "50%"
+    }
+  },
+  "textAlign": {
+    "prefix": "text",
+    "properties": ["text-align"],
+    "customMappings": {
+      "left": "left",
+      "center": "center",
+      "right": "right",
+      "justify": "justify"
+    }
+  },
+  "textDecoration": {
+    "prefix": "text-decoration",
+    "properties": ["text-decoration"],
+    "customMappings": {
+      "underline": "underline",
+      "overline": "overline",
+      "line-through": "line-through",
+      "none": "none"
+    }
+  },
+  "textTransform": {
+    "prefix": "text-transform",
+    "properties": ["text-transform"],
+    "customMappings": {
+      "uppercase": "uppercase",
+      "lowercase": "lowercase",
+      "capitalize": "capitalize",
+      "none": "none"
+    }
+  },
+  "whiteSpace": {
+    "prefix": "whitespace",
+    "properties": ["white-space"],
+    "customMappings": {
+      "normal": "normal",
+      "nowrap": "nowrap",
+      "pre": "pre",
+      "pre-line": "pre-line",
+      "pre-wrap": "pre-wrap"
+    }
+  },
+  "cursor": {
+    "prefix": "cursor",
+    "properties": ["cursor"],
+    "customMappings": {
+      "auto": "auto",
+      "default": "default",
+      "pointer": "pointer",
+      "wait": "wait",
+      "text": "text",
+      "move": "move",
+      "help": "help",
+      "not-allowed": "not-allowed"
+    }
+  },
+  "userSelect": {
+    "prefix": "select",
+    "properties": ["user-select"],
+    "customMappings": {
+      "none": "none",
+      "text": "text",
+      "all": "all",
+      "auto": "auto"
+    }
+  },
+  "overflow": {
+    "prefix": "overflow",
+    "properties": ["overflow"],
+    "customMappings": {
+      "auto": "auto",
+      "hidden": "hidden",
+      "visible": "visible",
+      "scroll": "scroll"
+    }
+  },
+  "overflowX": {
+    "prefix": "overflow-x",
+    "properties": ["overflow-x"],
+    "customMappings": {
+      "auto": "auto",
+      "hidden": "hidden",
+      "visible": "visible",
+      "scroll": "scroll"
+    }
+  },
+  "overflowY": {
+    "prefix": "overflow-y",
+    "properties": ["overflow-y"],
+    "customMappings": {
+      "auto": "auto",
+      "hidden": "hidden",
+      "visible": "visible",
+      "scroll": "scroll"
+    }
+  },
+  "visibility": {
+    "prefix": "visibility",
+    "properties": ["visibility"],
+    "customMappings": {
+      "visible": "visible",
+      "hidden": "hidden"
+    }
+  },
+  "objectFit": {
+    "prefix": "object",
+    "properties": ["object-fit"],
+    "customMappings": {
+      "contain": "contain",
+      "cover": "cover",
+      "fill": "fill",
+      "none": "none",
+      "scale-down": "scale-down"
+    }
+  },
+  "objectPosition": {
+    "prefix": "object",
+    "properties": ["object-position"],
+    "customMappings": {
+      "bottom": "bottom",
+      "center": "center",
+      "left": "left",
+      "left-bottom": "left bottom",
+      "left-top": "left top",
+      "right": "right",
+      "right-bottom": "right bottom",
+      "right-top": "right top",
+      "top": "top"
+    }
+  },
+  "float": {
+    "prefix": "float",
+    "properties": ["float"],
+    "customMappings": {
+      "left": "left",
+      "right": "right",
+      "none": "none"
+    }
+  },
+  "clear": {
+    "prefix": "clear",
+    "properties": ["clear"],
+    "customMappings": {
+      "left": "left",
+      "right": "right",
+      "both": "both",
+      "none": "none"
+    }
+  },
+  "verticalAlign": {
+    "prefix": "align",
+    "properties": ["vertical-align"],
+    "customMappings": {
+      "baseline": "baseline",
+      "top": "top",
+      "middle": "middle",
+      "bottom": "bottom",
+      "text-top": "text-top",
+      "text-bottom": "text-bottom"
+    }
+  },
+  "listStyle": {
+    "prefix": "list",
+    "properties": ["list-style"],
+    "customMappings": {
+      "none": "none",
+      "disc": "disc",
+      "decimal": "decimal"
+    }
+  },
+  "listStylePosition": {
+    "prefix": "list",
+    "properties": ["list-style-position"],
+    "customMappings": {
+      "inside": "inside",
+      "outside": "outside"
+    }
+  },
+  "tableLayout": {
+    "prefix": "table",
+    "properties": ["table-layout"],
+    "customMappings": {
+      "auto": "auto",
+      "fixed": "fixed"
+    }
+  },
+  "borderCollapse": {
+    "prefix": "border",
+    "properties": ["border-collapse"],
+    "customMappings": {
+      "collapse": "collapse",
+      "separate": "separate"
+    }
+  },
+  "resize": {
+    "prefix": "resize",
+    "properties": ["resize"],
+    "customMappings": {
+      "none": "none",
+      "y": "vertical",
+      "x": "horizontal",
+      "both": "both"
+    }
+  },
+  "pointerEvents": {
+    "prefix": "pointer-events",
+    "properties": ["pointer-events"],
+    "customMappings": {
+      "none": "none",
+      "auto": "auto"
+    }
+  },
+  "backgroundColor": {
+    "prefix": "bg",
+    "properties": ["background-color"],
+    "customMappings": {
+      "transparent": "transparent"
+    }
+  },
+  "borderColor": {
+    "prefix": "bd",
+    "properties": ["border-color"],
+    "customMappings": {
+      "transparent": "transparent"
+    }
+  },
+  "color": {
+    "prefix": "fg",
+    "properties": ["color"],
+    "customMappings": {
+      "transparent": "transparent"
+    }
+  },
+  "sizing": {
+    "prefix": ["w", "h"],
+    "responsive": true,
+    "properties": ["width", "height", "min-width", "min-height", "max-width", "max-height"],
+    "tokenPattern": "jf-size-",
+    "classPattern": "{prefix}-{props}-{size}",
+    "dynamicMapping": {
+      "props": {
+        "": [["width"], ["height"]],
+        "min": [["min-width"], ["min-height"]],
+        "max": [["max-width"], ["max-height"]]
+      },
+      "size": {
+      "auto": "auto",
+      "half": "var(--jf-size-half)",
+      "third": "var(--jf-size-third)",
+      "one-third": "var(--jf-size-third)",
+      "two-thirds": "66.66%",
+      "quarter": "var(--jf-size-quarter)",
+      "20pct": "20%",
+      "40pct": "40%",
+      "60pct": "60%",
+      "75pct": "75%",
+      "80pct": "80%",
+      "100pct": "100%",
+      "max-content": "max-content",
+      "min-content": "min-content",
+      "fit": "fit-content"
+    }
+  }},
+  "gridCols": {
+    "prefix": "grid-cols",
+    "properties": ["grid-template-columns"],
+    "customMappings": {
+      "1": "repeat(1, var(--jf-fraction-1))",
+      "2": "repeat(2, var(--jf-fraction-1))",
+      "3": "repeat(3, var(--jf-fraction-1))",
+      "4": "repeat(4, var(--jf-fraction-1))"
+    }
+  },
+  "gridRows": {
+    "prefix": "grid-rows",
+    "properties": ["grid-template-rows"],
+    "customMappings": {
+      "1": "repeat(1, var(--jf-fraction-1))",
+      "2": "repeat(2, var(--jf-fraction-1))",
+      "3": "repeat(3, var(--jf-fraction-1))",
+      "4": "repeat(4, var(--jf-fraction-1))"
+    }
+  },
+  "wordBreak": {
+    "prefix": "break",
+    "properties": ["word-break"],
+    "customMappings": {
+      "normal": "normal",
+      "words": "break-word",
+      "all": "break-all"
+    }
+  },
+  "typography": {
+    "prefix": "font",
+    "properties": [],
+    "customMappings": {
+      "title-sm": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-500",
+        "font-size": "jf-font-size-xl",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "title-md": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-500",
+        "font-size": "jf-font-size-2xl",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "title-lg": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-700",
+        "font-size": "jf-font-size-3xl",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "title-xl": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-700",
+        "font-size": "jf-font-size-g",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "title-2xl": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-700",
+        "font-size": "jf-font-size-xg",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "title-3xl": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-700",
+        "font-size": "jf-font-size-2xg",
+        "line-height": "jf-line-height-xs",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "title-g": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-700",
+        "font-size": "jf-font-size-3xg",
+        "line-height": "jf-line-height-xs",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "title-xg": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-700",
+        "font-size": "jf-font-size-4xg",
+        "line-height": "jf-line-height-xs",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "text-sm": {
+        "font-family": "jf-font-family-sans",
+        "font-size": "jf-font-size-sm",
+        "line-height": "jf-line-height-md",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "text-md": {
+        "font-family": "jf-font-family-sans",
+        "font-size": "jf-font-size-md",
+        "line-height": "jf-line-height-lg",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "text-lg": {
+        "font-family": "jf-font-family-sans",
+        "font-size": "jf-font-size-lg",
+        "line-height": "jf-line-height-lg",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "label-xs": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-500",
+        "font-size": "jf-font-size-xs",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "label-sm": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-500",
+        "font-size": "jf-font-size-sm",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "label-md": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-500",
+        "font-size": "jf-font-size-md",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "label-lg": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-500",
+        "font-size": "jf-font-size-lg",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "quote": {
+        "font-family": "jf-font-family-serif",
+        "font-weight": "jf-font-weight-400",
+        "font-size": "jf-font-size-lg",
+        "line-height": "jf-line-height-lg",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "caption": {
+        "font-family": "jf-font-family-serif",
+        "font-weight": "jf-font-weight-500",
+        "font-size": "jf-font-size-xs",
+        "line-height": "jf-line-height-md",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "overline": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-500",
+        "font-size": "jf-font-size-xs",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-wide",
+        "text-transform": "uppercase"
+      },
+      "code-sm": {
+        "font-family": "jf-font-family-mono",
+        "font-weight": "jf-font-weight-400",
+        "font-size": "jf-font-size-sm",
+        "line-height": "jf-line-height-lg",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "code-md": {
+        "font-family": "jf-font-family-mono",
+        "font-weight": "jf-font-weight-400",
+        "font-size": "jf-font-size-md",
+        "line-height": "jf-line-height-lg",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "code-lg": {
+        "font-family": "jf-font-family-mono",
+        "font-weight": "jf-font-weight-400",
+        "font-size": "jf-font-size-lg",
+        "line-height": "jf-line-height-lg",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "article-text": {
+        "font-family": "jf-font-family-sans",
+        "font-size": "jf-font-size-lg",
+        "line-height": "jf-line-height-lg",
+        "letter-spacing": "jf-letter-spacing-regular",
+        "margin-bottom": "jf-size-16",
+        "text-indent": "jf-size-16"
+      },
+      "hero-title": {
+        "font-family": "jf-font-family-decoration",
+        "font-weight": "jf-font-weight-700",
+        "font-size": "jf-font-size-4xg",
+        "line-height": "jf-line-height-xs",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "hero-subtitle": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-500",
+        "font-size": "jf-font-size-g",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-regular"
+      },
+      "section-subtitle": {
+        "font-family": "jf-font-family-sans",
+        "font-weight": "jf-font-weight-500",
+        "font-size": "jf-font-size-2xl",
+        "line-height": "jf-line-height-sm",
+        "letter-spacing": "jf-letter-spacing-regular"
+      }
+    }
+  }
+}

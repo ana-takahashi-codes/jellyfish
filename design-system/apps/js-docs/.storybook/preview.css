@@ -1,5 +1,24 @@
 /* .storybook/preview.css */
 
+/* Design tokens (required for Icon and other components that use --jf-* variables) */
+@import '@jellyfish/tokens/build/css/themes/core/primitives.css';
+@import '@jellyfish/tokens/build/css/themes/core/foundations.css';
+@import '@jellyfish/tokens/build/css/themes/core/color-modes/light.css';
+
+/* Interactive states (hover opacity + focus outline) for Icon, Button, etc. */
+@import '@jellyfish/ui/interactive-states.css';
+
+/* Fonte principal: Google Sans Flex (carregada em preview.js) */
+html,
+body,
+.sbdocs-wrapper,
+.sbdocs-wrapper body,
+#storybook-docs .sbdocs,
+#storybook-root,
+[class*='sbdocs'] {
+  font-family: 'Google Sans Flex', sans-serif !important;
+}
+
 /* Aumentar fonte base da documentação */
 .sbdocs-wrapper {
     font-size: 1.125rem;
@@ -7,34 +26,83 @@
   
   /* Títulos */
   .sbdocs h1 {
-    font-size: 2.5rem;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: 2.75rem;
     margin-bottom: 1.5rem;
     font-weight: 700;
   }
   
   .sbdocs h2 {
+    font-family: 'Google Sans Flex', sans-serif;
     font-size: 1.75rem;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
   }
   
   .sbdocs h3 {
+    font-family: 'Google Sans Flex', sans-serif;
     font-size: 1.25rem;
-    margin-top: 1rem;
+    color: var(--jf-color-fg-strong)!important;
+    margin-top: 2rem!important;
     margin-bottom: 2rem;
   }
   
   /* Parágrafos e texto */
   .sbdocs p {
+    font-family: 'Google Sans Flex', sans-serif;
     font-size: 1.125rem;
+    color: var(--jf-color-fg-moderated)!important;
     line-height: 1.7;
   }
   
+/*Subtítulos*/
+.sbdocs-subtitle {
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: 1.5rem!important  ;
+    font-weight: 500;
+    line-height: 1.5!important;
+    color: var(--jf-color-fg-moderated)!important;
+}
+
   /* Código */
   .sbdocs code {
+    font-family: "Fira Code", monospace;
     font-size: 0.975rem;
   }
   
   .sbdocs pre code {
+    font-family: "Fira Code", monospace;
     font-size: 0.975rem;
+  }
+
+  /* IconGallery spacing */
+  .sbdocs [class*='IconGallery'],
+  .sbdocs [class*='iconGallery'],
+  .sbdocs-wrapper [class*='IconGallery'],
+  .sbdocs-wrapper [class*='iconGallery'],
+  div[class*='IconGallery'],
+  div[class*='iconGallery'] {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: var(--jf-space-4, 16px) !important;
+  }
+
+  .sbdocs [class*='IconItem'],
+  .sbdocs [class*='iconItem'],
+  .sbdocs-wrapper [class*='IconItem'],
+  .sbdocs-wrapper [class*='iconItem'],
+  div[class*='IconItem'],
+  div[class*='iconItem'] {
+    padding: var(--jf-space-4, 16px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: var(--jf-space-2, 8px) !important;
+  }
+
+  .sbdocs [class*='IconItem'] > *,
+  .sbdocs [class*='iconItem'] > *,
+  .sbdocs-wrapper [class*='IconItem'] > *,
+  .sbdocs-wrapper [class*='iconItem'] > * {
+    margin: 0 !important;
   }

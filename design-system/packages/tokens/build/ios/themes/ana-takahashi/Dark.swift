@@ -1,6 +1,6 @@
 
 //
-// Dark.swift
+// dark.swift
 //
 
 // Do not edit directly, this file was auto-generated.

@@ -7,11 +7,11 @@
 import { readFile, writeFile, mkdir, readdir, unlink } from 'fs/promises'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
-import { formatResponsiveCss, getBreakpointsFromTokens } from '../config/formats/css-responsive.js'
-import { BUILD_DIR } from '../config/index.js'
+import { formatResponsiveCss, getBreakpointsFromTokens } from '../../config/formats/css-responsive.js'
+import { BUILD_DIR } from '../../config/index.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const packageRoot = join(__dirname, '..')
+const packageRoot = join(__dirname, '..', '..')
 
 /** Discover theme names from build output (build/css/themes/*). */
 async function discoverThemes() {

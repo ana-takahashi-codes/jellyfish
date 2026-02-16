@@ -10,7 +10,7 @@ import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const packageRoot = join(__dirname, '..')
+const packageRoot = join(__dirname, '..', '..')
 
 const JS_EXPORT_RE = /^\s*export\s+const\s+(\w+)\s*=/
 const DTS_EXPORT_RE = /^\s*export\s+const\s+(\w+)\s*:\s*\w+;/

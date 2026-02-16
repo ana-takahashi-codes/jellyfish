@@ -1,0 +1,51 @@
+import { Meta, Title, Subtitle } from '@storybook/addon-docs/blocks'
+import React from 'react'
+import * as TablerIcons from '@tabler/icons-react'
+
+<Meta title="Foundations/Iconography" />
+
+<Title>Iconography</Title>
+
+<Subtitle>
+  This page documents the iconography used in the JellyFish design system, based on Tabler Icons.
+</Subtitle>
+
+{(() => {
+  const icons = Object.keys(TablerIcons)
+    .filter((key) => key.startsWith('Icon'))
+    .sort()
+
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(5, 1fr)',
+        gap: '16px',
+        marginTop: '24px',
+      }}
+    >
+      {icons.map((iconName) => {
+        const IconComponent = TablerIcons[iconName]
+        const label = iconName.replace('Icon', '')
+
+        return (
+          <div
+            key={iconName}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '16px',
+              gap: '8px',
+            }}
+          >
+            <IconComponent size={40} stroke={1.5} aria-label={label} />
+            <span style={{ fontSize: '12px', color: '#666', textAlign: 'center' }}>
+              {label}
+            </span>
+          </div>
+        )
+      })}
+    </div>
+  )
+})()}

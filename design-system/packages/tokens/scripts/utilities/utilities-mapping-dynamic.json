@@ -1,0 +1,377 @@
+{
+  "spacing": {
+    "prefix": ["p", "m"],
+    "responsive": true,
+    "properties": ["padding", "margin"],
+    "tokenPattern": "jf-size-",
+    "classPattern": "{prefix}{props}-{variant}",
+    "dynamicMapping": {
+      "props": {
+        "":[["padding"],["margin"]],
+        "t": [["padding-top"], ["margin-top"]],
+        "r": [["padding-right"], ["margin-right"]],
+        "b": [["padding-bottom"], ["margin-bottom"]],
+        "l": [["padding-left"], ["margin-left"]],
+        "x": [
+          ["padding-left", "padding-right"],
+          ["margin-left", "margin-right"]
+        ],
+        "y": [
+          ["padding-top", "padding-bottom"],
+          ["margin-top", "margin-bottom"]
+        ]
+      },
+      "variant": {
+        "1": "jf-size-1",
+        "2": "jf-size-2",
+        "3": "jf-size-3",
+        "4": "jf-size-4",
+        "5": "jf-size-5",
+        "6": "jf-size-6",
+        "7": "jf-size-7",
+        "8": "jf-size-8",
+        "10": "jf-size-10",
+        "12": "jf-size-12",
+        "14": "jf-size-14",
+        "16": "jf-size-16",
+        "18": "jf-size-18",
+        "20": "jf-size-20",
+        "22": "jf-size-22",
+        "24": "jf-size-24",
+        "28": "jf-size-28",
+        "32": "jf-size-32",
+        "36": "jf-size-36",
+        "40": "jf-size-40",
+        "56": "jf-size-56",
+        "72": "jf-size-72",
+        "100": "jf-size-100",
+        "180": "jf-size-180",
+        "260": "jf-size-260",
+        "320": "jf-size-320",
+        "400": "jf-size-400",
+        "full": "jf-size-full",
+        "half": "jf-size-half",
+        "third": "jf-size-third",
+        "quarter": "jf-size-quarter"
+      }
+    }
+  },
+  "background": {
+    "prefix": "bg",
+    "properties": "background-color",
+    "tokenPattern": "jf-color-bg-",
+    "classPattern": "{prefix}-{color}",
+    "dynamicMapping": {
+      "color": {
+        "surface-default": {
+          "default": "jf-color-bg-surface-default"
+        },
+        "surface-secondary": {
+          "default": "jf-color-bg-surface-secondary"
+        },
+        "surface-tertiary": {
+          "default": "jf-color-bg-surface-tertiary"
+        },
+        "surface-contrast": {
+          "default": "jf-color-bg-surface-contrast"
+        },
+        "page": {
+          "default": "jf-color-bg-page"
+        },
+        "neutral": {
+          "default": "jf-color-bg-neutral"
+        },
+        "neutral-soft": {
+          "default": "jf-color-bg-neutral-soft"
+        },
+        "accent": {
+          "default": "jf-color-bg-accent"
+        },
+        "accent-soft": {
+          "default": "jf-color-bg-accent-soft"
+        },
+        "brand-primary": {
+          "default": "jf-color-bg-brand-primary"
+        },
+        "brand-primary-soft": {
+          "default": "jf-color-bg-brand-primary-soft"
+        },
+        "warning": {
+          "default": "jf-color-bg-warning"
+        },
+        "warning-soft": {
+          "default": "jf-color-bg-warning-soft"
+        },
+        "critical": {
+          "default": "jf-color-bg-critical"
+        },
+        "critical-soft": {
+          "default": "jf-color-bg-critical-soft"
+        },
+        "positive": {
+          "default": "jf-color-bg-positive"
+        },
+        "positive-soft": {
+          "default": "jf-color-bg-positive-soft"
+        }
+      }
+    }
+  },
+  "borderColor": {
+    "prefix": "bd",
+    "properties": "border-color",
+    "tokenPattern": "jf-color-border-",
+    "classPattern": "{prefix}-{color}",
+    "dynamicMapping": {
+      "color": {
+        "muted": {
+          "default": "jf-color-border-muted"
+        },
+        "moderated": {
+          "default": "jf-color-border-moderated"
+        },
+        "strong": {
+          "default": "jf-color-border-strong"
+        },
+        "contrast": {
+          "default": "jf-color-border-contrast"
+        },
+        "neutral": {
+          "default": "jf-color-border-neutral"
+        },
+        "accent": {
+          "default": "jf-color-border-accent"
+        },
+        "brand-primary": {
+          "default": "jf-color-border-brand-primary"
+        },
+        "positive": {
+          "default": "jf-color-border-positive"
+        },
+        "warning": {
+          "default": "jf-color-border-warning"
+        },
+        "critical": {
+          "default": "jf-color-border-critical"
+        }
+      }
+    }
+  },
+  "textColor": {
+    "prefix": "fg",
+    "properties": "color",
+    "tokenPattern": "jf-color-fg-",
+    "classPattern": "{prefix}-{color}",
+    "dynamicMapping": {
+      "color": {
+        "strong": {
+          "enabled": "jf-color-fg-strong"
+        },
+        "muted": {
+          "enabled": "jf-color-fg-muted"
+        },
+        "moderated": {
+          "enabled": "jf-color-fg-moderated"
+        },
+        "contrast": {
+          "enabled": "jf-color-fg-contrast"
+        },
+        "accent": {
+          "enabled": "jf-color-fg-accent"
+        },
+        "brand-primary": {
+          "enabled": "jf-color-fg-brand-primary"
+        },
+        "positive": {
+          "enabled": "jf-color-fg-positive"
+        },
+        "warning": {
+          "enabled": "jf-color-fg-warning"
+        },
+        "critical": {
+          "enabled": "jf-color-fg-critical"
+        },
+        "on-accent": {
+          "enabled": "jf-color-fg-on-accent"
+        },
+        "on-neutral": {
+          "enabled": "jf-color-fg-on-neutral"
+        },
+        "on-brand-primary": {
+          "enabled": "jf-color-fg-on-brand-primary"
+        },
+        "on-positive": {
+          "enabled": "jf-color-fg-on-positive"
+        },
+        "on-warning": {
+          "enabled": "jf-color-fg-on-warning"
+        },
+        "on-critical": {
+          "enabled": "jf-color-fg-on-critical"
+        }
+      }
+    }
+  },
+  "gap": {
+    "prefix": "gap",
+    "responsive": true,
+    "properties": "gap",
+    "tokenPattern": "jf-size-",
+    "classPattern": "{prefix}-{props}-{variant}",
+    "dynamicMapping": {
+      "props": {
+        "": [["gap"]],
+        "x": [["column-gap"]],
+        "y": [["row-gap"]]
+      },
+      "variant": {
+        "1": "jf-size-1",
+        "2": "jf-size-2",
+        "3": "jf-size-3",
+        "4": "jf-size-4",
+        "5": "jf-size-5",
+        "6": "jf-size-6",
+        "7": "jf-size-7",
+        "8": "jf-size-8",
+        "10": "jf-size-10",
+        "12": "jf-size-12",
+        "14": "jf-size-14",
+        "16": "jf-size-16",
+        "18": "jf-size-18",
+        "20": "jf-size-20",
+        "22": "jf-size-22",
+        "24": "jf-size-24",
+        "28": "jf-size-28",
+        "32": "jf-size-32",
+        "36": "jf-size-36",
+        "40": "jf-size-40",
+        "56": "jf-size-56",
+        "72": "jf-size-72",
+        "100": "jf-size-100",
+        "180": "jf-size-180",
+        "260": "jf-size-260",
+        "320": "jf-size-320",
+        "400": "jf-size-400",
+        "full": "jf-size-full",
+        "half": "jf-size-half",
+        "third": "jf-size-third",
+        "quarter": "jf-size-quarter"
+      }
+    }
+  },
+  "sizing": {
+    "prefix": ["w", "h"],
+    "responsive": true,
+    "properties": ["width", "height", "min-width", "min-height", "max-width", "max-height"],
+    "tokenPattern": "jf-size-",
+    "classPattern": "{prefix}-{props}-{size}",
+    "dynamicMapping": {
+      "props": {
+        "": [["width"], ["height"]],
+        "min": [["min-width"], ["min-height"]],
+        "max": [["max-width"], ["max-height"]]
+      },
+      "size": {
+        "1": "jf-size-1",
+        "2": "jf-size-2",
+        "3": "jf-size-3",
+        "4": "jf-size-4",
+        "5": "jf-size-5",
+        "6": "jf-size-6",
+        "7": "jf-size-7",
+        "8": "jf-size-8",
+        "10": "jf-size-10",
+        "12": "jf-size-12",
+        "14": "jf-size-14",
+        "16": "jf-size-16",
+        "18": "jf-size-18",
+        "20": "jf-size-20",
+        "22": "jf-size-22",
+        "24": "jf-size-24",
+        "28": "jf-size-28",
+        "32": "jf-size-32",
+        "36": "jf-size-36",
+        "40": "jf-size-40",
+        "56": "jf-size-56",
+        "72": "jf-size-72",
+        "100": "jf-size-100",
+        "180": "jf-size-180",
+        "260": "jf-size-260",
+        "320": "jf-size-320",
+        "400": "jf-size-400",
+        "full": "jf-size-full",
+        "half": "jf-size-half",
+        "third": "jf-size-third",
+        "quarter": "jf-size-quarter"
+      }
+    }
+  },
+  "border": {
+    "prefix": ["border"],
+    "responsive": true,
+    "properties": ["border-width"],
+    "tokenPattern": "jf-border-width-",
+    "classPattern": "{prefix}{props}-{width}",
+    "dynamicMapping": {
+      "props": {
+        "": [["border-width"]],
+        "t": [["border-top-width"]],
+        "r": [["border-right-width"]],
+        "b": [["border-bottom-width"]],
+        "l": [["border-left-width"]],
+        "x": [["border-left-width", "border-right-width"]],
+        "y": [["border-top-width", "border-bottom-width"]]
+      },
+      "width": {
+        "0-5": "jf-border-width-0-5",
+        "1": "jf-border-width-1",
+        "2": "jf-border-width-2",
+        "4": "jf-border-width-4"
+      }
+    }
+  },
+  "borderRadius": {
+    "prefix": "rounded",
+    "properties": "border-radius",
+    "tokenPattern": "jf-corner-radius-",
+    "classPattern": "{prefix}-{size}",
+    "dynamicMapping": {
+      "size": {
+        "0": "jf-corner-radius-0",
+        "2": "jf-corner-radius-2",
+        "3": "jf-corner-radius-3",
+        "4": "jf-corner-radius-4",
+        "6": "jf-corner-radius-6",
+        "12": "jf-corner-radius-12",
+        "20": "jf-corner-radius-20",
+        "40": "jf-corner-radius-40",
+        "sm": "jf-corner-radius-sm",
+        "default": "jf-corner-radius-default",
+        "lg": "jf-corner-radius-lg",
+        "xl": "jf-corner-radius-xl",
+        "circle": "jf-corner-radius-circle",
+        "pill": "jf-corner-radius-pill"
+      }
+    }
+  },
+  "angle": {
+    "prefix": "rotate",
+    "properties": "rotate",
+    "tokenPattern": "jf-angle-",
+    "classPattern": "{prefix}-{variant}",
+    "dynamicMapping": {
+      "variant": {
+        "1": "jf-angle-1",
+        "2": "jf-angle-2",
+        "3": "jf-angle-3",
+        "4": "jf-angle-4",
+        "5": "jf-angle-5",
+        "6": "jf-angle-6",
+        "7": "jf-angle-7",
+        "8": "jf-angle-8",
+        "9": "jf-angle-9",
+        "10": "jf-angle-10"
+      }
+    }
+  }
+}

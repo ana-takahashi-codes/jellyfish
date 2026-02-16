@@ -92,10 +92,10 @@
   <dimen name="jf_letter_spacing_comfort">0.40dp</dimen>
   <dimen name="jf_letter_spacing_wide">1.28dp</dimen>
   <dimen name="jf_letter_spacing_regular">0.00dp</dimen>
-  <string name="jf_line_height_xs">1.1em</string>
-  <string name="jf_line_height_sm">1.2em</string>
-  <string name="jf_line_height_md">1.5em</string>
-  <string name="jf_line_height_lg">1.7em</string>
+  <string name="jf_line_height_xs">110%</string>
+  <string name="jf_line_height_sm">120%</string>
+  <string name="jf_line_height_md">150%</string>
+  <string name="jf_line_height_lg">170%</string>
   <dimen name="jf_border_width_1">32.00dp</dimen>
   <dimen name="jf_border_width_2">32.00dp*2</dimen>
   <dimen name="jf_border_width_3">3* 32.00dp</dimen>

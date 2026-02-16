@@ -1,6 +1,6 @@
 
 //
-// Foundations.swift
+// foundations.swift
 //
 
 // Do not edit directly, this file was auto-generated.
@@ -21,7 +21,6 @@ public class {
     public static let gradientLinearNeutralToLeft = linear-gradient(270deg, oklch(96.74% 0.0013 286.38) 0%,oklch(87.11% 0.0055 286.29) 100%)
     public static let gradientLinearNeutralToRight = linear-gradient(90deg, oklch(96.74% 0.0013 286.38) 0%, oklch(87.11% 0.0055 286.29) 100%)
     public static let gradientLinearNeutralToTop = linear-gradient(0deg, oklch(96.74% 0.0013 286.38) 0%, oklch(87.11% 0.0055 286.29) 100%)
-    public static let jfBgOverlay = oklch(0 0 0 / 70%)
     public static let jfColorAccent100 = oklch(0.955 0.013 185.09)
     public static let jfColorAccent200 = oklch(0.856 0.037 183.6)
     public static let jfColorAccent300 = oklch(0.766 0.061 183.84)
@@ -31,6 +30,8 @@ public class {
     public static let jfColorAccent700 = oklch(0.4 0.052 180.4)
     public static let jfColorAccent800 = oklch(0.316 0.038 184.61)
     public static let jfColorAccent900 = oklch(0.226 0.025 177.95)
+    public static let jfColorBgActive = oklch(0 0 0 / 10%)
+    public static let jfColorBgOverlay = oklch(0 0 0 / 70%)
     public static let jfColorBrandPrimary100 = oklch(0.948 0.026 283.49)
     public static let jfColorBrandPrimary200 = oklch(0.868 0.066 282.11)
     public static let jfColorBrandPrimary300 = oklch(0.783 0.113 282.35)
@@ -156,7 +157,7 @@ public class {
     public static let jfLayerTooltip = 800
     public static let jfOpacityDisabled = 0.4
     public static let jfOpacityDragged = 0.6
-    public static let jfOpacityHover = 0.9
+    public static let jfOpacityHover = 0.8
     public static let jfOpacityLoading = 0.6
     public static let jfOpacityPlaceholder = 0.7
     public static let jfScreenHeightFull = CGFloat(1600.00)

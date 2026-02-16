@@ -9,16 +9,12 @@ import { register } from '@tokens-studio/sd-transforms'
 import { BUILD_DIR, SOURCE_DIR } from './constants.js'
 import {
   getCssPlatform,
-  getScssPlatform,
-  getJsPlatform,
   getAndroidPlatform,
   getIosPlatform
 } from './platforms/index.js'
 import formatCssVariablesDark from './formats/css-variables-dark.js'
 import formatCssResponsive from './formats/css-responsive.js'
 import formatCssTypographyClasses from './formats/css-typography-classes.js'
-import formatScssTypographyClasses from './formats/scss-typography-classes.js'
-import formatTypescriptEs6DeclarationsDeprecation from './formats/typescript-es6-declarations-deprecation.js'
 import { registerCustomTransforms } from './transforms/index.js'
 
 register(StyleDictionary)
@@ -26,18 +22,6 @@ registerCustomTransforms(StyleDictionary)
 StyleDictionary.registerFormat(formatCssVariablesDark)
 StyleDictionary.registerFormat(formatCssResponsive)
 StyleDictionary.registerFormat(formatCssTypographyClasses)
-StyleDictionary.registerFormat(formatScssTypographyClasses)
-StyleDictionary.registerFormat(formatTypescriptEs6DeclarationsDeprecation)
-
-/**
- * @param {string[]} [outputOnly]
- * @param {import('./constants.js').BuildManifest} manifest
- */
-function isBaseGroup(outputOnly, manifest) {
-  const base = manifest.buildGroups[0]
-  if (!outputOnly || outputOnly.length !== base.outputFiles.length) return false
-  return base.outputFiles.every((f) => outputOnly.includes(f))
-}
 
 /**
  * @param {{ extraSetKeys?: string[] }} [options] - When a theme has sets not in the structure (core), pass them so platforms emit extra files.
@@ -52,12 +36,8 @@ export function getConfig(theme, sourcePaths = [], outputOnly, manifest, options
 
   const platforms = {
     css: getCssPlatform(theme, `${buildPathBase}/css/themes/${theme}/`, outputOnly, manifest, { extraSetKeys }),
-    scss: getScssPlatform(theme, `${buildPathBase}/scss/themes/${theme}/`, outputOnly, manifest, { extraSetKeys }),
     android: getAndroidPlatform(theme, `${buildPathBase}/android/themes/${theme}/`, outputOnly, manifest, { extraSetKeys }),
     ios: getIosPlatform(theme, `${buildPathBase}/ios/themes/${theme}/`, outputOnly, manifest, { extraSetKeys })
-  }
-  if (isBaseGroup(outputOnly, manifest)) {
-    platforms.js = getJsPlatform(theme, `${buildPathBase}/js/themes/${theme}/`)
   }
 
   return {

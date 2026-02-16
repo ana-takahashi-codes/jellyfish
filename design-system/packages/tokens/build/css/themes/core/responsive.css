@@ -10,7 +10,8 @@
     --jf-control-min-width-sm: 36px;
     --jf-control-min-width-md: 44px;
     --jf-control-min-width-lg: 48px;
-    --jf-section-padding-horizontal: 16px;
+    --jf-section-horizontal-padding-default: 16px;
+    --jf-section-vertical-padding-default: 32px;
   }
 }
 
@@ -23,7 +24,7 @@
     --jf-control-min-width-sm: 36px;
     --jf-control-min-width-md: 44px;
     --jf-control-min-width-lg: 48px;
-    --jf-section-padding-horizontal: 20px;
+    --jf-section-horizontal-padding-default: 20px;
   }
 }
 
@@ -36,7 +37,7 @@
     --jf-control-min-width-sm: 32px;
     --jf-control-min-width-md: 40px;
     --jf-control-min-width-lg: 48px;
-    --jf-section-padding-horizontal: 32px;
+    --jf-section-horizontal-padding-default: 32px;
   }
 }
 

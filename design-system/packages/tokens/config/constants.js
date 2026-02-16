@@ -54,7 +54,7 @@ export const BASE_SET_PATTERNS = [
  * @returns {string}
  */
 export function setKeyToFilename(setKey) {
-  return setKey.replace(/\//g, '-')
+  return setKey.replace(/\//g, '-').toLowerCase()
 }
 
 /**
@@ -174,7 +174,10 @@ export function getBuildManifest(setKeys) {
   })
 
   for (const key of colorModeKeys) {
-    const outputName = key.slice(COLOR_MODE_PREFIX.length) || key.replace(/\//g, '-')
+    const baseName = key.startsWith(COLOR_MODE_PREFIX)
+      ? key.slice(COLOR_MODE_PREFIX.length)
+      : key.replace(/\//g, '-')
+    const outputName = baseName.toLowerCase()
     buildGroups.push({
       id: outputName,
       sourceKeys: [...baseKeys, defaultColorModeKey, key].filter(Boolean),
@@ -182,7 +185,10 @@ export function getBuildManifest(setKeys) {
     })
   }
   for (const key of platformKeys) {
-    const outputName = key.slice(PLATFORM_PREFIX.length) || setKeyToFilename(key)
+    const baseName = key.startsWith(PLATFORM_PREFIX)
+      ? key.slice(PLATFORM_PREFIX.length)
+      : setKeyToFilename(key)
+    const outputName = baseName.toLowerCase()
     buildGroups.push({
       id: outputName,
       sourceKeys: [...baseKeys, defaultColorModeKey, key].filter(Boolean),
@@ -200,7 +206,17 @@ export function getBuildManifest(setKeys) {
     componentsSetKeys,
     buildGroups,
     defaultColorModeKey,
-    colorModeOutputName: (key) => key.startsWith(COLOR_MODE_PREFIX) ? key.slice(COLOR_MODE_PREFIX.length) : key.replace(/\//g, '-'),
-    platformOutputName: (key) => key.startsWith(PLATFORM_PREFIX) ? key.slice(PLATFORM_PREFIX.length) : setKeyToFilename(key)
+    colorModeOutputName: (key) => {
+      const baseName = key.startsWith(COLOR_MODE_PREFIX)
+        ? key.slice(COLOR_MODE_PREFIX.length)
+        : key.replace(/\//g, '-')
+      return baseName.toLowerCase()
+    },
+    platformOutputName: (key) => {
+      const baseName = key.startsWith(PLATFORM_PREFIX)
+        ? key.slice(PLATFORM_PREFIX.length)
+        : setKeyToFilename(key)
+      return baseName.toLowerCase()
+    }
   }
 }

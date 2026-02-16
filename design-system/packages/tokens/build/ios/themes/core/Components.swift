@@ -1,6 +1,6 @@
 
 //
-// Components.swift
+// components.swift
 //
 
 // Do not edit directly, this file was auto-generated.
@@ -15,7 +15,7 @@ public class {
     public static let jfArticleFontTitleSecondary = [object Object]
     public static let jfArticleFontTitleTertiary = [object Object]
     public static let jfArticleThumbnailRatio = "16 / 9"
-    public static let jfCardColorBorderNeutral = oklch(87.11% 0.0055 286.29)
+    public static let jfCardColorBorderNeutral = oklch(71.18% 0.0129 286.07)
     public static let jfCardCornerRadius = CGFloat(32.00)*6
     public static let jfCardPaddingComfort = CGFloat(32.00)*8
     public static let jfCardPaddingCompact = CGFloat(32.00)*4
@@ -33,20 +33,22 @@ public class {
     public static let jfContainerPaddingNarrow = CGFloat(32.00)*4
     public static let jfContainerPaddingRegular = CGFloat(32.00)*8
     public static let jfContainerPaddingWide = CGFloat(32.00)*16
-    public static let jfControlBgOverlayActive = oklch(0 0 0 / 20%)
     public static let jfControlCornerRadius = CGFloat(32.00)*3
     public static let jfControlGap = CGFloat(32.00)*2
-    public static let jfControlPaddingHorizontal = CGFloat(32.00)*6
+    public static let jfControlHorizontalPaddingDefault = CGFloat(32.00)*6
+    public static let jfControlHorizontalPaddingNarrow = CGFloat(32.00)
     public static let jfFormGapComfort = CGFloat(32.00)*12
     public static let jfFormGapCompact = CGFloat(32.00)*6
     public static let jfFormGapRegular = CGFloat(32.00)*8
     public static let jfFormLabelFont = [object Object]
     public static let jfHeroFontSubtitle = [object Object]
     public static let jfHeroFontTitle = [object Object]
-    public static let jfInputColorBorderDefault = oklch(87.11% 0.0055 286.29)
+    public static let jfInputBgDefault = oklch(96.74% 0.0013 286.38)
+    public static let jfInputColorBorderDefault = oklch(71.18% 0.0129 286.07)
+    public static let jfInputColorBorderFocus = oklch(0.603 0.215 282.35)
+    public static let jfInputColorBorderHover = oklch(55.17% 0.0138 285.94)
     public static let jfInputHintColorDefault = oklch(55.17% 0.0138 285.94)
     public static let jfInputHintFont = [object Object]
-    public static let jfInputIconSize = CGFloat(32.00)*12 /** Default size for icons on inputs */
     public static let jfSectionFontSubtitle = [object Object]
     public static let jfSectionFontTitle = [object Object]
     public static let jfSectionHeightFull = "100%"

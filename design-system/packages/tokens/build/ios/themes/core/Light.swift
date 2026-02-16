@@ -1,6 +1,6 @@
 
 //
-// Light.swift
+// light.swift
 //
 
 // Do not edit directly, this file was auto-generated.
@@ -30,8 +30,8 @@ public class {
     public static let jfColorBorderBrandPrimary = oklch(0.603 0.215 282.35)
     public static let jfColorBorderContrast = oklch(92.76% 0.0058 264.53)
     public static let jfColorBorderCritical = oklch(0.422 0.1 28.58)
-    public static let jfColorBorderModerated = oklch(71.18% 0.0129 286.07)
-    public static let jfColorBorderMuted = oklch(87.11% 0.0055 286.29)
+    public static let jfColorBorderModerated = oklch(55.17% 0.0138 285.94)
+    public static let jfColorBorderMuted = oklch(71.18% 0.0129 286.07)
     public static let jfColorBorderNeutral = oklch(21.03% 0.0059 285.89)
     public static let jfColorBorderPositive = oklch(0.576 0.155 146.27)
     public static let jfColorBorderStrong = oklch(21.03% 0.0059 285.89)
@@ -54,14 +54,11 @@ public class {
     public static let jfColorShadowAccent = oklch(0.579 0.077 181.57)
     public static let jfColorShadowBrandPrimary = oklch(0.868 0.066 282.11)
     public static let jfColorShadowNeutral = oklch(0 0 0)
-    public static let jfControlBorderDefault = oklch(87.11% 0.0055 286.29)
-    public static let jfControlBorderFocus = oklch(0 0 0)
+    public static let jfControlColorBorderFocus = oklch(0 0 0)
     public static let jfGradientAccentEnd = oklch(0.579 0.077 181.57)
     public static let jfGradientAccentStart = oklch(0.766 0.061 183.84)
     public static let jfGradientBrandPrimaryEnd = oklch(0.603 0.215 282.35)
     public static let jfGradientBrandPrimaryStart = oklch(0.783 0.113 282.35)
     public static let jfGradientNeutralEnd = oklch(87.11% 0.0055 286.29)
     public static let jfGradientNeutralStart = oklch(96.74% 0.0013 286.38)
-    public static let jfInputColorBgDefault = oklch(96.74% 0.0013 286.38)
-    public static let jfInputColorBorderFocus = oklch(0.603 0.215 282.35)
 }

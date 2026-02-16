@@ -1,6 +1,6 @@
 
 //
-// Dark.swift
+// dark.swift
 //
 
 // Do not edit directly, this file was auto-generated.
@@ -54,13 +54,11 @@ public class {
     public static let jfColorShadowAccent = oklch(0.492 0.064 182.48)
     public static let jfColorShadowBrandPrimary = oklch(0.519 0.226 282.68)
     public static let jfColorShadowNeutral = oklch(0 0 0)
-    public static let jfControlBorderFocus = oklch(1 0 0)
+    public static let jfControlColorBoderFocus = oklch(1 0 0)
     public static let jfGradientAccentEnd = oklch(0.4 0.052 180.4)
     public static let jfGradientAccentStart = oklch(0.226 0.025 177.95)
     public static let jfGradientBrandPrimaryEnd = oklch(0.429 0.209 283.3)
     public static let jfGradientBrandPrimaryStart = oklch(0.184 0.0648 282.7)
     public static let jfGradientNeutralEnd = oklch(27.39% 0.0055 286.03)
     public static let jfGradientNeutralStart = oklch(21.03% 0.0059 285.89)
-    public static let jfInputColorBgDefault = oklch(21.03% 0.0059 285.89)
-    public static let jfInputColorBorderFocus = oklch(0.603 0.215 282.35)
 }

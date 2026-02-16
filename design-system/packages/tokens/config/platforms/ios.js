@@ -1,7 +1,7 @@
 /**
  * Style Dictionary platform: iOS Swift (class).
  * File list derived from build manifest; themes can add extra sets via options.extraSetKeys.
- * Output names are PascalCase (e.g. Light.swift, ScreenXs.swift).
+ * Output filenames are lowercase (e.g. primitives.swift, light.swift, screen-xs.swift).
  */
 
 import { createSetFilter, setKeyToFilename, COLOR_MODE_PREFIX, PLATFORM_PREFIX } from '../constants.js'
@@ -28,10 +28,6 @@ export function getIosPlatform(theme, buildPath, outputOnly, manifest, options =
   }
 }
 
-function toPascalCase(s) {
-  return s.split('-').map((p) => p.charAt(0).toUpperCase() + p.slice(1)).join('')
-}
-
 function buildIosFiles(theme, outputOnly, manifest, extraSetKeys = []) {
   const all = []
   const {
@@ -45,33 +41,33 @@ function buildIosFiles(theme, outputOnly, manifest, extraSetKeys = []) {
   } = manifest
 
   if (primitivesSetKeys.length > 0) {
-    all.push({ destination: 'Primitives.swift', filter: createSetFilter(primitivesSetKeys) })
+    all.push({ destination: 'primitives.swift', filter: createSetFilter(primitivesSetKeys) })
   }
   if (foundationsSetKeys.length > 0) {
-    all.push({ destination: 'Foundations.swift', filter: createSetFilter(foundationsSetKeys) })
+    all.push({ destination: 'foundations.swift', filter: createSetFilter(foundationsSetKeys) })
   }
   if (componentsSetKeys.length > 0) {
-    all.push({ destination: 'Components.swift', filter: createSetFilter(componentsSetKeys) })
+    all.push({ destination: 'components.swift', filter: createSetFilter(componentsSetKeys) })
   }
   for (const key of colorModeKeys) {
     const name = colorModeOutputName(key)
-    all.push({ destination: `${toPascalCase(name)}.swift`, filter: createSetFilter(key) })
+    all.push({ destination: `${name}.swift`, filter: createSetFilter(key) })
   }
   for (const key of platformKeys) {
     const name = platformOutputName(key)
-    all.push({ destination: `${toPascalCase(name)}.swift`, filter: createSetFilter(key) })
+    all.push({ destination: `${name}.swift`, filter: createSetFilter(key) })
   }
   for (const key of extraSetKeys) {
     if (key.startsWith(COLOR_MODE_PREFIX)) {
       const name = manifest.colorModeOutputName(key)
-      all.push({ destination: `${toPascalCase(name)}.swift`, filter: createSetFilter(key) })
+      all.push({ destination: `${name}.swift`, filter: createSetFilter(key) })
     } else if (key.startsWith(PLATFORM_PREFIX)) {
       const name = manifest.platformOutputName(key)
-      all.push({ destination: `${toPascalCase(name)}.swift`, filter: createSetFilter(key) })
+      all.push({ destination: `${name}.swift`, filter: createSetFilter(key) })
     } else {
       const filename = setKeyToFilename(key).replace(/\s+/g, '')
       all.push({
-        destination: `${toPascalCase(filename)}.swift`,
+        destination: `${filename}.swift`,
         filter: createSetFilter(key)
       })
     }

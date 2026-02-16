@@ -46,7 +46,7 @@ jobs:
         working-directory: design-system/packages/tokens
         run: |
           BASE_REF="${GITHUB_BASE_REF:-main}"
-          node scripts/ci-deprecated-check.js \
+          node scripts/deprecated/ci-deprecated-check.js \
             --base "$BASE_REF" \
             --scan-dir "$GITHUB_WORKSPACE" \
             --repo-root "$GITHUB_WORKSPACE" \

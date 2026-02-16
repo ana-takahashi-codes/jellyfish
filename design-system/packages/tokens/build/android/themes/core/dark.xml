@@ -49,9 +49,7 @@
   <color name="jf_color_shadow_neutral">oklch(0 0 0)</color>
   <color name="jf_color_shadow_accent">oklch(0.492 0.064 182.48)</color>
   <color name="jf_color_shadow_brand_primary">oklch(0.519 0.226 282.68)</color>
-  <color name="jf_control_border_focus">oklch(1 0 0)</color>
-  <color name="jf_input_color_border_focus">oklch(0.603 0.215 282.35)</color>
-  <color name="jf_input_color_bg_default">oklch(21.03% 0.0059 285.89)</color>
+  <color name="jf_control_color_boder_focus">oklch(1 0 0)</color>
   <color name="jf_gradient_brand_primary_start">oklch(0.184 0.0648 282.7)</color>
   <color name="jf_gradient_brand_primary_end">oklch(0.429 0.209 283.3)</color>
   <color name="jf_gradient_accent_start">oklch(0.226 0.025 177.95)</color>

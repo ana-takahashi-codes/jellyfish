@@ -44,7 +44,7 @@
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-700);
   font-size: var(--jf-font-size-2xg);
-  line-height: var(--jf-line-height-sm);
+  line-height: var(--jf-line-height-xs);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 
@@ -52,7 +52,7 @@
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-700);
   font-size: var(--jf-font-size-3xg);
-  line-height: var(--jf-line-height-sm);
+  line-height: var(--jf-line-height-xs);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 
@@ -60,7 +60,7 @@
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-700);
   font-size: var(--jf-font-size-4xg);
-  line-height: var(--jf-line-height-sm);
+  line-height: var(--jf-line-height-xs);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 
@@ -74,14 +74,14 @@
 .jf-font-text-md {
   font-family: var(--jf-font-family-sans);
   font-size: var(--jf-font-size-md);
-  line-height: var(--jf-line-height-md);
+  line-height: var(--jf-line-height-lg);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 
 .jf-font-text-lg {
   font-family: var(--jf-font-family-sans);
   font-size: var(--jf-font-size-lg);
-  line-height: var(--jf-line-height-md);
+  line-height: var(--jf-line-height-lg);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 
@@ -169,16 +169,17 @@
 .jf-article-font-text {
   font-family: var(--jf-font-family-sans);
   font-size: var(--jf-font-size-lg);
-  line-height: var(--jf-line-height-md);
+  line-height: var(--jf-line-height-lg);
   letter-spacing: var(--jf-letter-spacing-regular);
   margin-bottom: var(--jf-size-16);
+  text-indent: var(--jf-size-16);
 }
 
 .jf-hero-font-title {
   font-family: var(--jf-font-family-decoration);
   font-weight: var(--jf-font-weight-700);
   font-size: var(--jf-font-size-4xg);
-  line-height: var(--jf-line-height-sm);
+  line-height: var(--jf-line-height-xs);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 

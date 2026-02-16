@@ -1,6 +1,6 @@
 
 //
-// Primitives.swift
+// primitives.swift
 //
 
 // Do not edit directly, this file was auto-generated.
@@ -89,10 +89,10 @@ public class {
     public static let jfLetterSpacingCompact = CGFloat(-0.80)
     public static let jfLetterSpacingRegular = CGFloat(0.00)
     public static let jfLetterSpacingWide = CGFloat(1.28)
-    public static let jfLineHeightLg = 1.7em
-    public static let jfLineHeightMd = 1.5em
-    public static let jfLineHeightSm = 1.2em
-    public static let jfLineHeightXs = 1.1em
+    public static let jfLineHeightLg = 170%
+    public static let jfLineHeightMd = 150%
+    public static let jfLineHeightSm = 120%
+    public static let jfLineHeightXs = 110%
     public static let jfMotionDelayBrief = 100ms
     public static let jfMotionDelayExtended = 800ms
     public static let jfMotionDelayLong = 350ms

@@ -35,8 +35,8 @@
   --jf-color-fg-on-brand-primary: oklch(1 0 0);
   --jf-color-fg-on-positive: oklch(1 0 0);
   --jf-color-fg-on-warning: oklch(1 0 0);
-  --jf-color-border-muted: oklch(87.11% 0.0055 286.29);
-  --jf-color-border-moderated: oklch(71.18% 0.0129 286.07);
+  --jf-color-border-muted: oklch(71.18% 0.0129 286.07);
+  --jf-color-border-moderated: oklch(55.17% 0.0138 285.94);
   --jf-color-border-strong: oklch(21.03% 0.0059 285.89);
   --jf-color-border-contrast: oklch(92.76% 0.0058 264.53);
   --jf-color-border-brand-primary: oklch(0.603 0.215 282.35);
@@ -48,10 +48,7 @@
   --jf-color-shadow-neutral: lch(0 0 none / 0.07);
   --jf-color-shadow-accent: lch(52.119 26.703 182.16 / 0.15);
   --jf-color-shadow-brand-primary: lch(84.086 24.639 284.61 / 0.5);
-  --jf-control-border-focus: oklch(0 0 0);
-  --jf-control-border-default: oklch(87.11% 0.0055 286.29);
-  --jf-input-color-border-focus: oklch(0.603 0.215 282.35);
-  --jf-input-color-bg-default: oklch(96.74% 0.0013 286.38);
+  --jf-control-color-border-focus: oklch(0 0 0);
   --jf-gradient-brand-primary-start: oklch(0.783 0.113 282.35);
   --jf-gradient-brand-primary-end: oklch(0.603 0.215 282.35);
   --jf-gradient-accent-start: oklch(0.766 0.061 183.84);

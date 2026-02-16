@@ -7,19 +7,13 @@
   "license": "MIT",
   "private": false,
   "type": "module",
-  "main": "./build/js/themes/core/tokens.js",
-  "types": "./build/js/themes/core/tokens.d.ts",
-  "files": [
-    "build",
-    "config",
-    "scripts",
-    "src"
-  ],
+  "main": "./build/css/themes/core/primitives.css",
+  "style": "./build/css/themes/core/primitives.css",
+  "files": ["build", "config", "scripts", "src"],
   "exports": {
     ".": {
-      "types": "./build/js/themes/core/tokens.d.ts",
-      "import": "./build/js/themes/core/tokens.js",
-      "default": "./build/js/themes/core/tokens.js"
+      "style": "./build/css/themes/core/primitives.css",
+      "default": "./build/css/themes/core/primitives.css"
     },
     "./config": {
       "import": "./config/index.js",
@@ -29,12 +23,13 @@
   },
   "scripts": {
     "dev": "echo 'Add dev script here'",
-    "build": "node scripts/build.js",
-    "tokens:build": "node scripts/build.js",
-    "tokens:clean": "node scripts/clean.js",
-    "tokens:validate-js-dts": "node scripts/validate-js-dts-consistency.js",
-    "tokens:scan-deprecated": "node scripts/scan-deprecated-usage.js",
-    "tokens:deprecated-report": "node scripts/deprecated-report.js",
+    "build": "node scripts/build/build.js",
+    "tokens:build": "node scripts/build/build.js",
+    "tokens:clean": "node scripts/build/clean.js",
+    "tokens:utilities": "node scripts/utilities/utils-build.mjs",
+    "tokens:validate-js-dts": "node scripts/validate/validate-js-dts-consistency.js",
+    "tokens:scan-deprecated": "node scripts/deprecated/scan-deprecated-usage.js",
+    "tokens:deprecated-report": "node scripts/deprecated/deprecated-report.js",
     "version:patch": "pnpm version patch",
     "version:minor": "pnpm version minor",
     "version:major": "pnpm version major",
@@ -43,7 +38,7 @@
     "lint": "echo 'Add lint script here'"
   },
   "devDependencies": {
-    "style-dictionary": "^5.1.4",
-    "@tokens-studio/sd-transforms": "^2.0.3"
+    "@tokens-studio/sd-transforms": "^2.0.3",
+    "style-dictionary": "^5.1.4"
   }
 }
