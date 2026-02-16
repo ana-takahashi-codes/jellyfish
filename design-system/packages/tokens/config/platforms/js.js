@@ -12,7 +12,7 @@
 export function getJsPlatform(_theme, buildPath) {
   return {
     transformGroup: 'tokens-studio',
-    transforms: ['name/camel', 'value/duration', 'value/cubic-bezier'], // kebab is invalid in JS identifiers; camelCase for tokens.js / tokens.d.ts
+    transforms: ['attribute/deprecated', 'name/camel', 'value/duration', 'value/cubic-bezier'], // attribute/deprecated first so .d.ts format sees isDeprecated
     buildPath,
     files: [
       {
@@ -21,7 +21,7 @@ export function getJsPlatform(_theme, buildPath) {
       },
       {
         destination: 'tokens.d.ts',
-        format: 'typescript/es6-declarations'
+        format: 'typescript/es6-declarations-deprecation'
       }
     ]
   }

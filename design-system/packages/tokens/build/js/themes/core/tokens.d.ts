@@ -249,11 +249,8 @@ export const jfMotionDurationMedium: string;
 export const jfMotionDurationLong: string;
 export const jfMotionDurationLonger: string;
 export const jfMotionDurationExtended: string;
-/** ease-in */
 export const jfMotionEasingAccelerate: string;
-/** ease-out */
 export const jfMotionEasingDecelerate: string;
-/** ease-in-out */
 export const jfMotionEasingBalanced: string;
 export const jfMotionEasingLinear: string;
 export const jfMotionDelayNone: string;
@@ -326,9 +323,7 @@ export const jfScreenHeightFull: string;
 export const jfScreenHeightHalf: string;
 export const jfScreenHeightThird: string;
 export const jfScreenHeightQuarter: string;
-/** Also know as z-index */
 export const jfLayerBase: string;
-/** Also know as z-index */
 export const jfLayerDrawer: string;
 export const jfLayerModal: string;
 export const jfLayerOverlay: string;
@@ -440,7 +435,6 @@ export const jfInputColorBorderFocus: string;
 export const jfInputColorBgDefault: string;
 export const jfInputHintColorDefault: string;
 export const jfInputHintFont: string;
-/** Default size for icons on inputs */
 export const jfInputIconSize: string;
 export const jfGradientBrandPrimaryStart: string;
 export const jfGradientBrandPrimaryEnd: string;

@@ -1,0 +1,134 @@
+[  152039ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:6006/@id/__x00__virtual:/@storybook/builder-vite/storybook-stories.js?t=1771203345690:0
+[  152040ms] [ERROR] [vite] Failed to reload /@id/__x00__virtual:/@storybook/builder-vite/storybook-stories.js. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:6006/@vite/client:808
+[  152043ms] TypeError: Cannot read properties of undefined (reading 'importFn')
+    at http://localhost:6006/@id/__x00__virtual:/@storybook/builder-vite/vite-app.js:40:73
+    at http://localhost:6006/@vite/client:67:83
+    at http://localhost:6006/@vite/client:218:52
+    at http://localhost:6006/@vite/client:196:55
+    at Array.forEach (<anonymous>)
+    at HMRClient.queueUpdate (http://localhost:6006/@vite/client:196:33)
+    at async Promise.all (index 0)
+    at async handleMessage (http://localhost:6006/@vite/client:838:4)
+[  152060ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:6006/index.json:0
+[  152093ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:6006/@id/__x00__virtual:/@storybook/builder-vite/storybook-stories.js?t=1771203345691:0
+[  152093ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:6006/index.json:0
+[  152093ms] [ERROR] [vite] Failed to reload /@id/__x00__virtual:/@storybook/builder-vite/storybook-stories.js. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:6006/@vite/client:808
+[  152098ms] TypeError: Cannot read properties of undefined (reading 'importFn')
+    at http://localhost:6006/@id/__x00__virtual:/@storybook/builder-vite/vite-app.js:40:73
+    at http://localhost:6006/@vite/client:67:83
+    at http://localhost:6006/@vite/client:218:52
+    at http://localhost:6006/@vite/client:196:55
+    at Array.forEach (<anonymous>)
+    at HMRClient.queueUpdate (http://localhost:6006/@vite/client:196:33)
+    at async Promise.all (index 0)
+    at async handleMessage (http://localhost:6006/@vite/client:838:4)
+[  152097ms] [ERROR] Error loading story index: @ http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:13663
+[  152097ms] [ERROR] SB_PREVIEW_API_0006 (StoryIndexFetchError): Error fetching `/index.json`:
+
+Unable to index ./stories/basic-components/buttonDocs.mdx:
+  Error: Invariant failed: Could not find or load CSF file at path "./button.stories" referenced by `of={}` in docs file "stories\basic-components\buttonDocs.mdx".
+
+- Does that file exist?
+- If so, is it a CSF file (`.stories.*`)?
+- If so, is it matched by the `stories` glob in `main.js`?
+- If so, has the file successfully loaded in Storybook and are its stories visible?
+    at invariant (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/_node-chunks/chunk-O6AYJK6F.js:20:11)
+    at _StoryIndexGenerator.extractDocs (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5978:13)
+    at async file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5830:39
+    at async Promise.all (index 1)
+    at async Promise.all (index 0)
+    at async _StoryIndexGenerator.updateExtracted (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5818:5)
+    at async _StoryIndexGenerator.ensureExtracted (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5855:8)
+    at async _StoryIndexGenerator.getIndexAndStats (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:6078:134)
+    at async _StoryIndexGenerator.getIndex (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:6071:13)
+    at async Array.<anonymous> (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:4675:19)
+
+If you are in development, this likely indicates a problem with your Storybook process,
+check the terminal for errors.
+
+If you are in a deployed Storybook, there may have been an issue deploying the full Storybook
+build.
+    at invariant (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/_node-chunks/chunk-O6AYJK6F.js:20:11)
+    at _StoryIndexGenerator.extractDocs (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5978:13)
+    at async file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5830:39
+    at async Promise.all (index 1)
+    at async Promise.all (index 0)
+    at async _StoryIndexGenerator.updateExtracted (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5818:5)
+    at async _StoryIndexGenerator.ensureExtracted (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5855:8)
+    at async _StoryIndexGenerator.getIndexAndStats (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:6078:134)
+    at async _StoryIndexGenerator.getIndex (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:6071:13)
+    at async Array.<anonymous> (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:4675:19)
+
+If you are in development, this likely indicates a problem with your Storybook process,
+check the terminal for errors.
+
+If you are in a deployed Storybook, there may have been an issue deploying the full Storybook
+build.
+    at PreviewWeb.getStoryIndexFromServer (http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:35582:11)
+    at async PreviewWeb.onStoryIndexChanged (http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:35622:26) @ http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:13663
+[  152103ms] SB_PREVIEW_API_0006 (StoryIndexFetchError): Error fetching `/index.json`:
+
+Unable to index ./stories/basic-components/buttonDocs.mdx:
+  Error: Invariant failed: Could not find or load CSF file at path "./button.stories" referenced by `of={}` in docs file "stories\basic-components\buttonDocs.mdx".
+
+- Does that file exist?
+- If so, is it a CSF file (`.stories.*`)?
+- If so, is it matched by the `stories` glob in `main.js`?
+- If so, has the file successfully loaded in Storybook and are its stories visible?
+    at invariant (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/_node-chunks/chunk-O6AYJK6F.js:20:11)
+    at _StoryIndexGenerator.extractDocs (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5978:13)
+    at async file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5830:39
+    at async Promise.all (index 1)
+    at async Promise.all (index 0)
+    at async _StoryIndexGenerator.updateExtracted (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5818:5)
+    at async _StoryIndexGenerator.ensureExtracted (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5855:8)
+    at async _StoryIndexGenerator.getIndexAndStats (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:6078:134)
+    at async _StoryIndexGenerator.getIndex (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:6071:13)
+    at async Array.<anonymous> (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:4675:19)
+
+If you are in development, this likely indicates a problem with your Storybook process,
+check the terminal for errors.
+
+If you are in a deployed Storybook, there may have been an issue deploying the full Storybook
+build.
+    at invariant (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/_node-chunks/chunk-O6AYJK6F.js:20:11)
+    at _StoryIndexGenerator.extractDocs (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5978:13)
+    at async file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5830:39
+    at async Promise.all (index 1)
+    at async Promise.all (index 0)
+    at async _StoryIndexGenerator.updateExtracted (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5818:5)
+    at async _StoryIndexGenerator.ensureExtracted (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:5855:8)
+    at async _StoryIndexGenerator.getIndexAndStats (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:6078:134)
+    at async _StoryIndexGenerator.getIndex (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:6071:13)
+    at async Array.<anonymous> (file:///F:/jellyfish/design-system/node_modules/.pnpm/storybook@10.2.8_@testing-library+dom@10.4.1_prettier@3.2.5_react-dom@18.3.1_react@18.3.1/node_modules/storybook/dist/core-server/index.js:4675:19)
+
+If you are in development, this likely indicates a problem with your Storybook process,
+check the terminal for errors.
+
+If you are in a deployed Storybook, there may have been an issue deploying the full Storybook
+build.
+    at PreviewWeb.getStoryIndexFromServer (http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:35582:11)
+    at async PreviewWeb.onStoryIndexChanged (http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:35622:26)
+[  155555ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:6006/stories/Button.jsx?t=1771203341688:0
+[  440373ms] [ERROR] %c manager %c received %cstoryRenderPhaseChanged%c but was unable to determine the source of the event color: #37D5D3; background: black  color: #FF4785  @ http://localhost:6006/sb-manager/globals-runtime.js:5813
+[  440842ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:6006/stories/Button.jsx?t=1771203341688:0
+[  691499ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:6006/.storybook/preview.js?t=1771203885166:0
+[  691500ms] [ERROR] [vite] Failed to reload /.storybook/preview.js. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:6006/@vite/client:808
+[  691538ms] [WARNING] Attempted to set a global (measureEnabled) that is not defined in initial globals or globalTypes @ http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:13660
+[  691538ms] [WARNING] Attempted to set a global (backgrounds) that is not defined in initial globals or globalTypes @ http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:13660
+[  691538ms] [WARNING] Attempted to set a global (outline) that is not defined in initial globals or globalTypes @ http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:13660
+[  691538ms] [WARNING] Attempted to set a global (viewport) that is not defined in initial globals or globalTypes @ http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:13660
+[  691751ms] [ERROR] Error loading story index: @ http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:13663
+[  691751ms] [ERROR] TypeError: Failed to fetch
+    at PreviewWeb.getStoryIndexFromServer (http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:35579:24)
+    at PreviewWeb.onStoryIndexChanged (http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:35622:37)
+    at http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:13624:11
+    at Array.forEach (<anonymous>)
+    at Channel.handleEvent (http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:13623:51)
+    at WebsocketTransport.handler (http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:13572:36)
+    at WebsocketTransport.socket.onmessage (http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:15086:81) @ http://localhost:6006/node_modules/.cache/storybook/10.2.8/80db652278c0f05725d9ebdf3ef2d8ebc2c253a471a8edf1c62660ccb8b47c41/sb-vite/deps/storybook_internal_preview_runtime.js?v=cd31c994:13663
+[  691789ms] [ERROR] %c manager %c received %cconfigError%c but was unable to determine the source of the event color: #37D5D3; background: black  color: #FF4785  @ http://localhost:6006/sb-manager/globals-runtime.js:5813
+[  691868ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:6006/.storybook/preview.js:0
+[  768482ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:6006/stories/Button.jsx?t=1771203341688:0
+[  882179ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:6006/stories/Button.jsx?t=1771203341688:0
+[  896831ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:6006/stories/Button.jsx?t=1771203341688:0

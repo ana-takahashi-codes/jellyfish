@@ -1,0 +1,79 @@
+# Runs deprecated token usage scanner on PRs.
+# Blocks merge if new code uses deprecated tokens; comments on PR with details.
+
+name: Deprecated tokens check
+
+on:
+  pull_request:
+    paths:
+      - 'design-system/**'
+      - '**.js'
+      - '**.ts'
+      - '**.tsx'
+
+jobs:
+  check-deprecated-usage:
+    name: Scan deprecated token usage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: design-system/pnpm-lock.yaml
+
+      - name: Install dependencies
+        working-directory: design-system
+        run: pnpm install --frozen-lockfile
+
+      - name: Build design tokens
+        working-directory: design-system
+        run: pnpm --filter @jellyfish/tokens run tokens:build
+
+      - name: Run deprecated token scan (CI)
+        id: scan
+        working-directory: design-system/packages/tokens
+        run: |
+          BASE_REF="${GITHUB_BASE_REF:-main}"
+          node scripts/ci-deprecated-check.js \
+            --base "$BASE_REF" \
+            --scan-dir "$GITHUB_WORKSPACE" \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --dts "$GITHUB_WORKSPACE/design-system/packages/tokens/build/js/themes/core/tokens.d.ts" \
+            --markdown > scan-result.md 2>&1 || true
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+          cat scan-result.md
+
+      - name: Comment PR with scan result
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs')
+            const path = process.env.GITHUB_WORKSPACE + '/design-system/packages/tokens/scan-result.md'
+            let body = ''
+            try {
+              body = fs.readFileSync(path, 'utf8')
+            } catch (_) {}
+            if (!body.trim() || (!body.includes('Uso **novo**') && !body.includes('Uso **legado**'))) return
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '## Deprecated design tokens – resultado do scan\n\n' + body
+            })
+
+      - name: Fail if new usage of deprecated tokens
+        if: steps.scan.outputs.exit_code == '1'
+        run: exit 1

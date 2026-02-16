@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
@@ -12,6 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@jellyfish/tokens": "workspace:*",
+    "@jellyfish/ui": "workspace:*",
+    "@tabler/icons-react": "^3.36.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

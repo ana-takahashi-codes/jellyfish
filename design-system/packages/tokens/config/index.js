@@ -18,6 +18,7 @@ import formatCssVariablesDark from './formats/css-variables-dark.js'
 import formatCssResponsive from './formats/css-responsive.js'
 import formatCssTypographyClasses from './formats/css-typography-classes.js'
 import formatScssTypographyClasses from './formats/scss-typography-classes.js'
+import formatTypescriptEs6DeclarationsDeprecation from './formats/typescript-es6-declarations-deprecation.js'
 import { registerCustomTransforms } from './transforms/index.js'
 
 register(StyleDictionary)
@@ -26,6 +27,7 @@ StyleDictionary.registerFormat(formatCssVariablesDark)
 StyleDictionary.registerFormat(formatCssResponsive)
 StyleDictionary.registerFormat(formatCssTypographyClasses)
 StyleDictionary.registerFormat(formatScssTypographyClasses)
+StyleDictionary.registerFormat(formatTypescriptEs6DeclarationsDeprecation)
 
 /**
  * @param {string[]} [outputOnly]

@@ -6,9 +6,11 @@
 import { registerDurationTransform } from './value-duration.js'
 import { registerCubicBezierTransform } from './value-cubic-bezier.js'
 import { registerTransitionTransform } from './value-transition-shorthand.js'
+import { registerDeprecatedAttributeTransform } from './attribute-deprecated.js'
 
 export function registerCustomTransforms(StyleDictionary) {
   registerDurationTransform(StyleDictionary)
   registerCubicBezierTransform(StyleDictionary)
   registerTransitionTransform(StyleDictionary)
+  registerDeprecatedAttributeTransform(StyleDictionary)
 }

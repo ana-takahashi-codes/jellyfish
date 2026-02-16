@@ -94,9 +94,31 @@ Para **estender ou reutilizar** a configuração em outros repositórios, use o 
 | `pnpm run build` | Gera todos os artefatos em `build/` a partir de `src/tokens-studio/`. |
 | `pnpm run tokens:build` | Alias de `build`. |
 | `pnpm run tokens:clean` | Remove a pasta `build/`. |
+| `pnpm run tokens:validate-js-dts` | Valida que cada export em `tokens.js` existe em `tokens.d.ts` e que depreciação existe só no `.d.ts`. |
+| `pnpm run tokens:scan-deprecated` | Varre o código (JS/TS/TSX) em busca de uso de tokens deprecated. Use `--json` para saída estruturada. |
+| `pnpm run tokens:deprecated-report` | Gera `deprecated-report.json` e `deprecated-to-remove.json` (candidatos à remoção em major). |
 | `pnpm run version:patch` | Incrementa versão patch (x.y.**z**). |
 | `pnpm run version:minor` | Incrementa versão minor (x.**y**.z). |
 | `pnpm run version:major` | Incrementa versão major (**x**.y.z). |
+
+---
+
+## Depreciação de tokens
+
+Os tokens podem ser marcados como deprecated no JSON (padrão DTCG) com `$deprecated: true` ou com objeto:
+
+```json
+"$deprecated": {
+  "since": "2.3.0",
+  "replacement": "color.brand.primary.default",
+  "reason": "Normalização semântica"
+}
+```
+
+- **Build**: O transform `attribute/deprecated` injeta `token.attributes.isDeprecated`, `deprecatedSince`, `deprecatedReplacement`, `deprecatedReason`. O **JavaScript** gerado permanece limpo (sem lógica de depreciação em runtime). O **`.d.ts`** recebe JSDoc `@deprecated` apenas para tokens deprecated, visível na IDE.
+- **CI**: O workflow `deprecated-tokens-check.yml` roda em PRs, bloqueia merge se houver **uso novo** de token deprecated e comenta no PR com arquivo, linha e token de substituição. Uso legado gera apenas aviso.
+- **Janela de depreciação**: Em `config/deprecation-config.js` está `deprecationWindow: { warning: "minor", removal: "major" }` para modular avisos e preparar remoções.
+- **Relatório para major**: `pnpm run tokens:deprecated-report` gera `deprecated-report.json` (todos os deprecated) e `deprecated-to-remove.json` (candidatos à remoção após X versões), para uso em release major.
 
 ---
 
