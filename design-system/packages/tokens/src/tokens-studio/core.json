@@ -376,19 +376,19 @@
       "line-height": {
         "xs": {
           "$type": "lineHeights",
-          "$value": "1.1em"
+          "$value": "110%"
         },
         "sm": {
           "$type": "lineHeights",
-          "$value": "1.2em"
+          "$value": "120%"
         },
         "md": {
           "$type": "lineHeights",
-          "$value": "1.5em"
+          "$value": "150%"
         },
         "lg": {
           "$type": "lineHeights",
-          "$value": "1.7em"
+          "$value": "170%"
         }
       },
       "border": {
@@ -1090,6 +1090,16 @@
             "$type": "color",
             "$value": "oklch(0.3185 0.0527 105.98)"
           }
+        },
+        "bg": {
+          "overlay": {
+            "$type": "color",
+            "$value": "{jf.color.alpha.black.700}"
+          },
+          "active": {
+            "$type": "color",
+            "$value": "{jf.color.alpha.black.100}"
+          }
         }
       },
       "opacity": {
@@ -1103,7 +1113,7 @@
         },
         "hover": {
           "$type": "opacity",
-          "$value": "{jf.opacity.9}"
+          "$value": "{jf.opacity.8}"
         },
         "loading": {
           "$type": "opacity",
@@ -1338,7 +1348,7 @@
               "fontFamily": "{jf.font-family.sans}",
               "fontWeight": "{jf.font-weight.700}",
               "fontSize": "{jf.font-size.2xg}",
-              "lineHeight": "{jf.line-height.sm}",
+              "lineHeight": "{jf.line-height.xs}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           },
@@ -1348,7 +1358,7 @@
               "fontFamily": "{jf.font-family.sans}",
               "fontWeight": "{jf.font-weight.700}",
               "fontSize": "{jf.font-size.3xg}",
-              "lineHeight": "{jf.line-height.sm}",
+              "lineHeight": "{jf.line-height.xs}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           },
@@ -1358,7 +1368,7 @@
               "fontFamily": "{jf.font-family.sans}",
               "fontWeight": "{jf.font-weight.700}",
               "fontSize": "{jf.font-size.4xg}",
-              "lineHeight": "{jf.line-height.sm}",
+              "lineHeight": "{jf.line-height.xs}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           }
@@ -1378,7 +1388,7 @@
             "$value": {
               "fontFamily": "{jf.font-family.sans}",
               "fontSize": "{jf.font-size.md}",
-              "lineHeight": "{jf.line-height.md}",
+              "lineHeight": "{jf.line-height.lg}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           },
@@ -1387,7 +1397,7 @@
             "$value": {
               "fontFamily": "{jf.font-family.sans}",
               "fontSize": "{jf.font-size.lg}",
-              "lineHeight": "{jf.line-height.md}",
+              "lineHeight": "{jf.line-height.lg}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           }
@@ -1552,12 +1562,6 @@
             "$type": "borderRadius",
             "$value": "{jf.corner.radius.2}"
           }
-        }
-      },
-      "bg": {
-        "overlay": {
-          "$type": "color",
-          "$value": "{jf.color.alpha.black.700}"
         }
       },
       "shadow": {
@@ -2874,9 +2878,10 @@
             "$value": {
               "fontFamily": "{jf.font-family.sans}",
               "fontSize": "{jf.font-size.lg}",
-              "lineHeight": "{jf.line-height.md}",
+              "lineHeight": "{jf.line-height.lg}",
               "letterSpacing": "{jf.letter-spacing.regular}",
-              "paragraphSpacing": "{jf.size.16}"
+              "paragraphSpacing": "{jf.size.16}",
+              "paragraphIndent": "{jf.size.16}"
             }
           },
           "title": {
@@ -3000,17 +3005,15 @@
           "$type": "spacing",
           "$value": "{jf.size.2}"
         },
-        "padding": {
-          "horizontal": {
-            "$type": "spacing",
-            "$value": "{jf.size.6}"
-          }
-        },
-        "bg": {
-          "overlay": {
-            "active": {
-              "$type": "color",
-              "$value": "{jf.color.alpha.black.200}"
+        "horizontal": {
+          "padding": {
+            "default": {
+              "$type": "spacing",
+              "$value": "{jf.size.6}"
+            },
+            "narrow": {
+              "$type": "spacing",
+              "$value": "{jf.size.1}"
             }
           }
         }
@@ -3045,7 +3048,7 @@
               "fontFamily": "{jf.font-family.decoration}",
               "fontWeight": "{jf.font-weight.700}",
               "fontSize": "{jf.font-size.4xg}",
-              "lineHeight": "{jf.line-height.sm}",
+              "lineHeight": "{jf.line-height.xs}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
           },
@@ -3103,6 +3106,14 @@
             "default": {
               "$type": "color",
               "$value": "{jf.color.border.muted}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{jf.color.border.moderated}"
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{jf.color.border.brand-primary}"
             }
           }
         },
@@ -3118,11 +3129,10 @@
             "$value": "{jf.font.label.xs}"
           }
         },
-        "icon": {
-          "size": {
-            "$type": "sizing",
-            "$value": "{jf.size.12}",
-            "$description": "Default size for icons on inputs"
+        "bg": {
+          "default": {
+            "$type": "color",
+            "$value": "{jf.color.bg.surface.secondary}"
           }
         }
       }
@@ -3268,11 +3278,11 @@
         "border": {
           "muted": {
             "$type": "color",
-            "$value": "{jf.color.neutral.300}"
+            "$value": "{jf.color.neutral.400}"
           },
           "moderated": {
             "$type": "color",
-            "$value": "{jf.color.neutral.400}"
+            "$value": "{jf.color.neutral.500}"
           },
           "strong": {
             "$type": "color",
@@ -3381,31 +3391,13 @@
           }
         }
       },
-      "input": {
+      "control": {
         "color": {
-          "bg": {
-            "default": {
-              "$type": "color",
-              "$value": "{jf.color.neutral.100}"
-            }
-          },
           "border": {
             "focus": {
               "$type": "color",
-              "$value": "{jf.color.brand-primary.500}"
+              "$value": "{jf.color.black}"
             }
-          }
-        }
-      },
-      "control": {
-        "border": {
-          "focus": {
-            "$type": "color",
-            "$value": "{jf.color.black}"
-          },
-          "default": {
-            "$type": "color",
-            "$value": "{jf.color.border.muted}"
           }
         }
       }
@@ -3664,27 +3656,13 @@
           }
         }
       },
-      "input": {
+      "control": {
         "color": {
-          "bg": {
-            "default": {
-              "$type": "color",
-              "$value": "{jf.color.neutral.900}"
-            }
-          },
-          "border": {
+          "boder": {
             "focus": {
               "$type": "color",
-              "$value": "{jf.color.brand-primary.500}"
+              "$value": "{jf.color.white}"
             }
-          }
-        }
-      },
-      "control": {
-        "border": {
-          "focus": {
-            "$type": "color",
-            "$value": "{jf.color.white}"
           }
         }
       }
@@ -3723,10 +3701,21 @@
         }
       },
       "section": {
-        "padding": {
-          "horizontal": {
-            "$type": "sizing",
-            "$value": "{jf.size.8}"
+        "horizontal": {
+          "padding": {
+            "default": {
+              "$type": "sizing",
+              "$value": "{jf.size.8}"
+            }
+          }
+        },
+        "vertical": {
+          "padding": {
+            "default": {
+              "$type": "sizing",
+              "$value": "{jf.size.16}",
+              "$description": "Sections vertical paddings for xs-screens"
+            }
           }
         }
       }
@@ -3765,10 +3754,12 @@
         }
       },
       "section": {
-        "padding": {
-          "horizontal": {
-            "$type": "sizing",
-            "$value": "{jf.size.10}"
+        "horizontal": {
+          "padding": {
+            "default": {
+              "$type": "sizing",
+              "$value": "{jf.size.10}"
+            }
           }
         }
       }
@@ -3807,10 +3798,12 @@
         }
       },
       "section": {
-        "padding": {
-          "horizontal": {
-            "$type": "sizing",
-            "$value": "{jf.size.16}"
+        "horizontal": {
+          "padding": {
+            "default": {
+              "$type": "sizing",
+              "$value": "{jf.size.16}"
+            }
           }
         }
       }
@@ -3930,10 +3923,6 @@
         "jf.letter-spacing.comfort": "95944121f2d78dddae0bbcf95682a98b4b7d679a",
         "jf.letter-spacing.wide": "5a19b274b792c2e540ef5ae47a12fdcf433d3e7b",
         "jf.letter-spacing.regular": "9b33374e7e2fd62ba4f88f18a34d858f2f96774b",
-        "jf.line-height.xs": "d6b0130214268f187d9a8716204af5c5ccc3b108",
-        "jf.line-height.sm": "149a2bdca1464678377deb7bf527a71e22386fda",
-        "jf.line-height.md": "316cd5c0b473db4833e56c638069b1b747de87e4",
-        "jf.line-height.lg": "0c95cc7d509d40312c06c56bf64130a8d982e96b",
         "jf.border.width.1": "87b95d3281050dc1a2e75d317b3a14f9bd62b180",
         "jf.border.width.2": "c49484c5b9e29aa1e172e5ff3b6b8b0f6b0165be",
         "jf.border.width.3": "a73ad952d77b0677c416e1598b26b35efa4c75c6",
@@ -4184,7 +4173,8 @@
         "shadow.brand-primary.top.sm": "S:4a9c8627277b4495bc7e1a549f0944252fcdf185,",
         "shadow.brand-primary.middle.lg": "S:7cd750456857a4fb16564894fc72a61e634065ec,",
         "shadow.brand-primary.middle.md": "S:ed9cfead5f27d76fa2821f167e4386b8b8aa68d2,",
-        "shadow.brand-primary.middle.sm": "S:21606d5901ec29b6cb11a6547105610520538bb2,"
+        "shadow.brand-primary.middle.sm": "S:21606d5901ec29b6cb11a6547105610520538bb2,",
+        "jf.shadow.critical": "S:d9cd79acc7e5d8ce9b33f1b75f62cf7577f12500,"
       },
       "selectedTokenSets": {
         "01- Primitives": "source",
@@ -4309,7 +4299,7 @@
         "jf.corner.radius.lg": "5a71661bb61fd3929036fc6a27884c84a6cc4e85",
         "jf.corner.radius.xl": "d3fc386cf21450c732ec85fcacbaf25789bc2418",
         "jf.corner.radius.sm": "04d30ea9c410b0c85cea74502707127954b13d8d",
-        "jf.bg.overlay": "f4a89f7ec85f2f96121153bb3b969d17080b3b7e"
+        "jf.color.bg.overlay": "f4a89f7ec85f2f96121153bb3b969d17080b3b7e"
       },
       "group": "02- Foundations"
     },
@@ -4430,10 +4420,7 @@
         "jf.gradient.accent.end": "471b9cb1292fcbe23294c908c0a66cdf4e0597b1",
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
-        "jf.input.color.bg.default": "0a215646a2e7d5266131f66cb298b3072f345f04",
-        "jf.input.color.border.focus": "b8c045ade0da40316b60acd50d7e4ea4472d0cec",
-        "jf.control.border.focus": "3d630dd88122973ee06402fab10b5c4ff3a89011",
-        "jf.control.border.default": "567bd5b4b63d3ded8cbe91c69a6c12416412d3bd"
+        "jf.control.color.border.focus": "3d630dd88122973ee06402fab10b5c4ff3a89011"
       },
       "group": "Color Modes"
     },
@@ -4554,9 +4541,7 @@
         "jf.gradient.accent.end": "471b9cb1292fcbe23294c908c0a66cdf4e0597b1",
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
-        "jf.input.color.bg.default": "0a215646a2e7d5266131f66cb298b3072f345f04",
-        "jf.input.color.border.focus": "b8c045ade0da40316b60acd50d7e4ea4472d0cec",
-        "jf.control.border.focus": "3d630dd88122973ee06402fab10b5c4ff3a89011"
+        "jf.control.color.boder.focus": "7848499e5b24521e1f25cd370b013d02f1fdfe29"
       },
       "group": "Color Modes"
     },
@@ -4614,14 +4599,18 @@
         "jf.container.padding.extended": "bbc5d0c9aeff2a9e6ab492149b8825980af78dbd",
         "jf.control.corner.radius": "ea74651f2067a94c410e144dabaa5a9ab9618b74",
         "jf.control.gap": "32da44e46f4dd5ddf14c6df95b3477c501f1bdd4",
-        "jf.control.padding.horizontal": "c5dd9bf3448cde31def64cc4ab8a4b91c1139282",
-        "jf.control.bg.overlay.active": "0ca9f12c5f191252375994d91d267ff6b556ecb7",
+        "jf.control.horizontal.padding.default": "c5dd9bf3448cde31def64cc4ab8a4b91c1139282",
+        "jf.control.horizontal.padding.narrow": "10a662c398258e96b6890019d3bf37a81a523815",
         "jf.form.gap.compact": "64eb5c98b932f75b0644df190ae7b09535262de4",
         "jf.form.gap.regular": "dcf8543d69919ba0e781231ceb3adba0579ba0a2",
         "jf.form.gap.comfort": "70a07ccfe6f93d8c0b53cad4370f2ea17ab50657",
         "jf.section.max-width.boxed": "9cf33b0b9714e842924bd62d58d505aebe81e22c",
         "jf.input.color.border.default": "28bfdea08bb765c14c00d092cbaa2ed2905e7dad",
-        "jf.input.hint.color.default": "e171ad0bde79fa2030156e42032b79cbaa1bbeb9"
+        "jf.input.hint.color.default": "e171ad0bde79fa2030156e42032b79cbaa1bbeb9",
+        "jf.input.color.border.hover": "0ecfed0adecb07e42bfb872ad6a869b368c3965f",
+        "jf.input.color.border.focus": "81dbee7679b9b83b9518debc185d618b8bf41103",
+        "jf.input.bg.default": "c2f3ec402fa31b5aed9092befda52458da4b1607",
+        "jf.button.bg.overlay.active": "0ca9f12c5f191252375994d91d267ff6b556ecb7"
       },
       "group": "03 - Components"
     },
@@ -4643,7 +4632,8 @@
         "jf.control.min-width.sm": "6269099f1b0ae220c7ba269ace7cc9c540b1e3e9",
         "jf.control.min-width.md": "51039f1179437cab90e0d7cabb81b463cdd1ee80",
         "jf.control.min-width.lg": "b7d03c7e6a34d97a9fba19b3ff59d8ec320350fe",
-        "jf.section.padding.horizontal": "8890271d1589a8c2d5e6478db1723eef745dcc14"
+        "jf.section.horizontal.padding.default": "8890271d1589a8c2d5e6478db1723eef745dcc14",
+        "jf.section.vertical.padding.default": "5c311a843586a5a2a1cfaf9b1e0975da916ef657"
       },
       "group": "Platforms"
     },
@@ -4665,7 +4655,7 @@
         "jf.control.min-width.sm": "6269099f1b0ae220c7ba269ace7cc9c540b1e3e9",
         "jf.control.min-width.md": "51039f1179437cab90e0d7cabb81b463cdd1ee80",
         "jf.control.min-width.lg": "b7d03c7e6a34d97a9fba19b3ff59d8ec320350fe",
-        "jf.section.padding.horizontal": "8890271d1589a8c2d5e6478db1723eef745dcc14"
+        "jf.section.horizontal.padding.default": "8890271d1589a8c2d5e6478db1723eef745dcc14"
       },
       "group": "Platforms"
     },
@@ -4688,7 +4678,7 @@
         "jf.control.min-width.sm": "6269099f1b0ae220c7ba269ace7cc9c540b1e3e9",
         "jf.control.min-width.md": "51039f1179437cab90e0d7cabb81b463cdd1ee80",
         "jf.control.min-width.lg": "b7d03c7e6a34d97a9fba19b3ff59d8ec320350fe",
-        "jf.section.padding.horizontal": "8890271d1589a8c2d5e6478db1723eef745dcc14"
+        "jf.section.horizontal.padding.default": "8890271d1589a8c2d5e6478db1723eef745dcc14"
       }
     }
   ],
