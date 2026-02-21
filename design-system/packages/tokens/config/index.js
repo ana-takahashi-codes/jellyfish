@@ -1,7 +1,7 @@
 /**
  * Style Dictionary v5 + Tokens Studio main configuration.
  * Registers sd-transforms and exposes a factory that builds theme-specific configs.
- * All set keys and build groups come from the build manifest (derived from theme JSON).
+ * Build ativo: android, css e ios.
  */
 
 import StyleDictionary from 'style-dictionary'
@@ -13,6 +13,7 @@ import {
   getIosPlatform
 } from './platforms/index.js'
 import formatCssVariablesDark from './formats/css-variables-dark.js'
+import formatCssVariablesLight from './formats/css-variables-light.js'
 import formatCssResponsive from './formats/css-responsive.js'
 import formatCssTypographyClasses from './formats/css-typography-classes.js'
 import { registerCustomTransforms } from './transforms/index.js'
@@ -20,6 +21,7 @@ import { registerCustomTransforms } from './transforms/index.js'
 register(StyleDictionary)
 registerCustomTransforms(StyleDictionary)
 StyleDictionary.registerFormat(formatCssVariablesDark)
+StyleDictionary.registerFormat(formatCssVariablesLight)
 StyleDictionary.registerFormat(formatCssResponsive)
 StyleDictionary.registerFormat(formatCssTypographyClasses)
 
@@ -28,7 +30,7 @@ StyleDictionary.registerFormat(formatCssTypographyClasses)
  */
 export function getConfig(theme, sourcePaths = [], outputOnly, manifest, options = {}) {
   if (!manifest) {
-    throw new Error('getConfig requires a build manifest (from getBuildManifest(setKeys))')
+    throw new Error('getConfig requires a build manifest (from buildManifestFromResolver() in scripts/build/split-sets.mjs)')
   }
   const source = sourcePaths.length > 0 ? sourcePaths : [`${SOURCE_DIR}/${theme}.json`]
   const buildPathBase = BUILD_DIR
@@ -48,4 +50,4 @@ export function getConfig(theme, sourcePaths = [], outputOnly, manifest, options
 }
 
 export { BUILD_DIR, SOURCE_DIR }
-export { getBuildManifest, classifySetKeys } from './constants.js'
+export { classifySetKeys } from './constants.js'

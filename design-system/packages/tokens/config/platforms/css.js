@@ -88,7 +88,7 @@ function buildCssFiles(theme, outputOnly, manifest, extraSetKeys = []) {
     const isDark = name.toLowerCase().includes('dark')
     all.push({
       destination: `color-modes/${name}.css`,
-      format: isDark ? 'css/variables-dark' : 'css/variables',
+      format: isDark ? 'css/variables-dark' : 'css/variables-light',
       filter: createSetFilter(key)
     })
   }
@@ -107,7 +107,7 @@ function buildCssFiles(theme, outputOnly, manifest, extraSetKeys = []) {
       const isDark = name.toLowerCase().includes('dark')
       all.push({
         destination: `color-modes/${name}.css`,
-        format: isDark ? 'css/variables-dark' : 'css/variables',
+        format: isDark ? 'css/variables-dark' : 'css/variables-light',
         filter: createSetFilter(key)
       })
     } else if (key.startsWith(PLATFORM_PREFIX)) {

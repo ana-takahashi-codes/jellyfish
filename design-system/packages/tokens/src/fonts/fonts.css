@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Ezra';
+    src: url('Ezra-Bold.eot');
+    src: url('Ezra-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Ezra-Bold.woff2') format('woff2'),
+        url('Ezra-Bold.woff') format('woff'),
+        url('Ezra-Bold.svg#Ezra-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

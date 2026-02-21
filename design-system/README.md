@@ -72,10 +72,10 @@ tsup src/*.tsx --format esm,cjs --dts --external react
   "version": "0.0.0",
   "sideEffects": false,
   "exports":{
-    "./button": {
-      "types": "./src/button.tsx",
-      "import": "./dist/button.mjs",
-      "require": "./dist/button.js"
+    "./icon": {
+      "types": "./src/components/icon/index.ts",
+      "import": "./dist/components/icon/index.mjs",
+      "require": "./dist/components/icon/index.js"
     }
   }
 }
@@ -86,47 +86,16 @@ Run `pnpm build` to confirm compilation is working correctly. You should see a f
 ```bash
 ui
 └── dist
-    ├── button.d.ts  <-- Types
-    ├── button.js    <-- CommonJS version
-    ├── button.mjs   <-- ES Modules version
-    └── button.d.mts   <-- ES Modules version with Types
+    ├── components/icon/
+    │   ├── index.d.ts
+    │   ├── index.js
+    │   └── index.mjs
+    └── ...
 ```
 
 ## Components
 
-Each file inside of `ui/src` is a component inside our design system. For example:
-
-```tsx:ui/src/Button.tsx
-import * as React from 'react';
-
-export interface ButtonProps {
-  children: React.ReactNode;
-}
-
-export function Button(props: ButtonProps) {
-  return <button>{props.children}</button>;
-}
-
-Button.displayName = 'Button';
-```
-
-When adding a new file, ensure that its specifier is defined in `package.json` file:
-
-```json:ui/package.json
-{
-  "name": "@acme/ui",
-  "version": "0.0.0",
-  "sideEffects": false,
-  "exports":{
-    "./button": {
-      "types": "./src/button.tsx",
-      "import": "./dist/button.mjs",
-      "require": "./dist/button.js"
-    }
-    // Add new component exports here
-  }
-}
-```
+Each component lives in `ui/src` (e.g. under `components/` or `components/utils/`). When adding a new component, add its entry to `tsup.config.ts` and to `package.json` exports.
 
 ## Storybook
 
@@ -137,30 +106,7 @@ Storybook provides us with an interactive UI playground for our components. This
 - Support using module path aliases like `@acme/ui` for imports
 - Write MDX for component documentation pages
 
-For example, here's the included Story for our `Button` component:
-
-```js:apps/docs/stories/button.stories.mdx
-import { Button } from '@acme/ui/button';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
-
-<Meta title="Components/Button" component={Button} />
-
-# Button
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur tempor, nisl nunc egestas nisi, euismod aliquam nisl nunc euismod.
-
-## Props
-
-<Props of={Box} />
-
-## Examples
-
-<Preview>
-  <Story name="Default">
-    <Button>Hello</Button>
-  </Story>
-</Preview>
-```
+Stories are in `apps/js-docs/stories/` (e.g. `basic-components/control.stories.tsx`, `basic-components/icon.stories.tsx`). Use the module path aliases configured in `.storybook/main.js` to import from `@jellyfish/ui/*`.
 
 This example includes a few helpful Storybook scripts:
 

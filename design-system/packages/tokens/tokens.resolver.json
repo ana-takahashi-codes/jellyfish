@@ -1,0 +1,104 @@
+{
+  "version": "2025.10",
+  "name": "Jellyfish Design System",
+  "description": "Declara como os token sets se combinam para cada contexto de build. Substitui o getBuildManifest() baseado em regex em config/constants.js.",
+
+  "sets": {
+    "primitives": {
+      "description": "Valores base — primitivos sem referências a outros tokens",
+      "sources": [
+        { "$ref": "src/tokens-studio/sets/core/primitives.json" }
+      ]
+    },
+    "foundations": {
+      "description": "Tokens semânticos — referenciam primitives",
+      "sources": [
+        { "$ref": "src/tokens-studio/sets/core/foundations.json" }
+      ]
+    },
+    "components": {
+      "description": "Tokens de componentes — referenciam foundations",
+      "sources": [
+        { "$ref": "src/tokens-studio/sets/core/components.json" }
+      ]
+    }
+  },
+
+  "modifiers": {
+    "theme": {
+      "description": "Modo de cor (light / dark)",
+      "default": "light",
+      "contexts": {
+        "light": [{ "$ref": "src/tokens-studio/sets/core/theme-light.json" }],
+        "dark":  [{ "$ref": "src/tokens-studio/sets/core/theme-dark.json"  }]
+      }
+    },
+    "brand": {
+      "description": "Tema de marca — sobrescreve foundations e modos de cor do core",
+      "default": "core",
+      "contexts": {
+        "core": [],
+        "ana-takahashi": [
+          { "$ref": "src/tokens-studio/sets/ana-takahashi/foundations.json" },
+          { "$ref": "src/tokens-studio/sets/ana-takahashi/theme-light.json" }
+        ]
+      }
+    },
+    "platform": {
+      "description": "Breakpoints de plataforma — tokens de screen-*",
+      "contexts": {
+        "screen-xs": [{ "$ref": "src/tokens-studio/sets/core/platform-screen-xs.json" }],
+        "screen-md": [{ "$ref": "src/tokens-studio/sets/core/platform-screen-md.json" }],
+        "screen-lg": [{ "$ref": "src/tokens-studio/sets/core/platform-screen-lg.json" }]
+      }
+    }
+  },
+
+  "resolutionOrder": [
+    { "$ref": "#/sets/primitives" },
+    { "$ref": "#/sets/foundations" },
+    { "$ref": "#/sets/components" },
+    { "$ref": "#/modifiers/theme" },
+    { "$ref": "#/modifiers/brand" },
+    { "$ref": "#/modifiers/platform" }
+  ],
+
+  "$extensions": {
+    "jellyfish.build": {
+      "splitDir": "src/tokens-studio/sets",
+      "themes": {
+        "core": {
+          "source": "src/tokens-studio/core.json",
+          "sets": {
+            "primitives":  "01- Primitives",
+            "foundations": "02- Foundations",
+            "components":  "03 - Components"
+          },
+          "modifiers": {
+            "theme": {
+              "light": "Color Modes/light",
+              "dark":  "Color Modes/dark"
+            },
+            "platform": {
+              "screen-xs": "Platforms/screen-xs",
+              "screen-md": "Platforms/screen-md",
+              "screen-lg": "Platforms/screen-lg"
+            }
+          }
+        },
+        "ana-takahashi": {
+          "source": "src/tokens-studio/ana-takahashi.json",
+          "sets": {
+            "foundations": "02- Foundations"
+          },
+          "modifiers": {
+            "theme": {
+              "light": "Color Modes/Light",
+              "dark":  "Color Modes/Dark"
+            }
+          }
+        }
+      }
+    }
+  }
+}

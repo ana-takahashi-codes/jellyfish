@@ -1,7 +1,19 @@
 // .storybook/preview.js
+import React, { useLayoutEffect } from 'react'
+import { ThemeProvider } from '@jellyfish/ui/theme'
 import './preview.css'
 
-// Google Sans Flex: carrega no head do preview (previewHead pode não aplicar no docs)
+/** Syncs Storybook toolbar "Background" (light/dark) to document.documentElement data-theme so CSS variables apply. */
+function ThemeSync ({ themeMode, children }) {
+  useLayoutEffect(() => {
+    if (typeof document !== 'undefined' && document.documentElement) {
+      document.documentElement.setAttribute('data-theme', themeMode)
+    }
+  }, [themeMode])
+  return children
+}
+
+// Preconnect para Google Fonts (fontes carregadas via @jellyfish/tokens/fonts.css em preview.css)
 if (typeof document !== 'undefined' && document.head) {
   const preconnect1 = document.createElement('link')
   preconnect1.rel = 'preconnect'
@@ -12,26 +24,53 @@ if (typeof document !== 'undefined' && document.head) {
   preconnect2.href = 'https://fonts.gstatic.com'
   preconnect2.crossOrigin = 'anonymous'
   document.head.appendChild(preconnect2)
-  const fontLink = document.createElement('link')
-  fontLink.rel = 'stylesheet'
-  fontLink.href = 'https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;700&display=swap'
-  document.head.appendChild(fontLink)
 }
 
 /** @type { import('@storybook/react-vite').Preview } */
 const preview = {
+  globalTypes: {
+    background: {
+      description: 'Theme (light/dark) for the canvas',
+      toolbar: {
+        title: 'Background',
+        icon: 'paintbrush',
+        items: ['light', 'dark'],
+        dynamicTitle: true,
+      },
+    },
+  },
+  decorators: [
+    (Story, context) => {
+      const themeMode = context.globals?.background === 'dark' ? 'dark' : 'light'
+      return React.createElement(
+        ThemeSync,
+        { themeMode },
+        React.createElement(
+          ThemeProvider,
+          {
+            key: `theme-${themeMode}`,
+            defaultMode: themeMode,
+            storageKey: '',
+          },
+          React.createElement(Story)
+        )
+      )
+    },
+  ],
   parameters: {
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
-
     a11y: {
-      test: "todo"
-    }
+      test: 'todo',
+    },
   },
-};
+  initialGlobals: {
+    background: 'light',
+  },
+}
 
-export default preview;
+export default preview

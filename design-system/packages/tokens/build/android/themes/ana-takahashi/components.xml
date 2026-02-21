@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Do not edit directly, this file was auto-generated.
+-->
+<resources>
+  <string name="jf_article_font_meta">[object Object]</string>
+  <string name="jf_article_font_text">[object Object]</string>
+  <string name="jf_article_font_title_primary">[object Object]</string>
+  <string name="jf_article_font_title_secondary">[object Object]</string>
+  <string name="jf_article_font_title_tertiary">[object Object]</string>
+  <string name="jf_article_thumbnail_ratio">16 / 9</string>
+  <dimen name="jf_card_padding_compact">32.00dp*4</dimen>
+  <dimen name="jf_card_padding_loose">32.00dp*12</dimen>
+  <dimen name="jf_card_padding_narrow">32.00dp*2</dimen>
+  <dimen name="jf_card_padding_regular">32.00dp*8</dimen>
+  <dimen name="jf_card_padding_comfort">32.00dp*8</dimen>
+  <dimen name="jf_card_padding_wide">32.00dp*16</dimen>
+  <dimen name="jf_card_corner_radius">32.00dp*6</dimen>
+  <color name="jf_card_color_bd_neutral">oklch(71.18% 0.0129 286.07)</color>
+  <dimen name="jf_container_gap_compact">32.00dp*4</dimen>
+  <dimen name="jf_container_gap_regular">32.00dp*12</dimen>
+  <dimen name="jf_container_gap_comfort">32.00dp*16</dimen>
+  <dimen name="jf_container_gap_wide">32.00dp*24</dimen>
+  <dimen name="jf_container_padding_compact">32.00dp*6</dimen>
+  <dimen name="jf_container_padding_narrow">32.00dp*4</dimen>
+  <dimen name="jf_container_padding_regular">32.00dp*8</dimen>
+  <dimen name="jf_container_padding_comfort">32.00dp*12</dimen>
+  <dimen name="jf_container_padding_wide">32.00dp*16</dimen>
+  <dimen name="jf_container_padding_extended">32.00dp*32</dimen>
+  <string name="jf_button_font_label">[object Object]</string>
+  <dimen name="jf_control_corner_radius">32.00dp*3</dimen>
+  <dimen name="jf_control_gap">32.00dp*2</dimen>
+  <dimen name="jf_control_height_sm">32.00dp*18</dimen>
+  <dimen name="jf_control_height_md">32.00dp*22</dimen>
+  <dimen name="jf_control_height_lg">32.00dp*24</dimen>
+  <dimen name="jf_control_horizontal_padding_default">32.00dp*6</dimen>
+  <dimen name="jf_control_horizontal_padding_narrow">32.00dp</dimen>
+  <dimen name="jf_form_gap_compact">32.00dp*6</dimen>
+  <dimen name="jf_form_gap_regular">32.00dp*8</dimen>
+  <dimen name="jf_form_gap_comfort">32.00dp*12</dimen>
+  <string name="jf_form_label_font">[object Object]</string>
+  <string name="jf_hero_font_title">[object Object]</string>
+  <string name="jf_hero_font_subtitle">[object Object]</string>
+  <dimen name="jf_section_max_width_boxed">18240.00dp</dimen>
+  <dimen name="jf_section_width_full">100%</dimen>
+  <dimen name="jf_section_height_full">100%</dimen>
+  <string name="jf_section_font_title">[object Object]</string>
+  <string name="jf_section_font_subtitle">[object Object]</string>
+  <color name="jf_input_color_bd_default">oklch(71.18% 0.0129 286.07)</color>
+  <color name="jf_input_color_bd_hover">oklch(55.17% 0.0138 285.94)</color>
+  <color name="jf_input_color_bd_focus">#fffb65b7</color>
+  <color name="jf_input_hint_color_default">oklch(55.17% 0.0138 285.94)</color>
+  <string name="jf_input_hint_font">[object Object]</string>
+  <color name="jf_input_bg_default">oklch(96.74% 0.0013 286.38)</color>
+</resources>

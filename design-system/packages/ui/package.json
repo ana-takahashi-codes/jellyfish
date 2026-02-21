@@ -4,16 +4,31 @@
   "sideEffects": false,
   "license": "MIT",
   "exports": {
-    "./interactive-states.css": "./src/styles/interactive-states.css",
-    "./button": {
-      "types": "./src/button.tsx",
-      "import": "./dist/button.mjs",
-      "require": "./dist/button.js"
+    "./fonts.css": "./src/fonts.css",
+    "./variants": {
+      "types": "./src/variants.ts",
+      "import": "./dist/variants.mjs",
+      "require": "./dist/variants.js"
+    },
+    "./tokens": {
+      "types": "./src/tokens.ts",
+      "import": "./dist/tokens.mjs",
+      "require": "./dist/tokens.js"
     },
     "./icon": {
       "types": "./src/components/icon/index.ts",
       "import": "./dist/components/icon/index.mjs",
       "require": "./dist/components/icon/index.js"
+    },
+    "./theme": {
+      "types": "./src/theme/index.ts",
+      "import": "./dist/theme/index.mjs",
+      "require": "./dist/theme/index.js"
+    },
+    "./control": {
+      "types": "./src/components/utils/control/index.ts",
+      "import": "./dist/control.mjs",
+      "require": "./dist/control.js"
     }
   },
   "scripts": {

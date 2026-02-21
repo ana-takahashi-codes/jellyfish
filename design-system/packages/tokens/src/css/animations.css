@@ -1,0 +1,9 @@
+@keyframes spin {
+    from {
+      transform: rotate(var(--jf-angle-0));
+    }
+    to {
+      transform: rotate(var(--jf-angle-10));
+    }
+  }
+  

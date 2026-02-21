@@ -1,6 +1,9 @@
 /**
- * CSS variables format wrapped in @media (prefers-color-scheme: dark).
- * Use for dark.css so the theme is applied when the user prefers dark mode.
+ * CSS variables for dark color mode.
+ * Emits:
+ * - @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { ... } }
+ *   so that when the app sets data-theme="light", browser dark preference does not override.
+ * - [data-theme="dark"] { ... } for manual switch (ThemeProvider).
  */
 
 /**
@@ -28,6 +31,8 @@ export default {
       return `${innerIndent}--${token.name}: ${value};`
     })
     const inner = lines.join('\n')
-    return `${header}\n@media (prefers-color-scheme: dark) {\n${indentation}:root {\n${inner}\n${indentation}}\n}\n`
+    const mediaBlock = `@media (prefers-color-scheme: dark) {\n${indentation}:root:not([data-theme="light"]) {\n${inner}\n${indentation}}\n}\n\n`
+    const dataThemeBlock = `[data-theme="dark"] {\n${inner}\n}\n`
+    return `${header}${mediaBlock}${dataThemeBlock}`
   }
 }

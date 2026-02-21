@@ -19,10 +19,14 @@ Sistema dinâmico e escalável para geração de utility classes CSS a partir de
     // Padrão de nomenclatura das classes (opcional)
     "classPattern": string,
 
+    // Gerar variantes a partir dos tokens que batem com tokenPattern (opcional)
+    "generateFromPattern": boolean,
+    "patternDimensionName": string, // placeholder no classPattern, ex.: "color"
+
     // Geração responsiva (opcional, default: false)
     "responsive": boolean,
 
-    // Mapeamento dinâmico de variantes (opcional)
+    // Mapeamento dinâmico de variantes (opcional; ignorado se generateFromPattern: true)
     "dynamicMapping": {
       "[dimensionName]": {
         "[variantKey]": string | string[] | object
@@ -64,8 +68,17 @@ Sistema dinâmico e escalável para geração de utility classes CSS a partir de
 ### `tokenPattern`
 - **Tipo**: `string | string[]`
 - **Obrigatório**: Não
-- **Descrição**: Padrão de busca dos tokens CSS. Usado para validar e filtrar tokens.
+- **Descrição**: Padrão de busca dos tokens CSS. Usado para validar e filtrar tokens. Com `generateFromPattern: true`, define o prefixo de tokens a descobrir (uma utility por token encontrado).
 - **Exemplo**: `"tokenPattern": "jf-size-"`
+
+### `generateFromPattern`
+- **Tipo**: `boolean`
+- **Obrigatório**: Não
+- **Default**: `false`
+- **Descrição**: Se `true`, as variantes **não** vêm de `dynamicMapping`: o gerador descobre todos os tokens cujo nome começa com `tokenPattern` e gera uma classe por token. O sufixo do token vira o placeholder definido em `patternDimensionName` (ex.: `jf-color-border-muted` → classe `.bd-muted`). Reduz manutenção quando a lista de tokens é a única fonte de verdade.
+- **Requer**: `tokenPattern`; opcionalmente `patternDimensionName` (default: `"variant"`) e `classPattern` (ex.: `"{prefix}-{color}"`).
+- **Exemplo**: borderColor com `"tokenPattern": "jf-color-border-"`, `"classPattern": "{prefix}-{color}"`, `"patternDimensionName": "color"` e `"generateFromPattern": true` gera `.bd-muted`, `.bd-accent`, etc. a partir dos tokens existentes.
+- **Modo híbrido**: Se `generateFromPattern` for `true` e existir `dynamicMapping`, a dimensão indicada por `patternDimensionName` é descoberta nos tokens (todos os `tokenPattern-*`) e as demais dimensões vêm do `dynamicMapping`. Útil para spacing (props: t, r, b, l, x, y), gap (props: "", x, y) e sizing (props: "", min, max): a escala (variant/size) passa a ser qualquer `jf-size-*` presente nos tokens.
 
 ### `classPattern`
 - **Tipo**: `string`

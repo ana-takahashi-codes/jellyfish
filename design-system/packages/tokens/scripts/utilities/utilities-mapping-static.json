@@ -125,6 +125,14 @@
       "half": "50%"
     }
   },
+  "boxSizing": {
+    "prefix": "box",
+    "properties": ["box-sizing"],
+    "customMappings": {
+      "border": "border-box",
+      "content": "content-box"
+    }
+  },
   "left": {
     "prefix": "left",
     "properties": ["left"],
@@ -321,7 +329,7 @@
     }
   },
   "borderCollapse": {
-    "prefix": "border",
+    "prefix": "bd",
     "properties": ["border-collapse"],
     "customMappings": {
       "collapse": "collapse",
@@ -355,7 +363,7 @@
   },
   "borderColor": {
     "prefix": "bd",
-    "properties": ["border-color"],
+    "properties": ["bd-color"],
     "customMappings": {
       "transparent": "transparent"
     }

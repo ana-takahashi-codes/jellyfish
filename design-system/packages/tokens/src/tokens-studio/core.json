@@ -2994,6 +2994,19 @@
           }
         }
       },
+      "button": {
+        "font": {
+          "label": {
+            "$type": "typography",
+            "$value": {
+              "fontFamily": "{jf.font-family.sans}",
+              "fontSize": "{jf.font-size.sm}",
+              "letterSpacing": "{jf.letter-spacing.regular}",
+              "fontWeight": "{jf.font-weight.500}"
+            }
+          }
+        }
+      },
       "control": {
         "corner": {
           "radius": {
@@ -3004,6 +3017,20 @@
         "gap": {
           "$type": "spacing",
           "$value": "{jf.size.2}"
+        },
+        "height": {
+          "sm": {
+            "$type": "sizing",
+            "$value": "{jf.size.18}"
+          },
+          "md": {
+            "$type": "sizing",
+            "$value": "{jf.size.22}"
+          },
+          "lg": {
+            "$type": "sizing",
+            "$value": "{jf.size.24}"
+          }
         },
         "horizontal": {
           "padding": {

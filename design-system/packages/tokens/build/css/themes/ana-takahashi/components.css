@@ -1,0 +1,55 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --jf-article-font-meta: 500 0.875rem/1.2 'Google Sans Flex 24pt';
+  --jf-article-font-text: 1.125rem/1.7 'Google Sans Flex 24pt';
+  --jf-article-font-title-primary: 700 clamp(2.25rem, 1.753rem + 1.7118vw, 4rem)/1.1 'Google Sans Flex 24pt';
+  --jf-article-font-title-secondary: 700 clamp(2.rem, 1.4692rem + 0.9789vw, 2.75rem)/1.2 'Google Sans Flex 24pt';
+  --jf-article-font-title-tertiary: 700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2 'Google Sans Flex 24pt';
+  --jf-article-thumbnail-ratio: 1.7778;
+  --jf-card-padding-compact: 8px;
+  --jf-card-padding-loose: 24px;
+  --jf-card-padding-narrow: 4px;
+  --jf-card-padding-regular: 16px;
+  --jf-card-padding-comfort: 16px;
+  --jf-card-padding-wide: 32px;
+  --jf-card-corner-radius: 12px;
+  --jf-card-color-bd-neutral: oklch(71.18% 0.0129 286.07);
+  --jf-container-gap-compact: 8px;
+  --jf-container-gap-regular: 24px;
+  --jf-container-gap-comfort: 32px;
+  --jf-container-gap-wide: 48px;
+  --jf-container-padding-compact: 12px;
+  --jf-container-padding-narrow: 8px;
+  --jf-container-padding-regular: 16px;
+  --jf-container-padding-comfort: 24px;
+  --jf-container-padding-wide: 32px;
+  --jf-container-padding-extended: 64px;
+  --jf-button-font-label: 500 0.875rem 'Google Sans Flex 24pt';
+  --jf-control-corner-radius: 6px;
+  --jf-control-gap: 4px;
+  --jf-control-height-sm: 36px;
+  --jf-control-height-md: 44px;
+  --jf-control-height-lg: 48px;
+  --jf-control-horizontal-padding-default: 12px;
+  --jf-control-horizontal-padding-narrow: 2px;
+  --jf-form-gap-compact: 12px;
+  --jf-form-gap-regular: 16px;
+  --jf-form-gap-comfort: 24px;
+  --jf-form-label-font: 500 0.875rem/1.2 'Google Sans Flex 24pt';
+  --jf-hero-font-title: 700 clamp(2.75rem, 3.8306rem + 2.0853vw, 6.875rem)/1.1 Ezra;
+  --jf-hero-font-subtitle: 500 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2 'Google Sans Flex 24pt';
+  --jf-section-max-width-boxed: 1140px;
+  --jf-section-width-full: 100%;
+  --jf-section-height-full: 100%;
+  --jf-section-font-title: 700 clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)/1.2 'Google Sans Flex 24pt';
+  --jf-section-font-subtitle: 500 clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)/1.2 'Google Sans Flex 24pt';
+  --jf-input-color-bd-default: oklch(71.18% 0.0129 286.07);
+  --jf-input-color-bd-hover: oklch(55.17% 0.0138 285.94);
+  --jf-input-color-bd-focus: #fb65b7;
+  --jf-input-hint-color-default: oklch(55.17% 0.0138 285.94);
+  --jf-input-hint-font: 500 0.75rem/1.2 'Google Sans Flex 24pt';
+  --jf-input-bg-default: oklch(96.74% 0.0013 286.38);
+}

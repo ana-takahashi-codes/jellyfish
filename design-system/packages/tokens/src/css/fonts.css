@@ -1,0 +1,21 @@
+/**
+ * Fontes do Design System.
+ * Importe antes dos temas (primitives, foundations, etc.) para que
+ * --jf-font-family-sans, --jf-font-family-serif, etc. resolvam corretamente.
+ *
+ * Uso: import '@jellyfish/tokens/fonts.css'
+ *
+ * Para melhor performance, inclua no <head> da aplicação:
+ *   <link rel="preconnect" href="https://fonts.googleapis.com">
+ *   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ */
+
+/* Google Sans Flex (--jf-font-family-sans) via Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+/*Fira Code (--jf-font-family-mono) via Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+/*Newsreader (--jf-font-family-serif) via Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..12,200..800;1,6..12,200..800&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+
+/* Ezra e outras fontes locais (src/fonts/) */
+@import url('../fonts/fonts.css');

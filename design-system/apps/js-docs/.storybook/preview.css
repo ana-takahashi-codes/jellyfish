@@ -1,12 +1,17 @@
 /* .storybook/preview.css */
 
-/* Design tokens (required for Icon and other components that use --jf-* variables) */
+/* Fontes do DS — carregadas antes dos tokens para que as variáveis de font-family resolvam */
+@import '@jellyfish/tokens/src/css/fonts.css';
+
+/* Design tokens (primitives, foundations, color modes) */
 @import '@jellyfish/tokens/build/css/themes/core/primitives.css';
 @import '@jellyfish/tokens/build/css/themes/core/foundations.css';
+@import '@jellyfish/tokens/build/css/themes/core/components.css';
 @import '@jellyfish/tokens/build/css/themes/core/color-modes/light.css';
+@import '@jellyfish/tokens/build/css/themes/core/color-modes/dark.css';
 
-/* Interactive states (hover opacity + focus outline) for Icon, Button, etc. */
-@import '@jellyfish/ui/interactive-states.css';
+/* Utility classes (Box, Icon, .jf-interactive, etc. – JIT not run in Storybook, so use full build) */
+@import '@jellyfish/tokens/build/css/utilities.css';
 
 /* Fonte principal: Google Sans Flex (carregada em preview.js) */
 html,

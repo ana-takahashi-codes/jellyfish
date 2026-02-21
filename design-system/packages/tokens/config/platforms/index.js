@@ -1,7 +1,7 @@
 /**
  * Platform configs for Style Dictionary.
  * Each export is a function (theme, buildPath) => PlatformConfig.
- * JS e SCSS foram removidos: utilities em scripts/utilities geram CSS a partir dos tokens (estilo Tailwind).
+ * Build ativo: css, android, ios.
  */
 
 export { getCssPlatform } from './css.js'

@@ -1,0 +1,47 @@
+.interactive {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    opacity var(--jf-transition-state-change),
+    outline-color var(--jf-transition-state-change);
+}
+
+.interactive::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--jf-color-bg-active);
+  opacity: 0;
+  transition: opacity var(--jf-transition-state-change);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* ── Estados normais ─────────────────────────────────────────── */
+
+.interactive:hover:not(:disabled):not([aria-disabled="true"]):not([data-loading]) {
+  opacity: var(--jf-opacity-hover);
+}
+
+.interactive:active:not(:disabled):not([aria-disabled="true"]):not([data-loading])::after {
+  opacity: 1;
+}
+
+.interactive:focus-visible {
+  outline: var(--jf-bd-width-1) solid var(--jf-control-color-bd-focus);
+  outline-offset: var(--jf-size-1);
+}
+
+/* ── Loading ─────────────────────────────────────────────────── */
+
+.interactive[data-loading] {
+  pointer-events: none;
+  opacity: var(--jf-opacity-loading);
+}
+
+/* ── Dragged ─────────────────────────────────────────────────── */
+
+.interactive[data-dragging] {
+  opacity: var(--jf-opacity-dragged);
+}

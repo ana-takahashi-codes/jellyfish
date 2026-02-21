@@ -15,41 +15,32 @@
 
 /**
  * Conventions and helpers for Style Dictionary + Tokens Studio.
- * Themes, set order, and build groups are derived at build time from the theme JSON (see getBuildManifest).
+ * The build manifest is derived at build time from tokens.resolver.json via
+ * buildManifestFromResolver() in scripts/build/split-sets.mjs.
  */
 
-/** Base path for token source files (theme name + .json). */
+/** Base path for token source files. */
 export const SOURCE_DIR = 'src/tokens-studio'
 
 /** Build output root directory. */
 export const BUILD_DIR = 'build'
 
 /**
- * Theme whose JSON defines the structure (set order, build groups, output files).
- * The manifest is always derived from this theme when present; other themes follow the same structure.
+ * Theme whose JSON defines the canonical structure (set order, build groups).
+ * Declared in tokens.resolver.json under $extensions["jellyfish.build"].themes.
  */
 export const STRUCTURE_THEME = 'core'
 
 /**
- * Prefixes used to classify top-level keys of a theme JSON (Tokens Studio sets).
+ * Prefixes used to identify color mode and responsive platform sets in Tokens Studio exports.
  * Keys starting with COLOR_MODE_PREFIX → color mode files (e.g. color-modes/light.css).
- * Keys starting with PLATFORM_PREFIX → responsive breakpoint files (screen-*.css), later merged into responsive.css.
+ * Keys starting with PLATFORM_PREFIX → responsive breakpoints (screen-*.css → responsive.css).
  */
 export const COLOR_MODE_PREFIX = 'Color Modes/'
 export const PLATFORM_PREFIX = 'Platforms/'
 
 /**
- * Patterns to map base set keys to output file names (primitives, foundations, components).
- * First match wins; order matters. Used when deriving manifest from set keys.
- */
-export const BASE_SET_PATTERNS = [
-  { pattern: /Primitives|^01[- ]/i, output: 'primitives' },
-  { pattern: /Foundations|^02[- ]/i, output: 'foundations' },
-  { pattern: /Components|^03[- ]/i, output: 'components' }
-]
-
-/**
- * Sanitize a set key for use in a filename (e.g. '02- Foundations/style' -> '02- Foundations-style').
+ * Sanitize a set key for use in a filename (e.g. 'Color Modes/Light' → 'color-modes-light').
  * @param {string} setKey
  * @returns {string}
  */
@@ -58,44 +49,9 @@ export function setKeyToFilename(setKey) {
 }
 
 /**
- * Build groups and output names for set keys that exist in a theme but not in the structure (core).
- * Uses this theme's base keys and first color mode so references (e.g. Color Modes/Light → jf.color.accent)
- * resolve correctly when the theme has different set names than the structure theme.
- * @param {BuildManifest} manifest
- * @param {string[]} themeSetKeys - Top-level keys from this theme's JSON
- * @returns {{ buildGroups: { id: string, sourceKeys: string[], outputFiles: string[] }[], extraSetKeys: string[] }}
- */
-export function getExtraBuildGroups(manifest, themeSetKeys) {
-  const structureSet = new Set(manifest.setOrder)
-  const extraSetKeys = themeSetKeys.filter((k) => !structureSet.has(k))
-  if (extraSetKeys.length === 0) {
-    return { buildGroups: [], extraSetKeys: [] }
-  }
-  const { baseKeys: themeBaseKeys, colorModeKeys: themeColorModeKeys } = classifySetKeys(themeSetKeys)
-  const themeDefaultColor = themeColorModeKeys[0] ?? null
-  const buildGroups = extraSetKeys.map((key) => {
-    let outputName
-    if (key.startsWith(COLOR_MODE_PREFIX)) {
-      outputName = manifest.colorModeOutputName(key)
-    } else if (key.startsWith(PLATFORM_PREFIX)) {
-      outputName = manifest.platformOutputName(key)
-    } else {
-      outputName = setKeyToFilename(key)
-    }
-    const sourceKeys = [...themeBaseKeys, themeDefaultColor, key].filter(Boolean)
-    return {
-      id: key,
-      sourceKeys: [...new Set(sourceKeys)],
-      outputFiles: [outputName]
-    }
-  })
-  return { buildGroups, extraSetKeys }
-}
-
-/**
- * Creates a Style Dictionary filter that keeps only tokens from the given set(s).
- * Uses token.filePath when present (split-files build), otherwise token.path[0] (single-file).
- * @param {string | string[]} setKeyOrKeys - One set key or array of keys
+ * Creates a Style Dictionary filter that keeps only tokens from the given set file(s).
+ * Matches against token.filePath (split-files build).
+ * @param {string | string[]} setKeyOrKeys - One semantic key or array of keys (e.g. 'foundations', 'theme-light')
  * @returns {(token: { path?: string[], filePath?: string }) => boolean}
  */
 export function createSetFilter(setKeyOrKeys) {
@@ -112,7 +68,8 @@ export function createSetFilter(setKeyOrKeys) {
 }
 
 /**
- * Classify theme JSON top-level keys (sets) into base, color modes, and platforms.
+ * Classify Tokens Studio set keys into base sets, color modes, and platforms.
+ * Useful for consumers that inspect raw theme JSON structure.
  * @param {string[]} setKeys - Object.keys(themeJson).filter(k => !k.startsWith('$'))
  * @returns {{ baseKeys: string[], colorModeKeys: string[], platformKeys: string[], setOrder: string[] }}
  */
@@ -124,99 +81,4 @@ export function classifySetKeys(setKeys) {
   const platformKeys = setKeys.filter((k) => k.startsWith(PLATFORM_PREFIX))
   const setOrder = [...baseKeys, ...colorModeKeys, ...platformKeys]
   return { baseKeys, colorModeKeys, platformKeys, setOrder }
-}
-
-/**
- * Map a base set key to an output name (primitives | foundations | components).
- * @param {string} setKey
- * @param {typeof BASE_SET_PATTERNS} [patterns]
- * @returns {string | null}
- */
-export function getBaseOutputName(setKey, patterns = BASE_SET_PATTERNS) {
-  for (const { pattern, output } of patterns) {
-    if (pattern.test(setKey)) return output
-  }
-  return null
-}
-
-/**
- * Build the manifest used by the build script and platform configs.
- * Call once per build using the first available theme JSON.
- * @param {string[]} setKeys - Top-level keys of a theme JSON (excluding $*)
- * @returns {BuildManifest}
- */
-export function getBuildManifest(setKeys) {
-  const { baseKeys, colorModeKeys, platformKeys, setOrder } = classifySetKeys(setKeys)
-
-  const primitivesSetKeys = baseKeys.filter((k) => getBaseOutputName(k) === 'primitives')
-  const foundationsSetKeys = baseKeys.filter((k) => getBaseOutputName(k) === 'foundations')
-  const componentsSetKeys = baseKeys.filter((k) => getBaseOutputName(k) === 'components')
-  const otherBaseKeys = baseKeys.filter(
-    (k) => !primitivesSetKeys.includes(k) && !foundationsSetKeys.includes(k) && !componentsSetKeys.includes(k)
-  )
-  // Attach "other" base keys to foundations if any (e.g. "02- Foundations/style")
-  const foundationsSetKeysExpanded =
-    foundationsSetKeys.length > 0 ? [...foundationsSetKeys, ...otherBaseKeys] : otherBaseKeys
-
-  const defaultColorModeKey = colorModeKeys[0] ?? null
-
-  const buildGroups = []
-  const baseOutputFiles = []
-  if (primitivesSetKeys.length > 0) baseOutputFiles.push('primitives')
-  if (foundationsSetKeysExpanded.length > 0) baseOutputFiles.push('foundations')
-  if (componentsSetKeys.length > 0) baseOutputFiles.push('components')
-  baseOutputFiles.push('typography')
-
-  buildGroups.push({
-    id: 'base',
-    sourceKeys: [...baseKeys, defaultColorModeKey].filter(Boolean),
-    outputFiles: baseOutputFiles
-  })
-
-  for (const key of colorModeKeys) {
-    const baseName = key.startsWith(COLOR_MODE_PREFIX)
-      ? key.slice(COLOR_MODE_PREFIX.length)
-      : key.replace(/\//g, '-')
-    const outputName = baseName.toLowerCase()
-    buildGroups.push({
-      id: outputName,
-      sourceKeys: [...baseKeys, defaultColorModeKey, key].filter(Boolean),
-      outputFiles: [outputName]
-    })
-  }
-  for (const key of platformKeys) {
-    const baseName = key.startsWith(PLATFORM_PREFIX)
-      ? key.slice(PLATFORM_PREFIX.length)
-      : setKeyToFilename(key)
-    const outputName = baseName.toLowerCase()
-    buildGroups.push({
-      id: outputName,
-      sourceKeys: [...baseKeys, defaultColorModeKey, key].filter(Boolean),
-      outputFiles: [outputName]
-    })
-  }
-
-  return {
-    setOrder,
-    baseKeys,
-    colorModeKeys,
-    platformKeys,
-    primitivesSetKeys,
-    foundationsSetKeys: foundationsSetKeysExpanded,
-    componentsSetKeys,
-    buildGroups,
-    defaultColorModeKey,
-    colorModeOutputName: (key) => {
-      const baseName = key.startsWith(COLOR_MODE_PREFIX)
-        ? key.slice(COLOR_MODE_PREFIX.length)
-        : key.replace(/\//g, '-')
-      return baseName.toLowerCase()
-    },
-    platformOutputName: (key) => {
-      const baseName = key.startsWith(PLATFORM_PREFIX)
-        ? key.slice(PLATFORM_PREFIX.length)
-        : setKeyToFilename(key)
-      return baseName.toLowerCase()
-    }
-  }
 }

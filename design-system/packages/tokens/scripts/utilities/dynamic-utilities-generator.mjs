@@ -152,6 +152,61 @@ const generateStateUtilities = (classPattern, states, tokens, basePlaceholders) 
 };
 
 /**
+ * Descobre variantes a partir dos tokens: todos os que começam com patternPrefix.
+ * Retorna objeto { [suffix]: tokenName } para usar como dimensão no dynamicMapping.
+ */
+const discoverVariantsFromPattern = (tokenPattern, tokens) => {
+  const patternStr = Array.isArray(tokenPattern) ? tokenPattern[0] : tokenPattern;
+  if (!patternStr || typeof patternStr !== 'string') return {};
+  const patternPrefix = patternStr.endsWith('-') ? patternStr : patternStr + '-';
+  const out = {};
+  for (const tokenName of Object.keys(tokens)) {
+    if (!tokenName.startsWith(patternPrefix)) continue;
+    const suffix = tokenName.slice(patternPrefix.length);
+    if (suffix) out[suffix] = tokenName;
+  }
+  return out;
+};
+
+/**
+ * Gera utilities a partir do tokenPattern: descobre todos os tokens que começam
+ * com tokenPattern e gera uma classe por token (suffix = nome da variante).
+ * Ex.: tokenPattern "jf-color-border-" → tokens "jf-color-border-muted", ... → .bd-muted, ...
+ */
+const processPatternGenerated = (category, config, tokens) => {
+  const normalized = normalizeConfig(config);
+  const { prefix, properties, tokenPattern, classPattern } = normalized;
+  const patternStr = Array.isArray(tokenPattern) ? tokenPattern[0] : tokenPattern;
+  const dimensionName = config.patternDimensionName || 'variant';
+
+  if (!patternStr || typeof patternStr !== 'string') {
+    return [];
+  }
+
+  const utilities = [];
+  const patternPrefix = patternStr.endsWith('-') ? patternStr : patternStr + '-';
+
+  for (const tokenName of Object.keys(tokens)) {
+    if (!tokenName.startsWith(patternPrefix)) continue;
+
+    const variant = tokenName.slice(patternPrefix.length);
+    if (!variant) continue;
+
+    for (let i = 0; i < prefix.length; i++) {
+      const p = prefix[i];
+      const props = Array.isArray(properties[i]) ? properties[i] : properties;
+      const placeholders = { prefix: p, [dimensionName]: variant };
+      const pattern = classPattern || `{prefix}-{${dimensionName}}`;
+      const className = '.' + applyClassPattern(pattern, placeholders);
+      const utility = generateSimpleUtility(className, props, tokenName, tokens);
+      if (utility) utilities.push(utility);
+    }
+  }
+
+  return utilities;
+};
+
+/**
  * Processa mapeamento dinâmico com múltiplas dimensões
  */
 const processDynamicMapping = (category, config, tokens) => {
@@ -417,8 +472,20 @@ export const generateCategoryUtilities = (categoryName, config, tokens) => {
   utilities.push(`/* ${categoryName.toUpperCase()} UTILITIES */`);
 
   try {
-    // Processar mapeamento dinâmico
-    if (config.dynamicMapping) {
+    // Gerar a partir do pattern (descobre tokens pelo prefixo)
+    if (config.generateFromPattern && config.tokenPattern) {
+      const dimensionName = config.patternDimensionName || 'variant';
+      if (config.dynamicMapping) {
+        // Híbrido: dimensão do pattern descoberta nos tokens; outras dimensões vêm do dynamicMapping
+        const discovered = discoverVariantsFromPattern(config.tokenPattern, tokens);
+        const mergedMapping = { ...config.dynamicMapping, [dimensionName]: discovered };
+        const dynamicUtils = processDynamicMapping(categoryName, { ...config, dynamicMapping: mergedMapping }, tokens);
+        utilities.push(...dynamicUtils);
+      } else {
+        const patternUtils = processPatternGenerated(categoryName, config, tokens);
+        utilities.push(...patternUtils);
+      }
+    } else if (config.dynamicMapping) {
       const dynamicUtils = processDynamicMapping(categoryName, config, tokens);
       utilities.push(...dynamicUtils);
     }

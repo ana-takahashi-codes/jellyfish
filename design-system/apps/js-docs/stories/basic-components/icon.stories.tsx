@@ -5,20 +5,21 @@ import { Icon } from '@jellyfish/ui/icon'
 const meta: Meta<typeof Icon> = {
   title: 'Basic/Icon',
   component: Icon,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component:
-          'Icon is a visual component used to represent actions, states, or concepts. It uses the Tabler Icons library with design token-based size and fill.',
-      },
-    },
   },
   argTypes: {
-    name: { control: 'text', description: 'Tabler icon name (e.g. bag, arrow-left)' },
+    name: {
+      control: 'text',
+      description: 'Nome do ícone Tabler em kebab-case (ex.: bag, arrow-left, chevron-down).',
+      table: { type: { summary: 'string' } },
+    },
     size: {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'g'],
+      description: 'Tamanho; mapeado para token / utility class.',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'md' } },
     },
     fill: {
       control: 'select',
@@ -37,8 +38,22 @@ const meta: Meta<typeof Icon> = {
         'dataviz3',
         'dataviz4',
       ],
+      description: 'Cor / preenchimento semântico.',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'strong' } },
     },
-    decorative: { control: 'boolean' },
+    decorative: {
+      control: 'boolean',
+      description: 'Se true, o ícone é decorativo (aria-hidden). Se false, use ariaLabel para ícones interativos.',
+      table: { defaultValue: { summary: 'true' } },
+    },
+    ariaLabel: {
+      control: 'text',
+      description: 'Rótulo acessível; obrigatório quando decorative é false (ex.: botão com ícone).',
+    },
+    onClick: {
+      action: 'clicked',
+      description: 'Torna o ícone interativo (aplica classe interactive).',
+    },
   },
 }
 
@@ -46,7 +61,7 @@ export default meta
 
 type Story = StoryObj<typeof Icon>
 
-export const Playground: Story = {
+export const Default: Story = {
   args: {
     name: 'cheese',
     size: 'lg',
@@ -85,15 +100,24 @@ export const Fills: Story = {
   ),
 }
 
-export const Interactive: Story = {
+export const States: Story = {
   render: () => (
-    <Icon
-      name="trash"
-      size="lg"
-      fill="critical"
-      onClick={() => alert('Clicked')}
-      ariaLabel="Delete"
-      decorative={false}
-    />
+    <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
+      <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+        <Icon name="check" size="lg" decorative />
+        <small>Decorativo (aria-hidden)</small>
+      </span>
+      <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+        <Icon
+          name="trash"
+          size="lg"
+          fill="critical"
+          onClick={() => {}}
+          ariaLabel="Excluir"
+          decorative={false}
+        />
+        <small>Interativo (com ariaLabel)</small>
+      </span>
+    </div>
   ),
 }

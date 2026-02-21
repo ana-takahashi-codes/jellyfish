@@ -65,6 +65,8 @@ const PATHS = {
   source: detectGeneratedFiles(),
   utilitiesMappingDynamic: path.join(UTILITIES_DIR, 'utilities-mapping-dynamic.json'),
   utilitiesMappingStatic: path.join(UTILITIES_DIR, 'utilities-mapping-static.json'),
+  interactiveStates: path.join(PACKAGE_ROOT, 'src', 'css', 'interactive-states.css'),
+  animations: path.join(PACKAGE_ROOT, 'src', 'css', 'animations.css'),
   output: {
     utilities: path.join(PACKAGE_ROOT, 'build', 'css', 'utilities.css')
   }
@@ -478,31 +480,79 @@ const generateUtilitiesCSS = async () => {
 
     const utilitiesCSS = utilitiesParts.join('\n');
 
+    let typographyBlock = '';
+    if (PATHS.source.typography && fs.existsSync(PATHS.source.typography)) {
+      typographyBlock = `\n/* ========================================
+   TYPOGRAPHY CLASSES (.jf-*-font-*, etc.)
+   Origem: Style Dictionary typography (incorporado em utilities)
+   ======================================== */\n\n${readFileCached(PATHS.source.typography)}\n`;
+    }
+
     let responsiveBlock = '';
     if (PATHS.source.responsive && fs.existsSync(PATHS.source.responsive)) {
       responsiveBlock = `\n/* ========================================
    RESPONSIVE TOKENS (:root overrides por breakpoint)
-   Origem: Style Dictionary responsive.css
+   Origem: Style Dictionary responsive (incorporado em utilities)
    ======================================== */\n\n${readFileCached(PATHS.source.responsive)}\n`;
+    }
+
+    let interactiveBlock = '';
+    if (fs.existsSync(PATHS.interactiveStates)) {
+      interactiveBlock = `\n/* ========================================
+   INTERACTIVE STATES (.jf-interactive)
+   Hover, active, focus-visible, loading, dragging
+   Origem: src/css/interactive-states.css
+   ======================================== */\n\n${readFileCached(PATHS.interactiveStates)}\n`;
+    }
+
+    let animationsBlock = '';
+    if (fs.existsSync(PATHS.animations)) {
+      animationsBlock = `\n/* ========================================
+   ANIMATIONS (keyframes)
+   Origem: src/css/animations.css
+   ======================================== */\n\n${readFileCached(PATHS.animations)}\n`;
     }
 
     const finalUtilitiesCSS = `/**
  * Jellyfish - Utilities CSS
  * Gerado automaticamente a partir dos design tokens
- * Inclui: utilities estáticos, dinâmicos, tipografia e tokens responsivos
+ * Inclui: utilities estáticos, dinâmicos, tipografia, tokens responsivos, estados interativos e animações
  * Generated at: ${new Date().toISOString()}
  *
  * Arquivos de mapping processados:
  * ${staticExists ? '- utilities-mapping-static.json (valores CSS diretos + tipografia)' : ''}
  * ${dynamicExists ? '- utilities-mapping-dynamic.json (novo sistema dinâmico)' : ''}
- * - responsive.css (redefinições de tokens por breakpoint)
+ * - tipografia e responsive incorporados (sem typography.css/responsive.css separados)
+ * - src/css/interactive-states.css (.jf-interactive)
+ * - src/css/animations.css (keyframes)
  */
 
-${utilitiesCSS}${responsiveBlock}`;
+${utilitiesCSS}${typographyBlock}${responsiveBlock}${interactiveBlock}${animationsBlock}`;
 
     const success = writeFileSafe(PATHS.output.utilities, finalUtilitiesCSS);
 
     if (success) {
+      // Remover typography.css e responsive.css de todos os temas (já incorporados em utilities.css)
+      try {
+        const themeDirs = fs.readdirSync(BUILD_CSS_THEMES, { withFileTypes: true })
+          .filter((e) => e.isDirectory())
+          .map((e) => e.name)
+        for (const theme of themeDirs) {
+          const themeDir = path.join(BUILD_CSS_THEMES, theme)
+          const typoPath = path.join(themeDir, 'typography.css')
+          const respPath = path.join(themeDir, 'responsive.css')
+          if (fs.existsSync(typoPath)) {
+            fs.unlinkSync(typoPath)
+            logger.info(`Removido (incorporado em utilities): ${path.relative(PACKAGE_ROOT, typoPath)}`)
+          }
+          if (fs.existsSync(respPath)) {
+            fs.unlinkSync(respPath)
+            logger.info(`Removido (incorporado em utilities): ${path.relative(PACKAGE_ROOT, respPath)}`)
+          }
+        }
+      } catch (unlinkErr) {
+        logger.warn('Ao remover typography/responsive:', unlinkErr?.message ?? unlinkErr)
+      }
       logger.success('utilities.css gerado com sucesso!');
       logger.info(`Arquivo salvo em: ${PATHS.output.utilities}`);
       logger.info(`Total de tokens processados: ${Object.keys(tokens).length}`);

@@ -2,14 +2,15 @@ import React, { forwardRef } from 'react'
 import type { KeyboardEvent } from 'react'
 import * as tablerIcons from '@tabler/icons-react'
 import type { IconProps } from './Icon.types'
-import { iconSizeMap, iconFillMap } from './Icon.variants'
+import { iconSizeClasses, iconFillClasses } from './Icon.variants'
 import { toIconComponentKey } from './icon-name-utils'
 
 /**
  * Icon
  *
  * Visual component used to represent actions, states, or concepts in a symbolic way.
- * Consumes the Tabler Icons library with design token-based size and fill variants.
+ * Consumes the Tabler Icons library; size and fill use JIT utility classes (icon-*, fg-*)
+ * so the app's PostCSS JIT generates only the rules used.
  *
  * @example
  * ```tsx
@@ -17,8 +18,6 @@ import { toIconComponentKey } from './icon-name-utils'
  * <Icon name="arrow-left" size="xl" fill="brand-primary" decorative />
  * <Icon name="chevron-down" onClick={handleClick} ariaLabel="Expand" />
  * ```
- *
- * @see {@link https://www.figma.com/design/ilbkG0Smu7ZnqWqvCtLVGt/%F0%9F%92%8E-Basic-Components?node-id=2012-56 | Figma Design}
  */
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(
   (
@@ -50,22 +49,24 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
       return null
     }
 
-    const sizeValue = iconSizeMap[size]
-    const fillValue = iconFillMap[fill]
     const isInteractive = typeof onClick === 'function'
+    const sizeClass = iconSizeClasses[size]
+    const fillClass = iconFillClasses[fill]
+    const interactiveClass = isInteractive ? 'interactive' : ''
+    const resolvedClassName = [sizeClass, fillClass, interactiveClass, className]
+      .filter(Boolean)
+      .join(' ')
+      .trim() || undefined
 
     const iconElement = (
       <IconComponent
         aria-hidden={decorative}
-        color={fillValue}
+        color="currentColor"
         size={undefined}
         stroke={1.5}
         style={{ width: '100%', height: '100%' }}
       />
     )
-
-    const interactiveClassName = isInteractive ? 'jf-interactive' : ''
-    const resolvedClassName = [interactiveClassName, className].filter(Boolean).join(' ') || undefined
 
     const sharedProps = {
       ref,
@@ -74,12 +75,10 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: sizeValue,
-        height: sizeValue,
         ...(isInteractive && { cursor: 'pointer' }),
-        ...style,
+        ...style
       },
-      ...rest,
+      ...rest
     }
 
     if (isInteractive) {
