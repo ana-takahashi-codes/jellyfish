@@ -33,27 +33,13 @@ jobs:
 
       - name: Install dependencies
         working-directory: design-system
-        run: pnpm install
-        # Sem --frozen-lockfile: branches que disparam o workflow (ex.: sync Tokens Studio)
-        # podem não ter o lockfile atualizado; o lockfile atualizado entra no PR via add-paths
+        run: pnpm install --frozen-lockfile
 
       - name: Build design tokens
         working-directory: design-system
         run: |
           pnpm --filter @jellyfish/tokens run tokens:clean
           pnpm --filter @jellyfish/tokens run tokens:build
-
-      - name: Generate changelog with AI
-        id: changelog
-        working-directory: design-system
-        run: |
-          content=$(node packages/tokens/scripts/generate-changelog.js) || content="*(Changelog não gerado.)*"
-          echo "content<<CHANGELOG_EOF" >> $GITHUB_OUTPUT
-          echo "$content" >> $GITHUB_OUTPUT
-          echo "CHANGELOG_EOF" >> $GITHUB_OUTPUT
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        continue-on-error: true
 
       - name: Create or update Pull Request with built tokens
         id: create-pr
@@ -68,15 +54,10 @@ jobs:
             - **Branch de origem**: `${{ github.ref_name }}`
             - **Mensagem do commit do Tokens Studio**: `${{ github.event.head_commit.message }}`
             - **Status**: o build de design tokens foi executado e os arquivos gerados/atualizados em `design-system/packages/tokens/build`
-
-            ---
-
-            ${{ steps.changelog.outputs.content }}
           branch: chore/tokens-build-${{ github.ref_name }}
           base: main
           add-paths: |
             design-system/packages/tokens/build/**
-            design-system/pnpm-lock.yaml
 
       - name: Notify Slack about PR creation
         if: steps.create-pr.outputs.pull-request-number != ''
@@ -167,4 +148,3 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
         continue-on-error: true
-
