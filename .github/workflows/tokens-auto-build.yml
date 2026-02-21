@@ -33,7 +33,9 @@ jobs:
 
       - name: Install dependencies
         working-directory: design-system
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
+        # Sem --frozen-lockfile: branches que disparam o workflow (ex.: sync Tokens Studio)
+        # podem não ter o lockfile atualizado; o lockfile atualizado entra no PR via add-paths
 
       - name: Build design tokens
         working-directory: design-system
@@ -74,6 +76,7 @@ jobs:
           base: main
           add-paths: |
             design-system/packages/tokens/build/**
+            design-system/pnpm-lock.yaml
 
       - name: Notify Slack about PR creation
         if: steps.create-pr.outputs.pull-request-number != ''
