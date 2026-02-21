@@ -23,6 +23,7 @@ const config = {
     ${head}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Fira+Code:wght@300..700&family=Newsreader:ital,opsz,wght@0,6..12,200..800;1,6..12,200..800&display=swap">
   `,
   addons: [
     getAbsolutePath('@chromatic-com/storybook'),
@@ -55,6 +56,7 @@ const config = {
       { find: '@jellyfish/tokens/interactive-states.css',replacement: join(tokensPath, 'src/css/interactive-states.css') },
       { find: '@jellyfish/tokens',                       replacement: tokensPath },
       { find: '@jellyfish/ui/icon',    replacement: join(uiPath, 'components/icon/index.ts') },
+      { find: '@jellyfish/ui/button',  replacement: join(uiPath, 'components/button/index.ts') },
       { find: '@jellyfish/ui/control', replacement: join(uiPath, 'components/utils/control/index.ts') },
       { find: '@jellyfish/ui/variants',replacement: join(uiPath, 'variants.ts') },
       { find: '@jellyfish/ui/tokens',  replacement: join(uiPath, 'tokens.ts') },

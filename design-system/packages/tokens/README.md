@@ -97,6 +97,15 @@ Em modo **JIT**, o plugin PostCSS em `scripts/utilities-jit/` gera apenas as **c
 
 Consulte `scripts/utilities-jit/README.md` para configuração e exemplos.
 
+### Lista canônica de utility classes (manifest)
+
+O build de utilities gera também **`build/utility-classes-manifest.json`**, com a lista de todas as classes presentes em `utilities.css`. Esse arquivo serve para:
+
+- **IA/ferramentas**: sugerir ou validar apenas classes que existem (evitar classes inventadas).
+- **Documentação**: relação entre utilities e vars está em `docs/UTILITIES_AND_VARS.md`.
+
+Ao sugerir utility classes no código, use **somente** as classes listadas no manifest. Em dúvida, prefira tokens via `var(--jf-*)` (ver `src/vars.js`).
+
 ---
 
 ## Tokens tipográficos

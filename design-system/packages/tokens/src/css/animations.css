@@ -7,3 +7,7 @@
     }
   }
   
+
+  .motion-spin {
+    animation: spin var(--jf-motion-duration-extended) infinite;
+  }

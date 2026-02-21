@@ -13,17 +13,23 @@ function ThemeSync ({ themeMode, children }) {
   return children
 }
 
-// Preconnect para Google Fonts (fontes carregadas via @jellyfish/tokens/fonts.css em preview.css)
+// Carrega Google Fonts via <link> dinâmico (mais confiável que @import url() em <style> do Vite)
 if (typeof document !== 'undefined' && document.head) {
   const preconnect1 = document.createElement('link')
   preconnect1.rel = 'preconnect'
   preconnect1.href = 'https://fonts.googleapis.com'
   document.head.appendChild(preconnect1)
+
   const preconnect2 = document.createElement('link')
   preconnect2.rel = 'preconnect'
   preconnect2.href = 'https://fonts.gstatic.com'
   preconnect2.crossOrigin = 'anonymous'
   document.head.appendChild(preconnect2)
+
+  const fontsLink = document.createElement('link')
+  fontsLink.rel = 'stylesheet'
+  fontsLink.href = 'https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Fira+Code:wght@300..700&family=Newsreader:ital,opsz,wght@0,6..12,200..800;1,6..12,200..800&display=swap'
+  document.head.appendChild(fontsLink)
 }
 
 /** @type { import('@storybook/react-vite').Preview } */

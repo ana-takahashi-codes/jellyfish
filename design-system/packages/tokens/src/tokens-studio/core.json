@@ -92,7 +92,7 @@
       "font-family": {
         "sans": {
           "$type": "fontFamilies",
-          "$value": "Google Sans Flex 24pt"
+          "$value": "Google Sans Flex"
         },
         "serif": {
           "$type": "fontFamilies",

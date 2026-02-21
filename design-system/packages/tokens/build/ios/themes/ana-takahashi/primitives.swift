@@ -61,7 +61,7 @@ public class {
     public static let jfFontFamilyDecoration = Ezra
     public static let jfFontFamilyIcon = Font Awesome 7 Free
     public static let jfFontFamilyMono = Fira Code
-    public static let jfFontFamilySans = Google Sans Flex 24pt
+    public static let jfFontFamilySans = Google Sans Flex
     public static let jfFontFamilySerif = Newsreader
     public static let jfFontSize2xg = clamp(2.25rem, 1.753rem + 1.7118vw, 4rem)
     public static let jfFontSize2xl = clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)

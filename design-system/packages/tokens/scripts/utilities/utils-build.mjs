@@ -68,9 +68,30 @@ const PATHS = {
   interactiveStates: path.join(PACKAGE_ROOT, 'src', 'css', 'interactive-states.css'),
   animations: path.join(PACKAGE_ROOT, 'src', 'css', 'animations.css'),
   output: {
-    utilities: path.join(PACKAGE_ROOT, 'build', 'css', 'utilities.css')
+    utilities: path.join(PACKAGE_ROOT, 'build', 'css', 'utilities.css'),
+    manifest: path.join(PACKAGE_ROOT, 'build', 'utility-classes-manifest.json')
   }
 };
+
+/** Pseudos que aparecem no final do seletor (estado), não fazem parte do nome da classe em class="" */
+const TRAILING_PSEUDO = /:(hover|focus|active|focus-visible|focus-within|disabled|checked|visited|first-child|last-child)$/
+
+/**
+ * Extrai nomes de classes utilitárias do CSS gerado (para manifest usado por IA/ferramentas).
+ * Normaliza: remove ".", substitui \: por :, remove pseudo final (e.g. :hover).
+ */
+function extractClassNamesFromCSS (cssContent) {
+  const selectorRegex = /^\s*\.([^\s{]+)\s*\{/gm
+  const seen = new Set()
+  let m
+  while ((m = selectorRegex.exec(cssContent)) !== null) {
+    let name = m[1]
+      .replace(/\\:/g, ':')
+      .replace(TRAILING_PSEUDO, '')
+    if (name) seen.add(name)
+  }
+  return [...seen].sort()
+}
 
 // ============================================================================
 // CSS GENERATION OPTIMIZED
@@ -532,6 +553,21 @@ ${utilitiesCSS}${typographyBlock}${responsiveBlock}${interactiveBlock}${animatio
     const success = writeFileSafe(PATHS.output.utilities, finalUtilitiesCSS);
 
     if (success) {
+      const classNames = extractClassNamesFromCSS(finalUtilitiesCSS);
+      const manifest = {
+        generatedAt: new Date().toISOString(),
+        utilitiesCssPath: 'build/css/utilities.css',
+        description: 'Lista canônica de utility classes; usar apenas estas ao sugerir classes (evitar que IA use classes inexistentes).',
+        classes: classNames
+      };
+      const manifestWritten = writeFileSafe(
+        PATHS.output.manifest,
+        JSON.stringify(manifest, null, 2)
+      );
+      if (manifestWritten) {
+        logger.info(`Manifest: ${classNames.length} classes → ${path.relative(PACKAGE_ROOT, PATHS.output.manifest)}`);
+      }
+
       // Remover typography.css e responsive.css de todos os temas (já incorporados em utilities.css)
       try {
         const themeDirs = fs.readdirSync(BUILD_CSS_THEMES, { withFileTypes: true })
@@ -586,6 +622,7 @@ const main = async () => {
       logger.success('Build unificado concluído com sucesso!');
       logger.info('Arquivos gerados:');
       logger.info(`   - ${PATHS.output.utilities}`);
+      logger.info(`   - ${PATHS.output.manifest}`);
     }
 
   } catch (error) {

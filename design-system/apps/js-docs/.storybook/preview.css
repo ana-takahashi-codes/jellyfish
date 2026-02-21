@@ -1,7 +1,8 @@
 /* .storybook/preview.css */
 
-/* Fontes do DS — carregadas antes dos tokens para que as variáveis de font-family resolvam */
-@import '@jellyfish/tokens/src/css/fonts.css';
+/* Fonte local Ezra (@font-face). Google Fonts carregado via <link> em previewHead (main.js).
+   @import url('https://...') dentro de <style> injetado pelo Vite é ignorado pelo browser. */
+@import '@jellyfish/tokens/src/fonts/fonts.css';
 
 /* Design tokens (primitives, foundations, color modes) */
 @import '@jellyfish/tokens/build/css/themes/core/primitives.css';

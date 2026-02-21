@@ -53,7 +53,15 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     const sizeClass = iconSizeClasses[size]
     const fillClass = iconFillClasses[fill]
     const interactiveClass = isInteractive ? 'interactive' : ''
-    const resolvedClassName = [sizeClass, fillClass, interactiveClass, className]
+    // When parent passes an fg-* class (e.g. Button icon color), do not apply default fill
+    // so the parent's color is not overridden by fg-strong in the cascade.
+    const useDefaultFill = !className || !/\bfg-[a-z0-9-]+/.test(className)
+    const resolvedClassName = [
+      sizeClass,
+      useDefaultFill ? fillClass : '',
+      interactiveClass,
+      className
+    ]
       .filter(Boolean)
       .join(' ')
       .trim() || undefined

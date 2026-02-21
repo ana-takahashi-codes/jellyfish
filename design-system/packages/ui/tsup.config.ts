@@ -6,7 +6,8 @@ export default defineConfig((options) => ({
     "tokens": "src/tokens.ts",
     "theme/index": "src/theme/index.ts",
     "components/icon/index": "src/components/icon/index.ts",
-    "control": "src/components/utils/control/index.ts"
+    "control": "src/components/utils/control/index.ts",
+    "button": "src/components/button/index.ts"
   },
   format: ["cjs", "esm"],
   dts: true,

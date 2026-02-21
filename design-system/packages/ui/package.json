@@ -29,6 +29,11 @@
       "types": "./src/components/utils/control/index.ts",
       "import": "./dist/control.mjs",
       "require": "./dist/control.js"
+    },
+    "./button": {
+      "types": "./src/components/button/index.ts",
+      "import": "./dist/button.mjs",
+      "require": "./dist/button.js"
     }
   },
   "scripts": {

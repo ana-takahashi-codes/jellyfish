@@ -1,0 +1,39 @@
+---
+name: tokens-utility-classes
+description: Usar apenas utility classes que existem em utilities.css (manifest); evitar classes inventadas
+---
+
+# Utility classes do Jellyfish Design System
+
+## Objetivo
+
+Ao sugerir ou escrever **utility classes** em componentes do Jellyfish, use **somente** classes que existem em `utilities.css`. Isso evita que a IA sugira classes inexistentes (ex.: `mt-4`, `text-sm` em padrão Tailwind que não existe no nosso sistema).
+
+## Fonte única
+
+A lista canônica de classes está em:
+
+**`design-system/packages/tokens/build/utility-classes-manifest.json`**
+
+- O arquivo é gerado no build (`pnpm run tokens:utilities` ou `pnpm run build`).
+- Contém o array `classes` com todos os nomes válidos (ex.: `d-flex`, `p-4`, `bg-surface-default`, `gap-2`).
+
+## Regras para a IA
+
+1. **Sugira apenas** classes que constem em `utility-classes-manifest.json` (campo `classes`).
+2. **Não invente** nomes de classes, mesmo que pareçam padrão (ex.: Tailwind). Nosso sistema tem prefixos e nomes próprios (ex.: `d-flex`, `pos-relative`, `corner-default`).
+3. Se não existir utility para a propriedade desejada, sugira uso de **token**:
+   - Em CSS/estilo: `var(--jf-*)` (ex.: `var(--jf-corner-radius-sm)`).
+   - Em TS: `import { colors, size, radius, fontSize } from '@jellyfish/tokens/vars'`.
+
+## Documentação
+
+- **Relação utilities ↔ vars**: `design-system/packages/tokens/docs/UTILITIES_AND_VARS.md`
+- **Guia de uso em componentes**: `design-system/packages/ui/docs/UTILITY_CLASSES_GUIDE.md`
+
+## Resumo
+
+| Fazer | Evitar |
+|-------|--------|
+| Consultar o manifest para validar/sugerir classes | Inventar classes (ex.: `mt-4`, `text-xs`) |
+| Usar tokens `var(--jf-*)` quando não houver utility | Assumir que qualquer nome “parecido com Tailwind” existe |
