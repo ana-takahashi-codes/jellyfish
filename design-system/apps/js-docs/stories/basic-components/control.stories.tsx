@@ -27,7 +27,7 @@ function DemoButton ({ children }: { children?: Parameters<typeof Control>[0]['c
 }
 
 const meta: Meta<typeof Control> = {
-  title: 'Basic/Control',
+  title: 'Utils/Control',
   component: Control,
   tags: ['autodocs'],
   parameters: {
