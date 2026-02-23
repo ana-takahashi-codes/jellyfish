@@ -56,7 +56,6 @@ const config = {
       { find: '@jellyfish/tokens/interactive-states.css',replacement: join(tokensPath, 'src/css/interactive-states.css') },
       { find: '@jellyfish/tokens',                       replacement: tokensPath },
       { find: '@jellyfish/ui/icon',    replacement: join(uiPath, 'components/icon/index.ts') },
-      { find: '@jellyfish/ui/button',  replacement: join(uiPath, 'components/button/index.ts') },
       { find: '@jellyfish/ui/control', replacement: join(uiPath, 'components/utils/control/index.ts') },
       { find: '@jellyfish/ui/variants',replacement: join(uiPath, 'variants.ts') },
       { find: '@jellyfish/ui/tokens',  replacement: join(uiPath, 'tokens.ts') },

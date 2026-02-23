@@ -2,7 +2,7 @@
  * Jellyfish - Utilities CSS
  * Gerado automaticamente a partir dos design tokens
  * Inclui: utilities estáticos, dinâmicos, tipografia, tokens responsivos, estados interativos e animações
- * Generated at: 2026-02-21T03:13:57.889Z
+ * Generated at: 2026-02-23T20:41:00.322Z
  *
  * Arquivos de mapping processados:
  * - utilities-mapping-static.json (valores CSS diretos + tipografia)
@@ -15920,6 +15920,270 @@
 .angle-10 {
   rotate: var(--jf-angle-10);
 }
+
+/* ========================================
+   TYPOGRAPHY CLASSES (.jf-*-font-*, etc.)
+   Origem: Style Dictionary typography (incorporado em utilities)
+   ======================================== */
+
+/* Typography Classes */
+
+.jf-font-title-sm {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-500);
+  font-size: var(--jf-font-size-xl);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-title-md {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-500);
+  font-size: var(--jf-font-size-2xl);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-title-lg {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-700);
+  font-size: var(--jf-font-size-3xl);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-title-xl {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-700);
+  font-size: var(--jf-font-size-g);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-title-2xl {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-700);
+  font-size: var(--jf-font-size-xg);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-title-3xl {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-700);
+  font-size: var(--jf-font-size-2xg);
+  line-height: var(--jf-line-height-xs);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-title-g {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-700);
+  font-size: var(--jf-font-size-3xg);
+  line-height: var(--jf-line-height-xs);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-title-xg {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-700);
+  font-size: var(--jf-font-size-4xg);
+  line-height: var(--jf-line-height-xs);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-text-sm {
+  font-family: var(--jf-font-family-sans);
+  font-size: var(--jf-font-size-sm);
+  line-height: var(--jf-line-height-md);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-text-md {
+  font-family: var(--jf-font-family-sans);
+  font-size: var(--jf-font-size-md);
+  line-height: var(--jf-line-height-lg);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-text-lg {
+  font-family: var(--jf-font-family-sans);
+  font-size: var(--jf-font-size-lg);
+  line-height: var(--jf-line-height-lg);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-label-xs {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-500);
+  font-size: var(--jf-font-size-xs);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-label-sm {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-500);
+  font-size: var(--jf-font-size-sm);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-label-md {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-500);
+  font-size: var(--jf-font-size-md);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-label-lg {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-500);
+  font-size: var(--jf-font-size-lg);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-quote {
+  font-family: var(--jf-font-family-serif);
+  font-weight: var(--jf-font-weight-400);
+  font-size: var(--jf-font-size-lg);
+  line-height: var(--jf-line-height-lg);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-caption {
+  font-family: var(--jf-font-family-serif);
+  font-weight: var(--jf-font-weight-500);
+  font-size: var(--jf-font-size-xs);
+  line-height: var(--jf-line-height-md);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-overline {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-500);
+  font-size: var(--jf-font-size-xs);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.jf-font-code-sm {
+  font-family: var(--jf-font-family-mono);
+  font-weight: var(--jf-font-weight-400);
+  font-size: var(--jf-font-size-sm);
+  line-height: var(--jf-line-height-lg);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-code-md {
+  font-family: var(--jf-font-family-mono);
+  font-weight: var(--jf-font-weight-400);
+  font-size: var(--jf-font-size-md);
+  line-height: var(--jf-line-height-lg);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-font-code-lg {
+  font-family: var(--jf-font-family-mono);
+  font-weight: var(--jf-font-weight-400);
+  font-size: var(--jf-font-size-lg);
+  line-height: var(--jf-line-height-lg);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-article-font-text {
+  font-family: var(--jf-font-family-sans);
+  font-size: var(--jf-font-size-lg);
+  line-height: var(--jf-line-height-lg);
+  letter-spacing: var(--jf-letter-spacing-regular);
+  margin-bottom: var(--jf-size-16);
+  text-indent: var(--jf-size-16);
+}
+
+.jf-button-font-label {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-500);
+  font-size: var(--jf-font-size-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-hero-font-title {
+  font-family: var(--jf-font-family-decoration);
+  font-weight: var(--jf-font-weight-700);
+  font-size: var(--jf-font-size-4xg);
+  line-height: var(--jf-line-height-xs);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-hero-font-subtitle {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-500);
+  font-size: var(--jf-font-size-g);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+.jf-section-font-subtitle {
+  font-family: var(--jf-font-family-sans);
+  font-weight: var(--jf-font-weight-500);
+  font-size: var(--jf-font-size-2xl);
+  line-height: var(--jf-line-height-sm);
+  letter-spacing: var(--jf-letter-spacing-regular);
+}
+
+
+/* ========================================
+   RESPONSIVE TOKENS (:root overrides por breakpoint)
+   Origem: Style Dictionary responsive (incorporado em utilities)
+   ======================================== */
+
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+/* xs */
+@media (min-width: 540px) {
+  :root {
+    --jf-control-height-sm: 36px;
+    --jf-control-height-md: 44px;
+    --jf-control-height-lg: 48px;
+    --jf-control-min-width-sm: 36px;
+    --jf-control-min-width-md: 44px;
+    --jf-control-min-width-lg: 48px;
+    --jf-section-horizontal-padding-default: 16px;
+    --jf-section-vertical-padding-default: 32px;
+  }
+}
+
+/* md */
+@media (min-width: 1200px) {
+  :root {
+    --jf-control-height-sm: 36px;
+    --jf-control-height-md: 44px;
+    --jf-control-height-lg: 48px;
+    --jf-control-min-width-sm: 36px;
+    --jf-control-min-width-md: 44px;
+    --jf-control-min-width-lg: 48px;
+    --jf-section-horizontal-padding-default: 20px;
+  }
+}
+
+/* lg */
+@media (min-width: 1536px) {
+  :root {
+    --jf-control-height-sm: 32px;
+    --jf-control-height-md: 40px;
+    --jf-control-height-lg: 48px;
+    --jf-control-min-width-sm: 32px;
+    --jf-control-min-width-md: 40px;
+    --jf-control-min-width-lg: 48px;
+    --jf-section-horizontal-padding-default: 32px;
+  }
+}
+
+
 
 /* ========================================
    INTERACTIVE STATES (.jf-interactive)

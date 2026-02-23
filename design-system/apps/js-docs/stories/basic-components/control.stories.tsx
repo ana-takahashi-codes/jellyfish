@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Control, controlInnerStyles } from '@jellyfish/ui/control'
 import { Icon } from '@jellyfish/ui/icon'
 
-/** Botão interno estilizado para demo; usa `interactive` e `controlInnerStyles` (gap, paddingInline) para refletir o layout real do control. */
+/** Botão interno estilizado para demo; usa `interactive` e `controlInnerStyles` (gap, paddingInline) para refletir o layout real do Control. */
 function DemoButton ({ children }: { children?: Parameters<typeof Control>[0]['children'] }) {
   return (
     <button
@@ -32,6 +32,49 @@ const meta: Meta<typeof Control> = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: [
+          'Wrapper utilitário para controlar altura, largura mínima e raio de elementos interativos (botões, inputs, selects, etc.).',
+          '',
+          '## Quando usar',
+          '',
+          '- Quando o layout e as dimensões do elemento interativo devem seguir o grid/tokens do design system',
+          '- Quando vários componentes distintos (ex.: Button, Select, Input) precisam compartilhar o mesmo wrapper visual',
+          '',
+          '## Quando não usar',
+          '',
+          '- Quando você precisa apenas de um `<button>` ou `<input>` simples, sem padronização visual do DS',
+          '- Quando o componente já encapsula sua própria estrutura de layout (ex.: layouts complexos de página)',
+          '',
+          '## Anatomia',
+          '',
+          '- Wrapper Control: aplica altura, largura mínima, radius e estados de interação',
+          '- Elemento interno com classe `interactive`: recebe foco, hover, active, etc.',
+          '- `controlInnerStyles`: estilos de gap/padding aplicados ao elemento interno para manter o espaçamento correto',
+          '',
+          '## Acessibilidade',
+          '',
+          '- O Control não define role nem aria-*; a semântica vem do elemento interativo interno',
+          '- Garanta que o filho com classe `interactive` seja focável (ex.: `<button>`, `<input>`, `<a>` com href)',
+          '- Estados de foco e disabled devem ser propagados para o elemento interativo interno',
+          '',
+          '## Design tokens',
+          '',
+          '| Token | Uso |',
+          '|-------|-----|',
+          '| `--jf-control-radius` | Raio do wrapper |',
+          '| `--jf-control-height-sm` | Altura para size="sm" |',
+          '| `--jf-control-height-md` | Altura para size="md" |',
+          '| `--jf-control-height-lg` | Altura para size="lg" |',
+          '',
+          '## Figma',
+          '',
+          '- [API](https://www.figma.com/design/FILE_KEY/FILE_NAME?node-id=NODE_ID)',
+          '- [Variantes](https://www.figma.com/design/FILE_KEY/FILE_NAME?node-id=NODE_ID)'
+        ].join('\n')
+      },
+    },
   },
   argTypes: {
     size: {
@@ -42,7 +85,7 @@ const meta: Meta<typeof Control> = {
     },
     fullWidth: {
       control: 'boolean',
-      description: 'Faz o control ocupar 100% da largura do container.',
+      description: 'Faz o Control ocupar 100% da largura do container.',
       table: { defaultValue: { summary: 'false' } },
     },
     radius: {
@@ -53,7 +96,7 @@ const meta: Meta<typeof Control> = {
     },
     disabled: {
       control: 'boolean',
-      description: 'Desabilita o control e aplica estilo de disabled.',
+      description: 'Desabilita o Control e aplica estilo de disabled.',
       table: { defaultValue: { summary: 'false' } },
     },
     className: {
@@ -67,7 +110,9 @@ export default meta
 
 type Story = StoryObj<typeof Control>
 
-export const Default: Story = {
+// ─── Playground ────────────────────────────────────────────────────────────────
+
+export const Playground: Story = {
   args: {
     size: 'md',
     fullWidth: false,
@@ -80,6 +125,8 @@ export const Default: Story = {
     </Control>
   ),
 }
+
+// ─── Variantes ─────────────────────────────────────────────────────────────────
 
 export const Sizes: Story = {
   render: () => (

@@ -225,11 +225,11 @@ base: {
 }
 ```
 
-### Button com variantes de tamanho
+### Componente com variantes de tamanho
 
 ```typescript
 // ✅ CORRETO: utilities + tokens onde não há utility
-export const buttonVariants = jfv({
+export const controlVariants = jfv({
   base: [
     'd-inline-flex',
     'items-center',

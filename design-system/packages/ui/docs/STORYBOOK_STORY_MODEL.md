@@ -26,7 +26,7 @@ import { ComponentName } from '@jellyfish/ui/component-name'
 // import { Icon } from '@jellyfish/ui/icon'
 
 const meta: Meta<typeof ComponentName> = {
-  title: 'Basic/ComponentName',   // ex.: 'Basic/Button', 'Basic/Control'
+  title: 'Basic/ComponentName',   // ex.: 'Basic/Control', 'Basic/Icon'
   component: ComponentName,
   tags: ['autodocs'],             // gera a página de docs automaticamente
   parameters: {

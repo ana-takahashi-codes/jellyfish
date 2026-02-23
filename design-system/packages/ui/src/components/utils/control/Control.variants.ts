@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 import { variants } from '../../../variants'
 import type { VariantPropsOf } from '../../../variants'
 
-/** Shared inner layout styles (gap, padding) for Control and inner elements (e.g. Button). */
+/** Shared inner layout styles (gap, padding) for Control and inner elements. */
 export const controlInnerStyles: CSSProperties = {
   gap: 'var(--jf-control-gap, 4px)',
   paddingInline: 'var(--jf-control-horizontal-padding-default, 12px)',
@@ -15,7 +15,7 @@ export const controlInnerStyles: CSSProperties = {
  *
  * Divergences from Figma:
  * - Focus is not a variant; each interactive child uses the .interactive class from utilities.css.
- * - minWidth is not applied here; each consuming component (e.g. Button) handles its own min-width.
+ * - minWidth is not applied here; each consuming component handles its own min-width.
  */
 export const controlVariants = variants({
   base: {

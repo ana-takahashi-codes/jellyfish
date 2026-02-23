@@ -59,7 +59,7 @@ export const buttonVariants = variants({
   ],
   defaultVariants: {
     variant: 'solid',
-    color:   'accent',
+    color:   'brand-primary',
   },
 })
 

@@ -3,173 +3,167 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Button } from '@jellyfish/ui/button'
 
 const meta: Meta<typeof Button> = {
-  title: 'Buttons/Button',
+  title: 'Basic/Button',
   component: Button,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-
-Botão de ação baseado no Control. Usa a classe \`interactive\` de \`utilities.css\` para focus visível, hover e active. Min-width: quando \`iconOnly\`, usa o min-width do Control (quadrado); quando não, usa \`w-min-40\`.
-
-## Quando usar
-
-- Ações principais (submit, confirmar, salvar).
-- Ações secundárias (cancelar, voltar) com variant outline ou ghost e color adequada.
-- Botão apenas ícone (iconOnly) para toolbars e ações compactas.
-
-## Quando NÃO usar
-
-- Navegação entre páginas → use link (\`<a>\`) ou componente de navegação.
-- Ações destrutivas sem confirmação → considere confirmação ou variante crítica.
-
-## Anatomia
-
-- **Control (wrapper)**: altura, fullWidth, radius, disabled (Button herda as props do Control).
-- **Botão (elemento nativo)**: \`variant\` (solid | outline | ghost) + \`color\` (neutral | brand-primary | accent | critical), estados via \`.interactive\`, min-width (w-min-40 ou Control quando iconOnly).
-- **startIcon / endIcon**: componentes Icon (nome configurável); tamanho e cor controlados pelo Button. No loading, startIcon recebe \`.motion-spin\` e o botão mantém a mesma largura.
-
-## Acessibilidade
-
-- Elemento nativo \`<button>\` com \`type\`, \`disabled\`, \`aria-disabled\`.
-- Foco visível via \`.interactive:focus-visible\` em \`utilities.css\`.
-- Navegação por teclado (Tab, Enter, Space) nativa.
-
-## Design tokens
-
-| Token | Uso |
-|-------|-----|
-| \`--jf-control-height-*\` | Altura (sm/md/lg) |
-| \`--jf-control-min-width-*\` | Min-width quando iconOnly |
-| \`--jf-control-corner-radius\` | Raio default |
-| \`--jf-control-gap\`, \`--jf-control-horizontal-padding-default\` | Gap e padding interno |
-| \`--jf-control-color-bd-focus\` | Outline de focus (interactive) |
-| \`--jf-color-bg-*\`, \`--jf-color-fg-on-*\` | Solid: bg + fg por color |
-| \`--jf-color-bd-*\`, \`--jf-color-fg-*\` | Outline/Ghost: borda e texto por color |
-
-## Figma
-
-- [API (estrutura principal)](https://www.figma.com/design/ilbkG0Smu7ZnqWqvCtLVGt/%F0%9F%92%8E-Basic-Components?node-id=2036-683)
-- [Variantes](https://www.figma.com/design/ilbkG0Smu7ZnqWqvCtLVGt/%F0%9F%92%8E-Basic-Components?node-id=2040-5016)
-        `,
-      },
-    },
+        component: [
+          'Componente interativo para acionar ações, enviar formulários ou iniciar fluxos. Estende Control (size, fullWidth, radius); usa type="button" por padrão para evitar submit acidental.',
+          '',
+          '## Quando usar',
+          '',
+          '- Ações primárias ou secundárias em formulários e telas',
+          '- Submissão de formulários (type="submit") ou reset (type="reset") quando explícito',
+          '- Botões apenas com ícone (iconOnly) com aria-label obrigatório',
+          '',
+          '## Quando NÃO usar',
+          '',
+          '- Links de navegação (use <a> ou componente Link)',
+          '- Quando precisar apenas de texto clicável sem aparência de botão',
+          '',
+          '## Anatomia',
+          '',
+          '- Base: interactive, cursor-pointer, justify-center, jf-button-font-label',
+          '- Layout: controlVariants (d-inline-flex, items-center, height, gap, paddingInline, fullWidth, radius)',
+          '- Visual: buttonVariants (variant x color: solid, outline, ghost x neutral, brand-primary, accent, critical)',
+          '- iconOnly: width = height (altura do Control)',
+          '- startIcon/endIcon: ao usar Icon, o fill é definido automaticamente para a mesma cor da label (variant x color)',
+          '- solid/ghost: border: 0 para remover borda do user-agent',
+          '',
+          '## Acessibilidade',
+          '',
+          '- type="button" é o default; use type="submit" ou type="reset" apenas quando intencional',
+          '- iconOnly exige aria-label (warning em dev se ausente)',
+          '- Loading: aria-busy e label mantido visível',
+          '- Navegação por teclado: Tab, Enter, Space (comportamento nativo de <button>)',
+          '- Classe .interactive fornece focus-visible e estados hover/active',
+          '',
+          '## Design tokens',
+          '',
+          '| Token / classe | Uso |',
+          '|----------------|-----|',
+          '| --jf-control-height-sm/md/lg | Altura por size |',
+          '| jf-button-font-label | Tipografia do label |',
+          '| --jf-control-corner-radius | Raio (radius="default") |',
+          '',
+          '## Figma',
+          '',
+          '- [Variantes](https://www.figma.com/design/ilbkG0Smu7ZnqWqvCtLVGt/%F0%9F%92%8E-Basic-Components?node-id=2040-5016)'
+        ].join('\n')
+      }
+    }
   },
   argTypes: {
+    type: {
+      control: 'select',
+      options: ['button', 'submit', 'reset'],
+      description: 'Tipo nativo do botão. Default "button" evita submit acidental.',
+      table: { type: { summary: 'button | submit | reset' }, defaultValue: { summary: 'button' } }
+    },
     variant: {
       control: 'select',
       options: ['solid', 'outline', 'ghost'],
-      description: 'Estilo visual (Figma).',
-      table: { type: { summary: 'solid | outline | ghost' }, defaultValue: { summary: 'solid' } },
+      description: 'Estilo visual.',
+      table: { type: { summary: 'solid | outline | ghost' }, defaultValue: { summary: 'solid' } }
     },
     color: {
       control: 'select',
       options: ['neutral', 'brand-primary', 'accent', 'critical'],
-      description: 'Cor semântica (Figma).',
-      table: { type: { summary: 'neutral | brand-primary | accent | critical' }, defaultValue: { summary: 'brand-primary' } },
+      description: 'Cor semântica.',
+      table: { type: { summary: 'neutral | brand-primary | accent | critical' }, defaultValue: { summary: 'brand-primary' } }
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
-      description: 'Altura e padding (tokens do Control).',
-      table: { type: { summary: 'sm | md | lg' }, defaultValue: { summary: 'md' } },
-    },
-    iconOnly: {
-      control: 'boolean',
-      description: 'Quando true, botão quadrado com min-width do Control; quando false, min-width w-min-40.',
-      table: { defaultValue: { summary: 'false' } },
+      description: 'Altura e padding (Control).',
+      table: { type: { summary: 'sm | md | lg' }, defaultValue: { summary: 'md' } }
     },
     fullWidth: {
       control: 'boolean',
-      description: 'Ocupa 100% da largura do container.',
-      table: { defaultValue: { summary: 'false' } },
+      description: 'Ocupa 100% da largura do container (Control).',
+      table: { defaultValue: { summary: 'false' } }
     },
     radius: {
       control: 'select',
       options: ['none', 'default', 'pill'],
-      description: 'Raio da borda.',
-      table: { type: { summary: 'none | default | pill' }, defaultValue: { summary: 'default' } },
+      description: 'Raio da borda (Control).',
+      table: { type: { summary: 'none | default | pill' }, defaultValue: { summary: 'default' } }
+    },
+    iconOnly: {
+      control: 'boolean',
+      description: 'Apenas ícone; exige aria-label. Largura = altura do Control.',
+      table: { defaultValue: { summary: 'false' } }
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Estado de carregamento (aria-busy, motion-spin no ícone).',
+      table: { defaultValue: { summary: 'false' } }
     },
     disabled: {
       control: 'boolean',
       description: 'Desabilita o botão.',
-      table: { defaultValue: { summary: 'false' } },
-    },
-    startIcon: {
-      control: 'text',
-      description: 'Nome do ícone (Tabler) antes do label. Tamanho/cor controlados pelo Button.',
-      table: { type: { summary: 'string' }, defaultValue: { summary: 'cheese' } },
-    },
-    endIcon: {
-      control: 'text',
-      description: 'Nome do ícone (Tabler) depois do label. Tamanho/cor controlados pelo Button.',
-      table: { type: { summary: 'string' }, defaultValue: { summary: 'cheese' } },
-    },
-    loading: {
-      control: 'boolean',
-      description: 'Estado de carregamento: opacidade no botão e .motion-spin no startIcon; largura mantida.',
-      table: { defaultValue: { summary: 'false' } },
+      table: { defaultValue: { summary: 'false' } }
     },
     className: {
       control: 'text',
-      description: 'Classes CSS adicionais no wrapper (Control).',
-    },
-  },
+      description: 'Classes CSS adicionais.'
+    }
+  }
 }
 
 export default meta
 
 type Story = StoryObj<typeof Button>
 
-const defaultIconOptions = ['cheese', 'plus', 'arrow-left', 'settings', 'loader-2', ''] as const
 
 export const Playground: Story = {
   args: {
+    type: 'button',
     variant: 'solid',
     color: 'brand-primary',
     size: 'md',
-    iconOnly: false,
     fullWidth: false,
     radius: 'default',
-    disabled: false,
-    startIcon: 'cheese',
-    endIcon: 'chevron-down',
+    iconOnly: false,
     loading: false,
-  },
-  argTypes: {
-    startIcon: { control: 'select', options: [...defaultIconOptions] },
-    endIcon: { control: 'select', options: [...defaultIconOptions] },
-  },
-  render: (args) => <Button {...args}>Button</Button>,
+    startIcon: 'plus',
+    endIcon: 'arrow-right',
+    disabled: false,
+    children: 'Label'
+  }
 }
+
+// ─── Variantes (variant × color) ────────────────────────────────────────────────
 
 export const Variants: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button variant="solid" color="accent">Solid accent</Button>
-      <Button variant="outline" color="neutral">Outline neutral</Button>
-      <Button variant="ghost" color="brand-primary">Ghost brand-primary</Button>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+        <Button variant="solid" color="neutral">Neutral</Button>
+        <Button variant="solid" color="brand-primary">Brand</Button>
+        <Button variant="solid" color="accent">Accent</Button>
+        <Button variant="solid" color="critical">Critical</Button>
+      </div>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+        <Button variant="outline" color="neutral">Neutral</Button>
+        <Button variant="outline" color="brand-primary">Brand</Button>
+        <Button variant="outline" color="accent">Accent</Button>
+        <Button variant="outline" color="critical">Critical</Button>
+      </div>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+        <Button variant="ghost" color="neutral">Neutral</Button>
+        <Button variant="ghost" color="brand-primary">Brand</Button>
+        <Button variant="ghost" color="accent">Accent</Button>
+        <Button variant="ghost" color="critical">Critical</Button>
+      </div>
     </div>
-  ),
+  )
 }
 
-export const VariantColorMatrix: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      {(['solid', 'outline', 'ghost'] as const).map((variant) => (
-        <div key={variant} style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-          {(['neutral', 'brand-primary', 'accent', 'critical'] as const).map((color) => (
-            <Button key={color} variant={variant} color={color} startIcon="cheese">
-              Button
-            </Button>
-          ))}
-        </div>
-      ))}
-    </div>
-  ),
-}
+// ─── Sizes ─────────────────────────────────────────────────────────────────────
 
 export const Sizes: Story = {
   render: () => (
@@ -178,7 +172,71 @@ export const Sizes: Story = {
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
     </div>
-  ),
+  )
+}
+
+// ─── States ────────────────────────────────────────────────────────────────────
+
+export const States: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+      <Button>Enabled</Button>
+      <Button disabled>Disabled</Button>
+      <Button loading startIcon="refresh">
+        Loading
+      </Button>
+    </div>
+  )
+}
+
+// ─── With startIcon / endIcon (Icon fill = label color) ──────────────────────────
+
+export const WithStartIcon: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+      <Button startIcon="plus">
+        Add
+      </Button>
+      <Button variant="outline" startIcon="arrow-left">
+        Back
+      </Button>
+    </div>
+  )
+}
+
+export const WithEndIcon: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+      <Button endIcon="arrow-right">
+        Next
+      </Button>
+      <Button variant="ghost" color="critical" endIcon="trash">
+        Remove
+      </Button>
+    </div>
+  )
+}
+
+// ─── IconOnly ──────────────────────────────────────────────────────────────────
+
+export const IconOnly: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+      <Button iconOnly startIcon="plus" aria-label="Add" />
+      <Button iconOnly variant="outline" startIcon="pencil" aria-label="Edit" />
+      <Button iconOnly variant="ghost" startIcon="trash" aria-label="Delete" />
+    </div>
+  )
+}
+
+// ─── FullWidth & Radius ────────────────────────────────────────────────────────
+
+export const FullWidth: Story = {
+  render: () => (
+    <div style={{ width: 280 }}>
+      <Button fullWidth>Full width</Button>
+    </div>
+  )
 }
 
 export const Radius: Story = {
@@ -188,58 +246,25 @@ export const Radius: Story = {
       <Button radius="default">Default</Button>
       <Button radius="pill">Pill</Button>
     </div>
-  ),
+  )
 }
 
-export const States: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button>Enabled</Button>
-      <Button disabled>Disabled</Button>
-    </div>
-  ),
-}
+// ─── Accessibility ─────────────────────────────────────────────────────────────
 
-export const IconOnly: Story = {
+export const Accessibility: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button iconOnly variant="solid" color="brand-primary" size="sm" startIcon="plus" aria-label="Add" />
-      <Button iconOnly variant="solid" color="brand-primary" size="md" startIcon="plus" aria-label="Add" />
-      <Button iconOnly variant="outline" color="neutral" size="md" startIcon="settings" aria-label="Settings" />
-    </div>
-  ),
-}
-
-export const WithStartEndIcon: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button variant="solid" color="accent" startIcon="plus" endIcon="chevron-right">
-        Add item
-      </Button>
-      <Button variant="outline" color="neutral" startIcon="arrow-left">
-        Back
-      </Button>
-      <Button variant="ghost" color="brand-primary" endIcon="cheese">
-        With cheese
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <p>iconOnly com aria-label (obrigatório):</p>
+      <Button iconOnly startIcon="plus" aria-label="Add item" />
+      <p>type=submit em form (label claro):</p>
+      <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', gap: 8 }}>
+        <input type="text" placeholder="Name" aria-label="Name" />
+        <Button type="submit">Save</Button>
+      </form>
+      <p>aria-expanded para menu/dropdown:</p>
+      <Button aria-expanded={false} aria-haspopup="menu" aria-controls="menu-id">
+        Open menu
       </Button>
     </div>
-  ),
-}
-
-export const Loading: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button loading >
-        Loading
-      </Button>
-    </div>
-  ),
-}
-
-export const FullWidth: Story = {
-  render: () => (
-    <div style={{ width: 280 }}>
-      <Button fullWidth>Full width</Button>
-    </div>
-  ),
+  )
 }

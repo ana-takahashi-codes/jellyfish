@@ -10,16 +10,27 @@ import { playwright } from '@vitest/browser-playwright';
 const dirname =
   typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
-// More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
+// More info at: https://storybook.js.org/docs/writing-tests/test-addon
 export default defineConfig({
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react/jsx-runtime',
+      'react/jsx-dev-runtime',
+      '@storybook/addon-a11y/preview',
+      '@storybook/react-vite',
+    ],
+  },
   test: {
     projects: [
       {
         extends: true,
         plugins: [
-          // The plugin will run tests for the stories defined in your Storybook config
-          // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-          storybookTest({ configDir: path.join(dirname, '.storybook') }),
+          storybookTest({
+            configDir: path.join(dirname, '.storybook'),
+            storybookScript: 'pnpm storybook --no-open',
+          }),
         ],
         test: {
           name: 'storybook',
@@ -29,7 +40,12 @@ export default defineConfig({
             provider: playwright({}),
             instances: [{ browser: 'chromium' }],
           },
-          setupFiles: ['.storybook/vitest.setup.js'],
+          setupFiles: [path.join(dirname, '.storybook/vitest.setup.js')],
+          // Prevent addon's setup-file.js from being collected as a test (avoids "Vitest failed to find the runner")
+          exclude: [
+            '**/node_modules/**',
+            '**/addon-vitest/**/setup-file.js',
+          ],
         },
       },
     ],
