@@ -716,7 +716,7 @@
         "state-change": {
           "$type": "transition",
           "$value": {
-            "duration": "{jf.motion.duration.short}",
+            "duration": "{jf.motion.duration.medium}",
             "delay": "{jf.motion.delay.none}",
             "timingFunction": "{jf.motion.easing.balanced}"
           }
@@ -1128,19 +1128,19 @@
         "cols": {
           "desktop-dense": {
             "$type": "number",
-            "$value": "16"
+            "$value": 16
           },
           "desktop": {
             "$type": "number",
-            "$value": "12"
+            "$value": 12
           },
           "tablet": {
             "$type": "number",
-            "$value": "8"
+            "$value": 8
           },
           "mobile": {
             "$type": "number",
-            "$value": "4"
+            "$value": 4
           }
         },
         "gutter": {
