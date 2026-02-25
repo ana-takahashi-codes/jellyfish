@@ -2,4 +2,4 @@
  * Fontes do Design System.
  * Importe uma vez na entrada da aplicação (ou use um componente que já importe, ex. button.css).
  */
-@import '@jellyfish/tokens/fonts.css';
+@import '@jellyfish-ds/tokens/fonts.css';

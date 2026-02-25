@@ -26,7 +26,7 @@ import { ComponentName } from '@jellyfish/ui/component-name'
 // import { Icon } from '@jellyfish/ui/icon'
 
 const meta: Meta<typeof ComponentName> = {
-  title: 'Basic/ComponentName',   // ex.: 'Basic/Control', 'Basic/Icon'
+  title: 'Basic/ComponentName',   // ex.: 'Basic/Button', 'Basic/Control'
   component: ComponentName,
   tags: ['autodocs'],             // gera a página de docs automaticamente
   parameters: {
@@ -34,6 +34,7 @@ const meta: Meta<typeof ComponentName> = {
     docs: {
       description: {
         component: `
+# ComponentName
 
 Descrição curta e objetiva em 1-2 frases.
 
@@ -147,3 +148,14 @@ export const States: Story = {
 | **Sem lógica no render** | Stories são exemplos estáticos; evite state/efeitos |
 
 ---
+
+## Referência — stories reais do projeto
+
+- `apps/js-docs/stories/basic-components/icon.stories.tsx` — Icon
+- `apps/js-docs/stories/basic-components/control.stories.tsx` — Control
+
+---
+
+## Por que não MDX?
+
+O Storybook 10 com `@storybook/react-vite` requer `@storybook/blocks` para MDX, que não está instalado como dependência direta neste workspace. A abordagem TSX + `autodocs` é equivalente e mais simples de manter — a página de docs gerada inclui descrição, ArgTypes e todos os Canvas das stories exportadas.

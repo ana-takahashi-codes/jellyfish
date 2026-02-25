@@ -23,7 +23,7 @@
   --jf-color-alpha-black-700: oklch(0 0 0 / 70%);
   --jf-color-alpha-black-800: oklch(0 0 0 / 80%);
   --jf-color-alpha-black-900: oklch(0 0 0 / 90%);
-  --jf-font-family-sans: 'Google Sans Flex';
+  --jf-font-family-sans: 'Google Sans Flex 24pt';
   --jf-font-family-serif: Newsreader;
   --jf-font-family-mono: 'Fira Code';
   --jf-font-family-icon: 'Font Awesome 7 Free';

@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Button } from '@jellyfish/ui/button'
+import { Button } from '@jellyfish-ds/ui/button'
 
 const meta: Meta<typeof Button> = {
   title: 'Basic/Button',

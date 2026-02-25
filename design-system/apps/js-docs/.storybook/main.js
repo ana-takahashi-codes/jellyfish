@@ -23,7 +23,6 @@ const config = {
     ${head}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Fira+Code:wght@300..700&family=Newsreader:ital,opsz,wght@0,6..12,200..800;1,6..12,200..800&display=swap">
   `,
   addons: [
     getAbsolutePath('@chromatic-com/storybook'),
@@ -48,18 +47,20 @@ const config = {
       : Object.entries(existing).map(([find, replacement]) => ({ find, replacement }))
 
     // Project aliases first so they take precedence over any defaults.
-    // Specific sub-path aliases must come before the directory alias (@jellyfish/tokens).
+    // Specific sub-path aliases must come before the directory alias (@jellyfish-ds/tokens).
     const projectAliases = [
       { find: '$tokens-core-json',                       replacement: tokensCoreJson },
-      { find: '@jellyfish/tokens/vars',                  replacement: join(tokensPath, 'src/vars.js') },
-      { find: '@jellyfish/tokens/fonts.css',             replacement: join(tokensPath, 'src/css/fonts.css') },
-      { find: '@jellyfish/tokens/interactive-states.css',replacement: join(tokensPath, 'src/css/interactive-states.css') },
-      { find: '@jellyfish/tokens',                       replacement: tokensPath },
-      { find: '@jellyfish/ui/icon',    replacement: join(uiPath, 'components/icon/index.ts') },
-      { find: '@jellyfish/ui/control', replacement: join(uiPath, 'components/utils/control/index.ts') },
-      { find: '@jellyfish/ui/variants',replacement: join(uiPath, 'variants.ts') },
-      { find: '@jellyfish/ui/tokens',  replacement: join(uiPath, 'tokens.ts') },
-      { find: '@jellyfish/ui/theme',   replacement: join(uiPath, 'theme/index.ts') },
+      { find: '@jellyfish-ds/tokens/vars',                  replacement: join(tokensPath, 'src/vars.js') },
+      { find: '@jellyfish-ds/tokens/fonts.css',             replacement: join(tokensPath, 'src/css/fonts.css') },
+      { find: '@jellyfish-ds/tokens/interactive-states.css',replacement: join(tokensPath, 'src/css/interactive-states.css') },
+      { find: '@jellyfish-ds/tokens',                       replacement: tokensPath },
+      { find: '@jellyfish-ds/ui/icon',    replacement: join(uiPath, 'components/icon/index.ts') },
+      { find: '@jellyfish-ds/ui/control', replacement: join(uiPath, 'components/utils/control/index.ts') },
+      { find: '@jellyfish-ds/ui/button',  replacement: join(uiPath, 'components/button/index.ts') },
+      { find: '@jellyfish-ds/ui/logo',    replacement: join(uiPath, 'components/logo/index.ts') },
+      { find: '@jellyfish-ds/ui/variants',replacement: join(uiPath, 'variants.ts') },
+      { find: '@jellyfish-ds/ui/tokens',  replacement: join(uiPath, 'tokens.ts') },
+      { find: '@jellyfish-ds/ui/theme',   replacement: join(uiPath, 'theme/index.ts') },
     ]
 
     config.resolve = config.resolve || {}

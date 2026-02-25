@@ -24,7 +24,7 @@
   <color name="jf_color_alpha_black_700">oklch(0 0 0 / 70%)</color>
   <color name="jf_color_alpha_black_800">oklch(0 0 0 / 80%)</color>
   <color name="jf_color_alpha_black_900">oklch(0 0 0 / 90%)</color>
-  <string name="jf_font_family_sans">Google Sans Flex</string>
+  <string name="jf_font_family_sans">Google Sans Flex 24pt</string>
   <string name="jf_font_family_serif">Newsreader</string>
   <string name="jf_font_family_mono">Fira Code</string>
   <string name="jf_font_family_icon">Font Awesome 7 Free</string>

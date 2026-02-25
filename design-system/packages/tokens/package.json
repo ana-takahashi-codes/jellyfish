@@ -1,6 +1,6 @@
 {
-  "name": "@jellyfish/tokens",
-  "version": "0.0.0",
+  "name": "@jellyfish-ds/tokens",
+  "version": "1.0.0",
   "description": "Jellyfish Design System Tokens",
   "keywords": [
     "design system",
@@ -56,6 +56,7 @@
     "prepublishOnly": "pnpm run build"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
     "@tokens-studio/sd-transforms": "^2.0.3",
     "postcss": "^8.4.49",
     "style-dictionary": "^5.1.4"

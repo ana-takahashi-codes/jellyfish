@@ -4,8 +4,8 @@
   "description": "Pacote de componentes e ativos específicos de times",
   "main": "index.js",
   "dependencies": {
-    "@jellyfish/tokens": "workspace:*",
-    "@jellyfish/ui": "workspace:*",
+    "@jellyfish-ds/tokens": "workspace:*",
+    "@jellyfish-ds/ui": "workspace:*",
     "styled-components": "^6.3.8"
   },
   "scripts": {

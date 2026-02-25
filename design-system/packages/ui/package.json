@@ -1,8 +1,12 @@
 {
-  "name": "@jellyfish/ui",
-  "version": "0.0.0",
+  "name": "@jellyfish-ds/ui",
+  "version": "1.0.0",
   "sideEffects": false,
   "license": "MIT",
+  "private":false,
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     "./fonts.css": "./src/fonts.css",
     "./variants": {
@@ -34,6 +38,11 @@
       "types": "./src/components/button/index.ts",
       "import": "./dist/button.mjs",
       "require": "./dist/button.js"
+    },
+    "./logo": {
+      "types": "./src/components/logo/index.ts",
+      "import": "./dist/logo.mjs",
+      "require": "./dist/logo.js"
     }
   },
   "scripts": {
@@ -52,7 +61,7 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
-    "@jellyfish/tokens": "workspace:*",
+    "@jellyfish-ds/tokens": "workspace:*",
     "@tabler/icons-react": "^3.36.1",
     "react": "^18.2.0",
     "styled-components": "^6.x"

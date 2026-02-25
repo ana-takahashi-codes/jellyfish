@@ -1,18 +1,17 @@
 /* .storybook/preview.css */
 
-/* Fonte local Ezra (@font-face). Google Fonts carregado via <link> em previewHead (main.js).
-   @import url('https://...') dentro de <style> injetado pelo Vite é ignorado pelo browser. */
-@import '@jellyfish/tokens/src/fonts/fonts.css';
+/* Fontes do DS — carregadas antes dos tokens para que as variáveis de font-family resolvam */
+@import '@jellyfish-ds/tokens/src/css/fonts.css';
 
 /* Design tokens (primitives, foundations, color modes) */
-@import '@jellyfish/tokens/build/css/themes/core/primitives.css';
-@import '@jellyfish/tokens/build/css/themes/core/foundations.css';
-@import '@jellyfish/tokens/build/css/themes/core/components.css';
-@import '@jellyfish/tokens/build/css/themes/core/color-modes/light.css';
-@import '@jellyfish/tokens/build/css/themes/core/color-modes/dark.css';
+@import '@jellyfish-ds/tokens/build/css/themes/core/primitives.css';
+@import '@jellyfish-ds/tokens/build/css/themes/core/foundations.css';
+@import '@jellyfish-ds/tokens/build/css/themes/core/components.css';
+@import '@jellyfish-ds/tokens/build/css/themes/core/color-modes/light.css';
+@import '@jellyfish-ds/tokens/build/css/themes/core/color-modes/dark.css';
 
 /* Utility classes (Box, Icon, .jf-interactive, etc. – JIT not run in Storybook, so use full build) */
-@import '@jellyfish/tokens/build/css/utilities.css';
+@import '@jellyfish-ds/tokens/build/css/utilities.css';
 
 /* Fonte principal: Google Sans Flex (carregada em preview.js) */
 html,

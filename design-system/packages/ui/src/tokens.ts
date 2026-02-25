@@ -3,4 +3,4 @@
  * Prefira importar de @jellyfish/tokens/vars diretamente em novos códigos.
  */
 
-export { colors, size, radius, fontSize, tokenVar } from '@jellyfish/tokens/vars'
+export { colors, size, radius, fontSize, tokenVar } from '@jellyfish-ds/tokens/vars'

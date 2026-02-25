@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Icon } from '@jellyfish/ui/icon'
+import { Icon } from '@jellyfish-ds/ui/icon'
 
 const meta: Meta<typeof Icon> = {
   title: 'Basic/Icon',

@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "private":false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "vitest run --project=storybook",
     "test:watch": "vitest --project=storybook",
@@ -15,8 +19,8 @@
   "license": "ISC",
   "dependencies": {
     "@fontsource/google-sans-flex": "^5.2.2",
-    "@jellyfish/tokens": "workspace:*",
-    "@jellyfish/ui": "workspace:*",
+    "@jellyfish-ds/tokens": "workspace:*",
+    "@jellyfish-ds/ui": "workspace:*",
     "@tabler/icons-react": "^3.36.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

@@ -15,7 +15,13 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "mcp__ide__getDiagnostics"
+      "mcp__ide__getDiagnostics",
+      "Bash(cd \"F:/jellyfish/design-system\" && pnpm install 2>&1)",
+      "Bash(cd \"F:/jellyfish/design-system\" && pnpm --filter lms dev 2>&1)",
+      "Bash(netstat -ano)",
+      "Bash(xargs -I{} taskkill /PID {} /F)",
+      "Bash(taskkill:*)",
+      "Bash(cmd:*)"
     ]
   }
 }
