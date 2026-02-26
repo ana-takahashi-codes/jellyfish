@@ -9,7 +9,7 @@
 import UIKit
 
 public class {
-    public static let jfColorBdAccent = UIColor(red: 0.192, green: 0.224, blue: 0.427, alpha: 1)
+    public static let jfColorBdAccent = UIColor(red: 0.243, green: 0.278, blue: 0.537, alpha: 1)
     public static let jfColorBdBrandPrimary = UIColor(red: 0.984, green: 0.396, blue: 0.718, alpha: 1)
     public static let jfColorBdContrast = oklch(92.76% 0.0058 264.53)
     public static let jfColorBdCritical = oklch(0.422 0.1 28.58)

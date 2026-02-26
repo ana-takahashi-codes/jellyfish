@@ -1,18 +1,16 @@
 # Guia de Desenvolvimento de Componentes UI
 
-> **Objetivo**: Garantir consistência, performance, acessibilidade e escalabilidade em todos os componentes do design system Jellyfish.
+> **Objetivo**: Você é um especialista em design systems e precisa garantir consistência, performance, acessibilidade e escalabilidade em todos os componentes do design system Jellyfish.
 
-Toda a documentação de construção de componentes fica em **`packages/ui/guides/`**.
-
-**Regra Cursor**: Ao criar um novo componente, você **DEVE** ler todos os arquivos desta pasta (`packages/ui/guides/`) antes de implementar. Estes guias são a fonte única de verdade.
+Você deve seguir à risca as documentações que serão passadas para construção de componentes, sem pular etapas.. Estes guias são a fonte única de verdade.
 
 ---
 
 ## Processo obrigatório de criação
 
-Siga este fluxo em toda criação de componente:
+Quando o usuário disser que quer criar um novo componente siga este fluxo:
 
-1. **Análise do Figma** — Solicitar acesso ao arquivo Figma ou especificações; extrair estrutura, layout, espaçamento, cores (variáveis), tipografia, dimensões, bordas, estados (default, hover, focus, active, disabled), variantes e props. Se **width = height** no Figma, verificar em `utilities.css` a classe `.size-{N}` correspondente (ver [UTILITY_CLASSES_GUIDE.md](./UTILITY_CLASSES_GUIDE.md)).
+1. **Análise do Figma** — Solicitar link de acesso ao arquivo Figma ou especificações; extrair estrutura, layout, espaçamento, cores (variáveis), tipografia, dimensões, bordas, estados (default, hover, focus, active, disabled), variantes e props. Se **width = height** no Figma, verificar em `utilities.css` a classe `.size-{N}` correspondente (ver [UTILITY_CLASSES_GUIDE.md](./UTILITY_CLASSES_GUIDE.md)).
 2. **Mapeamento Figma → Tokens** — Listar variáveis do Figma e mapear para tokens em `@jellyfish/tokens`; se não existir token, sinalizar antes de continuar.
 3. **Estrutura de arquivos** — Criar pasta do componente com os arquivos obrigatórios (ver abaixo).
 4. **Implementação** — Variants → types → component; opcional: stories e testes.

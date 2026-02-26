@@ -34,7 +34,6 @@ const meta: Meta<typeof ComponentName> = {
     docs: {
       description: {
         component: `
-# ComponentName
 
 Descrição curta e objetiva em 1-2 frases.
 

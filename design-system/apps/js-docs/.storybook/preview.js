@@ -31,6 +31,10 @@ const preview = {
   globalTypes: {
     background: {
       description: 'Theme (light/dark) for the canvas',
+      values: [
+        {name: 'light', value: 'var(--jf-color-bg-page)'},
+        {name: 'dark', value: 'var(--jf-color-bg-page)'},
+      ],
       toolbar: {
         title: 'Background',
         icon: 'paintbrush',

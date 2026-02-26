@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef } from 'react'
+import type { IconFill } from './Icon.variants'
 
 /** Size variation for icons (maps to --jf-font-size-* tokens). */
 export type IconSize =
@@ -10,22 +11,6 @@ export type IconSize =
   | 'sm'
   | 'xl'
   | 'xs'
-
-/** Fill color variation for icons (maps to --jf-color-fg-* tokens). */
-export type IconFill =
-  | 'accent'
-  | 'brand-primary'
-  | 'critical'
-  | 'dataviz1'
-  | 'dataviz2'
-  | 'dataviz3'
-  | 'dataviz4'
-  | 'moderated'
-  | 'muted'
-  | 'neutral'
-  | 'positive'
-  | 'strong'
-  | 'warning'
 
 export interface IconProps
   extends Omit<ComponentPropsWithoutRef<'span'>, 'color'> {

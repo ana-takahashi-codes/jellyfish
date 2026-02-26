@@ -29,6 +29,7 @@
   <dimen name="jf_container_padding_wide">32.00dp*16</dimen>
   <dimen name="jf_container_padding_extended">32.00dp*32</dimen>
   <string name="jf_button_font_label">[object Object]</string>
+  <dimen name="jf_button_min_width">32.00dp*40</dimen>
   <dimen name="jf_control_corner_radius">32.00dp*3</dimen>
   <dimen name="jf_control_gap">32.00dp*2</dimen>
   <dimen name="jf_control_height_sm">32.00dp*18</dimen>

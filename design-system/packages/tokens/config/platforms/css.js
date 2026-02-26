@@ -24,10 +24,30 @@ export function getCssPlatform(theme, buildPath, outputOnly, manifest, options =
     transformGroup: 'tokens-studio',
     transforms: ['name/kebab', 'value/duration', 'value/cubic-bezier', 'value/transition-shorthand'],
     buildPath,
+    options: {
+      // Por padrão, mantemos referências entre tokens (outputReferences) para
+      // CSS variables (ex.: --jf-input-bg-default → --jf-color-bg-surface-secondary).
+      // Porém, para primitives.css queremos resolver referências para obter
+      // valores "flat" (sem var(--...)).
+      outputReferences: true
+    },
     files: files.map(({ destination, format = 'css/variables', filter }) => ({
       destination,
       format,
-      filter
+      // Para primitives.css, desabilitamos outputReferences para resolver
+      // referências diretamente nos valores primitivos.
+      options: destination === 'primitives.css' ? { outputReferences: false } : undefined,
+      // Filtro adicional: exceto em typography.css (css/typography-classes),
+      // não emitir CSS variables para tokens de tipo "typography".
+      filter: (token) => {
+        const baseOk = typeof filter === 'function' ? filter(token) : true
+        if (!baseOk) return false
+
+        if (format === 'css/typography-classes') return true
+
+        const type = token.type ?? token.$type
+        return type !== 'typography'
+      }
     }))
   }
 }

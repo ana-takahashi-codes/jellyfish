@@ -87,7 +87,7 @@
   <color name="jf_color_bg_active">oklch(0 0 0 / 10%)</color>
   <string name="jf_opacity_disabled">0.4</string>
   <string name="jf_opacity_dragged">0.6</string>
-  <string name="jf_opacity_hover">0.8</string>
+  <string name="jf_opacity_hover">0.9</string>
   <string name="jf_opacity_loading">0.6</string>
   <string name="jf_opacity_placeholder">0.7</string>
   <dimen name="jf_corner_radius_default">32.00dp*3</dimen>

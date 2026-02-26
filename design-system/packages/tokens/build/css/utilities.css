@@ -2,7 +2,7 @@
  * Jellyfish - Utilities CSS
  * Gerado automaticamente a partir dos design tokens
  * Inclui: utilities estáticos, dinâmicos, tipografia, tokens responsivos, estados interativos e animações
- * Generated at: 2026-02-23T23:26:03.414Z
+ * Generated at: 2026-02-26T16:31:19.075Z
  *
  * Arquivos de mapping processados:
  * - utilities-mapping-static.json (valores CSS diretos + tipografia)
@@ -672,28 +672,24 @@
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-500);
   font-size: var(--jf-font-size-xs);
-  line-height: var(--jf-line-height-sm);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 .font-label-sm {
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-500);
   font-size: var(--jf-font-size-sm);
-  line-height: var(--jf-line-height-sm);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 .font-label-md {
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-500);
   font-size: var(--jf-font-size-md);
-  line-height: var(--jf-line-height-sm);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 .font-label-lg {
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-500);
   font-size: var(--jf-font-size-lg);
-  line-height: var(--jf-line-height-sm);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 .font-quote {
@@ -16017,7 +16013,6 @@
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-500);
   font-size: var(--jf-font-size-xs);
-  line-height: var(--jf-line-height-sm);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 
@@ -16025,7 +16020,6 @@
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-500);
   font-size: var(--jf-font-size-sm);
-  line-height: var(--jf-line-height-sm);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 
@@ -16033,7 +16027,6 @@
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-500);
   font-size: var(--jf-font-size-md);
-  line-height: var(--jf-line-height-sm);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 
@@ -16041,7 +16034,6 @@
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-500);
   font-size: var(--jf-font-size-lg);
-  line-height: var(--jf-line-height-sm);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 
@@ -16122,7 +16114,7 @@
   font-family: var(--jf-font-family-sans);
   font-weight: var(--jf-font-weight-500);
   font-size: var(--jf-font-size-g);
-  line-height: var(--jf-line-height-sm);
+  line-height: var(--jf-line-height-md);
   letter-spacing: var(--jf-letter-spacing-regular);
 }
 
@@ -16146,40 +16138,40 @@
 /* xs */
 @media (min-width: 540px) {
   :root {
-    --jf-control-height-sm: 36px;
-    --jf-control-height-md: 44px;
-    --jf-control-height-lg: 48px;
-    --jf-control-min-width-sm: 36px;
-    --jf-control-min-width-md: 44px;
-    --jf-control-min-width-lg: 48px;
-    --jf-section-horizontal-padding-default: 16px;
-    --jf-section-vertical-padding-default: 32px;
+    --jf-control-height-sm: var(--jf-size-18);
+    --jf-control-height-md: var(--jf-size-22);
+    --jf-control-height-lg: var(--jf-size-24);
+    --jf-control-min-width-sm: var(--jf-size-18);
+    --jf-control-min-width-md: var(--jf-size-22);
+    --jf-control-min-width-lg: var(--jf-size-24);
+    --jf-section-horizontal-padding-default: var(--jf-size-8);
+    --jf-section-vertical-padding-default: var(--jf-size-16);
   }
 }
 
 /* md */
 @media (min-width: 1200px) {
   :root {
-    --jf-control-height-sm: 36px;
-    --jf-control-height-md: 44px;
-    --jf-control-height-lg: 48px;
-    --jf-control-min-width-sm: 36px;
-    --jf-control-min-width-md: 44px;
-    --jf-control-min-width-lg: 48px;
-    --jf-section-horizontal-padding-default: 20px;
+    --jf-control-height-sm: var(--jf-size-18);
+    --jf-control-height-md: var(--jf-size-22);
+    --jf-control-height-lg: var(--jf-size-24);
+    --jf-control-min-width-sm: var(--jf-size-18);
+    --jf-control-min-width-md: var(--jf-size-22);
+    --jf-control-min-width-lg: var(--jf-size-24);
+    --jf-section-horizontal-padding-default: var(--jf-size-10);
   }
 }
 
 /* lg */
 @media (min-width: 1536px) {
   :root {
-    --jf-control-height-sm: 32px;
-    --jf-control-height-md: 40px;
-    --jf-control-height-lg: 48px;
-    --jf-control-min-width-sm: 32px;
-    --jf-control-min-width-md: 40px;
-    --jf-control-min-width-lg: 48px;
-    --jf-section-horizontal-padding-default: 32px;
+    --jf-control-height-sm: var(--jf-size-16);
+    --jf-control-height-md: var(--jf-size-20);
+    --jf-control-height-lg: var(--jf-size-24);
+    --jf-control-min-width-sm: var(--jf-size-16);
+    --jf-control-min-width-md: var(--jf-size-20);
+    --jf-control-min-width-lg: var(--jf-size-24);
+    --jf-section-horizontal-padding-default: var(--jf-size-16);
   }
 }
 
@@ -16246,11 +16238,16 @@
    ======================================== */
 
 @keyframes spin {
-    from {
-      transform: rotate(var(--jf-angle-0));
-    }
-    to {
-      transform: rotate(var(--jf-angle-10));
-    }
+  from {
+    transform: rotate(var(--jf-angle-0));
   }
-  
+  to {
+    transform: rotate(var(--jf-angle-10));
+  }
+}
+
+/** Utility: aplica rotação contínua (Spinner, ícone de loading em Button). */
+.motion-spin {
+  animation: spin var(--jf-motion-duration-extended) linear infinite;
+}
+

@@ -57,10 +57,15 @@ const config = {
       { find: '@jellyfish-ds/ui/icon',    replacement: join(uiPath, 'components/icon/index.ts') },
       { find: '@jellyfish-ds/ui/control', replacement: join(uiPath, 'components/utils/control/index.ts') },
       { find: '@jellyfish-ds/ui/button',  replacement: join(uiPath, 'components/button/index.ts') },
-      { find: '@jellyfish-ds/ui/logo',    replacement: join(uiPath, 'components/logo/index.ts') },
+      { find: '@jellyfish-ds/ui/logo',         replacement: join(uiPath, 'components/logo/index.ts') },
+      { find: '@jellyfish-ds/ui/text-field',   replacement: join(uiPath, 'components/text-field/index.ts') },
+      { find: '@jellyfish-ds/ui/text-area',    replacement: join(uiPath, 'components/text-area/index.ts') },
+      { find: '@jellyfish-ds/ui/spinner',   replacement: join(uiPath, 'components/spinner/index.ts') },
       { find: '@jellyfish-ds/ui/variants',replacement: join(uiPath, 'variants.ts') },
       { find: '@jellyfish-ds/ui/tokens',  replacement: join(uiPath, 'tokens.ts') },
       { find: '@jellyfish-ds/ui/theme',   replacement: join(uiPath, 'theme/index.ts') },
+      { find: '@jellyfish-ds/ui/float',   replacement: join(uiPath, 'components/float/index.ts') },
+      { find: '@jellyfish-ds/ui/circle',  replacement: join(uiPath, 'components/utils/circle/index.ts') },
     ]
 
     config.resolve = config.resolve || {}

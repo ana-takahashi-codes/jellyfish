@@ -9,7 +9,7 @@
 import UIKit
 
 public class {
-    public static let jfColorBdAccent = oklch(0.492 0.064 182.48)
+    public static let jfColorBdAccent = oklch(0.579 0.077 181.57)
     public static let jfColorBdBrandPrimary = oklch(0.603 0.215 282.35)
     public static let jfColorBdContrast = oklch(92.76% 0.0058 264.53)
     public static let jfColorBdCritical = oklch(0.422 0.1 28.58)
@@ -19,8 +19,8 @@ public class {
     public static let jfColorBdPositive = oklch(0.576 0.155 146.27)
     public static let jfColorBdStrong = oklch(21.03% 0.0059 285.89)
     public static let jfColorBdWarning = oklch(0.603 0.125 62.52)
-    public static let jfColorBgAccent = oklch(0.492 0.064 182.48)
-    public static let jfColorBgAccentSoft = oklch(0.856 0.037 183.6)
+    public static let jfColorBgAccent = oklch(0.674 0.081 181.83)
+    public static let jfColorBgAccentSoft = oklch(0.955 0.013 185.09)
     public static let jfColorBgBrandPrimary = oklch(0.603 0.215 282.35)
     public static let jfColorBgBrandPrimarySoft = oklch(0.948 0.026 283.49)
     public static let jfColorBgCritical = oklch(0.422 0.1 28.58)
@@ -36,7 +36,7 @@ public class {
     public static let jfColorBgSurfaceTertiary = oklch(92.76% 0.0058 264.53)
     public static let jfColorBgWarning = oklch(0.603 0.125 62.52)
     public static let jfColorBgWarningSoft = oklch(0.955 0.023 71.79)
-    public static let jfColorFgAccent = oklch(0.4 0.052 180.4)
+    public static let jfColorFgAccent = oklch(0.492 0.064 182.48)
     public static let jfColorFgBrandPrimary = oklch(0.519 0.226 282.68)
     public static let jfColorFgContrast = oklch(1 0 0)
     public static let jfColorFgCritical = oklch(0.422 0.1 28.58)

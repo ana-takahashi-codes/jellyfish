@@ -16,6 +16,7 @@ public class {
     public static let jfArticleFontTitleTertiary = [object Object]
     public static let jfArticleThumbnailRatio = "16 / 9"
     public static let jfButtonFontLabel = [object Object]
+    public static let jfButtonMinWidth = CGFloat(32.00)*40
     public static let jfCardColorBdNeutral = oklch(71.18% 0.0129 286.07)
     public static let jfCardCornerRadius = CGFloat(32.00)*6
     public static let jfCardPaddingComfort = CGFloat(32.00)*8

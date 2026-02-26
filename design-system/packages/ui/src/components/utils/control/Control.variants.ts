@@ -10,7 +10,7 @@ export const controlInnerStyles: CSSProperties = {
 
 /**
  * Layout variants for Control (size, fullWidth, radius).
- * Uses utility classes (d-inline-flex, items-center, font-label-sm, w-full, corner-0, corner-pill)
+ * Uses utility classes (d-inline-flex, items-center, w-full, corner-0, corner-pill)
  * and CSS variables (--jf-control-height-*, --jf-control-corner-radius, etc.).
  *
  * Divergences from Figma:
@@ -22,7 +22,6 @@ export const controlVariants = variants({
     class: [
       'd-inline-flex',
       'items-center',
-      'font-label-sm',
     ],
     ...controlInnerStyles,
   },

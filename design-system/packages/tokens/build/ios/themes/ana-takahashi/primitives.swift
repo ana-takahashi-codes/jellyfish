@@ -22,7 +22,7 @@ public class {
     public static let jfBdWidth05 = CGFloat(32.00)*0.5
     public static let jfBdWidth1 = CGFloat(32.00)
     public static let jfBdWidth2 = CGFloat(32.00)*2
-    public static let jfBdWidth3 = 3* CGFloat(32.00)
+    public static let jfBdWidth3 = 3*CGFloat(32.00)
     public static let jfBdWidth4 = CGFloat(32.00)*4
     public static let jfBlur1 = CGFloat(32.00)
     public static let jfBlur2 = CGFloat(32.00)*2
@@ -61,7 +61,7 @@ public class {
     public static let jfFontFamilyDecoration = Ezra
     public static let jfFontFamilyIcon = Font Awesome 7 Free
     public static let jfFontFamilyMono = Fira Code
-    public static let jfFontFamilySans = Google Sans Flex 24pt
+    public static let jfFontFamilySans = Albert Sans
     public static let jfFontFamilySerif = Newsreader
     public static let jfFontSize2xg = clamp(2.25rem, 1.753rem + 1.7118vw, 4rem)
     public static let jfFontSize2xl = clamp(1.1375rem, 1.1073rem + 0.3523vw, 1.5rem)

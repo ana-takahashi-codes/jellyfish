@@ -23,7 +23,7 @@
   --jf-color-alpha-black-700: oklch(0 0 0 / 70%);
   --jf-color-alpha-black-800: oklch(0 0 0 / 80%);
   --jf-color-alpha-black-900: oklch(0 0 0 / 90%);
-  --jf-font-family-sans: 'Google Sans Flex 24pt';
+  --jf-font-family-sans: 'Albert Sans';
   --jf-font-family-serif: Newsreader;
   --jf-font-family-mono: 'Fira Code';
   --jf-font-family-icon: 'Font Awesome 7 Free';
@@ -97,7 +97,7 @@
   --jf-line-height-lg: 1.7;
   --jf-bd-width-1: 2px;
   --jf-bd-width-2: 4px;
-  --jf-bd-width-3: 3* 2px;
+  --jf-bd-width-3: 6px;
   --jf-bd-width-4: 8px;
   --jf-bd-width-0-5: 1px;
   --jf-corner-radius-0: 0;

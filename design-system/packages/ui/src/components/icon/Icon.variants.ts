@@ -28,7 +28,13 @@ export const iconFillClasses = {
   dataviz1: 'fg-dataviz1-500',
   dataviz2: 'fg-dataviz2-500',
   dataviz3: 'fg-dataviz3-500',
-  dataviz4: 'fg-dataviz4-500'
+  dataviz4: 'fg-dataviz4-500',
+  'on-neutral': 'fg-on-neutral',
+  'on-brand-primary': 'fg-on-brand-primary',
+  'on-accent': 'fg-on-accent',
+  'on-critical': 'fg-on-critical',
+  'on-positive': 'fg-on-positive',
+  'on-warning': 'fg-on-warning'
 } as const
 
 export type IconSize = keyof typeof iconSizeClasses

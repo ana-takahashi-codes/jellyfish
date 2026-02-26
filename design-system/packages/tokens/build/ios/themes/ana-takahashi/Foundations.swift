@@ -157,7 +157,7 @@ public class {
     public static let jfLayerTooltip = 800
     public static let jfOpacityDisabled = 0.4
     public static let jfOpacityDragged = 0.6
-    public static let jfOpacityHover = 0.8
+    public static let jfOpacityHover = 0.9
     public static let jfOpacityLoading = 0.6
     public static let jfOpacityPlaceholder = 0.7
     public static let jfScreenHeightFull = CGFloat(1600.00)

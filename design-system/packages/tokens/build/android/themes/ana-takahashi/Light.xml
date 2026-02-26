@@ -41,7 +41,7 @@
   <color name="jf_color_bd_strong">oklch(21.03% 0.0059 285.89)</color>
   <color name="jf_color_bd_contrast">oklch(92.76% 0.0058 264.53)</color>
   <color name="jf_color_bd_brand_primary">#fffb65b7</color>
-  <color name="jf_color_bd_accent">#ff31396d</color>
+  <color name="jf_color_bd_accent">#ff3e4789</color>
   <color name="jf_color_bd_positive">oklch(0.576 0.155 146.27)</color>
   <color name="jf_color_bd_warning">oklch(0.603 0.125 62.52)</color>
   <color name="jf_color_bd_critical">oklch(0.422 0.1 28.58)</color>

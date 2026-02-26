@@ -43,6 +43,31 @@
       "types": "./src/components/logo/index.ts",
       "import": "./dist/logo.mjs",
       "require": "./dist/logo.js"
+    },
+    "./text-field": {
+      "types": "./src/components/text-field/index.ts",
+      "import": "./dist/text-field.mjs",
+      "require": "./dist/text-field.js"
+    },
+    "./text-area": {
+      "types": "./src/components/text-area/index.ts",
+      "import": "./dist/text-area.mjs",
+      "require": "./dist/text-area.js"
+    },
+    "./spinner": {
+      "types": "./src/components/spinner/index.ts",
+      "import": "./dist/components/spinner/index.mjs",
+      "require": "./dist/components/spinner/index.js"
+    },
+    "./float": {
+      "types": "./src/components/float/index.ts",
+      "import": "./dist/float.mjs",
+      "require": "./dist/float.js"
+    },
+    "./circle": {
+      "types": "./src/components/utils/circle/index.ts",
+      "import": "./dist/circle.mjs",
+      "require": "./dist/circle.js"
     }
   },
   "scripts": {

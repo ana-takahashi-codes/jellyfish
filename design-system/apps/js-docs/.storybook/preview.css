@@ -13,6 +13,8 @@
 /* Utility classes (Box, Icon, .jf-interactive, etc. – JIT not run in Storybook, so use full build) */
 @import '@jellyfish-ds/tokens/build/css/utilities.css';
 
+/* Canvas background — uses token so it reacts to light/dark theme */
+
 /* Fonte principal: Google Sans Flex (carregada em preview.js) */
 html,
 body,
@@ -21,17 +23,76 @@ body,
 #storybook-docs .sbdocs,
 #storybook-root,
 [class*='sbdocs'] {
-  font-family: 'Google Sans Flex', sans-serif !important;
+  font-family: 'Albert Sans', sans-serif !important;
+  color: var(--jf-color-fg-moderated)!important; 
+}
+code{
+  background-color: var(--jf-color-bg-surface-tertiary)!important;
+  color: var(--jf-color-fg-moderated)!important;
+  border: 1px solid var(--jf-color-bd-muted)!important;
+}
+
+header.sidebar-container{
+  background: var(--jf-color-neutral-950)!important;
+}
+
+#anchor--basic-textarea--playground .docs-story {
+  background-color: var(--jf-color-bg-surface-default)!important;
+}
+
+.sbdocs li{
+  color: var(--jf-color-fg-moderated)!important;
+}
+
+.sbdocs td, tr{
+  background-color: var(--jf-color-bg-surface-default)!important;
+  color: var(--jf-color-fg-moderated)!important;
+  border: 1px solid var(--jf-color-bd-muted)!important;
+}
+
+.sbdocs select, input:not[type="switch"], textarea{
+  background-color: var(--jf-color-bg-surface-default)!important;
+  color: var(--jf-color-fg-moderated)!important;
+  border: 1px solid var(--jf-color-bd-muted)!important;
+}
+.sbdocs textarea{
+  background-color: var(--jf-color-bg-surface-default)!important;
+  color: var(--jf-color-fg-moderated)!important;
+  border: 1px solid var(--jf-color-bd-muted)!important;
+}
+
+.sbdocs tr th{
+  color: var(--jf-color-fg-strong)!important;
+  border: 1px solid var(--jf-color-bd-muted)!important;
+}
+
+div[role='toolbar']  {
+  background-color: var(--jf-color-bg-surface-default)!important;
+  color: var(--jf-color-fg-muted)!important;
+}
+
+.sbdocs-preview{
+  color: var(--jf-color-fg-moderated)!important;
+  background-color: var(--jf-color-bg-surface-default)!important;
+}
+.sb-unstyled{
+  color: var(--jf-color-fg-moderated)!important;
 }
 
 /* Aumentar fonte base da documentação */
 .sbdocs-wrapper {
     font-size: 1.125rem;
+    background-color: var(--jf-color-bg-page)!important;
   }
+
+.sbdocs-wrapper body{
+  background: var(--jf-color-bg-page)!important;
+}
   
   /* Títulos */
   .sbdocs h1 {
     font-family: 'Google Sans Flex', sans-serif;
+    color: var(--jf-color-fg-strong)!important;
     font-size: 2.75rem;
     margin-bottom: 1.5rem;
     font-weight: 700;
@@ -39,6 +100,7 @@ body,
   
   .sbdocs h2 {
     font-family: 'Google Sans Flex', sans-serif;
+    color: var(--jf-color-fg-strong)!important;
     font-size: 1.75rem;
     margin-top: 2rem;
     margin-bottom: 1.5rem;

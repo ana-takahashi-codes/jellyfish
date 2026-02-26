@@ -403,7 +403,7 @@
           },
           "3": {
             "$type": "borderWidth",
-            "$value": "3* {jf.size.1}"
+            "$value": "3*{jf.size.1}"
           },
           "4": {
             "$type": "borderWidth",

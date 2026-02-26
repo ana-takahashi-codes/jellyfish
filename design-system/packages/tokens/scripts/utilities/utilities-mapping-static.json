@@ -516,28 +516,24 @@
         "font-family": "jf-font-family-sans",
         "font-weight": "jf-font-weight-500",
         "font-size": "jf-font-size-xs",
-        "line-height": "jf-line-height-sm",
         "letter-spacing": "jf-letter-spacing-regular"
       },
       "label-sm": {
         "font-family": "jf-font-family-sans",
         "font-weight": "jf-font-weight-500",
         "font-size": "jf-font-size-sm",
-        "line-height": "jf-line-height-sm",
         "letter-spacing": "jf-letter-spacing-regular"
       },
       "label-md": {
         "font-family": "jf-font-family-sans",
         "font-weight": "jf-font-weight-500",
         "font-size": "jf-font-size-md",
-        "line-height": "jf-line-height-sm",
         "letter-spacing": "jf-letter-spacing-regular"
       },
       "label-lg": {
         "font-family": "jf-font-family-sans",
         "font-weight": "jf-font-weight-500",
         "font-size": "jf-font-size-lg",
-        "line-height": "jf-line-height-sm",
         "letter-spacing": "jf-letter-spacing-regular"
       },
       "quote": {

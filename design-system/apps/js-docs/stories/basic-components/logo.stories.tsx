@@ -11,7 +11,6 @@ const meta: Meta<typeof Logo> = {
     docs: {
       description: {
         component: `
-# Logo
 
 Componente de logo multi-brand do design system. Suporta as marcas **JellyFish** e **Decoded** com controle de variante e tamanho via tokens.
 

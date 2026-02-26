@@ -24,7 +24,7 @@
   <color name="jf_color_alpha_black_700">oklch(0 0 0 / 70%)</color>
   <color name="jf_color_alpha_black_800">oklch(0 0 0 / 80%)</color>
   <color name="jf_color_alpha_black_900">oklch(0 0 0 / 90%)</color>
-  <string name="jf_font_family_sans">Google Sans Flex 24pt</string>
+  <string name="jf_font_family_sans">Albert Sans</string>
   <string name="jf_font_family_serif">Newsreader</string>
   <string name="jf_font_family_mono">Fira Code</string>
   <string name="jf_font_family_icon">Font Awesome 7 Free</string>
@@ -98,7 +98,7 @@
   <string name="jf_line_height_lg">170%</string>
   <dimen name="jf_bd_width_1">32.00dp</dimen>
   <dimen name="jf_bd_width_2">32.00dp*2</dimen>
-  <dimen name="jf_bd_width_3">3* 32.00dp</dimen>
+  <dimen name="jf_bd_width_3">3*32.00dp</dimen>
   <dimen name="jf_bd_width_4">32.00dp*4</dimen>
   <dimen name="jf_bd_width_0_5">32.00dp*0.5</dimen>
   <dimen name="jf_corner_radius_0">0.00dp</dimen>
