@@ -68,6 +68,11 @@
       "types": "./src/components/utils/circle/index.ts",
       "import": "./dist/circle.mjs",
       "require": "./dist/circle.js"
+    },
+    "./close-button": {
+      "types": "./src/components/close-button/index.ts",
+      "import": "./dist/close-button.mjs",
+      "require": "./dist/close-button.js"
     }
   },
   "scripts": {

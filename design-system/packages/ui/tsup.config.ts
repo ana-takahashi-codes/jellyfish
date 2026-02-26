@@ -13,7 +13,8 @@ export default defineConfig((options) => ({
     "text-area": "src/components/text-area/index.ts",
     "components/spinner/index": "src/components/spinner/index.ts",
     "float": "src/components/float/index.ts",
-    "circle": "src/components/utils/circle/index.ts"
+    "circle": "src/components/utils/circle/index.ts",
+    "close-button": "src/components/close-button/index.ts"
   },
   format: ["cjs", "esm"],
   dts: true,
