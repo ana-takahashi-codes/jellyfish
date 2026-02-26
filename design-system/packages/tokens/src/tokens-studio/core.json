@@ -393,6 +393,10 @@
       },
       "bd": {
         "width": {
+          "0": {
+            "$type": "borderWidth",
+            "$value": "0"
+          },
           "1": {
             "$type": "borderWidth",
             "$value": "{jf.size.1}"
@@ -403,7 +407,7 @@
           },
           "3": {
             "$type": "borderWidth",
-            "$value": "3* {jf.size.1}"
+            "$value": "3*{jf.size.1}"
           },
           "4": {
             "$type": "borderWidth",
@@ -914,39 +918,39 @@
         "critical": {
           "100": {
             "$type": "color",
-            "$value": "oklch(0.958 0.008 17.29)"
+            "$value": "oklch(0.927 0.020 17)"
           },
           "200": {
             "$type": "color",
-            "$value": "oklch(0.869 0.022 31.79)"
+            "$value": "oklch(0.863 0.102 17)"
           },
           "300": {
             "$type": "color",
-            "$value": "oklch(0.773 0.037 28.73)"
+            "$value": "oklch(0.699 0.166 17)"
           },
           "400": {
             "$type": "color",
-            "$value": "oklch(0.688 0.052 29.32)"
+            "$value": "oklch(0.647 0.176 17)"
           },
           "500": {
             "$type": "color",
-            "$value": "oklch(0.6 0.068 28.92)"
+            "$value": "oklch(0.599 0.184 17)"
           },
           "600": {
             "$type": "color",
-            "$value": "oklch(0.512 0.084 28.17)"
+            "$value": "oklch(0.513 0.168 17)"
           },
           "700": {
             "$type": "color",
-            "$value": "oklch(0.422 0.1 28.58)"
+            "$value": "oklch(0.445 0.151 17)"
           },
           "800": {
             "$type": "color",
-            "$value": "oklch(0.328 0.112 29.06)"
+            "$value": "oklch(0.348 0.111 17)"
           },
           "900": {
             "$type": "color",
-            "$value": "oklch(0.238 0.098 29.23)"
+            "$value": "oklch(0.227 0.041 17)"
           }
         },
         "positive": {
@@ -3950,11 +3954,11 @@
         "jf.letter-spacing.comfort": "95944121f2d78dddae0bbcf95682a98b4b7d679a",
         "jf.letter-spacing.wide": "5a19b274b792c2e540ef5ae47a12fdcf433d3e7b",
         "jf.letter-spacing.regular": "9b33374e7e2fd62ba4f88f18a34d858f2f96774b",
+        "jf.bd.width.0-5": "2b10cf96cfbaa53e3cd5036f16631ef28118fa8e",
         "jf.bd.width.1": "87b95d3281050dc1a2e75d317b3a14f9bd62b180",
         "jf.bd.width.2": "c49484c5b9e29aa1e172e5ff3b6b8b0f6b0165be",
         "jf.bd.width.3": "a73ad952d77b0677c416e1598b26b35efa4c75c6",
         "jf.bd.width.4": "5c05396b0e438eab9348689fa698b8147a764ed2",
-        "jf.bd.width.0-5": "2b10cf96cfbaa53e3cd5036f16631ef28118fa8e",
         "jf.corner.radius.0": "a551676148361a34d9b895ddac65d99f3e091607",
         "jf.corner.radius.2": "b1c8822c848b03d660d1f15a5ed570f5a9428156",
         "jf.corner.radius.3": "53e645a6aa48871b296dde1dcdc2440c4874262c",
@@ -3980,7 +3984,8 @@
         "jf.scale.100": "a1d7aaeecf63938ccffc848cd054a7027dca36e8",
         "jf.scale.105": "cdceacfd25ccabfb86d758272fa6ece07af3f269",
         "jf.scale.120": "53c2933bec691fe2b21f8edfcd66f4c90e4e73a1",
-        "jf.scale.150": "b06c61eaffd8876ec3820de285cf677c08eea573"
+        "jf.scale.150": "b06c61eaffd8876ec3820de285cf677c08eea573",
+        "jf.bd.width.0": "730e240d69064cc30495eccf9a9451dcee61b287"
       }
     },
     {
@@ -4448,7 +4453,7 @@
         "jf.gradient.accent.end": "471b9cb1292fcbe23294c908c0a66cdf4e0597b1",
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
-        "jf.control.color.bd.focus": "b1fc237f5db6761a4d1fd250eb718b8b5d3e306f"
+        "jf.control.color.bd.focus": "a7a336e238a9e9d86b407f4f2fa211c9fdd7f45e"
       },
       "group": "Color Modes"
     },
@@ -4569,7 +4574,7 @@
         "jf.gradient.accent.end": "471b9cb1292fcbe23294c908c0a66cdf4e0597b1",
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
-        "jf.control.color.boder.focus": "6c5a422c9b9c4802a03cbf7ceb7f8d2cde19fa57"
+        "jf.control.color.boder.focus": "654073bde372d22dc31184c54d0e92fb3db2f157"
       },
       "group": "Color Modes"
     },
@@ -4665,7 +4670,7 @@
         "jf.control.min-width.md": "51039f1179437cab90e0d7cabb81b463cdd1ee80",
         "jf.control.min-width.lg": "b7d03c7e6a34d97a9fba19b3ff59d8ec320350fe",
         "jf.section.horizontal.padding.default": "8890271d1589a8c2d5e6478db1723eef745dcc14",
-        "jf.section.vertical.padding.default": "2d0b976b3074c21d90986dbe4c6c88fc3129a0fc"
+        "jf.section.vertical.padding.default": "e55991562ce5ed60fcd8b3fefe51cd4aa928c294"
       },
       "group": "Platforms"
     },
