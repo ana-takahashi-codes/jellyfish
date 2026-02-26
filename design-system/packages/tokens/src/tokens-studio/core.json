@@ -1408,7 +1408,6 @@
             "$value": {
               "fontFamily": "{jf.font-family.sans}",
               "fontSize": "{jf.font-size.xs}",
-              "lineHeight": "{jf.line-height.sm}",
               "letterSpacing": "{jf.letter-spacing.regular}",
               "fontWeight": "{jf.font-weight.500}"
             }
@@ -1418,7 +1417,6 @@
             "$value": {
               "fontFamily": "{jf.font-family.sans}",
               "fontSize": "{jf.font-size.sm}",
-              "lineHeight": "{jf.line-height.sm}",
               "letterSpacing": "{jf.letter-spacing.regular}",
               "fontWeight": "{jf.font-weight.500}"
             }
@@ -1428,7 +1426,6 @@
             "$value": {
               "fontFamily": "{jf.font-family.sans}",
               "fontSize": "{jf.font-size.md}",
-              "lineHeight": "{jf.line-height.sm}",
               "letterSpacing": "{jf.letter-spacing.regular}",
               "fontWeight": "{jf.font-weight.500}"
             }
@@ -1438,7 +1435,6 @@
             "$value": {
               "fontFamily": "{jf.font-family.sans}",
               "fontSize": "{jf.font-size.lg}",
-              "lineHeight": "{jf.line-height.sm}",
               "letterSpacing": "{jf.letter-spacing.regular}",
               "fontWeight": "{jf.font-weight.500}"
             }
@@ -4452,7 +4448,7 @@
         "jf.gradient.accent.end": "471b9cb1292fcbe23294c908c0a66cdf4e0597b1",
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
-        "jf.control.color.bd.focus": "1adb33799ebd3ee080110f6b16c510f86492e300"
+        "jf.control.color.bd.focus": "43015d0cc8b283fcea9816fcc500f83cd6e554f8"
       },
       "group": "Color Modes"
     },
@@ -4573,7 +4569,7 @@
         "jf.gradient.accent.end": "471b9cb1292fcbe23294c908c0a66cdf4e0597b1",
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
-        "jf.control.color.boder.focus": "4cbc16136d433f53d0dc3676e5341f18b59b481e"
+        "jf.control.color.boder.focus": "e071e96b0c7d49ed5cfa927b20f5f0f58f134e6f"
       },
       "group": "Color Modes"
     },
@@ -4669,7 +4665,7 @@
         "jf.control.min-width.md": "51039f1179437cab90e0d7cabb81b463cdd1ee80",
         "jf.control.min-width.lg": "b7d03c7e6a34d97a9fba19b3ff59d8ec320350fe",
         "jf.section.horizontal.padding.default": "8890271d1589a8c2d5e6478db1723eef745dcc14",
-        "jf.section.vertical.padding.default": "b60c1a64f2c741f68454aa039b9403828496817d"
+        "jf.section.vertical.padding.default": "3362ed2bf4a0c081a0451e636a6bb84f63019604"
       },
       "group": "Platforms"
     },
