@@ -393,10 +393,6 @@
       },
       "bd": {
         "width": {
-          "0": {
-            "$type": "borderWidth",
-            "$value": "0"
-          },
           "1": {
             "$type": "borderWidth",
             "$value": "{jf.size.1}"
@@ -804,39 +800,39 @@
         "accent": {
           "100": {
             "$type": "color",
-            "$value": "oklch(0.955 0.013 185.09)"
+            "$value": "oklch(0.95 0.015 196)"
           },
           "200": {
             "$type": "color",
-            "$value": "oklch(0.856 0.037 183.6)"
+            "$value": "oklch(0.866 0.050 196)"
           },
           "300": {
             "$type": "color",
-            "$value": "oklch(0.766 0.061 183.84)"
+            "$value": "oklch(0.781 0.084 196)"
           },
           "400": {
             "$type": "color",
-            "$value": "oklch(0.674 0.081 181.83)"
+            "$value": "oklch(0.697 0.075 196)"
           },
           "500": {
             "$type": "color",
-            "$value": "oklch(0.579 0.077 181.57)"
+            "$value": "oklch(0.612 0.066 196)"
           },
           "600": {
             "$type": "color",
-            "$value": "oklch(0.492 0.064 182.48)"
+            "$value": "oklch(0.528 0.057 196)"
           },
           "700": {
             "$type": "color",
-            "$value": "oklch(0.4 0.052 180.4)"
+            "$value": "oklch(0.443 0.048 196)"
           },
           "800": {
             "$type": "color",
-            "$value": "oklch(0.316 0.038 184.61)"
+            "$value": "oklch(0.359 0.039 196)"
           },
           "900": {
             "$type": "color",
-            "$value": "oklch(0.226 0.025 177.95)"
+            "$value": "oklch(0.274 0.029 196)"
           }
         },
         "brand-primary": {
