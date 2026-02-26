@@ -3187,7 +3187,7 @@
           },
           "critical-soft": {
             "$type": "color",
-            "$value": "{jf.color.critical.200}"
+            "$value": "{jf.color.critical.100}"
           },
           "positive-soft": {
             "$type": "color",
