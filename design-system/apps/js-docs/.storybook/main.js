@@ -67,6 +67,7 @@ const config = {
       { find: '@jellyfish-ds/ui/float',   replacement: join(uiPath, 'components/float/index.ts') },
       { find: '@jellyfish-ds/ui/circle',       replacement: join(uiPath, 'components/utils/circle/index.ts') },
       { find: '@jellyfish-ds/ui/close-button', replacement: join(uiPath, 'components/close-button/index.ts') },
+      { find: '@jellyfish-ds/ui/avatar',       replacement: join(uiPath, 'components/avatar/index.ts') },
     ]
 
     config.resolve = config.resolve || {}

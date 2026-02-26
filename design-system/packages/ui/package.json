@@ -73,6 +73,11 @@
       "types": "./src/components/close-button/index.ts",
       "import": "./dist/close-button.mjs",
       "require": "./dist/close-button.js"
+    },
+    "./avatar": {
+      "types": "./src/components/avatar/index.ts",
+      "import": "./dist/avatar.mjs",
+      "require": "./dist/avatar.js"
     }
   },
   "scripts": {
