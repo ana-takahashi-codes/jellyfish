@@ -176,7 +176,7 @@
         },
         "md": {
           "$type": "fontSizes",
-          "$value": "1rem"
+          "$value": "0.9375rem"
         },
         "lg": {
           "$type": "fontSizes",
@@ -4448,7 +4448,7 @@
         "jf.gradient.accent.end": "471b9cb1292fcbe23294c908c0a66cdf4e0597b1",
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
-        "jf.control.color.bd.focus": "43015d0cc8b283fcea9816fcc500f83cd6e554f8"
+        "jf.control.color.bd.focus": "b1fc237f5db6761a4d1fd250eb718b8b5d3e306f"
       },
       "group": "Color Modes"
     },
@@ -4569,7 +4569,7 @@
         "jf.gradient.accent.end": "471b9cb1292fcbe23294c908c0a66cdf4e0597b1",
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
-        "jf.control.color.boder.focus": "e071e96b0c7d49ed5cfa927b20f5f0f58f134e6f"
+        "jf.control.color.boder.focus": "6c5a422c9b9c4802a03cbf7ceb7f8d2cde19fa57"
       },
       "group": "Color Modes"
     },
@@ -4665,7 +4665,7 @@
         "jf.control.min-width.md": "51039f1179437cab90e0d7cabb81b463cdd1ee80",
         "jf.control.min-width.lg": "b7d03c7e6a34d97a9fba19b3ff59d8ec320350fe",
         "jf.section.horizontal.padding.default": "8890271d1589a8c2d5e6478db1723eef745dcc14",
-        "jf.section.vertical.padding.default": "3362ed2bf4a0c081a0451e636a6bb84f63019604"
+        "jf.section.vertical.padding.default": "2d0b976b3074c21d90986dbe4c6c88fc3129a0fc"
       },
       "group": "Platforms"
     },
