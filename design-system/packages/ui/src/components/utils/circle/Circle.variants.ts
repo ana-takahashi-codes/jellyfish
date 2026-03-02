@@ -7,7 +7,7 @@ import type { VariantPropsOf } from '../../../variants'
  */
 export const circleVariants = variants({
   base: {
-    class: 'd-inline-flex items-center justify-center corner-circle',
+    class: 'd-inline-flex items-center justify-center corner-circle font-label-xs',
   },
 })
 

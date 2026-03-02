@@ -2,7 +2,7 @@
  * Jellyfish - Utilities CSS
  * Gerado automaticamente a partir dos design tokens
  * Inclui: utilities estáticos, dinâmicos, tipografia, tokens responsivos, estados interativos e animações
- * Generated at: 2026-02-26T16:31:19.075Z
+ * Generated at: 2026-03-02T19:12:33.996Z
  *
  * Arquivos de mapping processados:
  * - utilities-mapping-static.json (valores CSS diretos + tipografia)
@@ -16251,3 +16251,13 @@
   animation: spin var(--jf-motion-duration-extended) linear infinite;
 }
 
+
+/* ========================================
+   UTILS (keyframes)
+   Origem: src/css/animations.css
+   ======================================== */
+
+.ring {
+    outline: var(--jf-bd-width-1) solid var(--jf-color-bd-brand-primary);
+    outline-offset: var(--jf-size-1);
+  }

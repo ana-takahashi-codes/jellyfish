@@ -1,4 +1,4 @@
 .ring {
-    outline: var(--jf-bd-width-1) solid var(--jf-control-color-bd-accent);
+    outline: var(--jf-bd-width-1) solid var(--jf-color-bd-brand-primary);
     outline-offset: var(--jf-size-1);
   }

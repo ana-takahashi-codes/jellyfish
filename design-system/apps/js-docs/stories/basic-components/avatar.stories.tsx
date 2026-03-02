@@ -80,12 +80,6 @@ O badge de status usa \`<Float>\` + \`<Circle>\`. Está sempre em \`placement="b
       description: 'Tamanho: xs=32px, sm=44px, md=64px, lg=80px, xl=112px.',
       table: { defaultValue: { summary: 'md' } },
     },
-    shape: {
-      control: 'select',
-      options: ['circle', 'rounded'],
-      description: 'Forma do avatar.',
-      table: { defaultValue: { summary: 'circle' } },
-    },
     bgColor: {
       control: 'select',
       options: ['brand-primary', 'accent', 'neutral', 'dataviz1', 'dataviz2', 'dataviz3', 'dataviz4'] satisfies AvatarBgColor[],
@@ -95,10 +89,6 @@ O badge de status usa \`<Float>\` + \`<Circle>\`. Está sempre em \`placement="b
       control: 'boolean',
       description: 'Exibe anel ao redor do avatar.',
       table: { defaultValue: { summary: 'false' } },
-    },
-    ringColor: {
-      control: 'text',
-      description: 'Cor do anel (ex.: "accent"). Mapeia para var(--jf-color-{ringColor}-500).',
     },
     badge: {
       control: 'object',
@@ -119,7 +109,6 @@ export const Playground: Story = {
   args: {
     name: 'Ana Lima',
     size: 'md',
-    shape: 'circle',
     ring: false,
   },
 }
@@ -328,19 +317,6 @@ export const DeterministicColors: Story = {
       </div>
     )
   },
-}
-
-// ─── Shape Rounded ────────────────────────────────────────────────────────────
-
-export const ShapeRounded: Story = {
-  name: 'Shape — Rounded',
-  render: () => (
-    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-      <Avatar name="Ana Lima" src="https://i.pravatar.cc/150?img=5" size="md" shape="rounded" />
-      <Avatar name="Ana Lima" size="md" shape="rounded" bgColor="brand-primary" />
-      <Avatar name="Bot" icon="robot" size="md" shape="rounded" bgColor="accent" />
-    </div>
-  ),
 }
 
 // ─── Clicável ────────────────────────────────────────────────────────────────

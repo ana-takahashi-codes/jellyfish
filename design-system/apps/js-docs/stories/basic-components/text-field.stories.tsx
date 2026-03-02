@@ -95,6 +95,11 @@ Campo de texto de linha única construído sobre o layout do Control. Suporta í
       description: 'Desabilita o campo.',
       table: { defaultValue: { summary: 'false' } },
     },
+    readOnly: {
+      control: 'boolean',
+      description: 'Campo somente leitura (não editável).',
+      table: { defaultValue: { summary: 'false' } },
+    },
     placeholder: {
       control: 'text',
       description: 'Texto placeholder do input.',
@@ -150,6 +155,7 @@ export const Playground: Story = {
     fullWidth: false,
     radius: 'default',
     disabled: false,
+    readOnly: false,
     clearable: false,
   },
   decorators: [

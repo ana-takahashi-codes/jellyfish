@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-  "private":false,
+  "private": false,
   "publishConfig": {
     "access": "public"
   },

@@ -77,6 +77,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       fullWidth = false,
       radius = 'default',
       disabled = false,
+      readOnly = false,
       startIcon,
       endIcon,
       prefix,
@@ -223,7 +224,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     }, [visualStyle, variant, isFocused, isHovered])
 
     // ── Derived ───────────────────────────────────────────────────────────────
-    const showClear = clearable && displayValue.length > 0 && !isDisabled
+    const showClear = clearable && displayValue.length > 0 && !isDisabled && !readOnly
     const showCount = showCharCount && maxLength !== undefined
 
     // ── Render ────────────────────────────────────────────────────────────────
@@ -246,13 +247,14 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           style={{
             ...controlStyle,
             ...borderStyle,
-            cursor: isDisabled ? 'not-allowed' : 'text',
+            cursor: isDisabled ? 'not-allowed' : readOnly ? 'default' : 'text',
             opacity: isDisabled ? 'var(--jf-opacity-disabled, 0.4)' : undefined,
           }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={() => innerRef.current?.focus()}
           aria-disabled={isDisabled ? true : undefined}
+          aria-readonly={readOnly ? true : undefined}
         >
           {/* Start icon */}
           {startIcon && (
@@ -285,12 +287,13 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
               color: 'var(--jf-color-fg-strong)',
               width: '100%',
               padding: 0,
-              cursor: isDisabled ? 'not-allowed' : undefined,
+              cursor: isDisabled ? 'not-allowed' : readOnly ? 'default' : undefined,
             }}
             value={value}
             defaultValue={defaultValue}
             maxLength={maxLength}
             disabled={isDisabled}
+            readOnly={readOnly}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}

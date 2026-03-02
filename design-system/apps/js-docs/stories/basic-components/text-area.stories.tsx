@@ -73,6 +73,11 @@ Campo de texto de múltiplas linhas construído sobre o layout do Control. Reapr
       description: 'Desabilita o campo.',
       table: { defaultValue: { summary: 'false' } },
     },
+    readOnly: {
+      control: 'boolean',
+      description: 'Campo somente leitura (não editável).',
+      table: { defaultValue: { summary: 'false' } },
+    },
     placeholder: {
       control: 'text',
       description: 'Texto placeholder do textarea.',
@@ -80,7 +85,7 @@ Campo de texto de múltiplas linhas construído sobre o layout do Control. Reapr
     rows: {
       control: 'number',
       description: 'Número de linhas visíveis (quando resize ≠ "auto").',
-      table: { defaultValue: { summary: 3 } },
+      table: { defaultValue: { summary: '3' } },
     },
     minRows: {
       control: 'number',
@@ -125,6 +130,7 @@ export const Playground: Story = {
     fullWidth: false,
     radius: 'default',
     disabled: false,
+    readOnly: false,
     rows: 3,
     resize: 'vertical',
     showCharCount: false,

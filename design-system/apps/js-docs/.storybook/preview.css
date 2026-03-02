@@ -1,5 +1,8 @@
 /* .storybook/preview.css */
 
+/* Box-model padrão para todos os componentes do DS */
+@import '@jellyfish-ds/tokens/base.css';
+
 /* Fontes do DS — carregadas antes dos tokens para que as variáveis de font-family resolvam */
 @import '@jellyfish-ds/tokens/src/css/fonts.css';
 

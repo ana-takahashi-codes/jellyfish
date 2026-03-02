@@ -44,7 +44,7 @@
   <string name="jf_font_size_4xg">clamp(2.75rem, 3.8306rem + 2.0853vw, 6.875rem)</string>
   <dimen name="jf_font_size_xs">12.00sp</dimen>
   <dimen name="jf_font_size_sm">14.00sp</dimen>
-  <dimen name="jf_font_size_md">16.00sp</dimen>
+  <dimen name="jf_font_size_md">15.00sp</dimen>
   <dimen name="jf_font_size_lg">18.00sp</dimen>
   <dimen name="jf_font_size_xl">20.00sp</dimen>
   <string name="jf_opacity_0">0</string>

@@ -105,10 +105,8 @@ function buildCssFiles(theme, outputOnly, manifest, extraSetKeys = []) {
 
   for (const key of colorModeKeys) {
     const name = colorModeOutputName(key)
-    const isDark = name.toLowerCase().includes('dark')
     all.push({
       destination: `color-modes/${name}.css`,
-      format: isDark ? 'css/variables-dark' : 'css/variables-light',
       filter: createSetFilter(key)
     })
   }
@@ -124,10 +122,8 @@ function buildCssFiles(theme, outputOnly, manifest, extraSetKeys = []) {
   for (const key of extraSetKeys) {
     if (key.startsWith(COLOR_MODE_PREFIX)) {
       const name = manifest.colorModeOutputName(key)
-      const isDark = name.toLowerCase().includes('dark')
       all.push({
         destination: `color-modes/${name}.css`,
-        format: isDark ? 'css/variables-dark' : 'css/variables-light',
         filter: createSetFilter(key)
       })
     } else if (key.startsWith(PLATFORM_PREFIX)) {

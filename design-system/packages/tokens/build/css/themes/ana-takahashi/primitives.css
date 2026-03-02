@@ -43,7 +43,7 @@
   --jf-font-size-4xg: clamp(2.75rem, 3.8306rem + 2.0853vw, 6.875rem);
   --jf-font-size-xs: 0.75rem;
   --jf-font-size-sm: 0.875rem;
-  --jf-font-size-md: 1rem;
+  --jf-font-size-md: 0.9375rem;
   --jf-font-size-lg: 1.125rem;
   --jf-font-size-xl: 1.25rem;
   --jf-opacity-0: 0;

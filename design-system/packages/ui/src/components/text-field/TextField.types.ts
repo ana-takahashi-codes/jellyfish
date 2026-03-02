@@ -33,6 +33,9 @@ export interface TextFieldProps
   /** Text rendered after the input (e.g. "%", "kg"). */
   suffix?: string
 
+  /** When true, the field is not editable (native readOnly). Default: false. */
+  readOnly?: boolean
+
   /** Shows a × clear button when the field has content. Default: false. */
   clearable?: boolean
 

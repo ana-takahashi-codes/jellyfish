@@ -1,0 +1,9 @@
+/**
+ * Base styles for Jellyfish Design System.
+ * Import this first so box-model is consistent across all components.
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

@@ -21,7 +21,9 @@
       "Bash(netstat -ano)",
       "Bash(xargs -I{} taskkill /PID {} /F)",
       "Bash(taskkill:*)",
-      "Bash(cmd:*)"
+      "Bash(cmd:*)",
+      "mcp__figma__get_metadata",
+      "Bash(pnpm:*)"
     ]
   }
 }

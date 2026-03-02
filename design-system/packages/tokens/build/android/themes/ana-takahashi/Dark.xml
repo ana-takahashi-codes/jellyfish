@@ -8,13 +8,13 @@
   <color name="jf_color_bg_brand_primary_soft">#ff8d1657</color>
   <color name="jf_color_bg_neutral_soft">oklch(21.03% 0.0059 285.89)</color>
   <color name="jf_color_bg_warning_soft">oklch(0.222 0.037 64.23)</color>
-  <color name="jf_color_bg_critical_soft">oklch(0.238 0.098 29.23)</color>
+  <color name="jf_color_bg_critical_soft">oklch(0.227 0.041 17)</color>
   <color name="jf_color_bg_positive_soft">oklch(0.212 0.053 146.76)</color>
   <color name="jf_color_bg_accent">#ff3e4789</color>
   <color name="jf_color_bg_brand_primary">#fffb65b7</color>
   <color name="jf_color_bg_neutral">oklch(27.39% 0.0055 286.03)</color>
   <color name="jf_color_bg_warning">oklch(0.603 0.125 62.52)</color>
-  <color name="jf_color_bg_critical">oklch(0.422 0.1 28.58)</color>
+  <color name="jf_color_bg_critical">oklch(0.445 0.151 17)</color>
   <color name="jf_color_bg_positive">oklch(0.576 0.155 146.27)</color>
   <color name="jf_color_bg_page">oklch(21.03% 0.0059 285.89)</color>
   <color name="jf_color_bg_surface_default">oklch(14.08% 0.0044 285.82)</color>
@@ -27,7 +27,7 @@
   <color name="jf_color_fg_moderated">oklch(92.76% 0.0058 264.53)</color>
   <color name="jf_color_fg_strong">oklch(1 0 0)</color>
   <color name="jf_color_fg_positive">oklch(0.668 0.121 148.58)</color>
-  <color name="jf_color_fg_critical">oklch(0.6 0.068 28.92)</color>
+  <color name="jf_color_fg_critical">oklch(0.599 0.184 17)</color>
   <color name="jf_color_fg_warning">oklch(0.694 0.145 61.99)</color>
   <color name="jf_color_fg_contrast">oklch(21.03% 0.0059 285.89)</color>
   <color name="jf_color_fg_on_accent">oklch(1 0 0)</color>
@@ -44,7 +44,7 @@
   <color name="jf_color_bd_accent">#ff3e4789</color>
   <color name="jf_color_bd_positive">oklch(0.576 0.155 146.27)</color>
   <color name="jf_color_bd_warning">oklch(0.603 0.125 62.52)</color>
-  <color name="jf_color_bd_critical">oklch(0.422 0.1 28.58)</color>
+  <color name="jf_color_bd_critical">oklch(0.445 0.151 17)</color>
   <color name="jf_color_bd_neutral">oklch(96.74% 0.0013 286.38)</color>
   <color name="jf_color_shadow_neutral">oklch(0 0 0)</color>
   <color name="jf_color_shadow_accent">#ff3e478940</color>

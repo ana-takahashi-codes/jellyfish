@@ -67,6 +67,7 @@ const PATHS = {
   utilitiesMappingStatic: path.join(UTILITIES_DIR, 'utilities-mapping-static.json'),
   interactiveStates: path.join(PACKAGE_ROOT, 'src', 'css', 'interactive-states.css'),
   animations: path.join(PACKAGE_ROOT, 'src', 'css', 'animations.css'),
+  utils: path.join(PACKAGE_ROOT, 'src', 'css', 'utils.css'),
   output: {
     utilities: path.join(PACKAGE_ROOT, 'build', 'css', 'utilities.css')
   }
@@ -513,6 +514,14 @@ const generateUtilitiesCSS = async () => {
    ======================================== */\n\n${readFileCached(PATHS.animations)}\n`;
     }
 
+    let utilsBlock = '';
+    if (fs.existsSync(PATHS.utils)) {
+      utilsBlock = `\n/* ========================================
+   UTILS (keyframes)
+   Origem: src/css/animations.css
+   ======================================== */\n\n${readFileCached(PATHS.utils)}\n`;
+    }
+
     const finalUtilitiesCSS = `/**
  * Jellyfish - Utilities CSS
  * Gerado automaticamente a partir dos design tokens
@@ -527,7 +536,7 @@ const generateUtilitiesCSS = async () => {
  * - src/css/animations.css (keyframes)
  */
 
-${utilitiesCSS}${typographyBlock}${responsiveBlock}${interactiveBlock}${animationsBlock}`;
+${utilitiesCSS}${typographyBlock}${responsiveBlock}${interactiveBlock}${animationsBlock}${utilsBlock}`;
 
     const success = writeFileSafe(PATHS.output.utilities, finalUtilitiesCSS);
 

@@ -20,6 +20,9 @@ export interface TextAreaProps
   /** Border radius applied to the outer control. Default: 'default'. */
   radius?: ControlRadius
 
+  /** When true, the field is not editable (native readOnly). Default: false. */
+  readOnly?: boolean
+
   /** Initial visible rows for the textarea (when resize !== 'auto'). Default: 3. */
   rows?: number
 

@@ -116,7 +116,7 @@ export const Playground: Story = {
           size="var(--jf-size-6)"
           bg="var(--jf-color-bg-brand-primary)"
           outline="2px solid"
-          outlineColor="var(--jf-color-bg-page)"
+          outlineColor="var(--jf-color-bg-surface-default)"
         />
       </Float>
     </Box>
@@ -153,7 +153,7 @@ export const AllPlacements: Story = {
                 size="var(--jf-size-6)"
                 bg="var(--jf-color-accent-500)"
                 outline="2px solid"
-                outlineColor="var(--jf-color-bg-page)"
+                outlineColor="var(--jf-color-bg-surface-default)"
               />
             </Float>
           </Box>
@@ -192,10 +192,10 @@ export const WithOffset: Story = {
           <Box>
             <Float placement="bottom-end" {...props}>
               <Circle
-                size="size-4"
+                size={14}
                 bg="var(--jf-color-brand-primary-500)"
                 outline="2px solid"
-                outlineColor="var(--jf-color-bg-page)"
+                outlineColor="var(--jf-color-bg-surface-default)"
               />
             </Float>
           </Box>
@@ -232,7 +232,7 @@ export const StatusIndicator: Story = {
                 size={14}
                 bg={bg}
                 outline="2px solid"
-                outlineColor="var(--jf-color-bg-page)"
+                outlineColor="var(--jf-color-bg-surface-default)"
               />
             </Float>
           </Box>
@@ -252,15 +252,12 @@ export const NotificationBadge: Story = {
       <Box size={48}>
         <Float placement="top-end" offset={-4}>
           <Circle
-            size={18}
+            size="var(--jf-size-8)"
             bg="var(--jf-color-critical-500)"
             outline="2px solid"
-            outlineColor="var(--jf-color-bg-page)"
+            outlineColor="var(--jf-color-bg-surface-default)"
             style={{
-              fontSize: 10,
-              fontWeight: 700,
               color: 'var(--jf-color-fg-on-critical)',
-              minWidth: 18,
             }}
           >
             3
@@ -269,12 +266,12 @@ export const NotificationBadge: Story = {
       </Box>
 
       <Box size={48}>
-        <Float placement="top-end" offset={-4}>
+        <Float placement="top-end" offsetX={-6}>
           <Circle
-            size={10}
+            size="var(--jf-size-8)"
             bg="var(--jf-color-critical-500)"
             outline="2px solid"
-            outlineColor="var(--jf-color-bg-page)"
+            outlineColor="var(--jf-color-bg-surface-default)"
           />
         </Float>
       </Box>

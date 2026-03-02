@@ -41,6 +41,7 @@
       "import": "./src/vars.js",
       "default": "./src/vars.js"
     },
+    "./base.css": "./src/css/base.css",
     "./interactive-states.css": "./src/css/interactive-states.css",
     "./fonts.css": "./src/css/fonts.css"
   },

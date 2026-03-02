@@ -13,6 +13,7 @@ export const avatarVariants = variants({
       'justify-center',
       'pos-relative',
       'select-none',
+      'corner-pill', // Avatar é sempre circular
     ],
   },
   variants: {
@@ -23,14 +24,9 @@ export const avatarVariants = variants({
       lg: 'size-40', // 80px
       xl: 'size-56', // 112px
     },
-    shape: {
-      circle:  'corner-pill', // 999px — always circular regardless of avatar size
-      rounded: 'corner-lg',   // 8px
-    },
   },
   defaultVariants: {
-    size:  'md',
-    shape: 'circle',
+    size: 'md',
   },
 })
 
@@ -126,13 +122,46 @@ export const bgColorTokens: Record<AvatarBgColor, { bg: string; fg: string; icon
   },
 }
 
-// ── Badge status color tokens ─────────────────────────────────────────────────
+/**
+ * Utility-based background + foreground classes for Avatar.
+ * Sempre que existir utility (`bg-*` / `fg-*`), ela é preferida;
+ * tokens acima são usados como fallback quando não houver utility.
+ */
+export const bgColorClasses: Record<AvatarBgColor, { bg?: string; fg?: string }> = {
+  'brand-primary': {
+    bg: 'bg-brand-primary',
+    fg: 'fg-on-brand-primary',
+  },
+  accent: {
+    bg: 'bg-accent',
+    fg: 'fg-on-accent',
+  },
+  neutral: {
+    bg: 'bg-neutral',
+    fg: 'fg-on-neutral',
+  },
+  dataviz1: {
+    // Sem utility específica de background; usa fg via utility e bg via token.
+    fg: 'fg-on-accent',
+  },
+  dataviz2: {
+    fg: 'fg-on-accent',
+  },
+  dataviz3: {
+    fg: 'fg-on-accent',
+  },
+  dataviz4: {
+    fg: 'fg-on-accent',
+  },
+}
+
+// ── Badge status colors (preferindo utilities) ────────────────────────────────
 
 export const badgeColorMap: Record<string, string> = {
-  online:  'var(--jf-color-positive-500)',
-  busy:    'var(--jf-color-critical-500)',
-  away:    'var(--jf-color-warning-500)',
-  offline: 'var(--jf-color-fg-muted)',
+  online:  'bg-positive',
+  busy:    'bg-critical',
+  away:    'bg-warning',
+  offline: 'bg-neutral-soft',
 }
 
 export const badgeLabelMap: Record<string, string> = {

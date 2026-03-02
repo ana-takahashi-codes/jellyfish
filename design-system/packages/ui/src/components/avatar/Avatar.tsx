@@ -11,6 +11,7 @@ import {
   badgeSizeMap,
   badgeOffsetMap,
   bgColorTokens,
+  bgColorClasses,
   badgeColorMap,
   badgeLabelMap,
   BG_COLORS,
@@ -74,10 +75,8 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
       icon,
       type,
       size = 'md',
-      shape = 'circle',
       bgColor,
       ring = false,
-      ringColor,
       badge,
       className,
       onClick,
@@ -100,23 +99,31 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     )
 
     const { className: variantClassName } = useMemo(
-      () => avatarVariants({ size, shape }),
-      [size, shape],
+      () => avatarVariants({ size }),
+      [size],
     )
 
     const { bg: bgToken, fg: fgToken, iconFill } = bgColorTokens[resolvedBgColor]
+    const colorClasses = bgColorClasses[resolvedBgColor]
 
-    const containerStyle = useMemo((): React.CSSProperties => ({
-      background: bgToken,
-      color:      fgToken,
-      // White border creates visual gap between avatar and the .ring outline
-      ...(ring ? {
-        border:     `var(--jf-bd-width-0-5, 1px) solid var(--jf-color-bg-page, white)`,
-        boxSizing:  'border-box' as const,
-        ...(ringColor ? { outlineColor: `var(--jf-color-${ringColor}-500)` } : {}),
-      } : {}),
-      ...style,
-    }), [bgToken, fgToken, ring, ringColor, style])
+    const containerStyle = useMemo((): React.CSSProperties => {
+      const tokenFallback: React.CSSProperties = {}
+
+      // Quando não houver utility de background, usa token como fallback.
+      if (!colorClasses?.bg) {
+        tokenFallback.background = bgToken
+      }
+
+      // Quando não houver utility de foreground, usa token como fallback.
+      if (!colorClasses?.fg) {
+        tokenFallback.color = fgToken
+      }
+
+      return {
+        ...tokenFallback,
+        ...style,
+      }
+    }, [bgToken, fgToken, colorClasses, style])
 
     const iconInfo  = iconSizeMap[size]
     const badgeSize = badgeSizeMap[size]
@@ -132,14 +139,14 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
       }
     }, [onClick])
 
-    const shapeClass = shape === 'circle' ? 'corner-pill' : 'corner-lg'
-
     return (
       <div
         ref={ref}
         className={cn(
           variantClassName,
           initialsFont[size],
+          colorClasses?.bg,
+          colorClasses?.fg,
           ring && 'ring',
           onClick && 'interactive cursor-pointer',
           className,
@@ -158,7 +165,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
             src={src}
             alt=""
             aria-hidden
-            className={cn('pos-absolute', shapeClass)}
+            className="pos-absolute corner-pill"
             style={{ inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
             onError={() => setImgError(true)}
           />

@@ -51,6 +51,7 @@ const config = {
     const projectAliases = [
       { find: '$tokens-core-json',                       replacement: tokensCoreJson },
       { find: '@jellyfish-ds/tokens/vars',                  replacement: join(tokensPath, 'src/vars.js') },
+      { find: '@jellyfish-ds/tokens/base.css',             replacement: join(tokensPath, 'src/css/base.css') },
       { find: '@jellyfish-ds/tokens/fonts.css',             replacement: join(tokensPath, 'src/css/fonts.css') },
       { find: '@jellyfish-ds/tokens/interactive-states.css',replacement: join(tokensPath, 'src/css/interactive-states.css') },
       { find: '@jellyfish-ds/tokens',                       replacement: tokensPath },

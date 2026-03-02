@@ -4,6 +4,8 @@
  * data-theme="light" (e.g. via ThemeProvider), light overrides system dark.
  */
 
+import { formattedVariables } from 'style-dictionary/utils'
+
 /**
  * @param {import('style-dictionary').FormatFnArguments} args
  * @returns {Promise<string>}
@@ -19,16 +21,28 @@ export default {
  */
 `
     const indentation = options?.formatting?.indentation ?? '  '
-    let tokens = dictionary.allTokens ?? []
-    if (typeof file.filter === 'function') {
-      tokens = tokens.filter(file.filter)
-    }
     const innerIndent = indentation + indentation
-    const lines = tokens.map((token) => {
-      const value = token.value ?? token.$value ?? token.original?.$value ?? ''
-      return `${innerIndent}--${token.name}: ${value};`
+
+    const originalAllTokens = dictionary.allTokens
+    if (typeof file.filter === 'function' && Array.isArray(dictionary.allTokens)) {
+      dictionary.allTokens = dictionary.allTokens.filter(file.filter)
+    }
+
+    const variables = formattedVariables({
+      format: 'css',
+      dictionary,
+      outputReferences: options?.outputReferences
     })
-    const inner = lines.join('\n')
+
+    // Restaura o estado original do dicionário para não afetar outros arquivos
+    dictionary.allTokens = originalAllTokens
+
+    const inner = variables
+      .split('\n')
+      .filter((line) => line.trim().length > 0)
+      .map((line) => `${innerIndent}${line}`)
+      .join('\n')
+
     const rootBlock = `:root {\n${inner}\n}\n\n`
     const dataThemeBlock = `[data-theme="light"] {\n${inner}\n}\n`
     return `${header}${rootBlock}${dataThemeBlock}`

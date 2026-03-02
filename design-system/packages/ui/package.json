@@ -78,6 +78,11 @@
       "types": "./src/components/avatar/index.ts",
       "import": "./dist/avatar.mjs",
       "require": "./dist/avatar.js"
+    },
+    "./mode-switch": {
+      "types": "./src/components/mode-switch/index.ts",
+      "import": "./dist/mode-switch.mjs",
+      "require": "./dist/mode-switch.js"
     }
   },
   "scripts": {

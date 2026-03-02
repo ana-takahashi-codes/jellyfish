@@ -15,7 +15,8 @@ export default defineConfig((options) => ({
     "float": "src/components/float/index.ts",
     "circle": "src/components/utils/circle/index.ts",
     "close-button": "src/components/close-button/index.ts",
-    "avatar": "src/components/avatar/index.ts"
+    "avatar": "src/components/avatar/index.ts",
+    "mode-switch": "src/components/mode-switch/index.ts"
   },
   format: ["cjs", "esm"],
   dts: true,

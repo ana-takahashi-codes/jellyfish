@@ -86,6 +86,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       fullWidth = false,
       radius = 'default',
       disabled = false,
+      readOnly = false,
       rows = 3,
       minRows,
       maxRows,
@@ -280,13 +281,14 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           style={{
             ...controlStyle,
             ...borderStyle,
-            cursor: isDisabled ? 'not-allowed' : 'text',
+            cursor: isDisabled ? 'not-allowed' : readOnly ? 'default' : 'text',
             opacity: isDisabled ? 'var(--jf-opacity-disabled, 0.4)' : undefined,
           }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={() => innerRef.current?.focus()}
           aria-disabled={isDisabled ? true : undefined}
+          aria-readonly={readOnly ? true : undefined}
         >
           {/* Textarea */}
           <textarea
@@ -307,9 +309,10 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
               paddingRight: 'var(--jf-control-horizontal-padding-default, 12px)',
               marginRight: 'calc(-1 * var(--jf-control-horizontal-padding-default, 12px))',
               resize: cssResize,
-              cursor: isDisabled ? 'not-allowed' : undefined,
+              cursor: isDisabled ? 'not-allowed' : readOnly ? 'default' : undefined,
             }}
             disabled={isDisabled}
+            readOnly={readOnly}
             maxLength={maxLength}
             value={value}
             defaultValue={defaultValue}

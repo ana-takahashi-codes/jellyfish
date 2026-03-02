@@ -70,7 +70,7 @@ public class {
     public static let jfFontSize4xg = clamp(2.75rem, 3.8306rem + 2.0853vw, 6.875rem)
     public static let jfFontSizeG = clamp(1.875rem, 1.3398rem + 0.7195vw, 2.25rem)
     public static let jfFontSizeLg = CGFloat(18.00)
-    public static let jfFontSizeMd = CGFloat(16.00)
+    public static let jfFontSizeMd = CGFloat(15.00)
     public static let jfFontSizeSm = CGFloat(14.00)
     public static let jfFontSizeXg = clamp(2.rem, 1.4692rem + 0.9789vw, 2.75rem)
     public static let jfFontSizeXl = CGFloat(20.00)
