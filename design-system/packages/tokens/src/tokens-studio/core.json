@@ -3088,6 +3088,16 @@
               "lineHeight": "{jf.line-height.md}",
               "letterSpacing": "{jf.letter-spacing.regular}"
             }
+          },
+          "description": {
+            "$type": "typography",
+            "$value": {
+              "fontFamily": "{jf.font-family.sans}",
+              "fontWeight": "{jf.font-weight.400}",
+              "fontSize": "{jf.font-size.xl}",
+              "lineHeight": "{jf.line-height.md}",
+              "letterSpacing": "{jf.letter-spacing.regular}"
+            }
           }
         }
       },
@@ -3950,11 +3960,11 @@
         "jf.letter-spacing.comfort": "95944121f2d78dddae0bbcf95682a98b4b7d679a",
         "jf.letter-spacing.wide": "5a19b274b792c2e540ef5ae47a12fdcf433d3e7b",
         "jf.letter-spacing.regular": "9b33374e7e2fd62ba4f88f18a34d858f2f96774b",
-        "jf.bd.width.0-5": "2b10cf96cfbaa53e3cd5036f16631ef28118fa8e",
         "jf.bd.width.1": "87b95d3281050dc1a2e75d317b3a14f9bd62b180",
         "jf.bd.width.2": "c49484c5b9e29aa1e172e5ff3b6b8b0f6b0165be",
         "jf.bd.width.3": "a73ad952d77b0677c416e1598b26b35efa4c75c6",
         "jf.bd.width.4": "5c05396b0e438eab9348689fa698b8147a764ed2",
+        "jf.bd.width.0-5": "2b10cf96cfbaa53e3cd5036f16631ef28118fa8e",
         "jf.corner.radius.0": "a551676148361a34d9b895ddac65d99f3e091607",
         "jf.corner.radius.2": "b1c8822c848b03d660d1f15a5ed570f5a9428156",
         "jf.corner.radius.3": "53e645a6aa48871b296dde1dcdc2440c4874262c",
@@ -3980,8 +3990,7 @@
         "jf.scale.100": "a1d7aaeecf63938ccffc848cd054a7027dca36e8",
         "jf.scale.105": "cdceacfd25ccabfb86d758272fa6ece07af3f269",
         "jf.scale.120": "53c2933bec691fe2b21f8edfcd66f4c90e4e73a1",
-        "jf.scale.150": "b06c61eaffd8876ec3820de285cf677c08eea573",
-        "jf.bd.width.0": "730e240d69064cc30495eccf9a9451dcee61b287"
+        "jf.scale.150": "b06c61eaffd8876ec3820de285cf677c08eea573"
       }
     },
     {
@@ -4449,7 +4458,7 @@
         "jf.gradient.accent.end": "471b9cb1292fcbe23294c908c0a66cdf4e0597b1",
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
-        "jf.control.color.bd.focus": "a7a336e238a9e9d86b407f4f2fa211c9fdd7f45e"
+        "jf.control.color.bd.focus": "3be37e407860921a67ec3b565a59947573383801"
       },
       "group": "Color Modes"
     },
@@ -4570,7 +4579,7 @@
         "jf.gradient.accent.end": "471b9cb1292fcbe23294c908c0a66cdf4e0597b1",
         "jf.gradient.neutral.start": "7f89e6bc2b5c05e8709459e9c76cbb77280dffbd",
         "jf.gradient.neutral.end": "3239e288028dc88ce0a7b9783a0f881119e70342",
-        "jf.control.color.boder.focus": "654073bde372d22dc31184c54d0e92fb3db2f157"
+        "jf.control.color.boder.focus": "c4216b06ad77389a12e102207c6beb0bf2618b5b"
       },
       "group": "Color Modes"
     },
@@ -4599,7 +4608,8 @@
         "jf.section.font.subtitle": "S:988a9d01b644f09962345b651d44e0756006fbf3,",
         "jf.card.color.bd.neutral": "S:1d83ed712051e113cda5d72c1837e5830635038c,",
         "jf.input.hint.font": "S:96185e1bac98fae71be50e32f786317b51351853,",
-        "jf.button.font.label": "S:bfce2123f2676fd9641ea08862fca59b58acd189,"
+        "jf.button.font.label": "S:bfce2123f2676fd9641ea08862fca59b58acd189,",
+        "jf.hero.font.description": "S:97351200ccbb4d1c8d8026792d5e99d62ae6145d,"
       },
       "selectedTokenSets": {
         "01- Primitives": "source",
@@ -4630,6 +4640,7 @@
         "jf.container.padding.comfort": "1680731d164bd072178a346b44e8e241d33cd3d1",
         "jf.container.padding.wide": "ccdbf388b51d8ecd0ee6b462ccb8fd4dd138bbd3",
         "jf.container.padding.extended": "bbc5d0c9aeff2a9e6ab492149b8825980af78dbd",
+        "jf.button.min-width": "68f8bf9a0bc89013eeef4755715ba50924dcd21f",
         "jf.control.corner.radius": "ea74651f2067a94c410e144dabaa5a9ab9618b74",
         "jf.control.gap": "32da44e46f4dd5ddf14c6df95b3477c501f1bdd4",
         "jf.control.horizontal.padding.default": "c5dd9bf3448cde31def64cc4ab8a4b91c1139282",
@@ -4642,8 +4653,7 @@
         "jf.input.color.bd.hover": "0ecfed0adecb07e42bfb872ad6a869b368c3965f",
         "jf.input.color.bd.focus": "81dbee7679b9b83b9518debc185d618b8bf41103",
         "jf.input.hint.color.default": "e171ad0bde79fa2030156e42032b79cbaa1bbeb9",
-        "jf.input.bg.default": "c2f3ec402fa31b5aed9092befda52458da4b1607",
-        "jf.button.min-width": "68f8bf9a0bc89013eeef4755715ba50924dcd21f"
+        "jf.input.bg.default": "c2f3ec402fa31b5aed9092befda52458da4b1607"
       },
       "group": "03 - Components"
     },
@@ -4666,7 +4676,7 @@
         "jf.control.min-width.md": "51039f1179437cab90e0d7cabb81b463cdd1ee80",
         "jf.control.min-width.lg": "b7d03c7e6a34d97a9fba19b3ff59d8ec320350fe",
         "jf.section.horizontal.padding.default": "8890271d1589a8c2d5e6478db1723eef745dcc14",
-        "jf.section.vertical.padding.default": "e55991562ce5ed60fcd8b3fefe51cd4aa928c294"
+        "jf.section.vertical.padding.default": "5549eb1ac6963dff6acd3a26da96c8f144af740b"
       },
       "group": "Platforms"
     },
